@@ -1,0 +1,13 @@
+[35m[1mConsolidate compiler generated dependencies of target turtlebot_control[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o[0m
+[100%] [32m[1mLinking CXX executable turtlebot_control[0m
+[100%] Built target turtlebot_control
+-- Install configuration: ""
+-- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/lib/turtlebot_control/turtlebot_control
+-- Set runtime path of "/home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/lib/turtlebot_control/turtlebot_control" to ""
+[31mCMake Error at cmake_install.cmake:66 (file):
+  file INSTALL cannot find
+  "/home/megsindelar/Final_Project/raspberry_pi_ws/src/turtlebot_control/images":
+  No such file or directory.
+
+[0m
