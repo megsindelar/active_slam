@@ -1,0 +1,13 @@
+[35m[1mConsolidate compiler generated dependencies of target img_transform[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/img_transform.dir/src/img_transform.cpp.o[0m
+[01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:[m[K In member function ‘[01m[Kvoid ImgTransform::timer_callback()[m[K’:
+[01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:54:13:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K,[m[K’ or ‘[01m[K;[m[K’ before ‘[01m[Kstd[m[K’
+   54 |             [01;31m[Kstd[m[K::string image_path = pkg_path + "images/image.jpg"
+      |             [01;31m[K^~~[m[K
+[01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:61:76:[m[K [01;31m[Kerror: [m[K‘[01m[Kcurrent_frame[m[K’ was not declared in this scope
+   61 | ub_current_img_->publish(*(cv_bridge::CvImage(header, "bgr8", [01;31m[Kcurrent_frame[m[K).toImageMsg()), cam_info_);
+      |                                                               [01;31m[K^~~~~~~~~~~~~[m[K
+
+gmake[2]: *** [CMakeFiles/img_transform.dir/build.make:76: CMakeFiles/img_transform.dir/src/img_transform.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/img_transform.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

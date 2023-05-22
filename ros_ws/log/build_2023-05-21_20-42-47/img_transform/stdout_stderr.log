@@ -1,0 +1,9 @@
+[35m[1mConsolidate compiler generated dependencies of target img_transform[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/img_transform.dir/src/img_transform.cpp.o[0m
+[100%] [32m[1mLinking CXX executable img_transform[0m
+/usr/bin/ld: CMakeFiles/img_transform.dir/src/img_transform.cpp.o: in function `ImgTransform::image_callback(std::shared_ptr<sensor_msgs::msg::Image_<std::allocator<void> > const> const&, std::shared_ptr<sensor_msgs::msg::CameraInfo_<std::allocator<void> > const> const&)':
+img_transform.cpp:(.text._ZN12ImgTransform14image_callbackERKSt10shared_ptrIKN11sensor_msgs3msg6Image_ISaIvEEEERKS0_IKNS2_11CameraInfo_IS4_EEE[_ZN12ImgTransform14image_callbackERKSt10shared_ptrIKN11sensor_msgs3msg6Image_ISaIvEEEERKS0_IKNS2_11CameraInfo_IS4_EEE]+0xbf): undefined reference to `cv::imshow(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, cv::_InputArray const&)'
+collect2: error: ld returned 1 exit status
+gmake[2]: *** [CMakeFiles/img_transform.dir/build.make:181: img_transform] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/img_transform.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

@@ -1,0 +1,35 @@
+[0.010s] Invoking command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/ros_ws/build/img_transform -- -j8 -l8
+[0.026s] -- Found ament_cmake: 1.3.3 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.126s] -- Found rclcpp: 16.0.3 (/opt/ros/humble/share/rclcpp/cmake)
+[0.144s] -- Found rosidl_generator_c: 3.1.4 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.145s] -- Found rosidl_adapter: 3.1.4 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.149s] -- Found rosidl_generator_cpp: 3.1.4 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.155s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.165s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.201s] -- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.201s] -- Found rmw_fastrtps_cpp: 6.2.2 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.281s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.380s] -- Found sensor_msgs: 4.2.3 (/opt/ros/humble/share/sensor_msgs/cmake)
+[0.463s] -- Found cv_bridge: 3.2.1 (/opt/ros/humble/share/cv_bridge/cmake)
+[0.468s] -- Found image_transport: 3.1.5 (/opt/ros/humble/share/image_transport/cmake)
+[0.492s] -- Found ament_lint_auto: 0.12.5 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.539s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[0.539s] -- Configured cppcheck include dirs: /home/megsindelar/Final_Project/ros_ws/src/active_slam/headers
+[0.539s] -- Configured cppcheck exclude dirs and/or files: 
+[0.539s] -- Added test 'lint_cmake' to check CMake code style
+[0.540s] -- Added test 'uncrustify' to check C / C++ code style
+[0.540s] -- Configured uncrustify additional arguments: 
+[0.540s] -- Added test 'xmllint' to check XML markup files
+[0.540s] -- Configuring done
+[0.546s] -- Generating done
+[0.547s] -- Build files have been written to: /home/megsindelar/Final_Project/ros_ws/build/img_transform
+[0.564s] [35m[1mConsolidate compiler generated dependencies of target img_transform[0m
+[0.576s] [ 50%] [32mBuilding CXX object CMakeFiles/img_transform.dir/src/img_transform.cpp.o[0m
+[2.675s] [100%] [32m[1mLinking CXX executable img_transform[0m
+[2.876s] /usr/bin/ld: CMakeFiles/img_transform.dir/src/img_transform.cpp.o: in function `ImgTransform::image_callback(std::shared_ptr<sensor_msgs::msg::Image_<std::allocator<void> > const> const&, std::shared_ptr<sensor_msgs::msg::CameraInfo_<std::allocator<void> > const> const&)':
+[2.876s] img_transform.cpp:(.text._ZN12ImgTransform14image_callbackERKSt10shared_ptrIKN11sensor_msgs3msg6Image_ISaIvEEEERKS0_IKNS2_11CameraInfo_IS4_EEE[_ZN12ImgTransform14image_callbackERKSt10shared_ptrIKN11sensor_msgs3msg6Image_ISaIvEEEERKS0_IKNS2_11CameraInfo_IS4_EEE]+0xbf): undefined reference to `cv::imshow(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, cv::_InputArray const&)'
+[2.895s] collect2: error: ld returned 1 exit status
+[2.896s] gmake[2]: *** [CMakeFiles/img_transform.dir/build.make:181: img_transform] Error 1
+[2.896s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/img_transform.dir/all] Error 2
+[2.896s] gmake: *** [Makefile:146: all] Error 2
+[2.898s] Invoked command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/ros_ws/build/img_transform -- -j8 -l8

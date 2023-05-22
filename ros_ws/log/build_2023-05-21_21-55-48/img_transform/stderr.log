@@ -1,0 +1,11 @@
+[01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:[m[K In member function ‘[01m[Kvoid ImgTransform::timer_callback()[m[K’:
+[01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:51:36:[m[K [01;31m[Kerror: [m[K‘[01m[Kament_index_cpp[m[K’ has not been declared
+   51 |             std::string pkg_path = [01;31m[Kament_index_cpp[m[K::get_package_share_directory("img_transform")
+      |                                    [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:59:76:[m[K [01;31m[Kerror: [m[K‘[01m[Kcurrent_frame[m[K’ was not declared in this scope
+   59 | ub_current_img_->publish(*(cv_bridge::CvImage(header, "bgr8", [01;31m[Kcurrent_frame[m[K).toImageMsg()), cam_info_);
+      |                                                               [01;31m[K^~~~~~~~~~~~~[m[K
+
+gmake[2]: *** [CMakeFiles/img_transform.dir/build.make:76: CMakeFiles/img_transform.dir/src/img_transform.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/img_transform.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

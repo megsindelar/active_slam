@@ -1,0 +1,15 @@
+[0.010s] Invoking command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/ros_ws/build/img_transform -- -j8 -l8
+[0.038s] [35m[1mConsolidate compiler generated dependencies of target img_transform[0m
+[0.049s] [ 50%] [32mBuilding CXX object CMakeFiles/img_transform.dir/src/img_transform.cpp.o[0m
+[1.634s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/active_slam/src/img_transform.cpp:[m[K In member function ‘[01m[Kvoid ImgTransform::timer_callback()[m[K’:
+[1.634s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/active_slam/src/img_transform.cpp:57:45:[m[K [01;31m[Kerror: [m[K‘[01m[Kcv::bridge[m[K’ has not been declared
+[1.634s]    57 |             pub_current_img_->publish(*(cv::[01;31m[Kbridge[m[K::CvImage(header, "bgr8", current_frame).toImageMsg()), camera_info_);
+[1.634s]       |                                             [01;31m[K^~~~~~[m[K
+[1.640s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/active_slam/src/img_transform.cpp:57:107:[m[K [01;31m[Kerror: [m[K‘[01m[Kcamera_info_[m[K’ was not declared in this scope; did you mean ‘[01m[Kcam_info_[m[K’?
+[1.640s]    57 |    pub_current_img_->publish(*(cv::bridge::CvImage(header, "bgr8", current_frame).toImageMsg()), [01;31m[Kcamera_info_[m[K);
+[1.640s]       |                                                                                                  [01;31m[K^~~~~~~~~~~~[m[K
+[1.640s]       |                                                                                                  [32m[Kcam_info_[m[K
+[1.991s] gmake[2]: *** [CMakeFiles/img_transform.dir/build.make:76: CMakeFiles/img_transform.dir/src/img_transform.cpp.o] Error 1
+[1.991s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/img_transform.dir/all] Error 2
+[1.991s] gmake: *** [Makefile:146: all] Error 2
+[1.993s] Invoked command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/ros_ws/build/img_transform -- -j8 -l8
