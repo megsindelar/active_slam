@@ -3,9 +3,33 @@
 #include "sensor_msgs/msg/image.hpp"
 #include "cv_bridge/cv_bridge.h"
 #include "image_transport/image_transport.hpp"
-#include <opencv2/highgui.hpp>
 #include <ament_index_cpp/get_package_share_directory.hpp>
 
+#include <opencv2/core/core.hpp>
+#include <opencv2/features2d/features2d.hpp>
+#include <opencv2/highgui/highgui.hpp>
+
+#include <Eigen/Core>
+
+#include <teaser/ply_io.h>
+#include <teaser/registration.h>
+
+#include "matplotlibcpp.h"
+#include <random>
+#include <chrono>
+#include "geometry_msgs/msg/transform_stamped.hpp"
+#include "tf2_ros/static_transform_broadcaster.h"
+#include "tf2_ros/transform_broadcaster.h"
+#include <string>
+
+using namespace std;
+using namespace cv;
+
+// Macro constants for generating noise and outliers
+#define NOISE_BOUND 0.05
+#define N_OUTLIERS 1700
+#define OUTLIER_TRANSLATION_LB 5
+#define OUTLIER_TRANSLATION_UB 10
 
 class ImgTransform : public rclcpp::Node
 {
@@ -36,6 +60,9 @@ class ImgTransform : public rclcpp::Node
             )
         );
 
+        //a transform broadcaster to publish position and orientation of the turtlebot
+        tf_static_broadcaster_ = std::make_shared<tf2_ros::StaticTransformBroadcaster>(*this);
+
         // Timer
         declare_parameter("rate", 200);
         int rate_ms = 1000 / (get_parameter("rate").get_parameter_value().get<int>());
@@ -44,39 +71,278 @@ class ImgTransform : public rclcpp::Node
           std::bind(&ImgTransform::timer_callback, this));
     }
     private:
+        inline double getAngularError(Eigen::Matrix3d R_exp, Eigen::Matrix3d R_est) {
+            return std::abs(std::acos(fmin(fmax(((R_exp.transpose() * R_est).trace() - 1) / 2, -1.0), 1.0)));
+        }
         void timer_callback()
         {
-            // std_msgs::msg::Header header;
-            // header.stamp = get_clock()->now();
-            // cam_info_.header = header;
+            if (!current_img.empty() && !prev_img.empty() && done != 1)
+            {
+                // RCLCPP_INFO(rclcpp::get_logger("right_rad"), "sending back response: [%d]", right_rad);
+                RCLCPP_INFO(rclcpp::get_logger("message"), "NEW TRANSFORM!!!!");
+                Eigen::Matrix<double, 3, Eigen::Dynamic> prev_pos(3, 1);
+                prev_pos(0) = 1;
+                prev_pos(1) = 1;
+                prev_pos(2) = 1;
+                // geometry_msgs::msg::TransformStamped t;
+                // t.header.stamp = this->get_clock()->now();
+                // t.header.frame_id = "world";
+                // t.child_frame_id = "prev";
+
+                // t.transform.translation.x = prev_pos(0);
+                // t.transform.translation.y = prev_pos(1);
+
+                // tf2::Quaternion q;
+                // q.setRPY(0, 0, theta);
+                // geometry_msgs::msg::Quaternion msg_quaternion = tf2::toMsg(q);
+                // t.transform.rotation.x = msg_quaternion.x;
+                // t.transform.rotation.y = msg_quaternion.y;
+                // t.transform.rotation.z = msg_quaternion.z;
+                // t.transform.rotation.w = msg_quaternion.w;
+
+                // tf_broadcaster_->sendTransform(t);
+
+                auto begin_total = std::chrono::high_resolution_clock::now();
+                std::vector<KeyPoint> keypoints_1, keypoints_2;
+                Mat descriptors_1, descriptors_2;
+                Ptr<FeatureDetector> detector = ORB::create();
+                Ptr<DescriptorExtractor> descriptor = ORB::create();
+                
+                Ptr<DescriptorMatcher> matcher  = DescriptorMatcher::create ( "BruteForce-Hamming" );
+
+                detector->detect ( prev_img,keypoints_1 );
+                detector->detect ( current_img,keypoints_2 );
+
+                descriptor->compute ( prev_img, keypoints_1, descriptors_1 );
+                descriptor->compute ( current_img, keypoints_2, descriptors_2 );
+
+                Mat outimg1;
+                drawKeypoints( prev_img, keypoints_1, outimg1, Scalar::all(-1), DrawMatchesFlags::DEFAULT );
+                Mat outimg2;
+                drawKeypoints( current_img, keypoints_2, outimg2, Scalar::all(-1), DrawMatchesFlags::DEFAULT );
+                Mat outimg3;
+                drawKeypoints( prev_img, keypoints_2, outimg3, Scalar::all(-1), DrawMatchesFlags::DEFAULT );
+
+                vector<DMatch> matches;
+                matcher->match ( descriptors_1, descriptors_2, matches );
+
+                double min_dist=10000, max_dist=0;
+
+                min_dist = 10.0;
+
+                std::vector< DMatch > good_matches;
+                for ( int i = 0; i < descriptors_1.rows; i++ )
+                {
+                    if ( matches[i].distance <= min ( 2*min_dist, 30.0 ) )
+                    {
+                        good_matches.push_back ( matches[i] );
+                    }
+                }
+
+                std::cout << "num of matches: " << good_matches.size() << std::endl;
 
 
-            // std::string pkg_path = ament_index_cpp::get_package_share_directory("img_transform");
-            // std::cout << pkg_path << std::endl;
-            // std::string image_path = pkg_path + "/images/image.jpg";
-            // std::cout << image_path << std::endl;
-            // cv::Mat current_frame = cv::imread(image_path);
+                float z = 1.0;
+                float f_1 = 295.009696;
+                float f_2 = 296.22399483;
+                float p_1 = 195.515395;
+                float p_2 = 131.035055713;
+                std::vector<float> key1_xw;
+                std::vector<float> key1_yw;
+                std::vector<float> key1_zw;
+                std::vector<float> key1_xp;
+                std::vector<float> key1_yp;
+                std::vector<float> key2_xw;
+                std::vector<float> key2_yw;
+                std::vector<float> key2_zw;
+                std::vector<float> key2_xp;
+                std::vector<float> key2_yp;
+                // first get transform point by multiplying by camera matrix
+                for (int i=0; i<good_matches.size(); i++){
+                    float k1_xw = (1/f_1)*(keypoints_1.at(good_matches[i].queryIdx).pt.x - p_1*z);
+                    float k1_yw = (1/f_2)*(keypoints_1.at(good_matches[i].queryIdx).pt.y - p_2*z);
+                    float k2_xw = (1/f_1)*(keypoints_2.at(good_matches[i].trainIdx).pt.x - p_1*z);
+                    float k2_yw = (1/f_2)*(keypoints_2.at(good_matches[i].trainIdx).pt.y - p_2*z);
+                    key1_xw.push_back(k1_xw);
+                    // std::cout << "x1: " << k1_xw << std::endl;
+                    key1_yw.push_back(k1_yw);
+                    key1_zw.push_back(z);
+                    key1_xp.push_back(keypoints_1.at(good_matches[i].queryIdx).pt.x);
+                    key1_yp.push_back(keypoints_1.at(good_matches[i].queryIdx).pt.y);
+                    key2_xw.push_back(k2_xw);
+                    key2_yw.push_back(k2_yw);
+                    key2_zw.push_back(z);
+                    key2_xp.push_back(keypoints_2.at(good_matches[i].trainIdx).pt.x);
+                    key2_yp.push_back(keypoints_2.at(good_matches[i].trainIdx).pt.y);
+                }
+
+                // Convert the point cloud to Eigen
+                int N = good_matches.size();
 
 
-            // //change image from rasp pi to cv mat current_frame 
+                Eigen::Matrix<double, 3, Eigen::Dynamic> src(3, N);
+                for (size_t i = 0; i < N; ++i) {
+                    // src.col(i) << src_cloud[i].x, src_cloud[i].y, src_cloud[i].z;
+                    src.col(i) << key1_xw.at(i), key1_yw.at(i), key1_zw.at(i);
+                    std::cout << "z1: " << key1_zw.at(i) << std::endl;
+                }
 
-            // // find a way to check if raspberry pi cam is on
-            // pub_current_img_->publish(*(cv_bridge::CvImage(header, "bgr8", current_frame).toImageMsg()), cam_info_);
+                // Homogeneous coordinates
+                Eigen::Matrix<double, 4, Eigen::Dynamic> src_h;
+                src_h.resize(4, src.cols());
+                src_h.topRows(3) = src;
+                src_h.bottomRows(1) = Eigen::Matrix<double, 1, Eigen::Dynamic>::Ones(N);
+
+                // Apply an arbitrary SE(3) transformation
+                Eigen::Matrix4d T;
+
+                Eigen::Matrix<double, 3, Eigen::Dynamic> tgt(3, N);
+                for (size_t i = 0; i < N; ++i) {
+                    // src.col(i) << src_cloud[i].x, src_cloud[i].y, src_cloud[i].z;
+                    tgt.col(i) << key2_xw.at(i), key2_yw.at(i), key2_zw.at(i);
+                    std::cout << "z2: " << key2_zw.at(i) << std::endl;
+                }
+
+                // Run TEASER++ registration
+                // Prepare solver parameters
+                teaser::RobustRegistrationSolver::Params params;
+                params.noise_bound = NOISE_BOUND;
+                params.cbar2 = 1;
+                params.estimate_scaling = false;
+                params.rotation_max_iterations = 100;
+                params.rotation_gnc_factor = 1.4;
+                params.rotation_estimation_algorithm =
+                    teaser::RobustRegistrationSolver::ROTATION_ESTIMATION_ALGORITHM::GNC_TLS;
+                params.rotation_cost_threshold = 0.005;
+
+                // Solve with TEASER++
+                teaser::RobustRegistrationSolver solver(params);
+                std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+                solver.solve(src, tgt);
+                std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+
+                auto solution = solver.getSolution();
+
+                // Compare results
+                std::cout << "=====================================" << std::endl;
+                std::cout << "          TEASER++ Results           " << std::endl;
+                std::cout << "=====================================" << std::endl;
+                std::cout << "Expected rotation: " << std::endl;
+                std::cout << T.topLeftCorner(3, 3) << std::endl;
+                std::cout << "Estimated rotation: " << std::endl;
+                std::cout << solution.rotation << std::endl;
+                std::cout << "Error (deg): " << getAngularError(T.topLeftCorner(3, 3), solution.rotation)
+                            << std::endl;
+                std::cout << std::endl;
+                std::cout << "Expected translation: " << std::endl;
+                std::cout << T.topRightCorner(3, 1) << std::endl;
+                std::cout << "Estimated translation: " << std::endl;
+                std::cout << solution.translation << std::endl;
+                std::cout << "Error (m): " << (T.topRightCorner(3, 1) - solution.translation).norm() << std::endl;
+                std::cout << std::endl;
+                std::cout << "Number of correspondences: " << N << std::endl;
+                std::cout << "Number of outliers: " << N_OUTLIERS << std::endl;
+                std::cout << "Time taken (s): "
+                            << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() /
+                                1000000.0
+                            << std::endl;
+
+
+                // draw transformation on first image to visualize
+                std::vector<float> trans_x;
+                Eigen::Matrix<double, 3, Eigen::Dynamic> keypnts(3, N);
+                Eigen::Matrix<double, 3, Eigen::Dynamic> keypnts2(3, N);
+                for(int i = 0; i < N; i++){
+                    // std::cout << "i " << i << std::endl;
+                    keypnts.col(i) << key1_xw.at(i), key1_yw.at(i), key1_zw.at(i);
+                    keypnts2.col(i) << key2_xw.at(i), key2_yw.at(i), key2_zw.at(i);
+                }
+                Eigen::Matrix<double, 3, 3> transformation;
+                for (int i = 0; i < 2; i++){
+                    transformation.row(i) << solution.rotation(i,0), solution.rotation(i,1), solution.translation(i);
+                }
+                transformation.row(2) << solution.rotation(2,0), solution.rotation(2,1), solution.rotation(2,2);
+                std::cout << transformation << std::endl;
+
+                std::vector<KeyPoint> key_trans_2 = keypoints_2;
+                std::vector<KeyPoint> key_trans_1 = keypoints_1;
+                for(int i = 0; i < N; i++){
+                    Eigen::Matrix<double, 3, 1> new_2 = transformation.inverse()*keypnts.col(i);
+                    Eigen::Matrix<double, 3, 1> new_1 = transformation*keypnts2.col(i);
+                    key_trans_2.at(i).pt.x = new_2(0);
+                    key_trans_2.at(i).pt.y = new_2(1);
+                    key_trans_1.at(i).pt.x = new_1(0);
+                    key_trans_1.at(i).pt.y = new_1(1);
+                }
+
+                Mat outimg_test_2;
+                drawKeypoints ( current_img, key_trans_2, outimg_test_2);
+                Mat outimg_test_1;
+                drawKeypoints ( current_img, key_trans_2, outimg_test_1);
+
+                // imshow ( "image match", img_match );
+                // imshow ("transformed keypoints (keypoint 1 to image 2)", outimg_test_2);
+                // imshow ("transformed keypoints (keypoint 2 to image 1)", outimg_test_1);
+                // imshow("keypoint 1 detection image 1", outimg1);
+                // imshow("keypoint 2 detection image 2", outimg2);
+                // imshow("keypoint 2 on detection image 1", outimg3);
+
+                // TODO: get rid of
+                done = 1;
+
+                auto end_total = std::chrono::high_resolution_clock::now();
+                auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end_total - begin_total);
+                printf("Time to complete program: %.3f seconds\n", elapsed.count()*1e-9);
+
+
+                Eigen::Matrix<double, 3, Eigen::Dynamic> current_pos(3, 1);
+                geometry_msgs::msg::TransformStamped t;
+                t.header.stamp = this->get_clock()->now();
+                t.header.frame_id = parent_frame;
+                t.child_frame_id = child_frame + std::to_string(num_transforms);
+
+                current_pos = transformation.inverse()*prev_pos;
+
+                t.transform.translation.x = current_pos(0);
+                t.transform.translation.y = current_pos(1);
+
+                // tf2::Quaternion q;
+                // q.setRPY(0, 0, theta);
+                // geometry_msgs::msg::Quaternion msg_quaternion = tf2::toMsg(q);
+                // t.transform.rotation.x = msg_quaternion.x;
+                // t.transform.rotation.y = msg_quaternion.y;
+                // t.transform.rotation.z = msg_quaternion.z;
+                // t.transform.rotation.w = msg_quaternion.w;
+
+                num_transforms += 1;
+                parent_frame = t.child_frame_id;
+
+                tf_static_broadcaster_->sendTransform(t);
+            }
         }
 
-        // void img_callback(const sensor_msgs::msg::Image::ConstSharedPtr& msg, const sensor_msgs::msg::CameraInfo::ConstSharedPtr&)
         void image_callback(
             const sensor_msgs::msg::Image::ConstSharedPtr& msg,
             const sensor_msgs::msg::CameraInfo::ConstSharedPtr&
         ){
-            cv::imshow("subscribed_image",cv_bridge::toCvCopy(*msg, msg->encoding)->image);
-            cv::waitKey(1);
+            // imshow("subscribed_image",cv_bridge::toCvCopy(*msg, msg->encoding)->image);
+            prev_img.release();
+            prev_img = current_img.clone();
+            current_img.release();
+            current_img = cv_bridge::toCvCopy(*msg, msg->encoding)->image;
+            // waitKey(1);
         }
 
         rclcpp::TimerBase::SharedPtr timer_;
-        // std::shared_ptr<image_transport::CameraPublisher> pub_current_img_;
         std::shared_ptr<image_transport::CameraSubscriber> sub_current_img_;
+        std::shared_ptr<tf2_ros::StaticTransformBroadcaster> tf_static_broadcaster_;
         sensor_msgs::msg::CameraInfo cam_info_;
+        Mat current_img;
+        Mat prev_img;
+        int done = 0;
+        std::string child_frame = "current";
+        std::string parent_frame = "previous";
+        int num_transforms = 0;
 };
 
 int main(int argc, char** argv)
