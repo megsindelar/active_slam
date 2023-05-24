@@ -1,0 +1,29 @@
+[35m[1mConsolidate compiler generated dependencies of target img_transform[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/img_transform.dir/src/img_transform.cpp.o[0m
+[01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:[m[K In member function ‘[01m[Kvoid ImgTransform::timer_callback()[m[K’:
+[01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:80:70:[m[K [01;31m[Kerror: [m[K‘[01m[KN[m[K’ was not declared in this scope
+   80 |                 Eigen::Matrix<double, 3, Eigen::Dynamic> prev_pos(3, [01;31m[KN[m[K);
+      |                                                                      [01;31m[K^[m[K
+[01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:89:54:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass Eigen::Matrix<double, 3, -1>[m[K’ has no member named ‘[01m[Kat[m[K’; did you mean ‘[01m[Kdata[m[K’?
+   89 |                 t.transform.translation.x = prev_pos.[01;31m[Kat[m[K(0);
+      |                                                      [01;31m[K^~[m[K
+      |                                                      [32m[Kdata[m[K
+[01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:90:54:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass Eigen::Matrix<double, 3, -1>[m[K’ has no member named ‘[01m[Kat[m[K’; did you mean ‘[01m[Kdata[m[K’?
+   90 |                 t.transform.translation.y = prev_pos.[01;31m[Kat[m[K(1);
+      |                                                      [01;31m[K^~[m[K
+      |                                                      [32m[Kdata[m[K
+[01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:158:32:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<cv::DMatch>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  158 |                 for (int i=0; [01;35m[Ki<good_matches.size()[m[K; i++){
+      |                               [01;35m[K~^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:301:45:[m[K [01;31m[Kerror: [m[Kconflicting declaration ‘[01m[KEigen::Matrix<double, 3, 1> current_pos[m[K’
+  301 |                 Eigen::Matrix<double, 3, 1> [01;31m[Kcurrent_pos[m[K = transformation.inverse()*prev_pos;
+      |                                             [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:295:58:[m[K [01;36m[Knote: [m[Kprevious declaration as ‘[01m[KEigen::Matrix<double, 3, -1> current_pos[m[K’
+  295 |                 Eigen::Matrix<double, 3, Eigen::Dynamic> [01;36m[Kcurrent_pos[m[K(3, N);
+      |                                                          [01;36m[K^~~~~~~~~~~[m[K
+[01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:126:40:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kmax_dist[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  126 |                 double min_dist=10000, [01;35m[Kmax_dist[m[K=0;
+      |                                        [01;35m[K^~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/img_transform.dir/build.make:76: CMakeFiles/img_transform.dir/src/img_transform.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/img_transform.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

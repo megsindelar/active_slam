@@ -1,0 +1,73 @@
+[0.016s] Invoking command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/ros_ws/build/img_transform -- -j8 -l8
+[0.062s] [35m[1mConsolidate compiler generated dependencies of target img_transform[0m
+[0.083s] [ 50%] [32mBuilding CXX object CMakeFiles/img_transform.dir/src/img_transform.cpp.o[0m
+[2.962s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:[m[K In constructor ‘[01m[KImgTransform::ImgTransform()[m[K’:
+[2.962s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:63:9:[m[K [01;31m[Kerror: [m[K‘[01m[Ktf_broadcaster_[m[K’ was not declared in this scope
+[2.962s]    63 |         [01;31m[Ktf_broadcaster_[m[K = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
+[2.962s]       |         [01;31m[K^~~~~~~~~~~~~~~[m[K
+[3.006s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:[m[K In member function ‘[01m[Kvoid ImgTransform::timer_callback()[m[K’:
+[3.006s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:80:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kprev_pos[m[K’ was not declared in this scope
+[3.006s]    80 |                 [01;31m[Kprev_pos[m[K = [1,1]
+[3.006s]       |                 [01;31m[K^~~~~~~~[m[K
+[3.006s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:80:29:[m[K [01;31m[Kerror: [m[Kexpected identifier before numeric constant
+[3.006s]    80 |                 prev_pos = [[01;31m[K1[m[K,1]
+[3.007s]       |                             [01;31m[K^[m[K
+[3.007s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:80:30:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K][m[K’ before ‘[01m[K,[m[K’ token
+[3.007s]    80 |                 prev_pos = [1[01;31m[K,[m[K1]
+[3.007s]       |                              [01;31m[K^[m[K
+[3.007s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:[m[K In lambda function:
+[3.007s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:80:30:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K{[m[K’ before ‘[01m[K,[m[K’ token
+[3.014s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:[m[K In member function ‘[01m[Kvoid ImgTransform::timer_callback()[m[K’:
+[3.014s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:82:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kt[m[K’ was not declared in this scope; did you mean ‘[01m[Ktm[m[K’?
+[3.014s]    82 |                 [01;31m[Kt[m[K.header.stamp = this->get_clock()->now();
+[3.014s]       |                 [01;31m[K^[m[K
+[3.014s]       |                 [32m[Ktm[m[K
+[3.014s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:89:17:[m[K [01;31m[Kerror: [m[K‘[01m[Ktf2[m[K’ has not been declared
+[3.014s]    89 |                 [01;31m[Ktf2[m[K::Quaternion q;
+[3.014s]       |                 [01;31m[K^~~[m[K
+[3.021s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:90:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kq[m[K’ was not declared in this scope
+[3.021s]    90 |                 [01;31m[Kq[m[K.setRPY(0, 0, theta);
+[3.021s]       |                 [01;31m[K^[m[K
+[3.027s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:90:32:[m[K [01;31m[Kerror: [m[K‘[01m[Ktheta[m[K’ was not declared in this scope
+[3.028s]    90 |                 q.setRPY(0, 0, [01;31m[Ktheta[m[K);
+[3.028s]       |                                [01;31m[K^~~~~[m[K
+[3.028s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:91:65:[m[K [01;31m[Kerror: [m[K‘[01m[Ktf2[m[K’ has not been declared
+[3.028s]    91 |                geometry_msgs::msg::Quaternion msg_quaternion = [01;31m[Ktf2[m[K::toMsg(q);
+[3.028s]       |                                                                [01;31m[K^~~[m[K
+[3.028s] 
+[3.042s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:97:17:[m[K [01;31m[Kerror: [m[K‘[01m[Ktf_broadcaster_[m[K’ was not declared in this scope
+[3.043s]    97 |                 [01;31m[Ktf_broadcaster_[m[K->sendTransform(t);
+[3.043s]       |                 [01;31m[K^~~~~~~~~~~~~~~[m[K
+[3.049s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:155:32:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<cv::DMatch>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[3.049s]   155 |                 for (int i=0; [01;35m[Ki<good_matches.size()[m[K; i++){
+[3.049s]       |                               [01;35m[K~^~~~~~~~~~~~~~~~~~~~[m[K
+[3.049s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:178:38:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[3.049s]   178 |                 for (size_t i = 0; [01;35m[Ki < N[m[K; ++i) {
+[3.049s]       |                                    [01;35m[K~~^~~[m[K
+[3.113s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:194:38:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[3.113s]   194 |                 for (size_t i = 0; [01;35m[Ki < N[m[K; ++i) {
+[3.113s]       |                                    [01;35m[K~~^~~[m[K
+[3.199s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kcurrent_pos[m[K’ was not declared in this scope; did you mean ‘[01m[Kcurrent_img[m[K’?
+[3.199s]   297 |                 [01;31m[Kcurrent_pos[m[K = transformation.inverse()*prev_pos
+[3.199s]       |                 [01;31m[K^~~~~~~~~~~[m[K
+[3.199s]       |                 [32m[Kcurrent_img[m[K
+[3.199s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:302:17:[m[K [01;31m[Kerror: [m[K‘[01m[Ktf2[m[K’ has not been declared
+[3.199s]   302 |                 [01;31m[Ktf2[m[K::Quaternion q;
+[3.199s]       |                 [01;31m[K^~~[m[K
+[3.199s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:304:48:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kgeometry_msgs::msg::Quaternion msg_quaternion[m[K’
+[3.199s]   304 |                 geometry_msgs::msg::Quaternion [01;31m[Kmsg_quaternion[m[K = tf2::toMsg(q);
+[3.199s]       |                                                [01;31m[K^~~~~~~~~~~~~~[m[K
+[3.199s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:91:48:[m[K [01;36m[Knote: [m[K‘[01m[Kgeometry_msgs::msg::Quaternion msg_quaternion[m[K’ previously declared here
+[3.199s]    91 |                 geometry_msgs::msg::Quaternion [01;36m[Kmsg_quaternion[m[K = tf2::toMsg(q);
+[3.199s]       |                                                [01;36m[K^~~~~~~~~~~~~~[m[K
+[3.199s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:304:65:[m[K [01;31m[Kerror: [m[K‘[01m[Ktf2[m[K’ has not been declared
+[3.200s]   304 |                geometry_msgs::msg::Quaternion msg_quaternion = [01;31m[Ktf2[m[K::toMsg(q);
+[3.200s]       |                                                                [01;31m[K^~~[m[K
+[3.200s] 
+[3.200s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:123:40:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kmax_dist[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[3.200s]   123 |                 double min_dist=10000, [01;35m[Kmax_dist[m[K=0;
+[3.200s]       |                                        [01;35m[K^~~~~~~~[m[K
+[4.376s] gmake[2]: *** [CMakeFiles/img_transform.dir/build.make:76: CMakeFiles/img_transform.dir/src/img_transform.cpp.o] Error 1
+[4.376s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/img_transform.dir/all] Error 2
+[4.376s] gmake: *** [Makefile:146: all] Error 2
+[4.379s] Invoked command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/ros_ws/build/img_transform -- -j8 -l8

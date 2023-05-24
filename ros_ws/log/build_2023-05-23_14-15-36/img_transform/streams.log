@@ -1,0 +1,28 @@
+[0.015s] Invoking command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/ros_ws/build/img_transform -- -j8 -l8
+[0.053s] [35m[1mConsolidate compiler generated dependencies of target img_transform[0m
+[0.074s] [ 50%] [32mBuilding CXX object CMakeFiles/img_transform.dir/src/img_transform.cpp.o[0m
+[2.872s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:[m[K In member function ‘[01m[Kvoid ImgTransform::timer_callback()[m[K’:
+[2.872s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:157:32:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<cv::DMatch>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[2.872s]   157 |                 for (int i=0; [01;35m[Ki<good_matches.size()[m[K; i++){
+[2.872s]       |                               [01;35m[K~^~~~~~~~~~~~~~~~~~~~[m[K
+[2.872s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:180:38:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[2.872s]   180 |                 for (size_t i = 0; [01;35m[Ki < N[m[K; ++i) {
+[2.872s]       |                                    [01;35m[K~~^~~[m[K
+[2.937s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:196:38:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[2.937s]   196 |                 for (size_t i = 0; [01;35m[Ki < N[m[K; ++i) {
+[2.937s]       |                                    [01;35m[K~~^~~[m[K
+[3.020s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:125:40:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kmax_dist[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[3.020s]   125 |                 double min_dist=10000, [01;35m[Kmax_dist[m[K=0;
+[3.020s]       |                                        [01;35m[K^~~~~~~~[m[K
+[3.142s] In file included from [01m[K/usr/include/eigen3/Eigen/Core:164[m[K,
+[3.143s]                  from [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:12[m[K:
+[3.143s] /usr/include/eigen3/Eigen/src/Core/Matrix.h: In instantiation of ‘[01m[KEigen::Matrix<_Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols>::Matrix(const Scalar&, const Scalar&, const Scalar&) [with _Scalar = double; int _Rows = 3; int _Cols = -1; int _Options = 0; int _MaxRows = 3; int _MaxCols = -1; Eigen::Matrix<_Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols>::Scalar = double][m[K’:
+[3.143s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:345:67:[m[K   required from here
+[3.143s] [01m[K/usr/include/eigen3/Eigen/src/Core/Matrix.h:392:7:[m[K [01;31m[Kerror: [m[Kstatic assertion failed: THIS_METHOD_IS_ONLY_FOR_VECTORS_OF_A_SPECIFIC_SIZE
+[3.143s]   392 |       [01;31m[KE[m[KIGEN_STATIC_ASSERT_VECTOR_SPECIFIC_SIZE(Matrix, 3)
+[3.143s]       |       [01;31m[K^[m[K
+[3.143s] [01m[K/usr/include/eigen3/Eigen/src/Core/Matrix.h:392:7:[m[K [01;36m[Knote: [m[K‘[01m[Kfalse[m[K’ evaluates to false
+[4.264s] gmake[2]: *** [CMakeFiles/img_transform.dir/build.make:76: CMakeFiles/img_transform.dir/src/img_transform.cpp.o] Error 1
+[4.264s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/img_transform.dir/all] Error 2
+[4.265s] gmake: *** [Makefile:146: all] Error 2
+[4.268s] Invoked command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/ros_ws/build/img_transform -- -j8 -l8

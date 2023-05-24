@@ -64,6 +64,7 @@ CMAKE_BINARY_DIR = /home/megsindelar/Final_Project/ros_ws/build/img_transform
 
 # The main recursive "all" target.
 all: CMakeFiles/img_transform.dir/all
+all: CMakeFiles/video_frequency.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -74,6 +75,7 @@ preinstall:
 clean: CMakeFiles/uninstall.dir/clean
 clean: CMakeFiles/img_transform_uninstall.dir/clean
 clean: CMakeFiles/img_transform.dir/clean
+clean: CMakeFiles/video_frequency.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -153,6 +155,32 @@ img_transform: CMakeFiles/img_transform.dir/rule
 CMakeFiles/img_transform.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/img_transform.dir/build.make CMakeFiles/img_transform.dir/clean
 .PHONY : CMakeFiles/img_transform.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/video_frequency.dir
+
+# All Build rule for target.
+CMakeFiles/video_frequency.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/video_frequency.dir/build.make CMakeFiles/video_frequency.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/video_frequency.dir/build.make CMakeFiles/video_frequency.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/megsindelar/Final_Project/ros_ws/build/img_transform/CMakeFiles --progress-num=3,4 "Built target video_frequency"
+.PHONY : CMakeFiles/video_frequency.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/video_frequency.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/megsindelar/Final_Project/ros_ws/build/img_transform/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/video_frequency.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/megsindelar/Final_Project/ros_ws/build/img_transform/CMakeFiles 0
+.PHONY : CMakeFiles/video_frequency.dir/rule
+
+# Convenience name for target.
+video_frequency: CMakeFiles/video_frequency.dir/rule
+.PHONY : video_frequency
+
+# clean rule for target.
+CMakeFiles/video_frequency.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/video_frequency.dir/build.make CMakeFiles/video_frequency.dir/clean
+.PHONY : CMakeFiles/video_frequency.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

@@ -1,0 +1,68 @@
+[0.017s] Invoking command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/ros_ws/build/img_transform -- -j8 -l8
+[0.060s] [35m[1mConsolidate compiler generated dependencies of target img_transform[0m
+[0.080s] [ 50%] [32mBuilding CXX object CMakeFiles/img_transform.dir/src/img_transform.cpp.o[0m
+[3.100s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:[m[K In member function ‘[01m[Kvoid ImgTransform::timer_callback()[m[K’:
+[3.100s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:161:32:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<cv::DMatch>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[3.100s]   161 |                 for (int i=0; [01;35m[Ki<good_matches.size()[m[K; i++){
+[3.100s]       |                               [01;35m[K~^~~~~~~~~~~~~~~~~~~~[m[K
+[3.100s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:184:38:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[3.100s]   184 |                 for (size_t i = 0; [01;35m[Ki < N[m[K; ++i) {
+[3.100s]       |                                    [01;35m[K~~^~~[m[K
+[3.167s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:200:38:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[3.167s]   200 |                 for (size_t i = 0; [01;35m[Ki < N[m[K; ++i) {
+[3.167s]       |                                    [01;35m[K~~^~~[m[K
+[3.252s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:129:40:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kmax_dist[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[3.252s]   129 |                 double min_dist=10000, [01;35m[Kmax_dist[m[K=0;
+[3.252s]       |                                        [01;35m[K^~~~~~~~[m[K
+[3.254s] In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+[3.254s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+[3.254s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+[3.254s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+[3.254s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+[3.254s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+[3.254s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+[3.255s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+[3.255s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+[3.255s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+[3.255s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+[3.255s]                  from [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:2[m[K:
+[3.255s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:[m[K In member function ‘[01m[Kvoid ImgTransform::image_callback(const ConstSharedPtr&, const ConstSharedPtr&)[m[K’:
+[3.255s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:330:56:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%c[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 5 has type ‘[01m[Kcv::Mat[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+[3.255s]   330 |             RCLCPP_INFO(rclcpp::get_logger("message"), [01;35m[K"prev_img: [%c]"[m[K, prev_img);
+[3.255s]       |                                                        [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[3.255s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:330:69:[m[K [01;36m[Knote: [m[Kformat string is defined here
+[3.255s]   330 |   RCLCPP_INFO(rclcpp::get_logger("message"), "prev_img: [[01;36m[K%c[m[K]", prev_img);
+[3.255s]       |                                                          [01;36m[K~^[m[K
+[3.255s]       |                                                           [01;36m[K|[m[K
+[3.255s]       |                                                           [01;36m[Kint[m[K
+[3.255s] 
+[6.066s] [100%] [32m[1mLinking CXX executable img_transform[0m
+[6.491s] [100%] Built target img_transform
+[6.500s] Invoked command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/ros_ws/build/img_transform -- -j8 -l8
+[6.537s] Invoking command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --install /home/megsindelar/Final_Project/ros_ws/build/img_transform
+[6.547s] -- Install configuration: ""
+[6.548s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/lib/img_transform/img_transform
+[6.549s] -- Set runtime path of "/home/megsindelar/Final_Project/ros_ws/install/img_transform/lib/img_transform/img_transform" to ""
+[6.549s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/images
+[6.550s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/images/image2.jpg
+[6.550s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/images/image.jpg
+[6.550s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/launch
+[6.550s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/launch/transform.launch.xml
+[6.550s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/config
+[6.550s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/config/transform.rviz
+[6.550s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/ament_index/resource_index/package_run_dependencies/img_transform
+[6.550s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/ament_index/resource_index/parent_prefix_path/img_transform
+[6.550s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/environment/ament_prefix_path.sh
+[6.550s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/environment/ament_prefix_path.dsv
+[6.550s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/environment/path.sh
+[6.550s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/environment/path.dsv
+[6.550s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/local_setup.bash
+[6.550s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/local_setup.sh
+[6.550s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/local_setup.zsh
+[6.551s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/local_setup.dsv
+[6.551s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/package.dsv
+[6.551s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/ament_index/resource_index/packages/img_transform
+[6.551s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/cmake/img_transformConfig.cmake
+[6.551s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/cmake/img_transformConfig-version.cmake
+[6.551s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/package.xml
+[6.552s] Invoked command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --install /home/megsindelar/Final_Project/ros_ws/build/img_transform

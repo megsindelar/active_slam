@@ -1,0 +1,741 @@
+[0.000000] (-) TimerEvent: {}
+[0.000088] (img_transform) JobQueued: {'identifier': 'img_transform', 'dependencies': OrderedDict()}
+[0.000110] (img_transform) JobStarted: {'identifier': 'img_transform'}
+[0.008740] (img_transform) JobProgress: {'identifier': 'img_transform', 'progress': 'cmake'}
+[0.008944] (img_transform) JobProgress: {'identifier': 'img_transform', 'progress': 'build'}
+[0.009493] (img_transform) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/megsindelar/Final_Project/ros_ws/build/img_transform', '--', '-j8', '-l8'], 'cwd': '/home/megsindelar/Final_Project/ros_ws/build/img_transform', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('PYTHONWARNINGS', 'ignore:::setuptools.command.install,ignore:::setuptools.command.easy_install,ignore:::pkg_resources'), ('LANGUAGE', 'en'), ('USER', 'megsindelar'), ('LC_TIME', 'en_US.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/megsindelar/nuws/install/lib:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing_interfaces/lib:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka_interfaces/lib:/home/megsindelar/ME_495/Final_Proj/install/apriltag_ros/lib:/home/megsindelar/ME_495/Final_Proj/install/apriltag_msgs/lib:/home/megsindelar/ME_495/Final_Proj/install/apriltag/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('PICO_EXTRAS_PATH', '/home/megsindelar/Winter_Project/pico_setup/pico/pico-extras'), ('HOME', '/home/megsindelar'), ('OLDPWD', '/home/megsindelar/Final_Project/ros_ws/src/img_transform/src'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'en_US.UTF-8'), ('MANAGERPID', '1980'), ('SYSTEMD_EXEC_PID', '2359'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator25ef4b219e3b005583550f2b0f9f990c3'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '3187'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/megsindelar/nuws/install:/home/megsindelar/ME_495/Final_Proj/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'megsindelar'), ('JOURNAL_STREAM', '8:38947'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('PKG_CONFIG_PATH', '/home/megsindelar/nuws/install/lib/x86_64-linux-gnu/pkgconfig:/home/megsindelar/nuws/install/lib/pkgconfig:/home/megsindelar/ME_495/Final_Proj/install/apriltag/lib/x86_64-linux-gnu/pkgconfig:/home/megsindelar/ME_495/Final_Proj/install/apriltag/lib/pkgconfig'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'megsindelar'), ('TERM', 'xterm-256color'), ('COPPELIASIM_ROOT_DIR', '/home/megsindelar/CoppeliaSim_Edu_V4_4_0_rev0_Ubuntu20_04'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/megsindelar/nuws/install/bin:/home/megsindelar/ME_495/Final_Proj/install/apriltag/bin:/opt/ros/humble/bin:/home/megsindelar/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/meg:@/tmp/.ICE-unix/2178,unix/meg:/tmp/.ICE-unix/2178'), ('INVOCATION_ID', 'facdbc39ce3c431097fddfaaad7e4cc3'), ('PAPERSIZE', 'letter'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'en_US.UTF-8'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('IBUS_DISABLE_SNOOPER', '1'), ('LC_TELEPHONE', 'en_US.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.2H9641'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('PICO_EXAMPLES_PATH', '/home/megsindelar/Winter_Project/pico_setup/pico/pico-examples'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/megsindelar/nuws/install:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing_interfaces:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka_interfaces:/home/megsindelar/ME_495/Final_Proj/install/apriltag_ros:/home/megsindelar/ME_495/Final_Proj/install/apriltag_msgs:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'en_US.UTF-8'), ('TERMINATOR_UUID', 'urn:uuid:65d9c4f2-54aa-4cee-8d98-6a11f3610555'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CMAKE_MODULE_PATH', '/home/megsindelar/nuws/install/share/warehouse_ros_mongo/cmake'), ('LC_MEASUREMENT', 'en_US.UTF-8'), ('LC_IDENTIFICATION', 'en_US.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/megsindelar/Final_Project/ros_ws/build/img_transform'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PICO_PLAYGROUND_PATH', '/home/megsindelar/Winter_Project/pico_setup/pico/pico-playground'), ('PYTHONPATH', '/home/megsindelar/nuws/install/lib/python3.10/pyrealsense2:/home/megsindelar/nuws/install/local/lib/python3.10/dist-packages:/home/megsindelar/nuws/install/lib/python3.10/site-packages:/home/megsindelar/ME_495/Final_Proj/build/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka/lib/python3.10/site-packages:/home/megsindelar/ME_495/Final_Proj/build/moveit_testing:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing/lib/python3.10/site-packages:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing_interfaces/local/lib/python3.10/dist-packages:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka_interfaces/local/lib/python3.10/dist-packages:/home/megsindelar/ME_495/Final_Proj/install/apriltag_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages:/home/megsindelar/Downloads/CARLA_DRIFT_0.9.5/PythonAPI/carla/dist/carla-0.9.5-py3.5-linux-x86_64.egg:/home/megsindelar/Downloads/CARLA_DRIFT_0.9.5/PythonAPI/carla/'), ('LC_NUMERIC', 'en_US.UTF-8'), ('LC_PAPER', 'en_US.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/megsindelar/nuws/install:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing_interfaces:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka_interfaces:/home/megsindelar/ME_495/Final_Proj/install/apriltag_ros:/home/megsindelar/ME_495/Final_Proj/install/apriltag_msgs:/home/megsindelar/ME_495/Final_Proj/install/apriltag:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble')]), 'shell': False}
+[0.040431] (img_transform) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target video_frequency\x1b[0m\n'}
+[0.050698] (img_transform) StdoutLine: {'line': b'[ 50%] Built target img_transform\n'}
+[0.053601] (img_transform) StdoutLine: {'line': b'[ 75%] \x1b[32mBuilding CXX object CMakeFiles/video_frequency.dir/src/video_frequency.cpp.o\x1b[0m\n'}
+[0.099124] (-) TimerEvent: {}
+[0.199358] (-) TimerEvent: {}
+[0.299681] (-) TimerEvent: {}
+[0.399962] (-) TimerEvent: {}
+[0.500323] (-) TimerEvent: {}
+[0.600762] (-) TimerEvent: {}
+[0.701091] (-) TimerEvent: {}
+[0.801404] (-) TimerEvent: {}
+[0.901678] (-) TimerEvent: {}
+[1.002055] (-) TimerEvent: {}
+[1.102306] (-) TimerEvent: {}
+[1.202583] (-) TimerEvent: {}
+[1.302905] (-) TimerEvent: {}
+[1.403148] (-) TimerEvent: {}
+[1.503507] (-) TimerEvent: {}
+[1.603781] (-) TimerEvent: {}
+[1.704036] (-) TimerEvent: {}
+[1.804348] (-) TimerEvent: {}
+[1.904661] (-) TimerEvent: {}
+[2.004979] (-) TimerEvent: {}
+[2.105301] (-) TimerEvent: {}
+[2.205615] (-) TimerEvent: {}
+[2.305924] (-) TimerEvent: {}
+[2.406260] (-) TimerEvent: {}
+[2.423542] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[2.424433] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[2.424485] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[2.424526] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[2.424564] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[2.424605] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[2.424641] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[2.424677] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[2.424711] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.424746] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.424784] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.424818] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:2\x1b[m\x1b[K:\n'}
+[2.424854] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid VideoFreq::timer_callback()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.424891] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:67:84:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno match for \xe2\x80\x98\x1b[01m\x1b[Koperator/\x1b[m\x1b[K\xe2\x80\x99 (operand types are \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::chrono::duration<long int, std::ratio<1, 1000000000> >\x1b[m\x1b[K\xe2\x80\x99)\n'}
+[2.424931] (img_transform) StderrLine: {'line': b'   67 |                 RCLCPP_INFO(rclcpp::get_logger("message"), "Frequency: %f\\n", \x1b[32m\x1b[Kcount\x1b[m\x1b[K\x1b[01;31m\x1b[K/\x1b[m\x1b[K\x1b[34m\x1b[Kelapsed\x1b[m\x1b[K);\n'}
+[2.425058] (img_transform) StderrLine: {'line': b'      |                                                                               \x1b[32m\x1b[K~~~~~\x1b[m\x1b[K\x1b[01;31m\x1b[K^\x1b[m\x1b[K\x1b[34m\x1b[K~~~~~~~\x1b[m\x1b[K\n'}
+[2.425096] (img_transform) StderrLine: {'line': b'      |                                                                               \x1b[32m\x1b[K|\x1b[m\x1b[K     \x1b[34m\x1b[K|\x1b[m\x1b[K\n'}
+[2.425133] (img_transform) StderrLine: {'line': b'      |                                                                               \x1b[32m\x1b[Kint\x1b[m\x1b[K   \x1b[34m\x1b[Kstd::chrono::duration<long int, std::ratio<1, 1000000000> >\x1b[m\x1b[K\n'}
+[2.425170] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:47\x1b[m\x1b[K,\n'}
+[2.425205] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:3306\x1b[m\x1b[K,\n'}
+[2.425241] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.425276] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.425312] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:4\x1b[m\x1b[K:\n'}
+[2.425348] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/complex:422:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> std::complex<_Tp> std::operator/(const std::complex<_Tp>&, const std::complex<_Tp>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.425384] (img_transform) StderrLine: {'line': b'  422 |     \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K/(const complex<_Tp>& __x, const complex<_Tp>& __y)\n'}
+[2.425420] (img_transform) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.425455] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/complex:422:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[2.425490] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[2.425593] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[2.425632] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[2.425668] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[2.425703] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[2.425737] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[2.425773] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[2.425807] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[2.425918] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.425957] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.426064] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.426172] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:2\x1b[m\x1b[K:\n'}
+[2.426211] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:67:85:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst std::complex<_Tp>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.426251] (img_transform) StderrLine: {'line': b'   67 |                 RCLCPP_INFO(rclcpp::get_logger("message"), "Frequency: %f\\n", count/\x1b[01;36m\x1b[Kelapsed\x1b[m\x1b[K);\n'}
+[2.426289] (img_transform) StderrLine: {'line': b'      |                                                                                     \x1b[01;36m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.426326] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:47\x1b[m\x1b[K,\n'}
+[2.426363] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:3306\x1b[m\x1b[K,\n'}
+[2.426400] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.426438] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.426475] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:4\x1b[m\x1b[K:\n'}
+[2.426512] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/complex:431:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> std::complex<_Tp> std::operator/(const std::complex<_Tp>&, const _Tp&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.426550] (img_transform) StderrLine: {'line': b'  431 |     \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K/(const complex<_Tp>& __x, const _Tp& __y)\n'}
+[2.426588] (img_transform) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.426625] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/complex:431:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[2.426662] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[2.426700] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[2.426737] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[2.426778] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[2.426812] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[2.426848] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[2.426883] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[2.426917] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[2.427119] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.427289] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.427412] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.427447] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:2\x1b[m\x1b[K:\n'}
+[2.427481] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:67:85:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst std::complex<_Tp>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.427518] (img_transform) StderrLine: {'line': b'   67 |                 RCLCPP_INFO(rclcpp::get_logger("message"), "Frequency: %f\\n", count/\x1b[01;36m\x1b[Kelapsed\x1b[m\x1b[K);\n'}
+[2.427554] (img_transform) StderrLine: {'line': b'      |                                                                                     \x1b[01;36m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.427587] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:47\x1b[m\x1b[K,\n'}
+[2.427620] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:3306\x1b[m\x1b[K,\n'}
+[2.427654] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.427687] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.427719] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:4\x1b[m\x1b[K:\n'}
+[2.427751] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/complex:440:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> std::complex<_Tp> std::operator/(const _Tp&, const std::complex<_Tp>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.427787] (img_transform) StderrLine: {'line': b'  440 |     \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K/(const _Tp& __x, const complex<_Tp>& __y)\n'}
+[2.427820] (img_transform) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.427853] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/complex:440:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[2.427888] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[2.427921] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[2.427955] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[2.427988] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[2.428021] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[2.428055] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[2.428088] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[2.428121] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[2.428154] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.428189] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.428223] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.428256] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:2\x1b[m\x1b[K:\n'}
+[2.428290] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:67:85:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::chrono::duration<long int, std::ratio<1, 1000000000> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst std::complex<_Tp>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.428326] (img_transform) StderrLine: {'line': b'   67 |                 RCLCPP_INFO(rclcpp::get_logger("message"), "Frequency: %f\\n", count/\x1b[01;36m\x1b[Kelapsed\x1b[m\x1b[K);\n'}
+[2.428360] (img_transform) StderrLine: {'line': b'      |                                                                                     \x1b[01;36m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.428393] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:56\x1b[m\x1b[K,\n'}
+[2.428427] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.428461] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.428494] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:4\x1b[m\x1b[K:\n'}
+[2.428526] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1298:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp, int m, int n> cv::Matx<_Tp, m, n> cv::operator/(const cv::Matx<_Tp, m, n>&, float)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.428560] (img_transform) StderrLine: {'line': b' 1298 | Matx<_Tp, m, n> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K / (const Matx<_Tp, m, n>& a, float alpha)\n'}
+[2.428592] (img_transform) StderrLine: {'line': b'      |                 \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.428625] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1298:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[2.428657] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[2.428693] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[2.428725] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[2.428757] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[2.428789] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[2.428821] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[2.428853] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[2.428886] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[2.428919] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.428953] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.428986] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.429018] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:2\x1b[m\x1b[K:\n'}
+[2.429052] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:67:85:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Matx<_Tp, m, n>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.429088] (img_transform) StderrLine: {'line': b'   67 |                 RCLCPP_INFO(rclcpp::get_logger("message"), "Frequency: %f\\n", count/\x1b[01;36m\x1b[Kelapsed\x1b[m\x1b[K);\n'}
+[2.429122] (img_transform) StderrLine: {'line': b'      |                                                                                     \x1b[01;36m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.429156] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:56\x1b[m\x1b[K,\n'}
+[2.429187] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.429220] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.429252] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:4\x1b[m\x1b[K:\n'}
+[2.429284] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1304:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp, int m, int n> cv::Matx<_Tp, m, n> cv::operator/(const cv::Matx<_Tp, m, n>&, double)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.429317] (img_transform) StderrLine: {'line': b' 1304 | Matx<_Tp, m, n> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K / (const Matx<_Tp, m, n>& a, double alpha)\n'}
+[2.429350] (img_transform) StderrLine: {'line': b'      |                 \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.429382] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1304:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[2.429415] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[2.429447] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[2.429480] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[2.429513] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[2.429545] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[2.429578] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[2.429610] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[2.429643] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[2.429677] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.429709] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.429742] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.429775] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:2\x1b[m\x1b[K:\n'}
+[2.429807] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:67:85:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Matx<_Tp, m, n>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.429841] (img_transform) StderrLine: {'line': b'   67 |                 RCLCPP_INFO(rclcpp::get_logger("message"), "Frequency: %f\\n", count/\x1b[01;36m\x1b[Kelapsed\x1b[m\x1b[K);\n'}
+[2.429874] (img_transform) StderrLine: {'line': b'      |                                                                                     \x1b[01;36m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.429906] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:56\x1b[m\x1b[K,\n'}
+[2.429939] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.429971] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.430004] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:4\x1b[m\x1b[K:\n'}
+[2.430036] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1465:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp, int cn> cv::Vec<_Tp, m> cv::operator/(const cv::Vec<_Tp, m>&, int)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.430069] (img_transform) StderrLine: {'line': b' 1465 | Vec<_Tp, cn> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K / (const Vec<_Tp, cn>& a, int alpha)\n'}
+[2.430102] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.430134] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1465:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[2.430167] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[2.430199] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[2.430232] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[2.430264] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[2.430297] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[2.430330] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[2.430363] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[2.430397] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[2.430432] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.430464] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.430497] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.430530] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:2\x1b[m\x1b[K:\n'}
+[2.430562] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:67:85:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Vec<_Tp, m>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.430595] (img_transform) StderrLine: {'line': b'   67 |                 RCLCPP_INFO(rclcpp::get_logger("message"), "Frequency: %f\\n", count/\x1b[01;36m\x1b[Kelapsed\x1b[m\x1b[K);\n'}
+[2.430628] (img_transform) StderrLine: {'line': b'      |                                                                                     \x1b[01;36m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.430660] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:56\x1b[m\x1b[K,\n'}
+[2.430692] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.430724] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.430757] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:4\x1b[m\x1b[K:\n'}
+[2.430789] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1471:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp, int cn> cv::Vec<_Tp, m> cv::operator/(const cv::Vec<_Tp, m>&, float)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.430822] (img_transform) StderrLine: {'line': b' 1471 | Vec<_Tp, cn> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K / (const Vec<_Tp, cn>& a, float alpha)\n'}
+[2.430854] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.430886] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1471:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[2.430919] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[2.430962] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[2.430998] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[2.431034] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[2.431062] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[2.431091] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[2.431119] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[2.431148] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[2.431178] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.431207] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.431235] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.431262] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:2\x1b[m\x1b[K:\n'}
+[2.431292] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:67:85:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Vec<_Tp, m>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.431322] (img_transform) StderrLine: {'line': b'   67 |                 RCLCPP_INFO(rclcpp::get_logger("message"), "Frequency: %f\\n", count/\x1b[01;36m\x1b[Kelapsed\x1b[m\x1b[K);\n'}
+[2.431352] (img_transform) StderrLine: {'line': b'      |                                                                                     \x1b[01;36m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.431381] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:56\x1b[m\x1b[K,\n'}
+[2.431411] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.431441] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.431470] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:4\x1b[m\x1b[K:\n'}
+[2.431502] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1477:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp, int cn> cv::Vec<_Tp, m> cv::operator/(const cv::Vec<_Tp, m>&, double)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.431534] (img_transform) StderrLine: {'line': b' 1477 | Vec<_Tp, cn> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K / (const Vec<_Tp, cn>& a, double alpha)\n'}
+[2.431563] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.431592] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1477:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[2.431622] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[2.431652] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[2.431680] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[2.431710] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[2.431739] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[2.431769] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[2.431797] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[2.431892] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[2.431921] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.431950] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.431978] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.432007] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:2\x1b[m\x1b[K:\n'}
+[2.432035] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:67:85:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Vec<_Tp, m>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.432067] (img_transform) StderrLine: {'line': b'   67 |                 RCLCPP_INFO(rclcpp::get_logger("message"), "Frequency: %f\\n", count/\x1b[01;36m\x1b[Kelapsed\x1b[m\x1b[K);\n'}
+[2.432097] (img_transform) StderrLine: {'line': b'      |                                                                                     \x1b[01;36m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.432126] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[2.432155] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.432185] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.432214] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:4\x1b[m\x1b[K:\n'}
+[2.432244] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1137:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Complex<_Tp> cv::operator/(const cv::Complex<_Tp>&, const cv::Complex<_Tp>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.432275] (img_transform) StderrLine: {'line': b' 1137 | Complex<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K / (const Complex<_Tp>& a, const Complex<_Tp>& b)\n'}
+[2.432321] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.432353] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1137:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[2.432395] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[2.432428] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[2.432460] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[2.432494] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[2.432530] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[2.432564] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[2.432598] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[2.432634] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[2.432669] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.432703] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.432738] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.432770] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:2\x1b[m\x1b[K:\n'}
+[2.432806] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:67:85:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Complex<_Tp>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.432842] (img_transform) StderrLine: {'line': b'   67 |                 RCLCPP_INFO(rclcpp::get_logger("message"), "Frequency: %f\\n", count/\x1b[01;36m\x1b[Kelapsed\x1b[m\x1b[K);\n'}
+[2.432876] (img_transform) StderrLine: {'line': b'      |                                                                                     \x1b[01;36m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.432917] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[2.432985] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.433019] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.433053] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:4\x1b[m\x1b[K:\n'}
+[2.433086] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1152:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Complex<_Tp> cv::operator/(const cv::Complex<_Tp>&, _Tp)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.433120] (img_transform) StderrLine: {'line': b' 1152 | Complex<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K / (const Complex<_Tp>& a, _Tp b)\n'}
+[2.433153] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.433197] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1152:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[2.433231] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[2.433265] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[2.433302] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[2.433335] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[2.433368] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[2.433400] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[2.433432] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[2.433467] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[2.433512] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.433544] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.433576] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.433609] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:2\x1b[m\x1b[K:\n'}
+[2.433642] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:67:85:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Complex<_Tp>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.433676] (img_transform) StderrLine: {'line': b'   67 |                 RCLCPP_INFO(rclcpp::get_logger("message"), "Frequency: %f\\n", count/\x1b[01;36m\x1b[Kelapsed\x1b[m\x1b[K);\n'}
+[2.433716] (img_transform) StderrLine: {'line': b'      |                                                                                     \x1b[01;36m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.433751] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[2.433783] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.433816] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.433849] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:4\x1b[m\x1b[K:\n'}
+[2.433882] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1159:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Complex<_Tp> cv::operator/(_Tp, const cv::Complex<_Tp>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.433917] (img_transform) StderrLine: {'line': b' 1159 | Complex<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K / (_Tp b, const Complex<_Tp>& a)\n'}
+[2.433950] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.433983] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1159:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[2.434016] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[2.434050] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[2.434082] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[2.434117] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[2.434150] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[2.434184] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[2.434216] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[2.434250] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[2.434282] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.434315] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.434348] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.434380] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:2\x1b[m\x1b[K:\n'}
+[2.434412] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:67:85:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::chrono::duration<long int, std::ratio<1, 1000000000> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Complex<_Tp>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.434447] (img_transform) StderrLine: {'line': b'   67 |                 RCLCPP_INFO(rclcpp::get_logger("message"), "Frequency: %f\\n", count/\x1b[01;36m\x1b[Kelapsed\x1b[m\x1b[K);\n'}
+[2.434481] (img_transform) StderrLine: {'line': b'      |                                                                                     \x1b[01;36m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.434514] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[2.434546] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.434577] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.434609] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:4\x1b[m\x1b[K:\n'}
+[2.434641] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1401:13:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Point_<_Tp> cv::operator/(const cv::Point_<_Tp>&, int)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.434675] (img_transform) StderrLine: {'line': b' 1401 | Point_<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K / (const Point_<_Tp>& a, int b)\n'}
+[2.434707] (img_transform) StderrLine: {'line': b'      |             \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.434738] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1401:13:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[2.434770] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[2.434802] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[2.434835] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[2.434866] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[2.434898] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[2.434930] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[2.434985] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[2.435020] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[2.435056] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.435089] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.435118] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.435146] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:2\x1b[m\x1b[K:\n'}
+[2.435174] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:67:85:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Point_<_Tp>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.435202] (img_transform) StderrLine: {'line': b'   67 |                 RCLCPP_INFO(rclcpp::get_logger("message"), "Frequency: %f\\n", count/\x1b[01;36m\x1b[Kelapsed\x1b[m\x1b[K);\n'}
+[2.435232] (img_transform) StderrLine: {'line': b'      |                                                                                     \x1b[01;36m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.435260] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[2.435289] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.435319] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.435348] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:4\x1b[m\x1b[K:\n'}
+[2.435378] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1409:13:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Point_<_Tp> cv::operator/(const cv::Point_<_Tp>&, float)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.435406] (img_transform) StderrLine: {'line': b' 1409 | Point_<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K / (const Point_<_Tp>& a, float b)\n'}
+[2.435435] (img_transform) StderrLine: {'line': b'      |             \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.435464] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1409:13:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[2.435492] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[2.435521] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[2.435549] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[2.435579] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[2.435608] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[2.435637] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[2.435667] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[2.435696] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[2.435725] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.435754] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.435782] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.435810] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:2\x1b[m\x1b[K:\n'}
+[2.435839] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:67:85:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Point_<_Tp>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.435869] (img_transform) StderrLine: {'line': b'   67 |                 RCLCPP_INFO(rclcpp::get_logger("message"), "Frequency: %f\\n", count/\x1b[01;36m\x1b[Kelapsed\x1b[m\x1b[K);\n'}
+[2.435897] (img_transform) StderrLine: {'line': b'      |                                                                                     \x1b[01;36m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.435926] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[2.435955] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.435984] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.436013] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:4\x1b[m\x1b[K:\n'}
+[2.436041] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1417:13:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Point_<_Tp> cv::operator/(const cv::Point_<_Tp>&, double)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.436071] (img_transform) StderrLine: {'line': b' 1417 | Point_<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K / (const Point_<_Tp>& a, double b)\n'}
+[2.436099] (img_transform) StderrLine: {'line': b'      |             \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.436127] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1417:13:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[2.436155] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[2.436184] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[2.436212] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[2.436240] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[2.436269] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[2.436297] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[2.436327] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[2.436356] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[2.436384] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.436413] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.436443] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.436471] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:2\x1b[m\x1b[K:\n'}
+[2.436500] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:67:85:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Point_<_Tp>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.436529] (img_transform) StderrLine: {'line': b'   67 |                 RCLCPP_INFO(rclcpp::get_logger("message"), "Frequency: %f\\n", count/\x1b[01;36m\x1b[Kelapsed\x1b[m\x1b[K);\n'}
+[2.436557] (img_transform) StderrLine: {'line': b'      |                                                                                     \x1b[01;36m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.436587] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[2.436615] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.436643] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.436672] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:4\x1b[m\x1b[K:\n'}
+[2.436700] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1669:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Point3_<_Tp> cv::operator/(const cv::Point3_<_Tp>&, int)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.436729] (img_transform) StderrLine: {'line': b' 1669 | Point3_<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K / (const Point3_<_Tp>& a, int b)\n'}
+[2.436756] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.436784] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1669:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[2.436812] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[2.436839] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[2.436868] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[2.436896] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[2.436924] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[2.436952] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[2.436981] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[2.437009] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[2.437037] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.437065] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.437093] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.437122] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:2\x1b[m\x1b[K:\n'}
+[2.437150] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:67:85:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Point3_<_Tp>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.437178] (img_transform) StderrLine: {'line': b'   67 |                 RCLCPP_INFO(rclcpp::get_logger("message"), "Frequency: %f\\n", count/\x1b[01;36m\x1b[Kelapsed\x1b[m\x1b[K);\n'}
+[2.437207] (img_transform) StderrLine: {'line': b'      |                                                                                     \x1b[01;36m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.437235] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[2.437263] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.437290] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.437318] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:4\x1b[m\x1b[K:\n'}
+[2.437347] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1677:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Point3_<_Tp> cv::operator/(const cv::Point3_<_Tp>&, float)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.437376] (img_transform) StderrLine: {'line': b' 1677 | Point3_<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K / (const Point3_<_Tp>& a, float b)\n'}
+[2.437404] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.437433] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1677:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[2.437462] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[2.437502] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[2.437531] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[2.437559] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[2.437589] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[2.437616] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[2.437646] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[2.437674] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[2.437703] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.437730] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.437758] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.437786] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:2\x1b[m\x1b[K:\n'}
+[2.437814] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:67:85:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Point3_<_Tp>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.437843] (img_transform) StderrLine: {'line': b'   67 |                 RCLCPP_INFO(rclcpp::get_logger("message"), "Frequency: %f\\n", count/\x1b[01;36m\x1b[Kelapsed\x1b[m\x1b[K);\n'}
+[2.437871] (img_transform) StderrLine: {'line': b'      |                                                                                     \x1b[01;36m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.437899] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[2.437927] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.437955] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.437984] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:4\x1b[m\x1b[K:\n'}
+[2.438012] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1685:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Point3_<_Tp> cv::operator/(const cv::Point3_<_Tp>&, double)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.438041] (img_transform) StderrLine: {'line': b' 1685 | Point3_<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K / (const Point3_<_Tp>& a, double b)\n'}
+[2.438069] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.438097] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1685:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[2.438125] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[2.438153] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[2.438181] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[2.438208] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[2.438236] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[2.438264] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[2.438293] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[2.438321] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[2.438349] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.438376] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.438404] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.438432] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:2\x1b[m\x1b[K:\n'}
+[2.438459] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:67:85:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Point3_<_Tp>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.438487] (img_transform) StderrLine: {'line': b'   67 |                 RCLCPP_INFO(rclcpp::get_logger("message"), "Frequency: %f\\n", count/\x1b[01;36m\x1b[Kelapsed\x1b[m\x1b[K);\n'}
+[2.438515] (img_transform) StderrLine: {'line': b'      |                                                                                     \x1b[01;36m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.438542] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[2.438572] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.438600] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.438628] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:4\x1b[m\x1b[K:\n'}
+[2.438656] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1783:12:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Size_<_Tp> cv::operator/(const cv::Size_<_Tp>&, _Tp)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.438685] (img_transform) StderrLine: {'line': b' 1783 | Size_<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K / (const Size_<_Tp>& a, _Tp b)\n'}
+[2.438713] (img_transform) StderrLine: {'line': b'      |            \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.438741] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1783:12:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[2.438768] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[2.438796] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[2.438823] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[2.438851] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[2.438879] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[2.438908] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[2.438935] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[2.438975] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[2.439008] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.439040] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.439072] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.439103] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:2\x1b[m\x1b[K:\n'}
+[2.439130] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:67:85:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Size_<_Tp>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.439158] (img_transform) StderrLine: {'line': b'   67 |                 RCLCPP_INFO(rclcpp::get_logger("message"), "Frequency: %f\\n", count/\x1b[01;36m\x1b[Kelapsed\x1b[m\x1b[K);\n'}
+[2.439186] (img_transform) StderrLine: {'line': b'      |                                                                                     \x1b[01;36m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.439215] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[2.439242] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.439270] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.439298] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:4\x1b[m\x1b[K:\n'}
+[2.439326] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:2375:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Scalar_<_Tp> cv::operator/(const cv::Scalar_<_Tp>&, _Tp)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.439355] (img_transform) StderrLine: {'line': b' 2375 | Scalar_<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K / (const Scalar_<_Tp>& a, _Tp alpha)\n'}
+[2.439384] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.439412] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:2375:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[2.439440] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[2.439468] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[2.439495] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[2.439523] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[2.439550] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[2.439580] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[2.439609] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[2.439637] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[2.439664] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.439695] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.439722] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.439751] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:2\x1b[m\x1b[K:\n'}
+[2.439779] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:67:85:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Scalar_<_Tp>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.439807] (img_transform) StderrLine: {'line': b'   67 |                 RCLCPP_INFO(rclcpp::get_logger("message"), "Frequency: %f\\n", count/\x1b[01;36m\x1b[Kelapsed\x1b[m\x1b[K);\n'}
+[2.439837] (img_transform) StderrLine: {'line': b'      |                                                                                     \x1b[01;36m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.439866] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[2.439894] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.439923] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.439951] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:4\x1b[m\x1b[K:\n'}
+[2.439979] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:2384:16:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Scalar_<float> cv::operator/(const cv::Scalar_<float>&, float)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.440008] (img_transform) StderrLine: {'line': b' 2384 | Scalar_<float> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K / (const Scalar_<float>& a, float alpha)\n'}
+[2.440037] (img_transform) StderrLine: {'line': b'      |                \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.440069] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:2384:16:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[2.440102] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[2.440134] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[2.440166] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[2.440199] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[2.440227] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[2.440258] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[2.440286] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[2.440314] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[2.440343] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.440371] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.440399] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.440427] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:2\x1b[m\x1b[K:\n'}
+[2.440455] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:67:85:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  couldn\xe2\x80\x99t deduce template parameter \xe2\x80\x98\x1b[01m\x1b[K_Tp\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.440484] (img_transform) StderrLine: {'line': b'   67 |                 RCLCPP_INFO(rclcpp::get_logger("message"), "Frequency: %f\\n", count/\x1b[01;36m\x1b[Kelapsed\x1b[m\x1b[K);\n'}
+[2.440513] (img_transform) StderrLine: {'line': b'      |                                                                                     \x1b[01;36m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.440541] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[2.440570] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.440597] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.440627] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:4\x1b[m\x1b[K:\n'}
+[2.440656] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:2391:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Scalar_<double> cv::operator/(const cv::Scalar_<double>&, double)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.440685] (img_transform) StderrLine: {'line': b' 2391 | Scalar_<double> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K / (const Scalar_<double>& a, double alpha)\n'}
+[2.440713] (img_transform) StderrLine: {'line': b'      |                 \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.440741] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:2391:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[2.440771] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[2.440801] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[2.440831] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[2.440860] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[2.440889] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[2.440919] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[2.440948] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[2.440976] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[2.441004] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.441032] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.441060] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.441088] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:2\x1b[m\x1b[K:\n'}
+[2.441116] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:67:85:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  couldn\xe2\x80\x99t deduce template parameter \xe2\x80\x98\x1b[01m\x1b[K_Tp\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.441145] (img_transform) StderrLine: {'line': b'   67 |                 RCLCPP_INFO(rclcpp::get_logger("message"), "Frequency: %f\\n", count/\x1b[01;36m\x1b[Kelapsed\x1b[m\x1b[K);\n'}
+[2.441174] (img_transform) StderrLine: {'line': b'      |                                                                                     \x1b[01;36m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.441202] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[2.441230] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.441259] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.441287] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:4\x1b[m\x1b[K:\n'}
+[2.441315] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:2405:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Scalar_<_Tp> cv::operator/(_Tp, const cv::Scalar_<_Tp>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.441344] (img_transform) StderrLine: {'line': b' 2405 | Scalar_<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K / (_Tp a, const Scalar_<_Tp>& b)\n'}
+[2.441372] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.441400] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:2405:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[2.441428] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[2.441457] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[2.441485] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[2.441513] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[2.441541] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[2.441571] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[2.441601] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[2.441630] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[2.441658] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.441686] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.441713] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.441741] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:2\x1b[m\x1b[K:\n'}
+[2.441769] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:67:85:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::chrono::duration<long int, std::ratio<1, 1000000000> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Scalar_<_Tp>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.441798] (img_transform) StderrLine: {'line': b'   67 |                 RCLCPP_INFO(rclcpp::get_logger("message"), "Frequency: %f\\n", count/\x1b[01;36m\x1b[Kelapsed\x1b[m\x1b[K);\n'}
+[2.441826] (img_transform) StderrLine: {'line': b'      |                                                                                     \x1b[01;36m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.441856] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[2.441884] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.441912] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.441940] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:4\x1b[m\x1b[K:\n'}
+[2.441968] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:2412:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Scalar_<_Tp> cv::operator/(const cv::Scalar_<_Tp>&, const cv::Scalar_<_Tp>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.441996] (img_transform) StderrLine: {'line': b' 2412 | Scalar_<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K / (const Scalar_<_Tp>& a, const Scalar_<_Tp>& b)\n'}
+[2.442024] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.442052] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:2412:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[2.442080] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[2.442108] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[2.442136] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[2.442164] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[2.442193] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[2.442221] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[2.442249] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[2.442277] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[2.442304] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.442332] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.442360] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.442387] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:2\x1b[m\x1b[K:\n'}
+[2.442415] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:67:85:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Scalar_<_Tp>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.442444] (img_transform) StderrLine: {'line': b'   67 |                 RCLCPP_INFO(rclcpp::get_logger("message"), "Frequency: %f\\n", count/\x1b[01;36m\x1b[Kelapsed\x1b[m\x1b[K);\n'}
+[2.442471] (img_transform) StderrLine: {'line': b'      |                                                                                     \x1b[01;36m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.442499] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:58\x1b[m\x1b[K,\n'}
+[2.442527] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.442555] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.442584] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:4\x1b[m\x1b[K:\n'}
+[2.442613] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3648:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp, int m, int n> cv::MatExpr cv::operator/(const cv::Mat&, const cv::Matx<_Tp, m, n>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.442642] (img_transform) StderrLine: {'line': b' 3648 | MatExpr \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K / (const Mat& a, const Matx<_Tp, m, n>& b) { return a / Mat(b); }\n'}
+[2.442670] (img_transform) StderrLine: {'line': b'      |         \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.442698] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3648:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[2.442727] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[2.442755] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[2.442782] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[2.442810] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[2.442840] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[2.442868] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[2.442896] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[2.442925] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[2.442962] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.442998] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.443029] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.443061] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:2\x1b[m\x1b[K:\n'}
+[2.443092] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:67:85:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::chrono::duration<long int, std::ratio<1, 1000000000> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Matx<_Tp, m, n>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.443122] (img_transform) StderrLine: {'line': b'   67 |                 RCLCPP_INFO(rclcpp::get_logger("message"), "Frequency: %f\\n", count/\x1b[01;36m\x1b[Kelapsed\x1b[m\x1b[K);\n'}
+[2.443150] (img_transform) StderrLine: {'line': b'      |                                                                                     \x1b[01;36m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.443179] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:58\x1b[m\x1b[K,\n'}
+[2.443207] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.443235] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.443264] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:4\x1b[m\x1b[K:\n'}
+[2.443292] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3650:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp, int m, int n> cv::MatExpr cv::operator/(const cv::Matx<_Tp, m, n>&, const cv::Mat&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.443321] (img_transform) StderrLine: {'line': b' 3650 | MatExpr \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K / (const Matx<_Tp, m, n>& a, const Mat& b) { return Mat(a) / b; }\n'}
+[2.443350] (img_transform) StderrLine: {'line': b'      |         \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.443379] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3650:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[2.443407] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[2.443434] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[2.443463] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[2.443493] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[2.443521] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[2.443550] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[2.443580] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[2.443608] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[2.443635] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.443663] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.443691] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.443718] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:2\x1b[m\x1b[K:\n'}
+[2.443745] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:67:85:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Matx<_Tp, m, n>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.443773] (img_transform) StderrLine: {'line': b'   67 |                 RCLCPP_INFO(rclcpp::get_logger("message"), "Frequency: %f\\n", count/\x1b[01;36m\x1b[Kelapsed\x1b[m\x1b[K);\n'}
+[2.443801] (img_transform) StderrLine: {'line': b'      |                                                                                     \x1b[01;36m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.443829] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/c++/11/mutex:39\x1b[m\x1b[K,\n'}
+[2.443857] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/11/future:38\x1b[m\x1b[K,\n'}
+[2.443885] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:18\x1b[m\x1b[K,\n'}
+[2.443912] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.443939] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:2\x1b[m\x1b[K:\n'}
+[2.443967] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/chrono:706:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Rep1, class _Period, class _Rep2> constexpr std::chrono::duration<std::chrono::__common_rep_t<_Rep1, typename std::enable_if<(! std::chrono::__is_duration<_Rep2>::value), _Rep2>::type>, _Period> std::chrono::operator/(const std::chrono::duration<_Rep1, _Period1>&, const _Rep2&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.444001] (img_transform) StderrLine: {'line': b'  706 |       \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K/(const duration<_Rep1, _Period>& __d, const _Rep2& __s)\n'}
+[2.444029] (img_transform) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.444057] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/chrono:706:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[2.444085] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[2.444114] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[2.444142] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[2.444169] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[2.444197] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[2.444225] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[2.444264] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[2.444297] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[2.444330] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.444362] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.444402] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.444437] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:2\x1b[m\x1b[K:\n'}
+[2.444465] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:67:85:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst std::chrono::duration<_Rep1, _Period1>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.444494] (img_transform) StderrLine: {'line': b'   67 |                 RCLCPP_INFO(rclcpp::get_logger("message"), "Frequency: %f\\n", count/\x1b[01;36m\x1b[Kelapsed\x1b[m\x1b[K);\n'}
+[2.444522] (img_transform) StderrLine: {'line': b'      |                                                                                     \x1b[01;36m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.444552] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/c++/11/mutex:39\x1b[m\x1b[K,\n'}
+[2.444580] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/11/future:38\x1b[m\x1b[K,\n'}
+[2.444608] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:18\x1b[m\x1b[K,\n'}
+[2.444635] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.444665] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:2\x1b[m\x1b[K:\n'}
+[2.444693] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/chrono:716:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Rep1, class _Period1, class _Rep2, class _Period2> constexpr typename std::common_type<_Rep1, _Rep2>::type std::chrono::operator/(const std::chrono::duration<_Rep1, _Period1>&, const std::chrono::duration<_Rep2, _Period2>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.444723] (img_transform) StderrLine: {'line': b'  716 |       \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K/(const duration<_Rep1, _Period1>& __lhs,\n'}
+[2.444752] (img_transform) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.444781] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/chrono:716:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[2.444811] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[2.444840] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[2.444868] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[2.444896] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[2.444924] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[2.444953] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[2.444982] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[2.445010] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[2.445040] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.445069] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.445097] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.445127] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:2\x1b[m\x1b[K:\n'}
+[2.445155] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:67:85:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst std::chrono::duration<_Rep1, _Period1>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.445184] (img_transform) StderrLine: {'line': b'   67 |                 RCLCPP_INFO(rclcpp::get_logger("message"), "Frequency: %f\\n", count/\x1b[01;36m\x1b[Kelapsed\x1b[m\x1b[K);\n'}
+[2.445212] (img_transform) StderrLine: {'line': b'      |                                                                                     \x1b[01;36m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.445240] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:58\x1b[m\x1b[K,\n'}
+[2.445268] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.445296] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.445324] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:4\x1b[m\x1b[K:\n'}
+[2.445352] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3639:20:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kcv::MatExpr cv::operator/(const cv::Mat&, const cv::Mat&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.445380] (img_transform) StderrLine: {'line': b' 3639 | CV_EXPORTS MatExpr \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K / (const Mat& a, const Mat& b);\n'}
+[2.445409] (img_transform) StderrLine: {'line': b'      |                    \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.445438] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3639:43:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  no known conversion for argument 1 from \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 to \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Mat&\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.445467] (img_transform) StderrLine: {'line': b' 3639 | CV_EXPORTS MatExpr operator / (\x1b[01;36m\x1b[Kconst Mat& a\x1b[m\x1b[K, const Mat& b);\n'}
+[2.445495] (img_transform) StderrLine: {'line': b'      |                                \x1b[01;36m\x1b[K~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[2.445523] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3640:20:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kcv::MatExpr cv::operator/(const cv::Mat&, double)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.445553] (img_transform) StderrLine: {'line': b' 3640 | CV_EXPORTS MatExpr \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K / (const Mat& a, double s);\n'}
+[2.445581] (img_transform) StderrLine: {'line': b'      |                    \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.445608] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3640:43:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  no known conversion for argument 1 from \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 to \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Mat&\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.445637] (img_transform) StderrLine: {'line': b' 3640 | CV_EXPORTS MatExpr operator / (\x1b[01;36m\x1b[Kconst Mat& a\x1b[m\x1b[K, double s);\n'}
+[2.445664] (img_transform) StderrLine: {'line': b'      |                                \x1b[01;36m\x1b[K~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[2.445692] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3641:20:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kcv::MatExpr cv::operator/(double, const cv::Mat&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.445721] (img_transform) StderrLine: {'line': b' 3641 | CV_EXPORTS MatExpr \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K / (double s, const Mat& a);\n'}
+[2.445749] (img_transform) StderrLine: {'line': b'      |                    \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.445779] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3641:53:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  no known conversion for argument 2 from \xe2\x80\x98\x1b[01m\x1b[Kstd::chrono::duration<long int, std::ratio<1, 1000000000> >\x1b[m\x1b[K\xe2\x80\x99 to \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Mat&\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.445809] (img_transform) StderrLine: {'line': b' 3641 | CV_EXPORTS MatExpr operator / (double s, \x1b[01;36m\x1b[Kconst Mat& a\x1b[m\x1b[K);\n'}
+[2.445838] (img_transform) StderrLine: {'line': b'      |                                          \x1b[01;36m\x1b[K~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[2.445867] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3642:20:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kcv::MatExpr cv::operator/(const cv::MatExpr&, const cv::Mat&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.445896] (img_transform) StderrLine: {'line': b' 3642 | CV_EXPORTS MatExpr \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K / (const MatExpr& e, const Mat& m);\n'}
+[2.445925] (img_transform) StderrLine: {'line': b'      |                    \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.445954] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3642:47:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  no known conversion for argument 1 from \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 to \xe2\x80\x98\x1b[01m\x1b[Kconst cv::MatExpr&\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.445983] (img_transform) StderrLine: {'line': b' 3642 | CV_EXPORTS MatExpr operator / (\x1b[01;36m\x1b[Kconst MatExpr& e\x1b[m\x1b[K, const Mat& m);\n'}
+[2.446011] (img_transform) StderrLine: {'line': b'      |                                \x1b[01;36m\x1b[K~~~~~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[2.446041] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3643:20:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kcv::MatExpr cv::operator/(const cv::Mat&, const cv::MatExpr&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.446076] (img_transform) StderrLine: {'line': b' 3643 | CV_EXPORTS MatExpr \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K / (const Mat& m, const MatExpr& e);\n'}
+[2.446109] (img_transform) StderrLine: {'line': b'      |                    \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.446138] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3643:43:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  no known conversion for argument 1 from \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 to \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Mat&\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.446169] (img_transform) StderrLine: {'line': b' 3643 | CV_EXPORTS MatExpr operator / (\x1b[01;36m\x1b[Kconst Mat& m\x1b[m\x1b[K, const MatExpr& e);\n'}
+[2.446197] (img_transform) StderrLine: {'line': b'      |                                \x1b[01;36m\x1b[K~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[2.446226] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3644:20:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kcv::MatExpr cv::operator/(const cv::MatExpr&, double)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.446255] (img_transform) StderrLine: {'line': b' 3644 | CV_EXPORTS MatExpr \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K / (const MatExpr& e, double s);\n'}
+[2.446284] (img_transform) StderrLine: {'line': b'      |                    \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.446313] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3644:47:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  no known conversion for argument 1 from \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 to \xe2\x80\x98\x1b[01m\x1b[Kconst cv::MatExpr&\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.446346] (img_transform) StderrLine: {'line': b' 3644 | CV_EXPORTS MatExpr operator / (\x1b[01;36m\x1b[Kconst MatExpr& e\x1b[m\x1b[K, double s);\n'}
+[2.446377] (img_transform) StderrLine: {'line': b'      |                                \x1b[01;36m\x1b[K~~~~~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[2.446410] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3645:20:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kcv::MatExpr cv::operator/(double, const cv::MatExpr&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.446442] (img_transform) StderrLine: {'line': b' 3645 | CV_EXPORTS MatExpr \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K / (double s, const MatExpr& e);\n'}
+[2.446475] (img_transform) StderrLine: {'line': b'      |                    \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.446506] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3645:57:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  no known conversion for argument 2 from \xe2\x80\x98\x1b[01m\x1b[Kstd::chrono::duration<long int, std::ratio<1, 1000000000> >\x1b[m\x1b[K\xe2\x80\x99 to \xe2\x80\x98\x1b[01m\x1b[Kconst cv::MatExpr&\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.446537] (img_transform) StderrLine: {'line': b' 3645 | CV_EXPORTS MatExpr operator / (double s, \x1b[01;36m\x1b[Kconst MatExpr& e\x1b[m\x1b[K);\n'}
+[2.446570] (img_transform) StderrLine: {'line': b'      |                                          \x1b[01;36m\x1b[K~~~~~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[2.446602] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3646:20:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kcv::MatExpr cv::operator/(const cv::MatExpr&, const cv::MatExpr&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.446635] (img_transform) StderrLine: {'line': b' 3646 | CV_EXPORTS MatExpr \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K / (const MatExpr& e1, const MatExpr& e2);\n'}
+[2.446669] (img_transform) StderrLine: {'line': b'      |                    \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.446701] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3646:47:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  no known conversion for argument 1 from \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 to \xe2\x80\x98\x1b[01m\x1b[Kconst cv::MatExpr&\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.446737] (img_transform) StderrLine: {'line': b' 3646 | CV_EXPORTS MatExpr operator / (\x1b[01;36m\x1b[Kconst MatExpr& e1\x1b[m\x1b[K, const MatExpr& e2);\n'}
+[2.446775] (img_transform) StderrLine: {'line': b'      |                                \x1b[01;36m\x1b[K~~~~~~~~~~~~~~~^~\x1b[m\x1b[K\n'}
+[2.506437] (-) TimerEvent: {}
+[2.606754] (-) TimerEvent: {}
+[2.707095] (-) TimerEvent: {}
+[2.807413] (-) TimerEvent: {}
+[2.907706] (-) TimerEvent: {}
+[3.007942] (-) TimerEvent: {}
+[3.021787] (img_transform) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/video_frequency.dir/build.make:76: CMakeFiles/video_frequency.dir/src/video_frequency.cpp.o] Error 1\n'}
+[3.022028] (img_transform) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:165: CMakeFiles/video_frequency.dir/all] Error 2\n'}
+[3.022182] (img_transform) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[3.024291] (img_transform) CommandEnded: {'returncode': 2}
+[3.056294] (img_transform) JobEnded: {'identifier': 'img_transform', 'rc': 2}
+[3.066693] (-) EventReactorShutdown: {}

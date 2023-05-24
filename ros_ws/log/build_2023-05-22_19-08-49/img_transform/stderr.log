@@ -1,0 +1,23 @@
+[01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:[m[K In member function ‘[01m[Kvoid ImgTransform::timer_callback()[m[K’:
+[01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:124:28:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<cv::DMatch>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  124 |             for (int i=0; [01;35m[Ki<good_matches.size()[m[K; i++){
+      |                           [01;35m[K~^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:147:34:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  147 |             for (size_t i = 0; [01;35m[Ki < N[m[K; ++i) {
+      |                                [01;35m[K~~^~~[m[K
+[01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:163:34:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  163 |             for (size_t i = 0; [01;35m[Ki < N[m[K; ++i) {
+      |                                [01;35m[K~~^~~[m[K
+[01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:197:45:[m[K [01;31m[Kerror: [m[K‘[01m[KgetAngularError[m[K’ was not declared in this scope
+  197 |             std::cout << "Error (deg): " << [01;31m[KgetAngularError[m[K(T.topLeftCorner(3, 3), solution.rotation)
+      |                                             [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:247:93:[m[K [01;31m[Kerror: [m[K‘[01m[Kbegin_total[m[K’ was not declared in this scope; did you mean ‘[01m[Kend_total[m[K’?
+  247 | d::chrono::duration_cast<std::chrono::nanoseconds>(end_total - [01;31m[Kbegin_total[m[K);
+      |                                                                [01;31m[K^~~~~~~~~~~[m[K
+      |                                                                [32m[Kend_total[m[K
+[01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:92:36:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kmax_dist[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+   92 |             double min_dist=10000, [01;35m[Kmax_dist[m[K=0;
+      |                                    [01;35m[K^~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/img_transform.dir/build.make:76: CMakeFiles/img_transform.dir/src/img_transform.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/img_transform.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

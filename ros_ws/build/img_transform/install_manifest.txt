@@ -1,6 +1,9 @@
 /home/megsindelar/Final_Project/ros_ws/install/img_transform/lib/img_transform/img_transform
+/home/megsindelar/Final_Project/ros_ws/install/img_transform/lib/img_transform/video_frequency
 /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/images/image2.jpg
 /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/images/image.jpg
+/home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/launch/transform.launch.xml
+/home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/config/transform.rviz
 /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/ament_index/resource_index/package_run_dependencies/img_transform
 /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/ament_index/resource_index/parent_prefix_path/img_transform
 /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/environment/ament_prefix_path.sh

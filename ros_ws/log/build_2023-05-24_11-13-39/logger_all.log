@@ -1,0 +1,142 @@
+[0.247s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.247s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=8, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7f0805463c40>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7f0805ea9510>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7f0805ea9510>>, mixin_verb=('build',))
+[0.263s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.263s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.263s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.263s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.263s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.263s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.263s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/megsindelar/Final_Project/ros_ws'
+[0.263s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.263s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.263s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.263s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.263s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.263s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.263s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.263s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.263s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.270s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.270s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.270s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.270s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.270s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(src/img_transform) by extensions ['ignore', 'ignore_ament_install']
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(src/img_transform) by extension 'ignore'
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(src/img_transform) by extension 'ignore_ament_install'
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(src/img_transform) by extensions ['colcon_pkg']
+[0.272s] Level 1:colcon.colcon_core.package_identification:_identify(src/img_transform) by extension 'colcon_pkg'
+[0.272s] Level 1:colcon.colcon_core.package_identification:_identify(src/img_transform) by extensions ['colcon_meta']
+[0.272s] Level 1:colcon.colcon_core.package_identification:_identify(src/img_transform) by extension 'colcon_meta'
+[0.272s] Level 1:colcon.colcon_core.package_identification:_identify(src/img_transform) by extensions ['ros']
+[0.272s] Level 1:colcon.colcon_core.package_identification:_identify(src/img_transform) by extension 'ros'
+[0.274s] DEBUG:colcon.colcon_core.package_identification:Package 'src/img_transform' with type 'ros.ament_cmake' and name 'img_transform'
+[0.274s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.274s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.274s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.274s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.274s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.290s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.290s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.292s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 40 installed packages in /home/megsindelar/nuws/install
+[0.293s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 7 installed packages in /home/megsindelar/ME_495/Final_Proj/install
+[0.294s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 393 installed packages in /opt/ros/humble
+[0.295s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.342s] Level 5:colcon.colcon_core.verb:set package 'img_transform' build argument 'cmake_args' from command line to 'None'
+[0.342s] Level 5:colcon.colcon_core.verb:set package 'img_transform' build argument 'cmake_target' from command line to 'None'
+[0.342s] Level 5:colcon.colcon_core.verb:set package 'img_transform' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.342s] Level 5:colcon.colcon_core.verb:set package 'img_transform' build argument 'cmake_clean_cache' from command line to 'False'
+[0.342s] Level 5:colcon.colcon_core.verb:set package 'img_transform' build argument 'cmake_clean_first' from command line to 'False'
+[0.342s] Level 5:colcon.colcon_core.verb:set package 'img_transform' build argument 'cmake_force_configure' from command line to 'False'
+[0.342s] Level 5:colcon.colcon_core.verb:set package 'img_transform' build argument 'ament_cmake_args' from command line to 'None'
+[0.342s] Level 5:colcon.colcon_core.verb:set package 'img_transform' build argument 'catkin_cmake_args' from command line to 'None'
+[0.342s] Level 5:colcon.colcon_core.verb:set package 'img_transform' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.342s] DEBUG:colcon.colcon_core.verb:Building package 'img_transform' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/megsindelar/Final_Project/ros_ws/build/img_transform', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/megsindelar/Final_Project/ros_ws/install/img_transform', 'merge_install': False, 'path': '/home/megsindelar/Final_Project/ros_ws/src/img_transform', 'symlink_install': False, 'test_result_base': None}
+[0.343s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.345s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.345s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/megsindelar/Final_Project/ros_ws/src/img_transform' with build type 'ament_cmake'
+[0.345s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/megsindelar/Final_Project/ros_ws/src/img_transform'
+[0.348s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.348s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.348s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.357s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/ros_ws/build/img_transform -- -j8 -l8
+[5.256s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/ros_ws/build/img_transform -- -j8 -l8
+[5.285s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --install /home/megsindelar/Final_Project/ros_ws/build/img_transform
+[5.293s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(img_transform)
+[5.294s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --install /home/megsindelar/Final_Project/ros_ws/build/img_transform
+[5.297s] Level 1:colcon.colcon_core.environment:checking '/home/megsindelar/Final_Project/ros_ws/install/img_transform' for CMake module files
+[5.298s] Level 1:colcon.colcon_core.environment:checking '/home/megsindelar/Final_Project/ros_ws/install/img_transform' for CMake config files
+[5.298s] Level 1:colcon.colcon_core.shell:create_environment_hook('img_transform', 'cmake_prefix_path')
+[5.299s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/hook/cmake_prefix_path.ps1'
+[5.300s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/hook/cmake_prefix_path.dsv'
+[5.300s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/hook/cmake_prefix_path.sh'
+[5.300s] Level 1:colcon.colcon_core.environment:checking '/home/megsindelar/Final_Project/ros_ws/install/img_transform/lib'
+[5.300s] Level 1:colcon.colcon_core.environment:checking '/home/megsindelar/Final_Project/ros_ws/install/img_transform/bin'
+[5.300s] Level 1:colcon.colcon_core.environment:checking '/home/megsindelar/Final_Project/ros_ws/install/img_transform/lib/pkgconfig/img_transform.pc'
+[5.301s] Level 1:colcon.colcon_core.environment:checking '/home/megsindelar/Final_Project/ros_ws/install/img_transform/lib/python3.10/site-packages'
+[5.301s] Level 1:colcon.colcon_core.environment:checking '/home/megsindelar/Final_Project/ros_ws/install/img_transform/bin'
+[5.302s] INFO:colcon.colcon_core.shell:Creating package script '/home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/package.ps1'
+[5.302s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/package.dsv'
+[5.302s] INFO:colcon.colcon_core.shell:Creating package script '/home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/package.sh'
+[5.303s] INFO:colcon.colcon_core.shell:Creating package script '/home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/package.bash'
+[5.303s] INFO:colcon.colcon_core.shell:Creating package script '/home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/package.zsh'
+[5.303s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/megsindelar/Final_Project/ros_ws/install/img_transform/share/colcon-core/packages/img_transform)
+[5.326s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(img_transform)
+[5.327s] Level 1:colcon.colcon_core.environment:checking '/home/megsindelar/Final_Project/ros_ws/install/img_transform' for CMake module files
+[5.328s] Level 1:colcon.colcon_core.environment:checking '/home/megsindelar/Final_Project/ros_ws/install/img_transform' for CMake config files
+[5.328s] Level 1:colcon.colcon_core.shell:create_environment_hook('img_transform', 'cmake_prefix_path')
+[5.329s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/hook/cmake_prefix_path.ps1'
+[5.329s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/hook/cmake_prefix_path.dsv'
+[5.329s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/hook/cmake_prefix_path.sh'
+[5.329s] Level 1:colcon.colcon_core.environment:checking '/home/megsindelar/Final_Project/ros_ws/install/img_transform/lib'
+[5.329s] Level 1:colcon.colcon_core.environment:checking '/home/megsindelar/Final_Project/ros_ws/install/img_transform/bin'
+[5.329s] Level 1:colcon.colcon_core.environment:checking '/home/megsindelar/Final_Project/ros_ws/install/img_transform/lib/pkgconfig/img_transform.pc'
+[5.330s] Level 1:colcon.colcon_core.environment:checking '/home/megsindelar/Final_Project/ros_ws/install/img_transform/lib/python3.10/site-packages'
+[5.330s] Level 1:colcon.colcon_core.environment:checking '/home/megsindelar/Final_Project/ros_ws/install/img_transform/bin'
+[5.330s] INFO:colcon.colcon_core.shell:Creating package script '/home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/package.ps1'
+[5.331s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/package.dsv'
+[5.331s] INFO:colcon.colcon_core.shell:Creating package script '/home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/package.sh'
+[5.331s] INFO:colcon.colcon_core.shell:Creating package script '/home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/package.bash'
+[5.331s] INFO:colcon.colcon_core.shell:Creating package script '/home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/package.zsh'
+[5.332s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/megsindelar/Final_Project/ros_ws/install/img_transform/share/colcon-core/packages/img_transform)
+[5.332s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[5.332s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[5.332s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[5.332s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[5.336s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[5.336s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[5.336s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[5.344s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[5.345s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/megsindelar/Final_Project/ros_ws/install/local_setup.ps1'
+[5.346s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/megsindelar/Final_Project/ros_ws/install/_local_setup_util_ps1.py'
+[5.347s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/megsindelar/Final_Project/ros_ws/install/setup.ps1'
+[5.348s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/megsindelar/Final_Project/ros_ws/install/local_setup.sh'
+[5.348s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/megsindelar/Final_Project/ros_ws/install/_local_setup_util_sh.py'
+[5.349s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/megsindelar/Final_Project/ros_ws/install/setup.sh'
+[5.350s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/megsindelar/Final_Project/ros_ws/install/local_setup.bash'
+[5.350s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/megsindelar/Final_Project/ros_ws/install/setup.bash'
+[5.351s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/megsindelar/Final_Project/ros_ws/install/local_setup.zsh'
+[5.352s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/megsindelar/Final_Project/ros_ws/install/setup.zsh'

@@ -1,0 +1,53 @@
+[0.018s] Invoking command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/ros_ws/build/img_transform -- -j8 -l8
+[0.062s] [35m[1mConsolidate compiler generated dependencies of target img_transform[0m
+[0.083s] [ 50%] [32mBuilding CXX object CMakeFiles/img_transform.dir/src/img_transform.cpp.o[0m
+[3.286s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:335:35:[m[K [01;31m[Kerror: [m[K‘[01m[KStaticTransformBroadcaster[m[K’ is not a member of ‘[01m[Ktf2_ros[m[K’; did you mean ‘[01m[KTransformBroadcaster[m[K’?
+[3.286s]   335 |         std::make_shared<tf2_ros::[01;31m[KStaticTransformBroadcaster[m[K> tf_static_broadcaster_;
+[3.286s]       |                                   [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[3.287s]       |                                   [32m[KTransformBroadcaster[m[K
+[3.287s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:335:14:[m[K [01;31m[Kerror: [m[K‘[01m[Kstd::make_shared[m[K’ in namespace ‘[01m[Kstd[m[K’ does not name a template type
+[3.287s]   335 |         std::[01;31m[Kmake_shared<tf2_ros::StaticTransformBroadcaster>[m[K tf_static_broadcaster_;
+[3.287s]       |              [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[3.314s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:[m[K In constructor ‘[01m[KImgTransform::ImgTransform()[m[K’:
+[3.314s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:64:9:[m[K [01;31m[Kerror: [m[K‘[01m[Ktf_static_broadcaster_[m[K’ was not declared in this scope
+[3.314s]    64 |         [01;31m[Ktf_static_broadcaster_[m[K = std::make_shared<tf2_ros::StaticTransformBroadcaster>(*this);
+[3.314s]       |         [01;31m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+[3.314s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:64:60:[m[K [01;31m[Kerror: [m[K‘[01m[KStaticTransformBroadcaster[m[K’ is not a member of ‘[01m[Ktf2_ros[m[K’; did you mean ‘[01m[KTransformBroadcaster[m[K’?
+[3.314s]    64 |        tf_static_broadcaster_ = std::make_shared<tf2_ros::[01;31m[KStaticTransformBroadcaster[m[K>(*this);
+[3.315s]       |                                                           [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[3.315s]       |                                                           [32m[KTransformBroadcaster[m[K
+[3.315s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:64:87:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kmake_shared<<expression error> >(ImgTransform&)[m[K’
+[3.315s]    64 | ster_ = [01;31m[Kstd::make_shared<tf2_ros::StaticTransformBroadcaster>(*this)[m[K;
+[3.315s]       |         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~[m[K
+[3.315s] 
+[3.315s] In file included from [01m[K/usr/include/c++/11/memory:77[m[K,
+[3.315s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:153[m[K,
+[3.315s]                  from [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:2[m[K:
+[3.315s] [01m[K/usr/include/c++/11/bits/shared_ptr.h:875:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp, class ... _Args> std::shared_ptr<_Tp> std::make_shared(_Args&& ...)[m[K’
+[3.315s]   875 |     [01;36m[Kmake_shared[m[K(_Args&&... __args)
+[3.315s]       |     [01;36m[K^~~~~~~~~~~[m[K
+[3.315s] [01m[K/usr/include/c++/11/bits/shared_ptr.h:875:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[3.315s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:64:87:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[3.315s]    64 | ster_ = [01;31m[Kstd::make_shared<tf2_ros::StaticTransformBroadcaster>(*this)[m[K;
+[3.315s]       |         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~[m[K
+[3.315s] 
+[3.351s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:[m[K In member function ‘[01m[Kvoid ImgTransform::timer_callback()[m[K’:
+[3.351s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:160:32:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<cv::DMatch>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[3.351s]   160 |                 for (int i=0; [01;35m[Ki<good_matches.size()[m[K; i++){
+[3.351s]       |                               [01;35m[K~^~~~~~~~~~~~~~~~~~~~[m[K
+[3.352s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:183:38:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[3.352s]   183 |                 for (size_t i = 0; [01;35m[Ki < N[m[K; ++i) {
+[3.352s]       |                                    [01;35m[K~~^~~[m[K
+[3.415s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:199:38:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[3.415s]   199 |                 for (size_t i = 0; [01;35m[Ki < N[m[K; ++i) {
+[3.415s]       |                                    [01;35m[K~~^~~[m[K
+[3.521s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:319:17:[m[K [01;31m[Kerror: [m[K‘[01m[Ktf_static_broadcaster_[m[K’ was not declared in this scope
+[3.521s]   319 |                 [01;31m[Ktf_static_broadcaster_[m[K->sendTransform(t);
+[3.521s]       |                 [01;31m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+[3.521s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:128:40:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kmax_dist[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[3.521s]   128 |                 double min_dist=10000, [01;35m[Kmax_dist[m[K=0;
+[3.521s]       |                                        [01;35m[K^~~~~~~~[m[K
+[4.566s] gmake[2]: *** [CMakeFiles/img_transform.dir/build.make:76: CMakeFiles/img_transform.dir/src/img_transform.cpp.o] Error 1
+[4.567s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/img_transform.dir/all] Error 2
+[4.567s] gmake: *** [Makefile:146: all] Error 2
+[4.569s] Invoked command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/ros_ws/build/img_transform -- -j8 -l8

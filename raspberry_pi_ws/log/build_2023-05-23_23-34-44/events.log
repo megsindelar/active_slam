@@ -1,0 +1,35 @@
+[0.000000] (-) TimerEvent: {}
+[0.000176] (turtlebot_control) JobQueued: {'identifier': 'turtlebot_control', 'dependencies': OrderedDict()}
+[0.000206] (turtlebot_control) JobStarted: {'identifier': 'turtlebot_control'}
+[0.008218] (turtlebot_control) JobProgress: {'identifier': 'turtlebot_control', 'progress': 'cmake'}
+[0.008536] (turtlebot_control) JobProgress: {'identifier': 'turtlebot_control', 'progress': 'build'}
+[0.009375] (turtlebot_control) Command: {'cmd': ['/usr/bin/cmake', '--build', '/ros_ws/aarch64_build/turtlebot_control', '--', '-j8', '-l8'], 'cwd': '/ros_ws/aarch64_build/turtlebot_control', 'env': OrderedDict([('HOSTNAME', '4a58fa8728b5'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/msr'), ('ROS_PYTHON_VERSION', '3'), ('LC_CTYPE', 'C.UTF-8'), ('ROS_DISTRO', 'humble'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('PWD', '/ros_ws/aarch64_build/turtlebot_control'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.050535] (turtlebot_control) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target turtlebot_control\x1b[0m\n'}
+[0.068090] (turtlebot_control) StdoutLine: {'line': b'[100%] Built target turtlebot_control\n'}
+[0.077794] (turtlebot_control) CommandEnded: {'returncode': 0}
+[0.098528] (-) TimerEvent: {}
+[0.101582] (turtlebot_control) JobProgress: {'identifier': 'turtlebot_control', 'progress': 'install'}
+[0.114160] (turtlebot_control) Command: {'cmd': ['/usr/bin/cmake', '--install', '/ros_ws/aarch64_build/turtlebot_control'], 'cwd': '/ros_ws/aarch64_build/turtlebot_control', 'env': OrderedDict([('HOSTNAME', '4a58fa8728b5'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/msr'), ('ROS_PYTHON_VERSION', '3'), ('LC_CTYPE', 'C.UTF-8'), ('ROS_DISTRO', 'humble'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('PWD', '/ros_ws/aarch64_build/turtlebot_control'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.124842] (turtlebot_control) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[0.125129] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/lib/turtlebot_control/turtlebot_control\n'}
+[0.125404] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/images\n'}
+[0.125728] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/images/test_pic.png\n'}
+[0.125832] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/images/image.jpg\n'}
+[0.125917] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/ament_index/resource_index/package_run_dependencies/turtlebot_control\n'}
+[0.126001] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/ament_index/resource_index/parent_prefix_path/turtlebot_control\n'}
+[0.126082] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/environment/ament_prefix_path.sh\n'}
+[0.126162] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/environment/ament_prefix_path.dsv\n'}
+[0.126507] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/environment/path.sh\n'}
+[0.126605] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/environment/path.dsv\n'}
+[0.126684] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/local_setup.bash\n'}
+[0.126761] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/local_setup.sh\n'}
+[0.126834] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/local_setup.zsh\n'}
+[0.126909] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/local_setup.dsv\n'}
+[0.126983] (turtlebot_control) StdoutLine: {'line': b'-- Installing: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/package.dsv\n'}
+[0.127058] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/ament_index/resource_index/packages/turtlebot_control\n'}
+[0.127133] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/cmake/turtlebot_controlConfig.cmake\n'}
+[0.127207] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/cmake/turtlebot_controlConfig-version.cmake\n'}
+[0.127281] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/package.xml\n'}
+[0.128189] (turtlebot_control) CommandEnded: {'returncode': 0}
+[0.186332] (turtlebot_control) JobEnded: {'identifier': 'turtlebot_control', 'rc': 0}
+[0.187221] (-) EventReactorShutdown: {}

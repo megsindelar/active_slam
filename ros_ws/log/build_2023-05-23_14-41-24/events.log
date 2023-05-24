@@ -1,0 +1,85 @@
+[0.000000] (-) TimerEvent: {}
+[0.000138] (img_transform) JobQueued: {'identifier': 'img_transform', 'dependencies': OrderedDict()}
+[0.000177] (img_transform) JobStarted: {'identifier': 'img_transform'}
+[0.011363] (img_transform) JobProgress: {'identifier': 'img_transform', 'progress': 'cmake'}
+[0.011605] (img_transform) JobProgress: {'identifier': 'img_transform', 'progress': 'build'}
+[0.012825] (img_transform) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/megsindelar/Final_Project/ros_ws/build/img_transform', '--', '-j8', '-l8'], 'cwd': '/home/megsindelar/Final_Project/ros_ws/build/img_transform', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('PYTHONWARNINGS', 'ignore:::setuptools.command.install,ignore:::setuptools.command.easy_install,ignore:::pkg_resources'), ('LANGUAGE', 'en'), ('USER', 'megsindelar'), ('LC_TIME', 'en_US.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/megsindelar/nuws/install/lib:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing_interfaces/lib:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka_interfaces/lib:/home/megsindelar/ME_495/Final_Proj/install/apriltag_ros/lib:/home/megsindelar/ME_495/Final_Proj/install/apriltag_msgs/lib:/home/megsindelar/ME_495/Final_Proj/install/apriltag/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('PICO_EXTRAS_PATH', '/home/megsindelar/Winter_Project/pico_setup/pico/pico-extras'), ('HOME', '/home/megsindelar'), ('OLDPWD', '/home/megsindelar/Final_Project'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'en_US.UTF-8'), ('MANAGERPID', '1980'), ('SYSTEMD_EXEC_PID', '2359'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator25ef4b219e3b005583550f2b0f9f990c3'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '3187'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/megsindelar/nuws/install:/home/megsindelar/ME_495/Final_Proj/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'megsindelar'), ('JOURNAL_STREAM', '8:38947'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('PKG_CONFIG_PATH', '/home/megsindelar/nuws/install/lib/x86_64-linux-gnu/pkgconfig:/home/megsindelar/nuws/install/lib/pkgconfig:/home/megsindelar/ME_495/Final_Proj/install/apriltag/lib/x86_64-linux-gnu/pkgconfig:/home/megsindelar/ME_495/Final_Proj/install/apriltag/lib/pkgconfig'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'megsindelar'), ('TERM', 'xterm-256color'), ('COPPELIASIM_ROOT_DIR', '/home/megsindelar/CoppeliaSim_Edu_V4_4_0_rev0_Ubuntu20_04'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/megsindelar/nuws/install/bin:/home/megsindelar/ME_495/Final_Proj/install/apriltag/bin:/opt/ros/humble/bin:/home/megsindelar/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/meg:@/tmp/.ICE-unix/2178,unix/meg:/tmp/.ICE-unix/2178'), ('INVOCATION_ID', 'facdbc39ce3c431097fddfaaad7e4cc3'), ('PAPERSIZE', 'letter'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'en_US.UTF-8'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('IBUS_DISABLE_SNOOPER', '1'), ('LC_TELEPHONE', 'en_US.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.2H9641'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('PICO_EXAMPLES_PATH', '/home/megsindelar/Winter_Project/pico_setup/pico/pico-examples'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/megsindelar/nuws/install:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing_interfaces:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka_interfaces:/home/megsindelar/ME_495/Final_Proj/install/apriltag_ros:/home/megsindelar/ME_495/Final_Proj/install/apriltag_msgs:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'en_US.UTF-8'), ('TERMINATOR_UUID', 'urn:uuid:65d9c4f2-54aa-4cee-8d98-6a11f3610555'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CMAKE_MODULE_PATH', '/home/megsindelar/nuws/install/share/warehouse_ros_mongo/cmake'), ('LC_MEASUREMENT', 'en_US.UTF-8'), ('LC_IDENTIFICATION', 'en_US.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/megsindelar/Final_Project/ros_ws/build/img_transform'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PICO_PLAYGROUND_PATH', '/home/megsindelar/Winter_Project/pico_setup/pico/pico-playground'), ('PYTHONPATH', '/home/megsindelar/nuws/install/lib/python3.10/pyrealsense2:/home/megsindelar/nuws/install/local/lib/python3.10/dist-packages:/home/megsindelar/nuws/install/lib/python3.10/site-packages:/home/megsindelar/ME_495/Final_Proj/build/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka/lib/python3.10/site-packages:/home/megsindelar/ME_495/Final_Proj/build/moveit_testing:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing/lib/python3.10/site-packages:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing_interfaces/local/lib/python3.10/dist-packages:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka_interfaces/local/lib/python3.10/dist-packages:/home/megsindelar/ME_495/Final_Proj/install/apriltag_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages:/home/megsindelar/Downloads/CARLA_DRIFT_0.9.5/PythonAPI/carla/dist/carla-0.9.5-py3.5-linux-x86_64.egg:/home/megsindelar/Downloads/CARLA_DRIFT_0.9.5/PythonAPI/carla/'), ('LC_NUMERIC', 'en_US.UTF-8'), ('LC_PAPER', 'en_US.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/megsindelar/nuws/install:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing_interfaces:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka_interfaces:/home/megsindelar/ME_495/Final_Proj/install/apriltag_ros:/home/megsindelar/ME_495/Final_Proj/install/apriltag_msgs:/home/megsindelar/ME_495/Final_Proj/install/apriltag:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble')]), 'shell': False}
+[0.055908] (img_transform) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target img_transform\x1b[0m\n'}
+[0.073204] (img_transform) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/img_transform.dir/src/img_transform.cpp.o\x1b[0m\n'}
+[0.098975] (-) TimerEvent: {}
+[0.199449] (-) TimerEvent: {}
+[0.299891] (-) TimerEvent: {}
+[0.400405] (-) TimerEvent: {}
+[0.500902] (-) TimerEvent: {}
+[0.601310] (-) TimerEvent: {}
+[0.701806] (-) TimerEvent: {}
+[0.802277] (-) TimerEvent: {}
+[0.902594] (-) TimerEvent: {}
+[1.003049] (-) TimerEvent: {}
+[1.103511] (-) TimerEvent: {}
+[1.203975] (-) TimerEvent: {}
+[1.304550] (-) TimerEvent: {}
+[1.405017] (-) TimerEvent: {}
+[1.505559] (-) TimerEvent: {}
+[1.606043] (-) TimerEvent: {}
+[1.706403] (-) TimerEvent: {}
+[1.806832] (-) TimerEvent: {}
+[1.907316] (-) TimerEvent: {}
+[2.007968] (-) TimerEvent: {}
+[2.108368] (-) TimerEvent: {}
+[2.208836] (-) TimerEvent: {}
+[2.309302] (-) TimerEvent: {}
+[2.409850] (-) TimerEvent: {}
+[2.510334] (-) TimerEvent: {}
+[2.610899] (-) TimerEvent: {}
+[2.711450] (-) TimerEvent: {}
+[2.811898] (-) TimerEvent: {}
+[2.893564] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ImgTransform::timer_callback()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.893773] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:140:32:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<cv::DMatch>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.893837] (img_transform) StderrLine: {'line': b'  140 |                 for (int i=0; \x1b[01;35m\x1b[Ki<good_matches.size()\x1b[m\x1b[K; i++){\n'}
+[2.894063] (img_transform) StderrLine: {'line': b'      |                               \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.894128] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:163:38:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Ksize_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.894187] (img_transform) StderrLine: {'line': b'  163 |                 for (size_t i = 0; \x1b[01;35m\x1b[Ki < N\x1b[m\x1b[K; ++i) {\n'}
+[2.894244] (img_transform) StderrLine: {'line': b'      |                                    \x1b[01;35m\x1b[K~~^~~\x1b[m\x1b[K\n'}
+[2.912145] (-) TimerEvent: {}
+[2.962540] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:179:38:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Ksize_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.962723] (img_transform) StderrLine: {'line': b'  179 |                 for (size_t i = 0; \x1b[01;35m\x1b[Ki < N\x1b[m\x1b[K; ++i) {\n'}
+[2.962791] (img_transform) StderrLine: {'line': b'      |                                    \x1b[01;35m\x1b[K~~^~~\x1b[m\x1b[K\n'}
+[3.004239] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[3.004430] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[3.004497] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[3.004556] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[3.004613] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[3.004668] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[3.004723] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[3.004778] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[3.004831] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[3.004882] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[3.004931] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[3.004979] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:2\x1b[m\x1b[K:\n'}
+[3.005032] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:274:109:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpression cannot be used as a function\n'}
+[3.005089] (img_transform) StderrLine: {'line': b'  274 | get_logger("message"), "Transformation: [%f]", \x1b[01;31m\x1b[Ktransformation(i)(j)\x1b[m\x1b[K);\n'}
+[3.005149] (img_transform) StderrLine: {'line': b'      |                                                \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~^~~\x1b[m\x1b[K\n'}
+[3.005215] (img_transform) StderrLine: {'line': b'\n'}
+[3.012365] (-) TimerEvent: {}
+[3.026831] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:108:40:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kmax_dist\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.027027] (img_transform) StderrLine: {'line': b'  108 |                 double min_dist=10000, \x1b[01;35m\x1b[Kmax_dist\x1b[m\x1b[K=0;\n'}
+[3.027098] (img_transform) StderrLine: {'line': b'      |                                        \x1b[01;35m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.112566] (-) TimerEvent: {}
+[3.213063] (-) TimerEvent: {}
+[3.313567] (-) TimerEvent: {}
+[3.413874] (-) TimerEvent: {}
+[3.514247] (-) TimerEvent: {}
+[3.614689] (-) TimerEvent: {}
+[3.715106] (-) TimerEvent: {}
+[3.815542] (-) TimerEvent: {}
+[3.915974] (-) TimerEvent: {}
+[4.016475] (-) TimerEvent: {}
+[4.117003] (-) TimerEvent: {}
+[4.213012] (img_transform) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/img_transform.dir/build.make:76: CMakeFiles/img_transform.dir/src/img_transform.cpp.o] Error 1\n'}
+[4.213505] (img_transform) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/img_transform.dir/all] Error 2\n'}
+[4.214020] (img_transform) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[4.216152] (img_transform) CommandEnded: {'returncode': 2}
+[4.217378] (-) TimerEvent: {}
+[4.255989] (img_transform) JobEnded: {'identifier': 'img_transform', 'rc': 2}
+[4.266470] (-) EventReactorShutdown: {}

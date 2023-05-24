@@ -1,0 +1,29 @@
+[0.013s] Invoking command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/ros_ws/build/img_transform -- -j8 -l8
+[0.054s] [35m[1mConsolidate compiler generated dependencies of target img_transform[0m
+[0.068s] [ 50%] [32mBuilding CXX object CMakeFiles/img_transform.dir/src/img_transform.cpp.o[0m
+[2.657s] [100%] [32m[1mLinking CXX executable img_transform[0m
+[2.956s] [100%] Built target img_transform
+[2.965s] Invoked command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/ros_ws/build/img_transform -- -j8 -l8
+[2.998s] Invoking command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --install /home/megsindelar/Final_Project/ros_ws/build/img_transform
+[3.004s] -- Install configuration: ""
+[3.004s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/lib/img_transform/img_transform
+[3.005s] -- Set runtime path of "/home/megsindelar/Final_Project/ros_ws/install/img_transform/lib/img_transform/img_transform" to ""
+[3.005s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/images
+[3.005s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/images/image2.jpg
+[3.005s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/images/image.jpg
+[3.005s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/ament_index/resource_index/package_run_dependencies/img_transform
+[3.005s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/ament_index/resource_index/parent_prefix_path/img_transform
+[3.005s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/environment/ament_prefix_path.sh
+[3.005s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/environment/ament_prefix_path.dsv
+[3.006s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/environment/path.sh
+[3.006s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/environment/path.dsv
+[3.006s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/local_setup.bash
+[3.006s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/local_setup.sh
+[3.006s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/local_setup.zsh
+[3.006s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/local_setup.dsv
+[3.006s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/package.dsv
+[3.006s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/ament_index/resource_index/packages/img_transform
+[3.006s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/cmake/img_transformConfig.cmake
+[3.006s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/cmake/img_transformConfig-version.cmake
+[3.006s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/package.xml
+[3.008s] Invoked command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --install /home/megsindelar/Final_Project/ros_ws/build/img_transform

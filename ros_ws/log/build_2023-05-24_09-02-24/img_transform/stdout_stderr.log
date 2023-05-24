@@ -1,0 +1,17 @@
+[35m[1mConsolidate compiler generated dependencies of target video_frequency[0m
+[35m[1mConsolidate compiler generated dependencies of target img_transform[0m
+[ 25%] [32mBuilding CXX object CMakeFiles/video_frequency.dir/src/video_frequency.cpp.o[0m
+[ 75%] Built target img_transform
+[01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:85:9:[m[K [01;31m[Kerror: [m[Knon-static data member declared with placeholder ‘[01m[Kauto[m[K’
+   85 |         [01;31m[Kauto[m[K count = 0;
+      |         [01;31m[K^~~~[m[K
+[01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:[m[K In constructor ‘[01m[KVideoFreq::VideoFreq()[m[K’:
+[01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:42:28:[m[K [01;31m[Kerror: [m[K‘[01m[KImgTransform[m[K’ has not been declared
+   42 |                 std::bind(&[01;31m[KImgTransform[m[K::image_callback, this, std::placeholders::_1, std::placeholders::_2),
+      |                            [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:53:22:[m[K [01;31m[Kerror: [m[K‘[01m[KImgTransform[m[K’ has not been declared
+   53 |           std::bind(&[01;31m[KImgTransform[m[K::timer_callback, this));
+      |                      [01;31m[K^~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/video_frequency.dir/build.make:76: CMakeFiles/video_frequency.dir/src/video_frequency.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:165: CMakeFiles/video_frequency.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

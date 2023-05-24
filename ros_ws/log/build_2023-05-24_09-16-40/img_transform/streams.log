@@ -1,0 +1,11 @@
+[0.010s] Invoking command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/ros_ws/build/img_transform -- -j8 -l8
+[0.042s] [35m[1mConsolidate compiler generated dependencies of target video_frequency[0m
+[0.051s] [ 50%] Built target img_transform
+[0.055s] [ 75%] [32mBuilding CXX object CMakeFiles/video_frequency.dir/src/video_frequency.cpp.o[0m
+[2.365s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/video_frequency.cpp:84:9:[m[K [01;31m[Kerror: [m[Knon-static data member declared with placeholder ‘[01m[Kauto[m[K’
+[2.366s]    84 |         [01;31m[Kauto[m[K begin_total = std::chrono::high_resolution_clock::now();
+[2.366s]       |         [01;31m[K^~~~[m[K
+[2.987s] gmake[2]: *** [CMakeFiles/video_frequency.dir/build.make:76: CMakeFiles/video_frequency.dir/src/video_frequency.cpp.o] Error 1
+[2.987s] gmake[1]: *** [CMakeFiles/Makefile2:165: CMakeFiles/video_frequency.dir/all] Error 2
+[2.987s] gmake: *** [Makefile:146: all] Error 2
+[2.989s] Invoked command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/ros_ws/build/img_transform -- -j8 -l8

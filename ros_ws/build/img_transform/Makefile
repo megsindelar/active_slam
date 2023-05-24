@@ -210,6 +210,19 @@ img_transform/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/img_transform.dir/build.make CMakeFiles/img_transform.dir/build
 .PHONY : img_transform/fast
 
+#=============================================================================
+# Target rules for targets named video_frequency
+
+# Build rule for target.
+video_frequency: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 video_frequency
+.PHONY : video_frequency
+
+# fast build rule for target.
+video_frequency/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/video_frequency.dir/build.make CMakeFiles/video_frequency.dir/build
+.PHONY : video_frequency/fast
+
 src/img_transform.o: src/img_transform.cpp.o
 .PHONY : src/img_transform.o
 
@@ -234,6 +247,30 @@ src/img_transform.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/img_transform.dir/build.make CMakeFiles/img_transform.dir/src/img_transform.cpp.s
 .PHONY : src/img_transform.cpp.s
 
+src/video_frequency.o: src/video_frequency.cpp.o
+.PHONY : src/video_frequency.o
+
+# target to build an object file
+src/video_frequency.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/video_frequency.dir/build.make CMakeFiles/video_frequency.dir/src/video_frequency.cpp.o
+.PHONY : src/video_frequency.cpp.o
+
+src/video_frequency.i: src/video_frequency.cpp.i
+.PHONY : src/video_frequency.i
+
+# target to preprocess a source file
+src/video_frequency.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/video_frequency.dir/build.make CMakeFiles/video_frequency.dir/src/video_frequency.cpp.i
+.PHONY : src/video_frequency.cpp.i
+
+src/video_frequency.s: src/video_frequency.cpp.s
+.PHONY : src/video_frequency.s
+
+# target to generate assembly for a file
+src/video_frequency.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/video_frequency.dir/build.make CMakeFiles/video_frequency.dir/src/video_frequency.cpp.s
+.PHONY : src/video_frequency.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -250,9 +287,13 @@ help:
 	@echo "... img_transform_uninstall"
 	@echo "... uninstall"
 	@echo "... img_transform"
+	@echo "... video_frequency"
 	@echo "... src/img_transform.o"
 	@echo "... src/img_transform.i"
 	@echo "... src/img_transform.s"
+	@echo "... src/video_frequency.o"
+	@echo "... src/video_frequency.i"
+	@echo "... src/video_frequency.s"
 .PHONY : help
 
 

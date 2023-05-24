@@ -1,0 +1,796 @@
+[0.000000] (-) TimerEvent: {}
+[0.000142] (img_transform) JobQueued: {'identifier': 'img_transform', 'dependencies': OrderedDict()}
+[0.000171] (img_transform) JobStarted: {'identifier': 'img_transform'}
+[0.011686] (img_transform) JobProgress: {'identifier': 'img_transform', 'progress': 'cmake'}
+[0.012129] (img_transform) JobProgress: {'identifier': 'img_transform', 'progress': 'build'}
+[0.012976] (img_transform) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/megsindelar/Final_Project/ros_ws/build/img_transform', '--', '-j8', '-l8'], 'cwd': '/home/megsindelar/Final_Project/ros_ws/build/img_transform', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('PYTHONWARNINGS', 'ignore:::setuptools.command.install,ignore:::setuptools.command.easy_install,ignore:::pkg_resources'), ('LANGUAGE', 'en'), ('USER', 'megsindelar'), ('LC_TIME', 'en_US.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/megsindelar/nuws/install/lib:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing_interfaces/lib:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka_interfaces/lib:/home/megsindelar/ME_495/Final_Proj/install/apriltag_ros/lib:/home/megsindelar/ME_495/Final_Proj/install/apriltag_msgs/lib:/home/megsindelar/ME_495/Final_Proj/install/apriltag/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('PICO_EXTRAS_PATH', '/home/megsindelar/Winter_Project/pico_setup/pico/pico-extras'), ('HOME', '/home/megsindelar'), ('OLDPWD', '/home/megsindelar'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'en_US.UTF-8'), ('MANAGERPID', '1629'), ('SYSTEMD_EXEC_PID', '2151'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator25ef4b219e3b005583550f2b0f9f990c3'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '3600'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/megsindelar/nuws/install:/home/megsindelar/ME_495/Final_Proj/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'megsindelar'), ('JOURNAL_STREAM', '8:37011'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('PKG_CONFIG_PATH', '/home/megsindelar/nuws/install/lib/x86_64-linux-gnu/pkgconfig:/home/megsindelar/nuws/install/lib/pkgconfig:/home/megsindelar/ME_495/Final_Proj/install/apriltag/lib/x86_64-linux-gnu/pkgconfig:/home/megsindelar/ME_495/Final_Proj/install/apriltag/lib/pkgconfig'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'megsindelar'), ('TERM', 'xterm-256color'), ('COPPELIASIM_ROOT_DIR', '/home/megsindelar/CoppeliaSim_Edu_V4_4_0_rev0_Ubuntu20_04'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/megsindelar/nuws/install/bin:/home/megsindelar/ME_495/Final_Proj/install/apriltag/bin:/opt/ros/humble/bin:/home/megsindelar/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/meg:@/tmp/.ICE-unix/1827,unix/meg:/tmp/.ICE-unix/1827'), ('INVOCATION_ID', 'ffc65ad54f0442599b893b4d5f40340d'), ('PAPERSIZE', 'letter'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'en_US.UTF-8'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('IBUS_DISABLE_SNOOPER', '1'), ('LC_TELEPHONE', 'en_US.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.HCH841'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('PICO_EXAMPLES_PATH', '/home/megsindelar/Winter_Project/pico_setup/pico/pico-examples'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/megsindelar/nuws/install:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing_interfaces:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka_interfaces:/home/megsindelar/ME_495/Final_Proj/install/apriltag_ros:/home/megsindelar/ME_495/Final_Proj/install/apriltag_msgs:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'en_US.UTF-8'), ('TERMINATOR_UUID', 'urn:uuid:e001fb28-6cac-4811-869d-7a84893c420c'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CMAKE_MODULE_PATH', '/home/megsindelar/nuws/install/share/warehouse_ros_mongo/cmake'), ('LC_MEASUREMENT', 'en_US.UTF-8'), ('LC_IDENTIFICATION', 'en_US.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/megsindelar/Final_Project/ros_ws/build/img_transform'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PICO_PLAYGROUND_PATH', '/home/megsindelar/Winter_Project/pico_setup/pico/pico-playground'), ('PYTHONPATH', '/home/megsindelar/nuws/install/lib/python3.10/pyrealsense2:/home/megsindelar/nuws/install/local/lib/python3.10/dist-packages:/home/megsindelar/nuws/install/lib/python3.10/site-packages:/home/megsindelar/ME_495/Final_Proj/build/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka/lib/python3.10/site-packages:/home/megsindelar/ME_495/Final_Proj/build/moveit_testing:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing/lib/python3.10/site-packages:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing_interfaces/local/lib/python3.10/dist-packages:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka_interfaces/local/lib/python3.10/dist-packages:/home/megsindelar/ME_495/Final_Proj/install/apriltag_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages:/home/megsindelar/Downloads/CARLA_DRIFT_0.9.5/PythonAPI/carla/dist/carla-0.9.5-py3.5-linux-x86_64.egg:/home/megsindelar/Downloads/CARLA_DRIFT_0.9.5/PythonAPI/carla/'), ('LC_NUMERIC', 'en_US.UTF-8'), ('LC_PAPER', 'en_US.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/megsindelar/nuws/install:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing_interfaces:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka_interfaces:/home/megsindelar/ME_495/Final_Proj/install/apriltag_ros:/home/megsindelar/ME_495/Final_Proj/install/apriltag_msgs:/home/megsindelar/ME_495/Final_Proj/install/apriltag:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble')]), 'shell': False}
+[0.058668] (img_transform) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target img_transform\x1b[0m\n'}
+[0.080328] (img_transform) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/img_transform.dir/src/img_transform.cpp.o\x1b[0m\n'}
+[0.098670] (-) TimerEvent: {}
+[0.199198] (-) TimerEvent: {}
+[0.299657] (-) TimerEvent: {}
+[0.400149] (-) TimerEvent: {}
+[0.500783] (-) TimerEvent: {}
+[0.601255] (-) TimerEvent: {}
+[0.701831] (-) TimerEvent: {}
+[0.802469] (-) TimerEvent: {}
+[0.902968] (-) TimerEvent: {}
+[1.003435] (-) TimerEvent: {}
+[1.103826] (-) TimerEvent: {}
+[1.204199] (-) TimerEvent: {}
+[1.304701] (-) TimerEvent: {}
+[1.405320] (-) TimerEvent: {}
+[1.506020] (-) TimerEvent: {}
+[1.606513] (-) TimerEvent: {}
+[1.707067] (-) TimerEvent: {}
+[1.807737] (-) TimerEvent: {}
+[1.908327] (-) TimerEvent: {}
+[2.008794] (-) TimerEvent: {}
+[2.109410] (-) TimerEvent: {}
+[2.209992] (-) TimerEvent: {}
+[2.310434] (-) TimerEvent: {}
+[2.411186] (-) TimerEvent: {}
+[2.511896] (-) TimerEvent: {}
+[2.612300] (-) TimerEvent: {}
+[2.712879] (-) TimerEvent: {}
+[2.813375] (-) TimerEvent: {}
+[2.914044] (-) TimerEvent: {}
+[2.934274] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:331:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktf2\x1b[m\x1b[K\xe2\x80\x99 does not name a type\n'}
+[2.934583] (img_transform) StderrLine: {'line': b'  331 |         \x1b[01;31m\x1b[Ktf2\x1b[m\x1b[K::Quaternion q;\n'}
+[2.934679] (img_transform) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[2.974238] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ImgTransform::timer_callback()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.974630] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:89:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktf2\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[2.974708] (img_transform) StderrLine: {'line': b'   89 |                 \x1b[01;31m\x1b[Ktf2\x1b[m\x1b[K::Quaternion q;\n'}
+[2.974844] (img_transform) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[2.981238] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:90:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kq\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.981699] (img_transform) StderrLine: {'line': b'   90 |                 \x1b[01;31m\x1b[Kq\x1b[m\x1b[K.setRPY(0, 0, theta);\n'}
+[2.981753] (img_transform) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[2.988323] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:90:32:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktheta\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.988568] (img_transform) StderrLine: {'line': b'   90 |                 q.setRPY(0, 0, \x1b[01;31m\x1b[Ktheta\x1b[m\x1b[K);\n'}
+[2.988634] (img_transform) StderrLine: {'line': b'      |                                \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[2.988693] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:91:65:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktf2\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[2.988752] (img_transform) StderrLine: {'line': b'   91 |                geometry_msgs::msg::Quaternion msg_quaternion = \x1b[01;31m\x1b[Ktf2\x1b[m\x1b[K::toMsg(q);\n'}
+[2.988808] (img_transform) StderrLine: {'line': b'      |                                                                \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[2.988875] (img_transform) StderrLine: {'line': b'\n'}
+[2.994405] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:155:32:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<cv::DMatch>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.994772] (img_transform) StderrLine: {'line': b'  155 |                 for (int i=0; \x1b[01;35m\x1b[Ki<good_matches.size()\x1b[m\x1b[K; i++){\n'}
+[2.994831] (img_transform) StderrLine: {'line': b'      |                               \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.995003] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:178:38:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Ksize_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.995097] (img_transform) StderrLine: {'line': b'  178 |                 for (size_t i = 0; \x1b[01;35m\x1b[Ki < N\x1b[m\x1b[K; ++i) {\n'}
+[2.995150] (img_transform) StderrLine: {'line': b'      |                                    \x1b[01;35m\x1b[K~~^~~\x1b[m\x1b[K\n'}
+[3.014286] (-) TimerEvent: {}
+[3.061963] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:194:38:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Ksize_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.062257] (img_transform) StderrLine: {'line': b'  194 |                 for (size_t i = 0; \x1b[01;35m\x1b[Ki < N\x1b[m\x1b[K; ++i) {\n'}
+[3.062326] (img_transform) StderrLine: {'line': b'      |                                    \x1b[01;35m\x1b[K~~^~~\x1b[m\x1b[K\n'}
+[3.114539] (-) TimerEvent: {}
+[3.132455] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:292:54:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kredeclaration of \xe2\x80\x98\x1b[01m\x1b[Kgeometry_msgs::msg::TransformStamped t\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.132837] (img_transform) StderrLine: {'line': b'  292 |                 geometry_msgs::msg::TransformStamped \x1b[01;31m\x1b[Kt\x1b[m\x1b[K;\n'}
+[3.132904] (img_transform) StderrLine: {'line': b'      |                                                      \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[3.132961] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:81:54:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kgeometry_msgs::msg::TransformStamped t\x1b[m\x1b[K\xe2\x80\x99 previously declared here\n'}
+[3.133027] (img_transform) StderrLine: {'line': b'   81 |                 geometry_msgs::msg::TransformStamped \x1b[01;36m\x1b[Kt\x1b[m\x1b[K;\n'}
+[3.133542] (img_transform) StderrLine: {'line': b'      |                                                      \x1b[01;36m\x1b[K^\x1b[m\x1b[K\n'}
+[3.135928] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:67:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno match for \xe2\x80\x98\x1b[01m\x1b[Koperator*\x1b[m\x1b[K\xe2\x80\x99 (operand types are \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>\x1b[m\x1b[K\xe2\x80\x99)\n'}
+[3.136227] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = \x1b[32m\x1b[Ktransformation.inverse()\x1b[m\x1b[K\x1b[01;31m\x1b[K*\x1b[m\x1b[K\x1b[34m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.136294] (img_transform) StderrLine: {'line': b'      |                                         \x1b[32m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\x1b[01;31m\x1b[K^\x1b[m\x1b[K\x1b[34m\x1b[K~~~~~~~~\x1b[m\x1b[K\n'}
+[3.136355] (img_transform) StderrLine: {'line': b'      |                                                               \x1b[32m\x1b[K|\x1b[m\x1b[K  \x1b[34m\x1b[K|\x1b[m\x1b[K\n'}
+[3.136414] (img_transform) StderrLine: {'line': b'      |                                                               \x1b[32m\x1b[K|\x1b[m\x1b[K  \x1b[34m\x1b[Kstd::vector<int>\x1b[m\x1b[K\n'}
+[3.136472] (img_transform) StderrLine: {'line': b'      |                                                               \x1b[32m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\n'}
+[3.136539] (img_transform) StderrLine: {'line': b'\n'}
+[3.136615] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/Core:19\x1b[m\x1b[K,\n'}
+[3.136674] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:12\x1b[m\x1b[K:\n'}
+[3.136732] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/plugins/CommonCwiseBinaryOps.h:50:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class T> const Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<typename Eigen::internal::traits<T>::Scalar, typename Eigen::internal::promote_scalar_arg<typename Eigen::internal::traits<T>::Scalar, T, Eigen::internal::has_ReturnType<Eigen::ScalarBinaryOpTraits<typename Eigen::internal::traits<T>::Scalar, T, Eigen::internal::scalar_product_op<typename Eigen::internal::traits<T>::Scalar, T> > >::value>::type>, const Derived, const typename Eigen::internal::plain_constant_type<Derived, typename Eigen::internal::promote_scalar_arg<typename Eigen::internal::traits<T>::Scalar, T, Eigen::internal::has_ReturnType<Eigen::ScalarBinaryOpTraits<typename Eigen::internal::traits<T>::Scalar, T, Eigen::internal::scalar_product_op<typename Eigen::internal::traits<T>::Scalar, T> > >::value>::type>::type> Eigen::MatrixBase<Derived>::operator*(const T&) const [with T = T; Derived = Eigen::Inverse<Eigen::Matrix<double, 3, 3> >]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.136803] (img_transform) StderrLine: {'line': b'   50 | \x1b[01;36m\x1b[KEIGEN_MAKE_SCALAR_BINARY_OP\x1b[m\x1b[K(operator*,product)\n'}
+[3.136860] (img_transform) StderrLine: {'line': b'      | \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.136917] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/plugins/CommonCwiseBinaryOps.h:50:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.136975] (img_transform) StderrLine: {'line': b'/usr/include/eigen3/Eigen/src/plugins/CommonCwiseBinaryOps.h: In substitution of \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class T> const Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, typename Eigen::internal::promote_scalar_arg<double, T, Eigen::internal::has_ReturnType<Eigen::ScalarBinaryOpTraits<double, T, Eigen::internal::scalar_product_op<double, T> > >::value>::type>, const Eigen::Inverse<Eigen::Matrix<double, 3, 3> >, const typename Eigen::internal::plain_constant_type<Eigen::Inverse<Eigen::Matrix<double, 3, 3> >, typename Eigen::internal::promote_scalar_arg<double, T, Eigen::internal::has_ReturnType<Eigen::ScalarBinaryOpTraits<double, T, Eigen::internal::scalar_product_op<double, T> > >::value>::type>::type> Eigen::MatrixBase<Eigen::Inverse<Eigen::Matrix<double, 3, 3> > >::operator*<T>(const T&) const [with T = std::vector<int>]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.137046] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K   required from here\n'}
+[3.137104] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/plugins/CommonCwiseBinaryOps.h:50:1:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno type named \xe2\x80\x98\x1b[01m\x1b[Ktype\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kstruct Eigen::internal::promote_scalar_arg<double, std::vector<int>, false>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.137166] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/Core:322\x1b[m\x1b[K,\n'}
+[3.137217] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:12\x1b[m\x1b[K:\n'}
+[3.137269] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/GeneralProduct.h:399:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class OtherDerived> const Eigen::Product<Derived, OtherDerived> Eigen::MatrixBase<Derived>::operator*(const Eigen::MatrixBase<OtherDerived>&) const [with OtherDerived = OtherDerived; Derived = Eigen::Inverse<Eigen::Matrix<double, 3, 3> >]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.137330] (img_transform) StderrLine: {'line': b'  399 | \x1b[01;36m\x1b[KMatrixBase<Derived>\x1b[m\x1b[K::operator*(const MatrixBase<OtherDerived> &other) const\n'}
+[3.137383] (img_transform) StderrLine: {'line': b'      | \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.137434] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/GeneralProduct.h:399:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.137489] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::MatrixBase<Derived>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.137543] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.137594] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.137645] (img_transform) StderrLine: {'line': b'\n'}
+[3.137694] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/Core:273\x1b[m\x1b[K,\n'}
+[3.137743] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:12\x1b[m\x1b[K:\n'}
+[3.137790] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/MatrixBase.h:185:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class DiagonalDerived> const Eigen::Product<Derived, OtherDerived, 1> Eigen::MatrixBase<Derived>::operator*(const Eigen::DiagonalBase<DiagonalDerived>&) const [with DiagonalDerived = DiagonalDerived; Derived = Eigen::Inverse<Eigen::Matrix<double, 3, 3> >]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.137840] (img_transform) StderrLine: {'line': b'  185 |     \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K*(const DiagonalBase<DiagonalDerived> &diagonal) const;\n'}
+[3.137889] (img_transform) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.137940] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/MatrixBase.h:185:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.137990] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::DiagonalBase<T>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.138038] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.138084] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.138132] (img_transform) StderrLine: {'line': b'\n'}
+[3.138177] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:47\x1b[m\x1b[K,\n'}
+[3.138224] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:3306\x1b[m\x1b[K,\n'}
+[3.138270] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.138316] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.138362] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.138408] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/complex:392:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> std::complex<_Tp> std::operator*(const std::complex<_Tp>&, const std::complex<_Tp>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.138456] (img_transform) StderrLine: {'line': b'  392 |     \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K*(const complex<_Tp>& __x, const complex<_Tp>& __y)\n'}
+[3.138505] (img_transform) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.138551] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/complex:392:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.138598] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst std::complex<_Tp>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.138646] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.138693] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.138739] (img_transform) StderrLine: {'line': b'\n'}
+[3.138783] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:47\x1b[m\x1b[K,\n'}
+[3.138827] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:3306\x1b[m\x1b[K,\n'}
+[3.138871] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.138915] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.138960] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.139010] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/complex:401:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> std::complex<_Tp> std::operator*(const std::complex<_Tp>&, const _Tp&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.139057] (img_transform) StderrLine: {'line': b'  401 |     \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K*(const complex<_Tp>& __x, const _Tp& __y)\n'}
+[3.139099] (img_transform) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.139141] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/complex:401:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.139183] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst std::complex<_Tp>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.139225] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.139268] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.139311] (img_transform) StderrLine: {'line': b'\n'}
+[3.139352] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:47\x1b[m\x1b[K,\n'}
+[3.139395] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:3306\x1b[m\x1b[K,\n'}
+[3.139443] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.139489] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.139536] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.139582] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/complex:410:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> std::complex<_Tp> std::operator*(const _Tp&, const std::complex<_Tp>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.139628] (img_transform) StderrLine: {'line': b'  410 |     \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K*(const _Tp& __x, const complex<_Tp>& __y)\n'}
+[3.139673] (img_transform) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.139719] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/complex:410:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.139765] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst std::complex<_Tp>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.139813] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.139859] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.139905] (img_transform) StderrLine: {'line': b'\n'}
+[3.139959] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:56\x1b[m\x1b[K,\n'}
+[3.140010] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.140060] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.140108] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.140159] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1246:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp, int m, int n> cv::Matx<_Tp, m, n> cv::operator*(const cv::Matx<_Tp, m, n>&, int)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.140214] (img_transform) StderrLine: {'line': b' 1246 | Matx<_Tp, m, n> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const Matx<_Tp, m, n>& a, int alpha)\n'}
+[3.140266] (img_transform) StderrLine: {'line': b'      |                 \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.140317] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1246:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.140369] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Matx<_Tp, m, n>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.140421] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.140473] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.140524] (img_transform) StderrLine: {'line': b'\n'}
+[3.140575] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:56\x1b[m\x1b[K,\n'}
+[3.140628] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.140682] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.140734] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.140784] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1252:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp, int m, int n> cv::Matx<_Tp, m, n> cv::operator*(const cv::Matx<_Tp, m, n>&, float)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.140839] (img_transform) StderrLine: {'line': b' 1252 | Matx<_Tp, m, n> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const Matx<_Tp, m, n>& a, float alpha)\n'}
+[3.140894] (img_transform) StderrLine: {'line': b'      |                 \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.140946] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1252:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.140998] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Matx<_Tp, m, n>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.141054] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.141107] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.141161] (img_transform) StderrLine: {'line': b'\n'}
+[3.141222] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:56\x1b[m\x1b[K,\n'}
+[3.141275] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.141329] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.141382] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.141433] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1258:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp, int m, int n> cv::Matx<_Tp, m, n> cv::operator*(const cv::Matx<_Tp, m, n>&, double)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.141486] (img_transform) StderrLine: {'line': b' 1258 | Matx<_Tp, m, n> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const Matx<_Tp, m, n>& a, double alpha)\n'}
+[3.141536] (img_transform) StderrLine: {'line': b'      |                 \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.141587] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1258:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.141638] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Matx<_Tp, m, n>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.141690] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.141741] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.141792] (img_transform) StderrLine: {'line': b'\n'}
+[3.141843] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:56\x1b[m\x1b[K,\n'}
+[3.141889] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.141933] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.142053] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.142099] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1264:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp, int m, int n> cv::Matx<_Tp, m, n> cv::operator*(int, const cv::Matx<_Tp, m, n>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.142144] (img_transform) StderrLine: {'line': b' 1264 | Matx<_Tp, m, n> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (int alpha, const Matx<_Tp, m, n>& a)\n'}
+[3.142186] (img_transform) StderrLine: {'line': b'      |                 \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.142228] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1264:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.142270] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Matx<_Tp, m, n>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.142315] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.142356] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.142399] (img_transform) StderrLine: {'line': b'\n'}
+[3.142440] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:56\x1b[m\x1b[K,\n'}
+[3.142482] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.142524] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.142566] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.142608] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1270:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp, int m, int n> cv::Matx<_Tp, m, n> cv::operator*(float, const cv::Matx<_Tp, m, n>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.142652] (img_transform) StderrLine: {'line': b' 1270 | Matx<_Tp, m, n> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (float alpha, const Matx<_Tp, m, n>& a)\n'}
+[3.142694] (img_transform) StderrLine: {'line': b'      |                 \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.142735] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1270:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.142780] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Matx<_Tp, m, n>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.142823] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.142865] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.142906] (img_transform) StderrLine: {'line': b'\n'}
+[3.142949] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:56\x1b[m\x1b[K,\n'}
+[3.142989] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.143029] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.143069] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.143108] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1276:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp, int m, int n> cv::Matx<_Tp, m, n> cv::operator*(double, const cv::Matx<_Tp, m, n>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.143148] (img_transform) StderrLine: {'line': b' 1276 | Matx<_Tp, m, n> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (double alpha, const Matx<_Tp, m, n>& a)\n'}
+[3.143189] (img_transform) StderrLine: {'line': b'      |                 \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.143229] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1276:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.143272] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Matx<_Tp, m, n>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.143316] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.143357] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.143400] (img_transform) StderrLine: {'line': b'\n'}
+[3.143441] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:56\x1b[m\x1b[K,\n'}
+[3.143484] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.143525] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.143565] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.143605] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1316:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp, int m, int n, int l> cv::Matx<_Tp, m, n> cv::operator*(const cv::Matx<_Tp, m, l>&, const cv::Matx<_Tp, l, n>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.143647] (img_transform) StderrLine: {'line': b' 1316 | Matx<_Tp, m, n> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const Matx<_Tp, m, l>& a, const Matx<_Tp, l, n>& b)\n'}
+[3.143688] (img_transform) StderrLine: {'line': b'      |                 \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.143727] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1316:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.143776] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Matx<_Tp, m, l>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.143825] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.143874] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.143920] (img_transform) StderrLine: {'line': b'\n'}
+[3.143977] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:56\x1b[m\x1b[K,\n'}
+[3.144027] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.144077] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.144126] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.144174] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1322:13:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp, int m, int n> cv::Vec<_Tp, m> cv::operator*(const cv::Matx<_Tp, m, n>&, const cv::Vec<_Tp, n>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.144225] (img_transform) StderrLine: {'line': b' 1322 | Vec<_Tp, m> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const Matx<_Tp, m, n>& a, const Vec<_Tp, n>& b)\n'}
+[3.144281] (img_transform) StderrLine: {'line': b'      |             \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.144328] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1322:13:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.144377] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Matx<_Tp, m, n>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.144427] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.144475] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.144522] (img_transform) StderrLine: {'line': b'\n'}
+[3.144565] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:56\x1b[m\x1b[K,\n'}
+[3.144608] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.144651] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.144694] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.144737] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1429:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp, int cn> cv::Vec<_Tp, m> cv::operator*(const cv::Vec<_Tp, m>&, int)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.144781] (img_transform) StderrLine: {'line': b' 1429 | Vec<_Tp, cn> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const Vec<_Tp, cn>& a, int alpha)\n'}
+[3.144824] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.144867] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1429:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.144912] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Vec<_Tp, m>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.144959] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.145006] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.145051] (img_transform) StderrLine: {'line': b'\n'}
+[3.145092] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:56\x1b[m\x1b[K,\n'}
+[3.145134] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.145176] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.145218] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.145263] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1435:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp, int cn> cv::Vec<_Tp, m> cv::operator*(int, const cv::Vec<_Tp, m>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.145306] (img_transform) StderrLine: {'line': b' 1435 | Vec<_Tp, cn> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (int alpha, const Vec<_Tp, cn>& a)\n'}
+[3.145348] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.145390] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1435:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.145433] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Vec<_Tp, m>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.145476] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.145518] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.145559] (img_transform) StderrLine: {'line': b'\n'}
+[3.145601] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:56\x1b[m\x1b[K,\n'}
+[3.145643] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.145685] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.145727] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.145768] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1441:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp, int cn> cv::Vec<_Tp, m> cv::operator*(const cv::Vec<_Tp, m>&, float)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.145811] (img_transform) StderrLine: {'line': b' 1441 | Vec<_Tp, cn> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const Vec<_Tp, cn>& a, float alpha)\n'}
+[3.145854] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.145895] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1441:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.145940] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Vec<_Tp, m>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.145986] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.146029] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.146071] (img_transform) StderrLine: {'line': b'\n'}
+[3.146113] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:56\x1b[m\x1b[K,\n'}
+[3.146153] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.146198] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.146240] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.146281] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1447:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp, int cn> cv::Vec<_Tp, m> cv::operator*(float, const cv::Vec<_Tp, m>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.146324] (img_transform) StderrLine: {'line': b' 1447 | Vec<_Tp, cn> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (float alpha, const Vec<_Tp, cn>& a)\n'}
+[3.146366] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.146408] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1447:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.146449] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Vec<_Tp, m>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.146494] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.146535] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.146577] (img_transform) StderrLine: {'line': b'\n'}
+[3.146616] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:56\x1b[m\x1b[K,\n'}
+[3.146659] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.146699] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.146739] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.146780] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1453:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp, int cn> cv::Vec<_Tp, m> cv::operator*(const cv::Vec<_Tp, m>&, double)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.146821] (img_transform) StderrLine: {'line': b' 1453 | Vec<_Tp, cn> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const Vec<_Tp, cn>& a, double alpha)\n'}
+[3.146862] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.146902] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1453:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.146943] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Vec<_Tp, m>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.146985] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.147025] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.147068] (img_transform) StderrLine: {'line': b'\n'}
+[3.147108] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:56\x1b[m\x1b[K,\n'}
+[3.147149] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.147189] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.147230] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.147271] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1459:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp, int cn> cv::Vec<_Tp, m> cv::operator*(double, const cv::Vec<_Tp, m>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.147312] (img_transform) StderrLine: {'line': b' 1459 | Vec<_Tp, cn> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (double alpha, const Vec<_Tp, cn>& a)\n'}
+[3.147354] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.147394] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1459:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.147435] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Vec<_Tp, m>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.147478] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.147520] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.147560] (img_transform) StderrLine: {'line': b'\n'}
+[3.147600] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:56\x1b[m\x1b[K,\n'}
+[3.147639] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.147680] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.147719] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.147759] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1490:43:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Vec<_Tp, 4> cv::operator*(const cv::Vec<_Tp, 4>&, const cv::Vec<_Tp, 4>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.147802] (img_transform) StderrLine: {'line': b' 1490 | template<typename _Tp> inline Vec<_Tp, 4> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const Vec<_Tp, 4>& v1, const Vec<_Tp, 4>& v2)\n'}
+[3.147841] (img_transform) StderrLine: {'line': b'      |                                           \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.147881] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/matx.hpp:1490:43:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.147921] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Vec<_Tp, 4>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.147973] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.148013] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.148051] (img_transform) StderrLine: {'line': b'\n'}
+[3.148094] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[3.148134] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.148174] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.148214] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.148255] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1073:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Complex<_Tp> cv::operator*(const cv::Complex<_Tp>&, const cv::Complex<_Tp>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.148297] (img_transform) StderrLine: {'line': b' 1073 | Complex<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const Complex<_Tp>& a, const Complex<_Tp>& b)\n'}
+[3.148338] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.148378] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1073:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.148419] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Complex<_Tp>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.148460] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.148500] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.148540] (img_transform) StderrLine: {'line': b'\n'}
+[3.148583] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[3.148626] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.148669] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.148711] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.148754] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1079:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Complex<_Tp> cv::operator*(const cv::Complex<_Tp>&, _Tp)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.148797] (img_transform) StderrLine: {'line': b' 1079 | Complex<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const Complex<_Tp>& a, _Tp b)\n'}
+[3.148840] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.148881] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1079:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.148926] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Complex<_Tp>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.148973] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.149016] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.149061] (img_transform) StderrLine: {'line': b'\n'}
+[3.149104] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[3.149147] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.149189] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.149231] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.149273] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1085:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Complex<_Tp> cv::operator*(_Tp, const cv::Complex<_Tp>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.149316] (img_transform) StderrLine: {'line': b' 1085 | Complex<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (_Tp b, const Complex<_Tp>& a)\n'}
+[3.149359] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.149401] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1085:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.149443] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Complex<_Tp>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.149485] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.149526] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.149566] (img_transform) StderrLine: {'line': b'\n'}
+[3.149608] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[3.149650] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.149692] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.149733] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.149775] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1351:13:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Point_<_Tp> cv::operator*(const cv::Point_<_Tp>&, int)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.149817] (img_transform) StderrLine: {'line': b' 1351 | Point_<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const Point_<_Tp>& a, int b)\n'}
+[3.149860] (img_transform) StderrLine: {'line': b'      |             \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.149901] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1351:13:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.149943] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Point_<_Tp>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.149985] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.150025] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.150066] (img_transform) StderrLine: {'line': b'\n'}
+[3.150107] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[3.150148] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.150190] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.150231] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.150271] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1357:13:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Point_<_Tp> cv::operator*(int, const cv::Point_<_Tp>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.150313] (img_transform) StderrLine: {'line': b' 1357 | Point_<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (int a, const Point_<_Tp>& b)\n'}
+[3.150355] (img_transform) StderrLine: {'line': b'      |             \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.150397] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1357:13:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.150438] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Point_<_Tp>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.150480] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.150522] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.150564] (img_transform) StderrLine: {'line': b'\n'}
+[3.150605] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[3.150649] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.150691] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.150734] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.150776] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1363:13:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Point_<_Tp> cv::operator*(const cv::Point_<_Tp>&, float)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.150821] (img_transform) StderrLine: {'line': b' 1363 | Point_<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const Point_<_Tp>& a, float b)\n'}
+[3.150862] (img_transform) StderrLine: {'line': b'      |             \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.150904] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1363:13:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.150946] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Point_<_Tp>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.150988] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.151029] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.151069] (img_transform) StderrLine: {'line': b'\n'}
+[3.151109] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[3.151150] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.151190] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.151230] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.151271] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1369:13:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Point_<_Tp> cv::operator*(float, const cv::Point_<_Tp>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.151312] (img_transform) StderrLine: {'line': b' 1369 | Point_<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (float a, const Point_<_Tp>& b)\n'}
+[3.151353] (img_transform) StderrLine: {'line': b'      |             \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.151395] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1369:13:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.151437] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Point_<_Tp>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.151480] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.151522] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.151563] (img_transform) StderrLine: {'line': b'\n'}
+[3.151603] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[3.151643] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.151684] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.151723] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.151766] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1375:13:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Point_<_Tp> cv::operator*(const cv::Point_<_Tp>&, double)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.151808] (img_transform) StderrLine: {'line': b' 1375 | Point_<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const Point_<_Tp>& a, double b)\n'}
+[3.151848] (img_transform) StderrLine: {'line': b'      |             \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.151888] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1375:13:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.151928] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Point_<_Tp>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.151976] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.152018] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.152060] (img_transform) StderrLine: {'line': b'\n'}
+[3.152101] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[3.152142] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.152186] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.152235] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.152280] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1381:13:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Point_<_Tp> cv::operator*(double, const cv::Point_<_Tp>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.152329] (img_transform) StderrLine: {'line': b' 1381 | Point_<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (double a, const Point_<_Tp>& b)\n'}
+[3.152376] (img_transform) StderrLine: {'line': b'      |             \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.152422] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1381:13:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.152467] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Point_<_Tp>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.152514] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.152559] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.152605] (img_transform) StderrLine: {'line': b'\n'}
+[3.152650] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[3.152698] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.152743] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.152785] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.152828] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1387:13:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Point_<_Tp> cv::operator*(const cv::Matx<_Tp, 2, 2>&, const cv::Point_<_Tp>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.152871] (img_transform) StderrLine: {'line': b' 1387 | Point_<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const Matx<_Tp, 2, 2>& a, const Point_<_Tp>& b)\n'}
+[3.152914] (img_transform) StderrLine: {'line': b'      |             \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.152957] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1387:13:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.153000] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Matx<_Tp, 2, 2>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.153044] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.153084] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.153124] (img_transform) StderrLine: {'line': b'\n'}
+[3.153164] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[3.153204] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.153244] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.153285] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.153325] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1394:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Point3_<_Tp> cv::operator*(const cv::Matx<_Tp, 3, 3>&, const cv::Point_<_Tp>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.153366] (img_transform) StderrLine: {'line': b' 1394 | Point3_<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const Matx<_Tp, 3, 3>& a, const Point_<_Tp>& b)\n'}
+[3.153405] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.153445] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1394:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.153484] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Matx<_Tp, 3, 3>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.153526] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.153567] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.153610] (img_transform) StderrLine: {'line': b'\n'}
+[3.153650] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[3.153690] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.153747] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.153800] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.153846] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1620:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Point3_<_Tp> cv::operator*(const cv::Point3_<_Tp>&, int)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.153893] (img_transform) StderrLine: {'line': b' 1620 | Point3_<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const Point3_<_Tp>& a, int b)\n'}
+[3.153937] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.153983] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1620:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.154030] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Point3_<_Tp>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.154077] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.154124] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.154171] (img_transform) StderrLine: {'line': b'\n'}
+[3.154217] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[3.154263] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.154310] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.154356] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.154402] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1626:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Point3_<_Tp> cv::operator*(int, const cv::Point3_<_Tp>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.154453] (img_transform) StderrLine: {'line': b' 1626 | Point3_<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (int a, const Point3_<_Tp>& b)\n'}
+[3.154732] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.154847] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1626:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.154901] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Point3_<_Tp>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.154959] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.155232] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.155309] (img_transform) StderrLine: {'line': b'\n'}
+[3.155357] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[3.155407] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.155470] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.155523] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.155573] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1632:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Point3_<_Tp> cv::operator*(const cv::Point3_<_Tp>&, float)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.155624] (img_transform) StderrLine: {'line': b' 1632 | Point3_<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const Point3_<_Tp>& a, float b)\n'}
+[3.155673] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.155724] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1632:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.155774] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Point3_<_Tp>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.155827] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.155879] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.155930] (img_transform) StderrLine: {'line': b'\n'}
+[3.155987] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[3.156039] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.156091] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.156145] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.156197] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1638:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Point3_<_Tp> cv::operator*(float, const cv::Point3_<_Tp>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.156247] (img_transform) StderrLine: {'line': b' 1638 | Point3_<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (float a, const Point3_<_Tp>& b)\n'}
+[3.156296] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.156341] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1638:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.156391] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Point3_<_Tp>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.156438] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.156484] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.156530] (img_transform) StderrLine: {'line': b'\n'}
+[3.156574] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[3.156620] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.156666] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.156712] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.156757] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1644:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Point3_<_Tp> cv::operator*(const cv::Point3_<_Tp>&, double)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.156804] (img_transform) StderrLine: {'line': b' 1644 | Point3_<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const Point3_<_Tp>& a, double b)\n'}
+[3.156850] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.156895] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1644:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.156942] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Point3_<_Tp>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.156988] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.157033] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.157077] (img_transform) StderrLine: {'line': b'\n'}
+[3.157123] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[3.157168] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.157214] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.157256] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.157300] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1650:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Point3_<_Tp> cv::operator*(double, const cv::Point3_<_Tp>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.157343] (img_transform) StderrLine: {'line': b' 1650 | Point3_<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (double a, const Point3_<_Tp>& b)\n'}
+[3.157389] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.157433] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1650:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.157476] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Point3_<_Tp>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.157520] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.157563] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.157606] (img_transform) StderrLine: {'line': b'\n'}
+[3.157649] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[3.157691] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.157737] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.157780] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.157823] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1656:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Point3_<_Tp> cv::operator*(const cv::Matx<_Tp, 3, 3>&, const cv::Point3_<_Tp>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.157867] (img_transform) StderrLine: {'line': b' 1656 | Point3_<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const Matx<_Tp, 3, 3>& a, const Point3_<_Tp>& b)\n'}
+[3.157909] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.157952] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1656:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.157998] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Matx<_Tp, 3, 3>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.158046] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.158089] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.158136] (img_transform) StderrLine: {'line': b'\n'}
+[3.158181] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[3.158225] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.158270] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.158316] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.158360] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1663:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Matx<T2, 4, 1> cv::operator*(const cv::Matx<_Tp, 4, 4>&, const cv::Point3_<_Tp>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.158409] (img_transform) StderrLine: {'line': b' 1663 | Matx<_Tp, 4, 1> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const Matx<_Tp, 4, 4>& a, const Point3_<_Tp>& b)\n'}
+[3.158454] (img_transform) StderrLine: {'line': b'      |                 \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.158499] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1663:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.158543] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Matx<_Tp, 4, 4>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.158590] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.158644] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.158686] (img_transform) StderrLine: {'line': b'\n'}
+[3.158729] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[3.158772] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.158814] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.158856] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.158898] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1767:12:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Size_<_Tp> cv::operator*(const cv::Size_<_Tp>&, _Tp)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.158942] (img_transform) StderrLine: {'line': b' 1767 | Size_<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const Size_<_Tp>& a, _Tp b)\n'}
+[3.158983] (img_transform) StderrLine: {'line': b'      |            \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.159023] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:1767:12:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.159064] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Size_<_Tp>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.159106] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.159146] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.159189] (img_transform) StderrLine: {'line': b'\n'}
+[3.159229] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[3.159269] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.159308] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.159351] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.159390] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:2334:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Scalar_<_Tp> cv::operator*(const cv::Scalar_<_Tp>&, _Tp)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.159431] (img_transform) StderrLine: {'line': b' 2334 | Scalar_<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const Scalar_<_Tp>& a, _Tp alpha)\n'}
+[3.159471] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.159511] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:2334:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.159550] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Scalar_<_Tp>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.159599] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.159639] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.159679] (img_transform) StderrLine: {'line': b'\n'}
+[3.159719] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[3.159758] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.159799] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.159839] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.159879] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:2343:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Scalar_<_Tp> cv::operator*(_Tp, const cv::Scalar_<_Tp>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.159920] (img_transform) StderrLine: {'line': b' 2343 | Scalar_<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (_Tp alpha, const Scalar_<_Tp>& a)\n'}
+[3.159978] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.160019] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:2343:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.160059] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Scalar_<_Tp>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.160101] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.160142] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.160185] (img_transform) StderrLine: {'line': b'\n'}
+[3.160259] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[3.160334] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.160380] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.160449] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.160497] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:2359:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Scalar_<_Tp> cv::operator*(const cv::Scalar_<_Tp>&, const cv::Scalar_<_Tp>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.160561] (img_transform) StderrLine: {'line': b' 2359 | Scalar_<_Tp> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const Scalar_<_Tp>& a, const Scalar_<_Tp>& b)\n'}
+[3.160624] (img_transform) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.160675] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:2359:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.160741] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Scalar_<_Tp>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.160795] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.160864] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.160930] (img_transform) StderrLine: {'line': b'\n'}
+[3.160996] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[3.161070] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.161138] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.161204] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.161272] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:2425:8:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> cv::Scalar cv::operator*(const cv::Matx<_Tp, 4, 4>&, const Scalar&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.161340] (img_transform) StderrLine: {'line': b' 2425 | Scalar \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const Matx<_Tp, 4, 4>& a, const Scalar& b)\n'}
+[3.161410] (img_transform) StderrLine: {'line': b'      |        \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.161482] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:2425:8:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.161571] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Matx<_Tp, 4, 4>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.161664] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.161751] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.161837] (img_transform) StderrLine: {'line': b'\n'}
+[3.161920] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:58\x1b[m\x1b[K,\n'}
+[3.162002] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.162085] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.162173] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.162252] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3635:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp, int m, int n> cv::MatExpr cv::operator*(const cv::Mat&, const cv::Matx<_Tp, m, n>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.162333] (img_transform) StderrLine: {'line': b' 3635 | MatExpr \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const Mat& a, const Matx<_Tp, m, n>& b) { return a * Mat(b); }\n'}
+[3.162412] (img_transform) StderrLine: {'line': b'      |         \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.162490] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3635:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.162570] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Matx<_Tp, m, n>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.162655] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.162732] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.162809] (img_transform) StderrLine: {'line': b'\n'}
+[3.162888] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:58\x1b[m\x1b[K,\n'}
+[3.162965] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.163041] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.163117] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.163191] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3637:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp, int m, int n> cv::MatExpr cv::operator*(const cv::Matx<_Tp, m, n>&, const cv::Mat&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.163268] (img_transform) StderrLine: {'line': b' 3637 | MatExpr \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const Matx<_Tp, m, n>& a, const Mat& b) { return Mat(a) * b; }\n'}
+[3.163351] (img_transform) StderrLine: {'line': b'      |         \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.163427] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3637:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.163503] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Matx<_Tp, m, n>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.163590] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.163669] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.163763] (img_transform) StderrLine: {'line': b'\n'}
+[3.163847] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/Core:19\x1b[m\x1b[K,\n'}
+[3.163933] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:12\x1b[m\x1b[K:\n'}
+[3.164046] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/plugins/CommonCwiseBinaryOps.h:50:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class T> const Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<typename Eigen::internal::promote_scalar_arg<double, T, Eigen::internal::has_ReturnType<Eigen::ScalarBinaryOpTraits<T, double, Eigen::internal::scalar_product_op<T, double> > >::value>::type, double>, const typename Eigen::internal::plain_constant_type<Eigen::Matrix<double, 3, 3>, typename Eigen::internal::promote_scalar_arg<double, T, Eigen::internal::has_ReturnType<Eigen::ScalarBinaryOpTraits<T, double, Eigen::internal::scalar_product_op<T, double> > >::value>::type>::type, const Eigen::Matrix<double, 3, 3> > Eigen::operator*(const T&, const StorageBaseType&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.164141] (img_transform) StderrLine: {'line': b'   50 | \x1b[01;36m\x1b[KEIGEN_MAKE_SCALAR_BINARY_OP\x1b[m\x1b[K(operator*,product)\n'}
+[3.164265] (img_transform) StderrLine: {'line': b'      | \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.164367] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/plugins/CommonCwiseBinaryOps.h:50:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.164471] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  cannot convert \xe2\x80\x98\x1b[01m\x1b[Kprev_pos\x1b[m\x1b[K\xe2\x80\x99 (type \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>\x1b[m\x1b[K\xe2\x80\x99) to type \xe2\x80\x98\x1b[01m\x1b[Kconst StorageBaseType&\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::MatrixBase<Eigen::Matrix<double, 3, 3> >&\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[3.164584] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.164684] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.164784] (img_transform) StderrLine: {'line': b'\n'}
+[3.164883] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/Core:19\x1b[m\x1b[K,\n'}
+[3.164981] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:12\x1b[m\x1b[K:\n'}
+[3.165078] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/plugins/CommonCwiseBinaryOps.h:50:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class T> const Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<typename Eigen::internal::promote_scalar_arg<double, T, Eigen::internal::has_ReturnType<Eigen::ScalarBinaryOpTraits<T, double, Eigen::internal::scalar_product_op<T, double> > >::value>::type, double>, const typename Eigen::internal::plain_constant_type<Eigen::Inverse<Eigen::Matrix<double, 3, 3> >, typename Eigen::internal::promote_scalar_arg<double, T, Eigen::internal::has_ReturnType<Eigen::ScalarBinaryOpTraits<T, double, Eigen::internal::scalar_product_op<T, double> > >::value>::type>::type, const Eigen::Inverse<Eigen::Matrix<double, 3, 3> > > Eigen::operator*(const T&, const StorageBaseType&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.165188] (img_transform) StderrLine: {'line': b'   50 | \x1b[01;36m\x1b[KEIGEN_MAKE_SCALAR_BINARY_OP\x1b[m\x1b[K(operator*,product)\n'}
+[3.165284] (img_transform) StderrLine: {'line': b'      | \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.165377] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/plugins/CommonCwiseBinaryOps.h:50:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.165470] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  cannot convert \xe2\x80\x98\x1b[01m\x1b[Kprev_pos\x1b[m\x1b[K\xe2\x80\x99 (type \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>\x1b[m\x1b[K\xe2\x80\x99) to type \xe2\x80\x98\x1b[01m\x1b[Kconst StorageBaseType&\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::MatrixBase<Eigen::Inverse<Eigen::Matrix<double, 3, 3> > >&\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[3.165567] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.165664] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.165758] (img_transform) StderrLine: {'line': b'\n'}
+[3.165851] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/Core:326\x1b[m\x1b[K,\n'}
+[3.165956] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:12\x1b[m\x1b[K:\n'}
+[3.166047] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/PermutationMatrix.h:515:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class MatrixDerived, class PermutationDerived> const Eigen::Product<MatrixDerived, PermutationDerived, 2> Eigen::operator*(const Eigen::MatrixBase<Derived>&, const Eigen::PermutationBase<PermutationDerived>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.166142] (img_transform) StderrLine: {'line': b'  515 | \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K*(const MatrixBase<MatrixDerived> &matrix,\n'}
+[3.166232] (img_transform) StderrLine: {'line': b'      | \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.166338] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/PermutationMatrix.h:515:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.166431] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::PermutationBase<PermutationDerived>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.166527] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.166632] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.166731] (img_transform) StderrLine: {'line': b'\n'}
+[3.166831] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/Core:326\x1b[m\x1b[K,\n'}
+[3.166929] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:12\x1b[m\x1b[K:\n'}
+[3.167040] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/PermutationMatrix.h:527:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class PermutationDerived, class MatrixDerived> const Eigen::Product<MatrixDerived, PermutationDerived, 2> Eigen::operator*(const Eigen::PermutationBase<PermutationDerived>&, const Eigen::MatrixBase<U>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.167152] (img_transform) StderrLine: {'line': b'  527 | \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K*(const PermutationBase<PermutationDerived> &permutation,\n'}
+[3.167258] (img_transform) StderrLine: {'line': b'      | \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.167356] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/PermutationMatrix.h:527:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.167453] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::PermutationBase<PermutationDerived>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.167555] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.167655] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.167755] (img_transform) StderrLine: {'line': b'\n'}
+[3.167850] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/Core:327\x1b[m\x1b[K,\n'}
+[3.167955] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:12\x1b[m\x1b[K:\n'}
+[3.168247] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/Transpositions.h:313:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class MatrixDerived, class TranspositionsDerived> const Eigen::Product<MatrixDerived, PermutationDerived, 2> Eigen::operator*(const Eigen::MatrixBase<Derived>&, const Eigen::TranspositionsBase<TranspositionsDerived>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.168364] (img_transform) StderrLine: {'line': b'  313 | \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K*(const MatrixBase<MatrixDerived> &matrix,\n'}
+[3.168472] (img_transform) StderrLine: {'line': b'      | \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.168580] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/Transpositions.h:313:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.168688] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::TranspositionsBase<TranspositionsDerived>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.168799] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.168903] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.168997] (img_transform) StderrLine: {'line': b'\n'}
+[3.169091] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/Core:327\x1b[m\x1b[K,\n'}
+[3.169193] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:12\x1b[m\x1b[K:\n'}
+[3.169295] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/Transpositions.h:325:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class TranspositionsDerived, class MatrixDerived> const Eigen::Product<MatrixDerived, PermutationDerived, 2> Eigen::operator*(const Eigen::TranspositionsBase<TranspositionsDerived>&, const Eigen::MatrixBase<U>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.169408] (img_transform) StderrLine: {'line': b'  325 | \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K*(const TranspositionsBase<TranspositionsDerived> &transpositions,\n'}
+[3.169508] (img_transform) StderrLine: {'line': b'      | \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.169605] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/Transpositions.h:325:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.169711] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::TranspositionsBase<TranspositionsDerived>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.169814] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.169904] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.169995] (img_transform) StderrLine: {'line': b'\n'}
+[3.170086] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/Householder:24\x1b[m\x1b[K,\n'}
+[3.170188] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/QR:15\x1b[m\x1b[K,\n'}
+[3.170288] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/SVD:11\x1b[m\x1b[K,\n'}
+[3.170384] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/teaser/registration.h:16\x1b[m\x1b[K,\n'}
+[3.170647] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:15\x1b[m\x1b[K:\n'}
+[3.170747] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Householder/HouseholderSequence.h:513:99:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class OtherDerived, class VectorsType, class CoeffsType, int Side> typename Eigen::internal::matrix_type_times_scalar_type<typename VectorsType::Scalar, OtherDerived>::Type Eigen::operator*(const Eigen::MatrixBase<Derived>&, const Eigen::HouseholderSequence<VectorsType, CoeffsType, Side>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.170869] (img_transform) StderrLine: {'line': b'  513 | s_scalar_type<typename VectorsType::Scalar,OtherDerived>::Type \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K*(const MatrixBase<OtherDerived>& other, const HouseholderSequence<VectorsType,CoeffsType,Side>& h)\n'}
+[3.170971] (img_transform) StderrLine: {'line': b'      |                                                                \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.171071] (img_transform) StderrLine: {'line': b'\n'}
+[3.171175] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Householder/HouseholderSequence.h:513:99:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.171276] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::HouseholderSequence<VectorsType, CoeffsType, Side>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.171385] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.171485] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.171583] (img_transform) StderrLine: {'line': b'\n'}
+[3.171689] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/Geometry:46\x1b[m\x1b[K,\n'}
+[3.171793] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/teaser/registration.h:17\x1b[m\x1b[K,\n'}
+[3.171896] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:15\x1b[m\x1b[K:\n'}
+[3.172002] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Geometry/Scaling.h:135:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class Derived, class Scalar> Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<typename Eigen::internal::traits<T>::Scalar, Scalar>, const Derived, const typename Eigen::internal::plain_constant_type<Expr, Scalar>::type> Eigen::operator*(const Eigen::MatrixBase<Derived>&, const Eigen::UniformScaling<Scalar>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.172107] (img_transform) StderrLine: {'line': b'  135 | \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K*(const MatrixBase<Derived>& matrix, const UniformScaling<Scalar>& s)\n'}
+[3.172185] (img_transform) StderrLine: {'line': b'      | \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.172265] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Geometry/Scaling.h:135:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.172334] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:297:68:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::UniformScaling<Scalar>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.172392] (img_transform) StderrLine: {'line': b'  297 |               vector<int> current_pos = transformation.inverse()*\x1b[01;36m\x1b[Kprev_pos\x1b[m\x1b[K;\n'}
+[3.172445] (img_transform) StderrLine: {'line': b'      |                                                                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.172498] (img_transform) StderrLine: {'line': b'\n'}
+[3.172552] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:58\x1b[m\x1b[K,\n'}
+[3.172606] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[3.172659] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[3.172711] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[3.172761] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3626:20:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kcv::MatExpr cv::operator*(const cv::Mat&, const cv::Mat&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.172813] (img_transform) StderrLine: {'line': b' 3626 | CV_EXPORTS MatExpr \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const Mat& a, const Mat& b);\n'}
+[3.172863] (img_transform) StderrLine: {'line': b'      |                    \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.172917] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3626:43:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  no known conversion for argument 1 from \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 to \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Mat&\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.172970] (img_transform) StderrLine: {'line': b' 3626 | CV_EXPORTS MatExpr operator * (\x1b[01;36m\x1b[Kconst Mat& a\x1b[m\x1b[K, const Mat& b);\n'}
+[3.173019] (img_transform) StderrLine: {'line': b'      |                                \x1b[01;36m\x1b[K~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[3.173066] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3627:20:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kcv::MatExpr cv::operator*(const cv::Mat&, double)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.173115] (img_transform) StderrLine: {'line': b' 3627 | CV_EXPORTS MatExpr \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const Mat& a, double s);\n'}
+[3.173162] (img_transform) StderrLine: {'line': b'      |                    \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.173209] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3627:43:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  no known conversion for argument 1 from \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 to \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Mat&\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.173261] (img_transform) StderrLine: {'line': b' 3627 | CV_EXPORTS MatExpr operator * (\x1b[01;36m\x1b[Kconst Mat& a\x1b[m\x1b[K, double s);\n'}
+[3.173310] (img_transform) StderrLine: {'line': b'      |                                \x1b[01;36m\x1b[K~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[3.173355] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3628:20:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kcv::MatExpr cv::operator*(double, const cv::Mat&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.173401] (img_transform) StderrLine: {'line': b' 3628 | CV_EXPORTS MatExpr \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (double s, const Mat& a);\n'}
+[3.173446] (img_transform) StderrLine: {'line': b'      |                    \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.173492] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3628:39:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  no known conversion for argument 1 from \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 to \xe2\x80\x98\x1b[01m\x1b[Kdouble\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.173539] (img_transform) StderrLine: {'line': b' 3628 | CV_EXPORTS MatExpr operator * (\x1b[01;36m\x1b[Kdouble s\x1b[m\x1b[K, const Mat& a);\n'}
+[3.173585] (img_transform) StderrLine: {'line': b'      |                                \x1b[01;36m\x1b[K~~~~~~~^\x1b[m\x1b[K\n'}
+[3.173631] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3629:20:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kcv::MatExpr cv::operator*(const cv::MatExpr&, const cv::Mat&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.173679] (img_transform) StderrLine: {'line': b' 3629 | CV_EXPORTS MatExpr \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const MatExpr& e, const Mat& m);\n'}
+[3.173724] (img_transform) StderrLine: {'line': b'      |                    \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.173769] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3629:47:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  no known conversion for argument 1 from \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 to \xe2\x80\x98\x1b[01m\x1b[Kconst cv::MatExpr&\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.173819] (img_transform) StderrLine: {'line': b' 3629 | CV_EXPORTS MatExpr operator * (\x1b[01;36m\x1b[Kconst MatExpr& e\x1b[m\x1b[K, const Mat& m);\n'}
+[3.173866] (img_transform) StderrLine: {'line': b'      |                                \x1b[01;36m\x1b[K~~~~~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[3.173909] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3630:20:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kcv::MatExpr cv::operator*(const cv::Mat&, const cv::MatExpr&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.173954] (img_transform) StderrLine: {'line': b' 3630 | CV_EXPORTS MatExpr \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const Mat& m, const MatExpr& e);\n'}
+[3.173998] (img_transform) StderrLine: {'line': b'      |                    \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.174042] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3630:43:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  no known conversion for argument 1 from \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 to \xe2\x80\x98\x1b[01m\x1b[Kconst cv::Mat&\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.174087] (img_transform) StderrLine: {'line': b' 3630 | CV_EXPORTS MatExpr operator * (\x1b[01;36m\x1b[Kconst Mat& m\x1b[m\x1b[K, const MatExpr& e);\n'}
+[3.174131] (img_transform) StderrLine: {'line': b'      |                                \x1b[01;36m\x1b[K~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[3.174176] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3631:20:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kcv::MatExpr cv::operator*(const cv::MatExpr&, double)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.174221] (img_transform) StderrLine: {'line': b' 3631 | CV_EXPORTS MatExpr \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const MatExpr& e, double s);\n'}
+[3.174266] (img_transform) StderrLine: {'line': b'      |                    \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.174309] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3631:47:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  no known conversion for argument 1 from \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 to \xe2\x80\x98\x1b[01m\x1b[Kconst cv::MatExpr&\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.174353] (img_transform) StderrLine: {'line': b' 3631 | CV_EXPORTS MatExpr operator * (\x1b[01;36m\x1b[Kconst MatExpr& e\x1b[m\x1b[K, double s);\n'}
+[3.174396] (img_transform) StderrLine: {'line': b'      |                                \x1b[01;36m\x1b[K~~~~~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[3.174439] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3632:20:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kcv::MatExpr cv::operator*(double, const cv::MatExpr&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.174483] (img_transform) StderrLine: {'line': b' 3632 | CV_EXPORTS MatExpr \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (double s, const MatExpr& e);\n'}
+[3.174526] (img_transform) StderrLine: {'line': b'      |                    \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.174568] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3632:39:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  no known conversion for argument 1 from \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 to \xe2\x80\x98\x1b[01m\x1b[Kdouble\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.174612] (img_transform) StderrLine: {'line': b' 3632 | CV_EXPORTS MatExpr operator * (\x1b[01;36m\x1b[Kdouble s\x1b[m\x1b[K, const MatExpr& e);\n'}
+[3.174655] (img_transform) StderrLine: {'line': b'      |                                \x1b[01;36m\x1b[K~~~~~~~^\x1b[m\x1b[K\n'}
+[3.174698] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3633:20:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kcv::MatExpr cv::operator*(const cv::MatExpr&, const cv::MatExpr&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.174744] (img_transform) StderrLine: {'line': b' 3633 | CV_EXPORTS MatExpr \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K * (const MatExpr& e1, const MatExpr& e2);\n'}
+[3.174789] (img_transform) StderrLine: {'line': b'      |                    \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.174838] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:3633:47:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  no known conversion for argument 1 from \xe2\x80\x98\x1b[01m\x1b[Kconst Eigen::Inverse<Eigen::Matrix<double, 3, 3> >\x1b[m\x1b[K\xe2\x80\x99 to \xe2\x80\x98\x1b[01m\x1b[Kconst cv::MatExpr&\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.174887] (img_transform) StderrLine: {'line': b' 3633 | CV_EXPORTS MatExpr operator * (\x1b[01;36m\x1b[Kconst MatExpr& e1\x1b[m\x1b[K, const MatExpr& e2);\n'}
+[3.174933] (img_transform) StderrLine: {'line': b'      |                                \x1b[01;36m\x1b[K~~~~~~~~~~~~~~~^~\x1b[m\x1b[K\n'}
+[3.174978] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:123:40:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kmax_dist\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.175025] (img_transform) StderrLine: {'line': b'  123 |                 double min_dist=10000, \x1b[01;35m\x1b[Kmax_dist\x1b[m\x1b[K=0;\n'}
+[3.175072] (img_transform) StderrLine: {'line': b'      |                                        \x1b[01;35m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.214776] (-) TimerEvent: {}
+[3.315270] (-) TimerEvent: {}
+[3.415826] (-) TimerEvent: {}
+[3.516358] (-) TimerEvent: {}
+[3.616943] (-) TimerEvent: {}
+[3.717498] (-) TimerEvent: {}
+[3.818022] (-) TimerEvent: {}
+[3.918510] (-) TimerEvent: {}
+[4.019212] (-) TimerEvent: {}
+[4.119723] (-) TimerEvent: {}
+[4.220384] (-) TimerEvent: {}
+[4.320875] (-) TimerEvent: {}
+[4.347595] (img_transform) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/img_transform.dir/build.make:76: CMakeFiles/img_transform.dir/src/img_transform.cpp.o] Error 1\n'}
+[4.347769] (img_transform) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/img_transform.dir/all] Error 2\n'}
+[4.347913] (img_transform) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[4.350295] (img_transform) CommandEnded: {'returncode': 2}
+[4.393224] (img_transform) JobEnded: {'identifier': 'img_transform', 'rc': 2}
+[4.403899] (-) EventReactorShutdown: {}

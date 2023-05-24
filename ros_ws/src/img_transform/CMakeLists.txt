@@ -28,7 +28,22 @@ find_package(tf2_ros REQUIRED)
 
 add_executable(img_transform src/img_transform.cpp)
 
+add_executable(video_frequency src/video_frequency.cpp)
+
 ament_target_dependencies(img_transform
+  rclcpp
+  std_msgs
+  sensor_msgs
+  cv_bridge
+  image_transport
+  Eigen3
+  teaserpp
+  geometry_msgs
+  tf2
+  tf2_ros
+)
+
+ament_target_dependencies(video_frequency
   rclcpp
   std_msgs
   sensor_msgs
@@ -58,6 +73,14 @@ target_link_libraries(img_transform ${OpenCV_LIBS}
   Python3::NumPy
 )
 
+target_link_libraries(video_frequency ${OpenCV_LIBS} 
+  Eigen3::Eigen 
+  teaserpp::teaser_registration 
+  teaserpp::teaser_io
+  ${PYTHON_LIBRARIES}
+  Python3::NumPy
+)
+
 # populate matplotlib repository
 include(FetchContent)
 FetchContent_Declare(
@@ -73,6 +96,7 @@ include_directories(SYSTEM ${matplotlib_SOURCE_DIR})
 
 install(TARGETS
   img_transform
+  video_frequency
   DESTINATION lib/${PROJECT_NAME}
 )
 

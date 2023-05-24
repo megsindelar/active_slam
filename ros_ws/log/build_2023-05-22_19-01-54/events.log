@@ -1,0 +1,445 @@
+[0.000000] (-) TimerEvent: {}
+[0.000158] (img_transform) JobQueued: {'identifier': 'img_transform', 'dependencies': OrderedDict()}
+[0.000203] (img_transform) JobStarted: {'identifier': 'img_transform'}
+[0.011561] (img_transform) JobProgress: {'identifier': 'img_transform', 'progress': 'cmake'}
+[0.013008] (img_transform) JobProgress: {'identifier': 'img_transform', 'progress': 'build'}
+[0.013271] (img_transform) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/megsindelar/Final_Project/ros_ws/build/img_transform', '--', '-j8', '-l8'], 'cwd': '/home/megsindelar/Final_Project/ros_ws/build/img_transform', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('PYTHONWARNINGS', 'ignore:::setuptools.command.install,ignore:::setuptools.command.easy_install,ignore:::pkg_resources'), ('LANGUAGE', 'en'), ('USER', 'megsindelar'), ('LC_TIME', 'en_US.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/megsindelar/nuws/install/lib:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing_interfaces/lib:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka_interfaces/lib:/home/megsindelar/ME_495/Final_Proj/install/apriltag_ros/lib:/home/megsindelar/ME_495/Final_Proj/install/apriltag_msgs/lib:/home/megsindelar/ME_495/Final_Proj/install/apriltag/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('PICO_EXTRAS_PATH', '/home/megsindelar/Winter_Project/pico_setup/pico/pico-extras'), ('HOME', '/home/megsindelar'), ('OLDPWD', '/home/megsindelar'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'en_US.UTF-8'), ('MANAGERPID', '1629'), ('SYSTEMD_EXEC_PID', '2151'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator25ef4b219e3b005583550f2b0f9f990c3'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '3600'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/megsindelar/nuws/install:/home/megsindelar/ME_495/Final_Proj/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'megsindelar'), ('JOURNAL_STREAM', '8:37011'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('PKG_CONFIG_PATH', '/home/megsindelar/nuws/install/lib/x86_64-linux-gnu/pkgconfig:/home/megsindelar/nuws/install/lib/pkgconfig:/home/megsindelar/ME_495/Final_Proj/install/apriltag/lib/x86_64-linux-gnu/pkgconfig:/home/megsindelar/ME_495/Final_Proj/install/apriltag/lib/pkgconfig'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'megsindelar'), ('TERM', 'xterm-256color'), ('COPPELIASIM_ROOT_DIR', '/home/megsindelar/CoppeliaSim_Edu_V4_4_0_rev0_Ubuntu20_04'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/megsindelar/nuws/install/bin:/home/megsindelar/ME_495/Final_Proj/install/apriltag/bin:/opt/ros/humble/bin:/home/megsindelar/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/meg:@/tmp/.ICE-unix/1827,unix/meg:/tmp/.ICE-unix/1827'), ('INVOCATION_ID', 'ffc65ad54f0442599b893b4d5f40340d'), ('PAPERSIZE', 'letter'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'en_US.UTF-8'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('IBUS_DISABLE_SNOOPER', '1'), ('LC_TELEPHONE', 'en_US.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.HCH841'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('PICO_EXAMPLES_PATH', '/home/megsindelar/Winter_Project/pico_setup/pico/pico-examples'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/megsindelar/nuws/install:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing_interfaces:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka_interfaces:/home/megsindelar/ME_495/Final_Proj/install/apriltag_ros:/home/megsindelar/ME_495/Final_Proj/install/apriltag_msgs:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'en_US.UTF-8'), ('TERMINATOR_UUID', 'urn:uuid:e001fb28-6cac-4811-869d-7a84893c420c'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CMAKE_MODULE_PATH', '/home/megsindelar/nuws/install/share/warehouse_ros_mongo/cmake'), ('LC_MEASUREMENT', 'en_US.UTF-8'), ('LC_IDENTIFICATION', 'en_US.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/megsindelar/Final_Project/ros_ws/build/img_transform'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PICO_PLAYGROUND_PATH', '/home/megsindelar/Winter_Project/pico_setup/pico/pico-playground'), ('PYTHONPATH', '/home/megsindelar/nuws/install/lib/python3.10/pyrealsense2:/home/megsindelar/nuws/install/local/lib/python3.10/dist-packages:/home/megsindelar/nuws/install/lib/python3.10/site-packages:/home/megsindelar/ME_495/Final_Proj/build/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka/lib/python3.10/site-packages:/home/megsindelar/ME_495/Final_Proj/build/moveit_testing:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing/lib/python3.10/site-packages:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing_interfaces/local/lib/python3.10/dist-packages:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka_interfaces/local/lib/python3.10/dist-packages:/home/megsindelar/ME_495/Final_Proj/install/apriltag_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages:/home/megsindelar/Downloads/CARLA_DRIFT_0.9.5/PythonAPI/carla/dist/carla-0.9.5-py3.5-linux-x86_64.egg:/home/megsindelar/Downloads/CARLA_DRIFT_0.9.5/PythonAPI/carla/'), ('LC_NUMERIC', 'en_US.UTF-8'), ('LC_PAPER', 'en_US.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/megsindelar/nuws/install:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing_interfaces:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka_interfaces:/home/megsindelar/ME_495/Final_Proj/install/apriltag_ros:/home/megsindelar/ME_495/Final_Proj/install/apriltag_msgs:/home/megsindelar/ME_495/Final_Proj/install/apriltag:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble')]), 'shell': False}
+[0.053210] (img_transform) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target img_transform\x1b[0m\n'}
+[0.074865] (img_transform) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/img_transform.dir/src/img_transform.cpp.o\x1b[0m\n'}
+[0.098616] (-) TimerEvent: {}
+[0.199075] (-) TimerEvent: {}
+[0.299571] (-) TimerEvent: {}
+[0.400169] (-) TimerEvent: {}
+[0.500733] (-) TimerEvent: {}
+[0.601279] (-) TimerEvent: {}
+[0.701923] (-) TimerEvent: {}
+[0.802563] (-) TimerEvent: {}
+[0.902980] (-) TimerEvent: {}
+[1.003474] (-) TimerEvent: {}
+[1.103919] (-) TimerEvent: {}
+[1.204378] (-) TimerEvent: {}
+[1.304848] (-) TimerEvent: {}
+[1.405390] (-) TimerEvent: {}
+[1.505840] (-) TimerEvent: {}
+[1.606285] (-) TimerEvent: {}
+[1.706930] (-) TimerEvent: {}
+[1.807413] (-) TimerEvent: {}
+[1.907962] (-) TimerEvent: {}
+[2.000749] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ImgTransform::timer_callback()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.000987] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:49:25:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KKeyPoint\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kcv::KeyPoint\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[2.001095] (img_transform) StderrLine: {'line': b'   49 |             std::vector<\x1b[01;31m\x1b[KKeyPoint\x1b[m\x1b[K> keypoints_1, keypoints_2;\n'}
+[2.001180] (img_transform) StderrLine: {'line': b'      |                         \x1b[01;31m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.001260] (img_transform) StderrLine: {'line': b'      |                         \x1b[32m\x1b[Kcv::KeyPoint\x1b[m\x1b[K\n'}
+[2.001335] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[2.001410] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.001486] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.001606] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[2.001686] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:727:27:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcv::KeyPoint\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[2.001764] (img_transform) StderrLine: {'line': b'  727 | class CV_EXPORTS_W_SIMPLE \x1b[01;36m\x1b[KKeyPoint\x1b[m\x1b[K\n'}
+[2.001840] (img_transform) StderrLine: {'line': b'      |                           \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.001917] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:49:33:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[2.001991] (img_transform) StderrLine: {'line': b'   49 |             std::vector<KeyPoint\x1b[01;31m\x1b[K>\x1b[m\x1b[K keypoints_1, keypoints_2;\n'}
+[2.002133] (img_transform) StderrLine: {'line': b'      |                                 \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[2.002185] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:49:33:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 2 is invalid\n'}
+[2.002234] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:50:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KMat\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kcv::Mat\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[2.002291] (img_transform) StderrLine: {'line': b'   50 |             \x1b[01;31m\x1b[KMat\x1b[m\x1b[K descriptors_1, descriptors_2;\n'}
+[2.002341] (img_transform) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[2.002391] (img_transform) StderrLine: {'line': b'      |             \x1b[32m\x1b[Kcv::Mat\x1b[m\x1b[K\n'}
+[2.002437] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:58\x1b[m\x1b[K,\n'}
+[2.002487] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.002535] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.002581] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[2.002628] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/mat.hpp:801:18:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcv::Mat\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[2.002676] (img_transform) StderrLine: {'line': b'  801 | class CV_EXPORTS \x1b[01;36m\x1b[KMat\x1b[m\x1b[K\n'}
+[2.002724] (img_transform) StderrLine: {'line': b'      |                  \x1b[01;36m\x1b[K^~~\x1b[m\x1b[K\n'}
+[2.002770] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:51:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KPtr\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kcv::Ptr\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[2.002819] (img_transform) StderrLine: {'line': b'   51 |             \x1b[01;31m\x1b[KPtr\x1b[m\x1b[K<FeatureDetector> detector = ORB::create();\n'}
+[2.002864] (img_transform) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[2.002908] (img_transform) StderrLine: {'line': b'      |             \x1b[32m\x1b[Kcv::Ptr\x1b[m\x1b[K\n'}
+[2.002952] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/cvstd.hpp:81\x1b[m\x1b[K,\n'}
+[2.002997] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/base.hpp:58\x1b[m\x1b[K,\n'}
+[2.003042] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:53\x1b[m\x1b[K,\n'}
+[2.003092] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.003137] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.003183] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[2.003230] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/cvstd_wrapper.hpp:73:8:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcv::Ptr\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[2.003277] (img_transform) StderrLine: {'line': b'   73 | struct \x1b[01;36m\x1b[KPtr\x1b[m\x1b[K : public std::shared_ptr<T>\n'}
+[2.003324] (img_transform) StderrLine: {'line': b'      |        \x1b[01;36m\x1b[K^~~\x1b[m\x1b[K\n'}
+[2.008044] (-) TimerEvent: {}
+[2.011658] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:51:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KFeatureDetector\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.011789] (img_transform) StderrLine: {'line': b'   51 |             Ptr<\x1b[01;31m\x1b[KFeatureDetector\x1b[m\x1b[K> detector = ORB::create();\n'}
+[2.011885] (img_transform) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.018109] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:51:34:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kdetector\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.018234] (img_transform) StderrLine: {'line': b'   51 |             Ptr<FeatureDetector> \x1b[01;31m\x1b[Kdetector\x1b[m\x1b[K = ORB::create();\n'}
+[2.018295] (img_transform) StderrLine: {'line': b'      |                                  \x1b[01;31m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.018363] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:51:45:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KORB\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[2.018560] (img_transform) StderrLine: {'line': b'   51 |             Ptr<FeatureDetector> detector = \x1b[01;31m\x1b[KORB\x1b[m\x1b[K::create();\n'}
+[2.018619] (img_transform) StderrLine: {'line': b'      |                                             \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[2.028817] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:52:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KDescriptorExtractor\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.028929] (img_transform) StderrLine: {'line': b'   52 |             Ptr<\x1b[01;31m\x1b[KDescriptorExtractor\x1b[m\x1b[K> descriptor = ORB::create();\n'}
+[2.028986] (img_transform) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.036088] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:52:38:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kdescriptor\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.036276] (img_transform) StderrLine: {'line': b'   52 |             Ptr<DescriptorExtractor> \x1b[01;31m\x1b[Kdescriptor\x1b[m\x1b[K = ORB::create();\n'}
+[2.036389] (img_transform) StderrLine: {'line': b'      |                                      \x1b[01;31m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.036470] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:52:51:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KORB\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[2.036548] (img_transform) StderrLine: {'line': b'   52 |             Ptr<DescriptorExtractor> descriptor = \x1b[01;31m\x1b[KORB\x1b[m\x1b[K::create();\n'}
+[2.036620] (img_transform) StderrLine: {'line': b'      |                                                   \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[2.047110] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:54:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KDescriptorMatcher\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.047288] (img_transform) StderrLine: {'line': b'   54 |             Ptr<\x1b[01;31m\x1b[KDescriptorMatcher\x1b[m\x1b[K> matcher  = DescriptorMatcher::create ( "BruteForce-Hamming" );\n'}
+[2.047374] (img_transform) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.053016] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:54:36:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kmatcher\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.053162] (img_transform) StderrLine: {'line': b'   54 |             Ptr<DescriptorMatcher> \x1b[01;31m\x1b[Kmatcher\x1b[m\x1b[K  = DescriptorMatcher::create ( "BruteForce-Hamming" );\n'}
+[2.053252] (img_transform) StderrLine: {'line': b'      |                                    \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.053322] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:54:47:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KDescriptorMatcher\x1b[m\x1b[K\xe2\x80\x99 is not a class, namespace, or enumeration\n'}
+[2.053394] (img_transform) StderrLine: {'line': b'   54 |             Ptr<DescriptorMatcher> matcher  = \x1b[01;31m\x1b[KDescriptorMatcher\x1b[m\x1b[K::create ( "BruteForce-Hamming" );\n'}
+[2.053463] (img_transform) StderrLine: {'line': b'      |                                               \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.060883] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:59:58:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kdescriptors_1\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.061043] (img_transform) StderrLine: {'line': b'   59 |             descriptor->compute ( prev_img, keypoints_1, \x1b[01;31m\x1b[Kdescriptors_1\x1b[m\x1b[K );\n'}
+[2.061125] (img_transform) StderrLine: {'line': b'      |                                                          \x1b[01;31m\x1b[K^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.069001] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:60:61:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kdescriptors_2\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.069155] (img_transform) StderrLine: {'line': b'   60 |             descriptor->compute ( current_img, keypoints_2, \x1b[01;31m\x1b[Kdescriptors_2\x1b[m\x1b[K );\n'}
+[2.069234] (img_transform) StderrLine: {'line': b'      |                                                             \x1b[01;31m\x1b[K^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.069307] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:62:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[K;\x1b[m\x1b[K\xe2\x80\x99 before \xe2\x80\x98\x1b[01m\x1b[Koutimg1\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.069382] (img_transform) StderrLine: {'line': b'   62 |             Mat \x1b[01;31m\x1b[Koutimg1\x1b[m\x1b[K;\n'}
+[2.069458] (img_transform) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.075171] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:63:51:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Koutimg1\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.075320] (img_transform) StderrLine: {'line': b'   63 |             drawKeypoints( prev_img, keypoints_1, \x1b[01;31m\x1b[Koutimg1\x1b[m\x1b[K, Scalar::all(-1), DrawMatchesFlags::DEFAULT );\n'}
+[2.075405] (img_transform) StderrLine: {'line': b'      |                                                   \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.075482] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:63:60:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KScalar\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[2.075565] (img_transform) StderrLine: {'line': b'   63 |             drawKeypoints( prev_img, keypoints_1, outimg1, \x1b[01;31m\x1b[KScalar\x1b[m\x1b[K::all(-1), DrawMatchesFlags::DEFAULT );\n'}
+[2.075633] (img_transform) StderrLine: {'line': b'      |                                                            \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.075701] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:63:77:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KDrawMatchesFlags\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[2.075773] (img_transform) StderrLine: {'line': b'   63 | rawKeypoints( prev_img, keypoints_1, outimg1, Scalar::all(-1), \x1b[01;31m\x1b[KDrawMatchesFlags\x1b[m\x1b[K::DEFAULT );\n'}
+[2.075841] (img_transform) StderrLine: {'line': b'      |                                                                \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.075908] (img_transform) StderrLine: {'line': b'\n'}
+[2.083162] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:63:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KdrawKeypoints\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.083478] (img_transform) StderrLine: {'line': b'   63 |             \x1b[01;31m\x1b[KdrawKeypoints\x1b[m\x1b[K( prev_img, keypoints_1, outimg1, Scalar::all(-1), DrawMatchesFlags::DEFAULT );\n'}
+[2.083560] (img_transform) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.083635] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:64:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[K;\x1b[m\x1b[K\xe2\x80\x99 before \xe2\x80\x98\x1b[01m\x1b[Koutimg2\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.083712] (img_transform) StderrLine: {'line': b'   64 |             Mat \x1b[01;31m\x1b[Koutimg2\x1b[m\x1b[K;\n'}
+[2.083786] (img_transform) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.089087] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:65:54:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Koutimg2\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.089232] (img_transform) StderrLine: {'line': b'   65 |             drawKeypoints( current_img, keypoints_2, \x1b[01;31m\x1b[Koutimg2\x1b[m\x1b[K, Scalar::all(-1), DrawMatchesFlags::DEFAULT );\n'}
+[2.089311] (img_transform) StderrLine: {'line': b'      |                                                      \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.089384] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:65:63:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KScalar\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[2.089458] (img_transform) StderrLine: {'line': b'   65 |             drawKeypoints( current_img, keypoints_2, outimg2, \x1b[01;31m\x1b[KScalar\x1b[m\x1b[K::all(-1), DrawMatchesFlags::DEFAULT );\n'}
+[2.089672] (img_transform) StderrLine: {'line': b'      |                                                               \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.089738] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:65:80:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KDrawMatchesFlags\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[2.089812] (img_transform) StderrLine: {'line': b'   65 | Keypoints( current_img, keypoints_2, outimg2, Scalar::all(-1), \x1b[01;31m\x1b[KDrawMatchesFlags\x1b[m\x1b[K::DEFAULT );\n'}
+[2.089880] (img_transform) StderrLine: {'line': b'      |                                                                \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.089946] (img_transform) StderrLine: {'line': b'\n'}
+[2.090013] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:66:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[K;\x1b[m\x1b[K\xe2\x80\x99 before \xe2\x80\x98\x1b[01m\x1b[Koutimg3\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.090093] (img_transform) StderrLine: {'line': b'   66 |             Mat \x1b[01;31m\x1b[Koutimg3\x1b[m\x1b[K;\n'}
+[2.090154] (img_transform) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.095116] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:67:51:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Koutimg3\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.095313] (img_transform) StderrLine: {'line': b'   67 |             drawKeypoints( prev_img, keypoints_2, \x1b[01;31m\x1b[Koutimg3\x1b[m\x1b[K, Scalar::all(-1), DrawMatchesFlags::DEFAULT );\n'}
+[2.095424] (img_transform) StderrLine: {'line': b'      |                                                   \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.095548] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:67:60:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KScalar\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[2.095654] (img_transform) StderrLine: {'line': b'   67 |             drawKeypoints( prev_img, keypoints_2, outimg3, \x1b[01;31m\x1b[KScalar\x1b[m\x1b[K::all(-1), DrawMatchesFlags::DEFAULT );\n'}
+[2.096035] (img_transform) StderrLine: {'line': b'      |                                                            \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.096193] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:67:77:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KDrawMatchesFlags\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[2.096293] (img_transform) StderrLine: {'line': b'   67 | rawKeypoints( prev_img, keypoints_2, outimg3, Scalar::all(-1), \x1b[01;31m\x1b[KDrawMatchesFlags\x1b[m\x1b[K::DEFAULT );\n'}
+[2.096371] (img_transform) StderrLine: {'line': b'      |                                                                \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.096446] (img_transform) StderrLine: {'line': b'\n'}
+[2.096520] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:69:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kvector\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.096595] (img_transform) StderrLine: {'line': b'   69 |             \x1b[01;31m\x1b[Kvector\x1b[m\x1b[K<DMatch> matches;\n'}
+[2.096667] (img_transform) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.096744] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:69:13:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Ksuggested alternatives:\n'}
+[2.096812] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/c++/11/vector:67\x1b[m\x1b[K,\n'}
+[2.096879] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/11/functional:62\x1b[m\x1b[K,\n'}
+[2.096945] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/11/pstl/glue_algorithm_defs.h:13\x1b[m\x1b[K,\n'}
+[2.097012] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/11/algorithm:74\x1b[m\x1b[K,\n'}
+[2.097075] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:18\x1b[m\x1b[K,\n'}
+[2.097137] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.097201] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.097264] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.097331] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:2\x1b[m\x1b[K:\n'}
+[2.097395] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/bits/stl_vector.h:389:11:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::vector\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.097454] (img_transform) StderrLine: {'line': b'  389 |     class \x1b[01;36m\x1b[Kvector\x1b[m\x1b[K : protected _Vector_base<_Tp, _Alloc>\n'}
+[2.097513] (img_transform) StderrLine: {'line': b'      |           \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.097571] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/c++/11/functional:62\x1b[m\x1b[K,\n'}
+[2.097630] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/11/pstl/glue_algorithm_defs.h:13\x1b[m\x1b[K,\n'}
+[2.097691] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/11/algorithm:74\x1b[m\x1b[K,\n'}
+[2.097750] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:18\x1b[m\x1b[K,\n'}
+[2.097807] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.097861] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.097918] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.097973] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:2\x1b[m\x1b[K:\n'}
+[2.098035] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/vector:86:13:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::pmr::vector\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.098106] (img_transform) StderrLine: {'line': b'   86 |       using \x1b[01;36m\x1b[Kvector\x1b[m\x1b[K = std::vector<_Tp, polymorphic_allocator<_Tp>>;\n'}
+[2.098161] (img_transform) StderrLine: {'line': b'      |             \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.098215] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:69:20:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KDMatch\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kcv::DMatch\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[2.098274] (img_transform) StderrLine: {'line': b'   69 |             vector<\x1b[01;31m\x1b[KDMatch\x1b[m\x1b[K> matches;\n'}
+[2.098329] (img_transform) StderrLine: {'line': b'      |                    \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.098383] (img_transform) StderrLine: {'line': b'      |                    \x1b[32m\x1b[Kcv::DMatch\x1b[m\x1b[K\n'}
+[2.098438] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:57\x1b[m\x1b[K,\n'}
+[2.098496] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.098558] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.098624] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[2.098690] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/types.hpp:824:27:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcv::DMatch\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[2.098760] (img_transform) StderrLine: {'line': b'  824 | class CV_EXPORTS_W_SIMPLE \x1b[01;36m\x1b[KDMatch\x1b[m\x1b[K\n'}
+[2.098825] (img_transform) StderrLine: {'line': b'      |                           \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.102868] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:69:28:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kmatches\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.103280] (img_transform) StderrLine: {'line': b'   69 |             vector<DMatch> \x1b[01;31m\x1b[Kmatches\x1b[m\x1b[K;\n'}
+[2.103370] (img_transform) StderrLine: {'line': b'      |                            \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.103540] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:76:33:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 2 is invalid\n'}
+[2.103646] (img_transform) StderrLine: {'line': b'   76 |             std::vector< DMatch \x1b[01;31m\x1b[K>\x1b[m\x1b[K good_matches;\n'}
+[2.103739] (img_transform) StderrLine: {'line': b'      |                                 \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[2.103908] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:79:45:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kmin\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.104006] (img_transform) StderrLine: {'line': b'   79 |                 if ( matches[i].distance <= \x1b[01;31m\x1b[Kmin\x1b[m\x1b[K ( 2*min_dist, 30.0 ) )\n'}
+[2.104097] (img_transform) StderrLine: {'line': b'      |                                             \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[2.104187] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:79:45:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Ksuggested alternatives:\n'}
+[2.104262] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/c++/11/algorithm:62\x1b[m\x1b[K,\n'}
+[2.104350] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:18\x1b[m\x1b[K,\n'}
+[2.104454] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[2.104562] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[2.104671] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[2.104769] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:2\x1b[m\x1b[K:\n'}
+[2.104872] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/bits/stl_algo.h:3455:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::min\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.104967] (img_transform) StderrLine: {'line': b' 3455 |     \x1b[01;36m\x1b[Kmin\x1b[m\x1b[K(initializer_list<_Tp> __l, _Compare __comp)\n'}
+[2.105073] (img_transform) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~\x1b[m\x1b[K\n'}
+[2.105375] (img_transform) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/core.hpp:48\x1b[m\x1b[K,\n'}
+[2.105548] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:43\x1b[m\x1b[K,\n'}
+[2.105758] (img_transform) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:4\x1b[m\x1b[K:\n'}
+[2.105863] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:1446:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kcv::min\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.105974] (img_transform) StderrLine: {'line': b' 1446 | CV_EXPORTS void \x1b[01;36m\x1b[Kmin\x1b[m\x1b[K(const UMat& src1, const UMat& src2, UMat& dst);\n'}
+[2.106079] (img_transform) StderrLine: {'line': b'      |                 \x1b[01;36m\x1b[K^~~\x1b[m\x1b[K\n'}
+[2.106159] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:81:34:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kpush_back\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kgood_matches\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.106240] (img_transform) StderrLine: {'line': b'   81 |                     good_matches.\x1b[01;31m\x1b[Kpush_back\x1b[m\x1b[K ( matches[i] );\n'}
+[2.106312] (img_transform) StderrLine: {'line': b'      |                                  \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[2.106386] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:85:61:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Ksize\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kgood_matches\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.106464] (img_transform) StderrLine: {'line': b'   85 |             std::cout << "num of matches: " << good_matches.\x1b[01;31m\x1b[Ksize\x1b[m\x1b[K() << std::endl;\n'}
+[2.106540] (img_transform) StderrLine: {'line': b'      |                                                             \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[2.106618] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:104:42:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Ksize\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kgood_matches\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.106700] (img_transform) StderrLine: {'line': b'  104 |             for (int i=0; i<good_matches.\x1b[01;31m\x1b[Ksize\x1b[m\x1b[K(); i++){\n'}
+[2.106777] (img_transform) StderrLine: {'line': b'      |                                          \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[2.106844] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:105:52:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kat\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kkeypoints_1\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.106914] (img_transform) StderrLine: {'line': b'  105 |                 float k1_xw = (1/f_1)*(keypoints_1.\x1b[01;31m\x1b[Kat\x1b[m\x1b[K(good_matches[i].queryIdx).pt.x - p_1*z);\n'}
+[2.106983] (img_transform) StderrLine: {'line': b'      |                                                    \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[2.107054] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:105:67:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kinvalid types \xe2\x80\x98\x1b[01m\x1b[Kint[int]\x1b[m\x1b[K\xe2\x80\x99 for array subscript\n'}
+[2.107125] (img_transform) StderrLine: {'line': b'  105 |              float k1_xw = (1/f_1)*(keypoints_1.at(good_matches\x1b[01;31m\x1b[K[\x1b[m\x1b[Ki].queryIdx).pt.x - p_1*z);\n'}
+[2.107192] (img_transform) StderrLine: {'line': b'      |                                                                \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[2.107255] (img_transform) StderrLine: {'line': b'\n'}
+[2.107317] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:106:52:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kat\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kkeypoints_1\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.107473] (img_transform) StderrLine: {'line': b'  106 |                 float k1_yw = (1/f_2)*(keypoints_1.\x1b[01;31m\x1b[Kat\x1b[m\x1b[K(good_matches[i].queryIdx).pt.y - p_2*z);\n'}
+[2.107534] (img_transform) StderrLine: {'line': b'      |                                                    \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[2.107595] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:106:67:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kinvalid types \xe2\x80\x98\x1b[01m\x1b[Kint[int]\x1b[m\x1b[K\xe2\x80\x99 for array subscript\n'}
+[2.107658] (img_transform) StderrLine: {'line': b'  106 |              float k1_yw = (1/f_2)*(keypoints_1.at(good_matches\x1b[01;31m\x1b[K[\x1b[m\x1b[Ki].queryIdx).pt.y - p_2*z);\n'}
+[2.107718] (img_transform) StderrLine: {'line': b'      |                                                                \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[2.107781] (img_transform) StderrLine: {'line': b'\n'}
+[2.107841] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:107:52:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kat\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kkeypoints_2\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.107903] (img_transform) StderrLine: {'line': b'  107 |                 float k2_xw = (1/f_1)*(keypoints_2.\x1b[01;31m\x1b[Kat\x1b[m\x1b[K(good_matches[i].trainIdx).pt.x - p_1*z);\n'}
+[2.107963] (img_transform) StderrLine: {'line': b'      |                                                    \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[2.108022] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:107:67:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kinvalid types \xe2\x80\x98\x1b[01m\x1b[Kint[int]\x1b[m\x1b[K\xe2\x80\x99 for array subscript\n'}
+[2.108083] (-) TimerEvent: {}
+[2.108179] (img_transform) StderrLine: {'line': b'  107 |              float k2_xw = (1/f_1)*(keypoints_2.at(good_matches\x1b[01;31m\x1b[K[\x1b[m\x1b[Ki].trainIdx).pt.x - p_1*z);\n'}
+[2.108257] (img_transform) StderrLine: {'line': b'      |                                                                \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[2.108317] (img_transform) StderrLine: {'line': b'\n'}
+[2.108376] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:108:52:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kat\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kkeypoints_2\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.108438] (img_transform) StderrLine: {'line': b'  108 |                 float k2_yw = (1/f_2)*(keypoints_2.\x1b[01;31m\x1b[Kat\x1b[m\x1b[K(good_matches[i].trainIdx).pt.y - p_2*z);\n'}
+[2.108510] (img_transform) StderrLine: {'line': b'      |                                                    \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[2.108588] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:108:67:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kinvalid types \xe2\x80\x98\x1b[01m\x1b[Kint[int]\x1b[m\x1b[K\xe2\x80\x99 for array subscript\n'}
+[2.108666] (img_transform) StderrLine: {'line': b'  108 |              float k2_yw = (1/f_2)*(keypoints_2.at(good_matches\x1b[01;31m\x1b[K[\x1b[m\x1b[Ki].trainIdx).pt.y - p_2*z);\n'}
+[2.108751] (img_transform) StderrLine: {'line': b'      |                                                                \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[2.108828] (img_transform) StderrLine: {'line': b'\n'}
+[2.108903] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:113:47:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kat\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kkeypoints_1\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.108989] (img_transform) StderrLine: {'line': b'  113 |                 key1_xp.push_back(keypoints_1.\x1b[01;31m\x1b[Kat\x1b[m\x1b[K(good_matches[i].queryIdx).pt.x);\n'}
+[2.109057] (img_transform) StderrLine: {'line': b'      |                                               \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[2.109126] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:113:62:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kinvalid types \xe2\x80\x98\x1b[01m\x1b[Kint[int]\x1b[m\x1b[K\xe2\x80\x99 for array subscript\n'}
+[2.109196] (img_transform) StderrLine: {'line': b'  113 |                 key1_xp.push_back(keypoints_1.at(good_matches\x1b[01;31m\x1b[K[\x1b[m\x1b[Ki].queryIdx).pt.x);\n'}
+[2.109263] (img_transform) StderrLine: {'line': b'      |                                                              \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[2.109329] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:114:47:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kat\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kkeypoints_1\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.109405] (img_transform) StderrLine: {'line': b'  114 |                 key1_yp.push_back(keypoints_1.\x1b[01;31m\x1b[Kat\x1b[m\x1b[K(good_matches[i].queryIdx).pt.y);\n'}
+[2.109467] (img_transform) StderrLine: {'line': b'      |                                               \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[2.109533] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:114:62:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kinvalid types \xe2\x80\x98\x1b[01m\x1b[Kint[int]\x1b[m\x1b[K\xe2\x80\x99 for array subscript\n'}
+[2.109601] (img_transform) StderrLine: {'line': b'  114 |                 key1_yp.push_back(keypoints_1.at(good_matches\x1b[01;31m\x1b[K[\x1b[m\x1b[Ki].queryIdx).pt.y);\n'}
+[2.109666] (img_transform) StderrLine: {'line': b'      |                                                              \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[2.109730] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:118:47:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kat\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kkeypoints_2\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.109798] (img_transform) StderrLine: {'line': b'  118 |                 key2_xp.push_back(keypoints_2.\x1b[01;31m\x1b[Kat\x1b[m\x1b[K(good_matches[i].trainIdx).pt.x);\n'}
+[2.109858] (img_transform) StderrLine: {'line': b'      |                                               \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[2.109917] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:118:62:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kinvalid types \xe2\x80\x98\x1b[01m\x1b[Kint[int]\x1b[m\x1b[K\xe2\x80\x99 for array subscript\n'}
+[2.109977] (img_transform) StderrLine: {'line': b'  118 |                 key2_xp.push_back(keypoints_2.at(good_matches\x1b[01;31m\x1b[K[\x1b[m\x1b[Ki].trainIdx).pt.x);\n'}
+[2.110047] (img_transform) StderrLine: {'line': b'      |                                                              \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[2.110109] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:119:47:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kat\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kkeypoints_2\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.110169] (img_transform) StderrLine: {'line': b'  119 |                 key2_yp.push_back(keypoints_2.\x1b[01;31m\x1b[Kat\x1b[m\x1b[K(good_matches[i].trainIdx).pt.y);\n'}
+[2.110231] (img_transform) StderrLine: {'line': b'      |                                               \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[2.110289] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:119:62:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kinvalid types \xe2\x80\x98\x1b[01m\x1b[Kint[int]\x1b[m\x1b[K\xe2\x80\x99 for array subscript\n'}
+[2.110347] (img_transform) StderrLine: {'line': b'  119 |                 key2_yp.push_back(keypoints_2.at(good_matches\x1b[01;31m\x1b[K[\x1b[m\x1b[Ki].trainIdx).pt.y);\n'}
+[2.110406] (img_transform) StderrLine: {'line': b'      |                                                              \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[2.110464] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:123:34:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Ksize\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kgood_matches\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.110528] (img_transform) StderrLine: {'line': b'  123 |             int N = good_matches.\x1b[01;31m\x1b[Ksize\x1b[m\x1b[K();\n'}
+[2.110593] (img_transform) StderrLine: {'line': b'      |                                  \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[2.110657] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:126:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KEigen\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[2.110721] (img_transform) StderrLine: {'line': b'  126 |             \x1b[01;31m\x1b[KEigen\x1b[m\x1b[K::Matrix<double, 3, Eigen::Dynamic> src(3, N);\n'}
+[2.110785] (img_transform) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[2.110849] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:126:27:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected primary-expression before \xe2\x80\x98\x1b[01m\x1b[Kdouble\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.110919] (img_transform) StderrLine: {'line': b'  126 |             Eigen::Matrix<\x1b[01;31m\x1b[Kdouble\x1b[m\x1b[K, 3, Eigen::Dynamic> src(3, N);\n'}
+[2.110981] (img_transform) StderrLine: {'line': b'      |                           \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.111040] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:127:34:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Ksize_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.111109] (img_transform) StderrLine: {'line': b'  127 |             for (size_t i = 0; \x1b[01;35m\x1b[Ki < N\x1b[m\x1b[K; ++i) {\n'}
+[2.111168] (img_transform) StderrLine: {'line': b'      |                                \x1b[01;35m\x1b[K~~^~~\x1b[m\x1b[K\n'}
+[2.111929] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:129:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ksrc\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.112030] (img_transform) StderrLine: {'line': b'  129 |                 \x1b[01;31m\x1b[Ksrc\x1b[m\x1b[K.col(i) << key1_xw.at(i), key1_yw.at(i), key1_zw.at(i);\n'}
+[2.112098] (img_transform) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[2.112612] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:134:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KEigen\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[2.112725] (img_transform) StderrLine: {'line': b'  134 |             \x1b[01;31m\x1b[KEigen\x1b[m\x1b[K::Matrix<double, 4, Eigen::Dynamic> src_h;\n'}
+[2.112799] (img_transform) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[2.112862] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:134:27:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected primary-expression before \xe2\x80\x98\x1b[01m\x1b[Kdouble\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.112931] (img_transform) StderrLine: {'line': b'  134 |             Eigen::Matrix<\x1b[01;31m\x1b[Kdouble\x1b[m\x1b[K, 4, Eigen::Dynamic> src_h;\n'}
+[2.112993] (img_transform) StderrLine: {'line': b'      |                           \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.117623] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:135:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ksrc_h\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.117736] (img_transform) StderrLine: {'line': b'  135 |             \x1b[01;31m\x1b[Ksrc_h\x1b[m\x1b[K.resize(4, src.cols());\n'}
+[2.117818] (img_transform) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[2.122077] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:135:29:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ksrc\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.122215] (img_transform) StderrLine: {'line': b'  135 |             src_h.resize(4, \x1b[01;31m\x1b[Ksrc\x1b[m\x1b[K.cols());\n'}
+[2.122300] (img_transform) StderrLine: {'line': b'      |                             \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[2.122380] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:137:35:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KEigen\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[2.122454] (img_transform) StderrLine: {'line': b'  137 |             src_h.bottomRows(1) = \x1b[01;31m\x1b[KEigen\x1b[m\x1b[K::Matrix<double, 1, Eigen::Dynamic>::Ones(N);\n'}
+[2.122530] (img_transform) StderrLine: {'line': b'      |                                   \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[2.122598] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:137:49:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected primary-expression before \xe2\x80\x98\x1b[01m\x1b[Kdouble\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.122667] (img_transform) StderrLine: {'line': b'  137 |             src_h.bottomRows(1) = Eigen::Matrix<\x1b[01;31m\x1b[Kdouble\x1b[m\x1b[K, 1, Eigen::Dynamic>::Ones(N);\n'}
+[2.122732] (img_transform) StderrLine: {'line': b'      |                                                 \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.122800] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:140:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KEigen\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[2.122863] (img_transform) StderrLine: {'line': b'  140 |             \x1b[01;31m\x1b[KEigen\x1b[m\x1b[K::Matrix4d T;\n'}
+[2.122923] (img_transform) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[2.122981] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:142:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KEigen\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[2.123041] (img_transform) StderrLine: {'line': b'  142 |             \x1b[01;31m\x1b[KEigen\x1b[m\x1b[K::Matrix<double, 3, Eigen::Dynamic> tgt(3, N);\n'}
+[2.123105] (img_transform) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[2.123162] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:142:27:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected primary-expression before \xe2\x80\x98\x1b[01m\x1b[Kdouble\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.123221] (img_transform) StderrLine: {'line': b'  142 |             Eigen::Matrix<\x1b[01;31m\x1b[Kdouble\x1b[m\x1b[K, 3, Eigen::Dynamic> tgt(3, N);\n'}
+[2.123279] (img_transform) StderrLine: {'line': b'      |                           \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.123337] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:143:34:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Ksize_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.123400] (img_transform) StderrLine: {'line': b'  143 |             for (size_t i = 0; \x1b[01;35m\x1b[Ki < N\x1b[m\x1b[K; ++i) {\n'}
+[2.123462] (img_transform) StderrLine: {'line': b'      |                                \x1b[01;35m\x1b[K~~^~~\x1b[m\x1b[K\n'}
+[2.126567] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:145:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktgt\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.126752] (img_transform) StderrLine: {'line': b'  145 |                 \x1b[01;31m\x1b[Ktgt\x1b[m\x1b[K.col(i) << key2_xw.at(i), key2_yw.at(i), key2_zw.at(i);\n'}
+[2.126860] (img_transform) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[2.126991] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:151:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kteaser\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[2.127070] (img_transform) StderrLine: {'line': b'  151 |             \x1b[01;31m\x1b[Kteaser\x1b[m\x1b[K::RobustRegistrationSolver::Params params;\n'}
+[2.127146] (img_transform) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.132452] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:152:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kparams\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.132554] (img_transform) StderrLine: {'line': b'  152 |             \x1b[01;31m\x1b[Kparams\x1b[m\x1b[K.noise_bound = NOISE_BOUND;\n'}
+[2.132633] (img_transform) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.141260] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:152:34:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KNOISE_BOUND\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.141496] (img_transform) StderrLine: {'line': b'  152 |             params.noise_bound = \x1b[01;31m\x1b[KNOISE_BOUND\x1b[m\x1b[K;\n'}
+[2.141598] (img_transform) StderrLine: {'line': b'      |                                  \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.141695] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:158:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kteaser\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[2.141796] (img_transform) StderrLine: {'line': b'  158 |                 \x1b[01;31m\x1b[Kteaser\x1b[m\x1b[K::RobustRegistrationSolver::ROTATION_ESTIMATION_ALGORITHM::GNC_TLS;\n'}
+[2.141869] (img_transform) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.141934] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:162:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kteaser\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[2.142006] (img_transform) StderrLine: {'line': b'  162 |             \x1b[01;31m\x1b[Kteaser\x1b[m\x1b[K::RobustRegistrationSolver solver(params);\n'}
+[2.142096] (img_transform) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.147010] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:164:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ksolver\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.147186] (img_transform) StderrLine: {'line': b'  164 |             \x1b[01;31m\x1b[Ksolver\x1b[m\x1b[K.solve(src, tgt);\n'}
+[2.147272] (img_transform) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.151716] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:164:31:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktgt\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.151864] (img_transform) StderrLine: {'line': b'  164 |             solver.solve(src, \x1b[01;31m\x1b[Ktgt\x1b[m\x1b[K);\n'}
+[2.151951] (img_transform) StderrLine: {'line': b'      |                               \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[2.156628] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:174:26:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KT\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.156773] (img_transform) StderrLine: {'line': b'  174 |             std::cout << \x1b[01;31m\x1b[KT\x1b[m\x1b[K.topLeftCorner(3, 3) << std::endl;\n'}
+[2.156836] (img_transform) StderrLine: {'line': b'      |                          \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[2.165431] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:177:45:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KgetAngularError\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.165608] (img_transform) StderrLine: {'line': b'  177 |             std::cout << "Error (deg): " << \x1b[01;31m\x1b[KgetAngularError\x1b[m\x1b[K(T.topLeftCorner(3, 3), solution.rotation)\n'}
+[2.165702] (img_transform) StderrLine: {'line': b'      |                                             \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.173741] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:187:52:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KN_OUTLIERS\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.173926] (img_transform) StderrLine: {'line': b'  187 |             std::cout << "Number of outliers: " << \x1b[01;31m\x1b[KN_OUTLIERS\x1b[m\x1b[K << std::endl;\n'}
+[2.174042] (img_transform) StderrLine: {'line': b'      |                                                    \x1b[01;31m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.175479] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:196:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KEigen\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[2.175629] (img_transform) StderrLine: {'line': b'  196 |             \x1b[01;31m\x1b[KEigen\x1b[m\x1b[K::Matrix<double, 3, Eigen::Dynamic> keypnts(3, N);\n'}
+[2.175716] (img_transform) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[2.175795] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:196:27:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected primary-expression before \xe2\x80\x98\x1b[01m\x1b[Kdouble\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.175874] (img_transform) StderrLine: {'line': b'  196 |             Eigen::Matrix<\x1b[01;31m\x1b[Kdouble\x1b[m\x1b[K, 3, Eigen::Dynamic> keypnts(3, N);\n'}
+[2.175956] (img_transform) StderrLine: {'line': b'      |                           \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.176020] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:197:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KEigen\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[2.176085] (img_transform) StderrLine: {'line': b'  197 |             \x1b[01;31m\x1b[KEigen\x1b[m\x1b[K::Matrix<double, 3, Eigen::Dynamic> keypnts2(3, N);\n'}
+[2.176149] (img_transform) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[2.176219] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:197:27:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected primary-expression before \xe2\x80\x98\x1b[01m\x1b[Kdouble\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.176283] (img_transform) StderrLine: {'line': b'  197 |             Eigen::Matrix<\x1b[01;31m\x1b[Kdouble\x1b[m\x1b[K, 3, Eigen::Dynamic> keypnts2(3, N);\n'}
+[2.176346] (img_transform) StderrLine: {'line': b'      |                           \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.181315] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:200:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kkeypnts\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kkey_t\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[2.181464] (img_transform) StderrLine: {'line': b'  200 |                 \x1b[01;31m\x1b[Kkeypnts\x1b[m\x1b[K.col(i) << key1_xw.at(i), key1_yw.at(i), key1_zw.at(i);\n'}
+[2.181541] (img_transform) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.181611] (img_transform) StderrLine: {'line': b'      |                 \x1b[32m\x1b[Kkey_t\x1b[m\x1b[K\n'}
+[2.187289] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:201:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kkeypnts2\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kkeypoints_2\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[2.187417] (img_transform) StderrLine: {'line': b'  201 |                 \x1b[01;31m\x1b[Kkeypnts2\x1b[m\x1b[K.col(i) << key2_xw.at(i), key2_yw.at(i), key2_zw.at(i);\n'}
+[2.187491] (img_transform) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.187554] (img_transform) StderrLine: {'line': b'      |                 \x1b[32m\x1b[Kkeypoints_2\x1b[m\x1b[K\n'}
+[2.187615] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:203:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KEigen\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[2.187674] (img_transform) StderrLine: {'line': b'  203 |             \x1b[01;31m\x1b[KEigen\x1b[m\x1b[K::Matrix<double, 3, 3> transformation;\n'}
+[2.187733] (img_transform) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[2.187798] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:203:27:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected primary-expression before \xe2\x80\x98\x1b[01m\x1b[Kdouble\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.187868] (img_transform) StderrLine: {'line': b'  203 |             Eigen::Matrix<\x1b[01;31m\x1b[Kdouble\x1b[m\x1b[K, 3, 3> transformation;\n'}
+[2.188073] (img_transform) StderrLine: {'line': b'      |                           \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.195801] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:205:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktransformation\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.195922] (img_transform) StderrLine: {'line': b'  205 |                 \x1b[01;31m\x1b[Ktransformation\x1b[m\x1b[K.row(i) << solution.rotation(i,0), solution.rotation(i,1), solution.translation(i);\n'}
+[2.195997] (img_transform) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.204592] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:207:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktransformation\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.204725] (img_transform) StderrLine: {'line': b'  207 |             \x1b[01;31m\x1b[Ktransformation\x1b[m\x1b[K.row(2) << solution.rotation(2,0), solution.rotation(2,1), solution.rotation(2,2);\n'}
+[2.204796] (img_transform) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.204859] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:210:33:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 2 is invalid\n'}
+[2.204924] (img_transform) StderrLine: {'line': b'  210 |             std::vector<KeyPoint\x1b[01;31m\x1b[K>\x1b[m\x1b[K key_trans_2 = keypoints_2;\n'}
+[2.204984] (img_transform) StderrLine: {'line': b'      |                                 \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[2.205041] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:211:33:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 2 is invalid\n'}
+[2.205099] (img_transform) StderrLine: {'line': b'  211 |             std::vector<KeyPoint\x1b[01;31m\x1b[K>\x1b[m\x1b[K key_trans_1 = keypoints_1;\n'}
+[2.205155] (img_transform) StderrLine: {'line': b'      |                                 \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[2.205212] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:213:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KEigen\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[2.205270] (img_transform) StderrLine: {'line': b'  213 |                 \x1b[01;31m\x1b[KEigen\x1b[m\x1b[K::Matrix<double, 3, 1> new_2 = transformation.inverse()*keypnts.col(i);\n'}
+[2.205327] (img_transform) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[2.205548] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:213:31:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected primary-expression before \xe2\x80\x98\x1b[01m\x1b[Kdouble\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.205604] (img_transform) StderrLine: {'line': b'  213 |                 Eigen::Matrix<\x1b[01;31m\x1b[Kdouble\x1b[m\x1b[K, 3, 1> new_2 = transformation.inverse()*keypnts.col(i);\n'}
+[2.205658] (img_transform) StderrLine: {'line': b'      |                               \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.205712] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:214:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KEigen\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[2.205768] (img_transform) StderrLine: {'line': b'  214 |                 \x1b[01;31m\x1b[KEigen\x1b[m\x1b[K::Matrix<double, 3, 1> new_1 = transformation*keypnts2.col(i);\n'}
+[2.205823] (img_transform) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[2.205877] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:214:31:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected primary-expression before \xe2\x80\x98\x1b[01m\x1b[Kdouble\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.205932] (img_transform) StderrLine: {'line': b'  214 |                 Eigen::Matrix<\x1b[01;31m\x1b[Kdouble\x1b[m\x1b[K, 3, 1> new_1 = transformation*keypnts2.col(i);\n'}
+[2.205991] (img_transform) StderrLine: {'line': b'      |                               \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.206052] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:215:29:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kat\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kkey_trans_2\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.206113] (img_transform) StderrLine: {'line': b'  215 |                 key_trans_2.\x1b[01;31m\x1b[Kat\x1b[m\x1b[K(i).pt.x = new_2(0);\n'}
+[2.206170] (img_transform) StderrLine: {'line': b'      |                             \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[2.208156] (-) TimerEvent: {}
+[2.209788] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:215:42:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Knew_2\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.209903] (img_transform) StderrLine: {'line': b'  215 |                 key_trans_2.at(i).pt.x = \x1b[01;31m\x1b[Knew_2\x1b[m\x1b[K(0);\n'}
+[2.209977] (img_transform) StderrLine: {'line': b'      |                                          \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[2.210064] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:216:29:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kat\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kkey_trans_2\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.210147] (img_transform) StderrLine: {'line': b'  216 |                 key_trans_2.\x1b[01;31m\x1b[Kat\x1b[m\x1b[K(i).pt.y = new_2(1);\n'}
+[2.210222] (img_transform) StderrLine: {'line': b'      |                             \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[2.210293] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:217:29:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kat\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kkey_trans_1\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.210378] (img_transform) StderrLine: {'line': b'  217 |                 key_trans_1.\x1b[01;31m\x1b[Kat\x1b[m\x1b[K(i).pt.x = new_1(0);\n'}
+[2.210452] (img_transform) StderrLine: {'line': b'      |                             \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[2.214716] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:217:42:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Knew_1\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.214848] (img_transform) StderrLine: {'line': b'  217 |                 key_trans_1.at(i).pt.x = \x1b[01;31m\x1b[Knew_1\x1b[m\x1b[K(0);\n'}
+[2.214922] (img_transform) StderrLine: {'line': b'      |                                          \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[2.214991] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:218:29:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kat\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kkey_trans_1\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.215072] (img_transform) StderrLine: {'line': b'  218 |                 key_trans_1.\x1b[01;31m\x1b[Kat\x1b[m\x1b[K(i).pt.y = new_1(1);\n'}
+[2.215140] (img_transform) StderrLine: {'line': b'      |                             \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[2.215208] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:221:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[K;\x1b[m\x1b[K\xe2\x80\x99 before \xe2\x80\x98\x1b[01m\x1b[Koutimg_test_2\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.215274] (img_transform) StderrLine: {'line': b'  221 |             Mat \x1b[01;31m\x1b[Koutimg_test_2\x1b[m\x1b[K;\n'}
+[2.215339] (img_transform) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.222542] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:222:55:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Koutimg_test_2\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.222666] (img_transform) StderrLine: {'line': b'  222 |             drawKeypoints ( current_img, key_trans_2, \x1b[01;31m\x1b[Koutimg_test_2\x1b[m\x1b[K);\n'}
+[2.222811] (img_transform) StderrLine: {'line': b'      |                                                       \x1b[01;31m\x1b[K^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.222986] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:223:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[K;\x1b[m\x1b[K\xe2\x80\x99 before \xe2\x80\x98\x1b[01m\x1b[Koutimg_test_1\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.223065] (img_transform) StderrLine: {'line': b'  223 |             Mat \x1b[01;31m\x1b[Koutimg_test_1\x1b[m\x1b[K;\n'}
+[2.223131] (img_transform) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.230579] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:224:55:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Koutimg_test_1\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.230685] (img_transform) StderrLine: {'line': b'  224 |             drawKeypoints ( current_img, key_trans_2, \x1b[01;31m\x1b[Koutimg_test_1\x1b[m\x1b[K);\n'}
+[2.230742] (img_transform) StderrLine: {'line': b'      |                                                       \x1b[01;31m\x1b[K^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.238239] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:227:93:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kbegin_total\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kend_total\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[2.238443] (img_transform) StderrLine: {'line': b'  227 | d::chrono::duration_cast<std::chrono::nanoseconds>(end_total - \x1b[01;31m\x1b[Kbegin_total\x1b[m\x1b[K);\n'}
+[2.238544] (img_transform) StderrLine: {'line': b'      |                                                                \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.238996] (img_transform) StderrLine: {'line': b'      |                                                                \x1b[32m\x1b[Kend_total\x1b[m\x1b[K\n'}
+[2.239284] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:72:36:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kmax_dist\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.239419] (img_transform) StderrLine: {'line': b'   72 |             double min_dist=10000, \x1b[01;35m\x1b[Kmax_dist\x1b[m\x1b[K=0;\n'}
+[2.239510] (img_transform) StderrLine: {'line': b'      |                                    \x1b[01;35m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.308277] (-) TimerEvent: {}
+[2.408591] (-) TimerEvent: {}
+[2.508903] (-) TimerEvent: {}
+[2.609208] (-) TimerEvent: {}
+[2.669952] (img_transform) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/img_transform.dir/build.make:76: CMakeFiles/img_transform.dir/src/img_transform.cpp.o] Error 1\n'}
+[2.670223] (img_transform) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/img_transform.dir/all] Error 2\n'}
+[2.670510] (img_transform) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[2.672863] (img_transform) CommandEnded: {'returncode': 2}
+[2.709345] (-) TimerEvent: {}
+[2.714077] (img_transform) JobEnded: {'identifier': 'img_transform', 'rc': 2}
+[2.724435] (-) EventReactorShutdown: {}

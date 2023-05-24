@@ -1,0 +1,46 @@
+[0.000000] (-) TimerEvent: {}
+[0.000738] (turtlebot_control) JobQueued: {'identifier': 'turtlebot_control', 'dependencies': OrderedDict()}
+[0.000792] (turtlebot_control) JobStarted: {'identifier': 'turtlebot_control'}
+[0.007044] (turtlebot_control) JobProgress: {'identifier': 'turtlebot_control', 'progress': 'cmake'}
+[0.007283] (turtlebot_control) JobProgress: {'identifier': 'turtlebot_control', 'progress': 'build'}
+[0.007838] (turtlebot_control) Command: {'cmd': ['/usr/bin/cmake', '--build', '/ros_ws/aarch64_build/turtlebot_control', '--', '-j8', '-l8'], 'cwd': '/ros_ws/aarch64_build/turtlebot_control', 'env': OrderedDict([('HOSTNAME', 'fcc3bfd721f2'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/msr'), ('ROS_PYTHON_VERSION', '3'), ('LC_CTYPE', 'C.UTF-8'), ('ROS_DISTRO', 'humble'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('PWD', '/ros_ws/aarch64_build/turtlebot_control'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.041198] (turtlebot_control) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target turtlebot_control\x1b[0m\n'}
+[0.059862] (turtlebot_control) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o\x1b[0m\n'}
+[0.099569] (-) TimerEvent: {}
+[0.199887] (-) TimerEvent: {}
+[0.300359] (-) TimerEvent: {}
+[0.400622] (-) TimerEvent: {}
+[0.500908] (-) TimerEvent: {}
+[0.601233] (-) TimerEvent: {}
+[0.701555] (-) TimerEvent: {}
+[0.801860] (-) TimerEvent: {}
+[0.902188] (-) TimerEvent: {}
+[1.002495] (-) TimerEvent: {}
+[1.102824] (-) TimerEvent: {}
+[1.203153] (-) TimerEvent: {}
+[1.303499] (-) TimerEvent: {}
+[1.403808] (-) TimerEvent: {}
+[1.504122] (-) TimerEvent: {}
+[1.604379] (-) TimerEvent: {}
+[1.704605] (-) TimerEvent: {}
+[1.804857] (-) TimerEvent: {}
+[1.905205] (-) TimerEvent: {}
+[2.005528] (-) TimerEvent: {}
+[2.105849] (-) TimerEvent: {}
+[2.139518] (turtlebot_control) StderrLine: {'line': b'\x1b[01m\x1b[K/ros_ws/src/turtlebot_control/src/turtlebot_control.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid TurtlebotControl::timer_callback()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.139659] (turtlebot_control) StderrLine: {'line': b'\x1b[01m\x1b[K/ros_ws/src/turtlebot_control/src/turtlebot_control.cpp:118:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[K;\x1b[m\x1b[K\xe2\x80\x99 before \xe2\x80\x98\x1b[01m\x1b[K}\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[2.139707] (turtlebot_control) StderrLine: {'line': b'  118 |                 \x1b[01;31m\x1b[K}\x1b[m\x1b[K\n'}
+[2.139748] (turtlebot_control) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[2.139787] (turtlebot_control) StderrLine: {'line': b'\x1b[01m\x1b[K/ros_ws/src/turtlebot_control/src/turtlebot_control.cpp:60:24:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kfps\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-variable\x1b[m\x1b[K]\n'}
+[2.139826] (turtlebot_control) StderrLine: {'line': b'   60 |                 double \x1b[01;35m\x1b[Kfps\x1b[m\x1b[K = cap.get(cv::CAP_PROP_FPS);\n'}
+[2.139865] (turtlebot_control) StderrLine: {'line': b'      |                        \x1b[01;35m\x1b[K^~~\x1b[m\x1b[K\n'}
+[2.206028] (-) TimerEvent: {}
+[2.306337] (-) TimerEvent: {}
+[2.406695] (-) TimerEvent: {}
+[2.507012] (-) TimerEvent: {}
+[2.556616] (turtlebot_control) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/turtlebot_control.dir/build.make:76: CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o] Error 1\n'}
+[2.556793] (turtlebot_control) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/turtlebot_control.dir/all] Error 2\n'}
+[2.557145] (turtlebot_control) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[2.558565] (turtlebot_control) CommandEnded: {'returncode': 2}
+[2.584976] (turtlebot_control) JobEnded: {'identifier': 'turtlebot_control', 'rc': 2}
+[2.595660] (-) EventReactorShutdown: {}

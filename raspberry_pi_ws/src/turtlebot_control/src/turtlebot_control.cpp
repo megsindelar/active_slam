@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <vector>
 #include <ament_index_cpp/get_package_share_directory.hpp>
+#include <time.h>
 
 
 class TurtlebotControl : public rclcpp::Node
@@ -29,7 +30,7 @@ class TurtlebotControl : public rclcpp::Node
         );
 
         // Timer
-        declare_parameter("rate", 200);
+        declare_parameter("rate", 50);
         int rate_ms = 1000 / (get_parameter("rate").get_parameter_value().get<int>());
         timer_ = create_wall_timer(
           std::chrono::milliseconds(rate_ms),
@@ -62,6 +63,10 @@ class TurtlebotControl : public rclcpp::Node
                     std::cerr << "ERROR! blank frame grabbed\n";
                     // break;
                 }
+
+                // for(int i=0; i<num_frames; i++){
+                //     cap >> current_frame;
+                // }
 
                 // std::vector<int>params;
                 // params.push_back(cv::IMWRITE_PNG_COMPRESSION);
@@ -97,15 +102,28 @@ class TurtlebotControl : public rclcpp::Node
 
                 // find a way to check if raspberry pi cam is on
                 pub_current_img_->publish(*(cv_bridge::CvImage(header, "bgr8", current_frame).toImageMsg()), cam_info_);
-                std::cout << "published" << std::endl;
+                RCLCPP_INFO(rclcpp::get_logger("message"), "Published");
+                // num_frames++;
+                // std::cout << "published" << std::endl;
+
+                // auto end = std::chrono::high_resolution_clock::now();
+                // auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(end - begin);
+
+                // if (num_frames == 10){
+                //     RCLCPP_INFO(rclcpp::get_logger("message"), "Frequency: %ld\n", num_frames/elapsed.count());
+                //     begin = std::chrono::high_resolution_clock::now();
+                //     num_frames = 0;
+                // }
             }
             
-            sleep(10);
+            sleep(5);
         }
 
         rclcpp::TimerBase::SharedPtr timer_;
         std::shared_ptr<image_transport::CameraPublisher> pub_current_img_;
         sensor_msgs::msg::CameraInfo cam_info_;
+        int num_frames = 0;
+        std::chrono::system_clock::time_point begin = std::chrono::high_resolution_clock::now();
 };
 
 int main(int argc, char** argv)

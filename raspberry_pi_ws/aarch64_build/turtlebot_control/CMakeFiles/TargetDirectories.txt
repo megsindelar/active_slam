@@ -1,0 +1,10 @@
+/ros_ws/aarch64_build/turtlebot_control/CMakeFiles/uninstall.dir
+/ros_ws/aarch64_build/turtlebot_control/CMakeFiles/turtlebot_control_uninstall.dir
+/ros_ws/aarch64_build/turtlebot_control/CMakeFiles/turtlebot_control.dir
+/ros_ws/aarch64_build/turtlebot_control/CMakeFiles/test.dir
+/ros_ws/aarch64_build/turtlebot_control/CMakeFiles/edit_cache.dir
+/ros_ws/aarch64_build/turtlebot_control/CMakeFiles/rebuild_cache.dir
+/ros_ws/aarch64_build/turtlebot_control/CMakeFiles/list_install_components.dir
+/ros_ws/aarch64_build/turtlebot_control/CMakeFiles/install.dir
+/ros_ws/aarch64_build/turtlebot_control/CMakeFiles/install/local.dir
+/ros_ws/aarch64_build/turtlebot_control/CMakeFiles/install/strip.dir
