@@ -750,8 +750,272 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
   /usr/include/opencv4/opencv2/imgcodecs.hpp \
   /usr/include/opencv4/opencv2/videoio.hpp \
   /opt/ros/humble/include/ament_index_cpp/ament_index_cpp/get_package_share_directory.hpp \
-  /opt/ros/humble/include/ament_index_cpp/ament_index_cpp/visibility_control.h
+  /opt/ros/humble/include/ament_index_cpp/ament_index_cpp/visibility_control.h \
+  /usr/include/eigen3/Eigen/Core \
+  /usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
+  /usr/include/eigen3/Eigen/src/Core/util/Macros.h \
+  /usr/include/eigen3/Eigen/src/Core/util/ConfigureVectorization.h \
+  /usr/include/eigen3/Eigen/src/Core/util/MKL_support.h \
+  /usr/include/eigen3/Eigen/src/Core/util/Constants.h \
+  /usr/include/eigen3/Eigen/src/Core/util/Meta.h \
+  /usr/include/eigen3/Eigen/src/Core/util/ForwardDeclarations.h \
+  /usr/include/eigen3/Eigen/src/Core/util/StaticAssert.h \
+  /usr/include/eigen3/Eigen/src/Core/util/XprHelper.h \
+  /usr/include/eigen3/Eigen/src/Core/util/Memory.h \
+  /usr/include/eigen3/Eigen/src/Core/util/IntegralConstant.h \
+  /usr/include/eigen3/Eigen/src/Core/util/SymbolicIndex.h \
+  /usr/include/eigen3/Eigen/src/Core/NumTraits.h \
+  /usr/include/eigen3/Eigen/src/Core/MathFunctions.h \
+  /usr/include/eigen3/Eigen/src/Core/GenericPacketMath.h \
+  /usr/include/eigen3/Eigen/src/Core/MathFunctionsImpl.h \
+  /usr/include/eigen3/Eigen/src/Core/arch/Default/ConjHelper.h \
+  /usr/include/eigen3/Eigen/src/Core/arch/Default/Half.h \
+  /usr/include/eigen3/Eigen/src/Core/arch/Default/BFloat16.h \
+  /usr/include/eigen3/Eigen/src/Core/arch/Default/TypeCasting.h \
+  /usr/include/eigen3/Eigen/src/Core/arch/Default/GenericPacketMathFunctionsFwd.h \
+  /usr/include/eigen3/Eigen/src/Core/arch/SSE/PacketMath.h \
+  /usr/include/eigen3/Eigen/src/Core/arch/SSE/TypeCasting.h \
+  /usr/include/eigen3/Eigen/src/Core/arch/SSE/MathFunctions.h \
+  /usr/include/eigen3/Eigen/src/Core/arch/SSE/Complex.h \
+  /usr/include/eigen3/Eigen/src/Core/arch/Default/Settings.h \
+  /usr/include/eigen3/Eigen/src/Core/arch/Default/GenericPacketMathFunctions.h \
+  /usr/include/eigen3/Eigen/src/Core/functors/TernaryFunctors.h \
+  /usr/include/eigen3/Eigen/src/Core/functors/BinaryFunctors.h \
+  /usr/include/eigen3/Eigen/src/Core/functors/UnaryFunctors.h \
+  /usr/include/eigen3/Eigen/src/Core/functors/NullaryFunctors.h \
+  /usr/include/eigen3/Eigen/src/Core/functors/StlFunctors.h \
+  /usr/include/eigen3/Eigen/src/Core/functors/AssignmentFunctors.h \
+  /usr/include/eigen3/Eigen/src/Core/util/IndexedViewHelper.h \
+  /usr/include/eigen3/Eigen/src/Core/util/ReshapedHelper.h \
+  /usr/include/eigen3/Eigen/src/Core/ArithmeticSequence.h \
+  /usr/include/eigen3/Eigen/src/Core/IO.h \
+  /usr/include/eigen3/Eigen/src/Core/DenseCoeffsBase.h \
+  /usr/include/eigen3/Eigen/src/Core/DenseBase.h \
+  /usr/include/eigen3/Eigen/src/plugins/CommonCwiseUnaryOps.h \
+  /usr/include/eigen3/Eigen/src/plugins/BlockMethods.h \
+  /usr/include/eigen3/Eigen/src/plugins/IndexedViewMethods.h \
+  /usr/include/eigen3/Eigen/src/plugins/IndexedViewMethods.h \
+  /usr/include/eigen3/Eigen/src/plugins/ReshapedMethods.h \
+  /usr/include/eigen3/Eigen/src/plugins/ReshapedMethods.h \
+  /usr/include/eigen3/Eigen/src/Core/MatrixBase.h \
+  /usr/include/eigen3/Eigen/src/plugins/CommonCwiseBinaryOps.h \
+  /usr/include/eigen3/Eigen/src/plugins/MatrixCwiseUnaryOps.h \
+  /usr/include/eigen3/Eigen/src/plugins/MatrixCwiseBinaryOps.h \
+  /usr/include/eigen3/Eigen/src/Core/EigenBase.h \
+  /usr/include/eigen3/Eigen/src/Core/Product.h \
+  /usr/include/eigen3/Eigen/src/Core/CoreEvaluators.h \
+  /usr/include/eigen3/Eigen/src/Core/AssignEvaluator.h \
+  /usr/include/eigen3/Eigen/src/Core/Assign.h \
+  /usr/include/eigen3/Eigen/src/Core/ArrayBase.h \
+  /usr/include/eigen3/Eigen/src/plugins/ArrayCwiseUnaryOps.h \
+  /usr/include/eigen3/Eigen/src/plugins/ArrayCwiseBinaryOps.h \
+  /usr/include/eigen3/Eigen/src/Core/util/BlasUtil.h \
+  /usr/include/eigen3/Eigen/src/Core/DenseStorage.h \
+  /usr/include/eigen3/Eigen/src/Core/NestByValue.h \
+  /usr/include/eigen3/Eigen/src/Core/ReturnByValue.h \
+  /usr/include/eigen3/Eigen/src/Core/NoAlias.h \
+  /usr/include/eigen3/Eigen/src/Core/PlainObjectBase.h \
+  /usr/include/eigen3/Eigen/src/Core/Matrix.h \
+  /usr/include/eigen3/Eigen/src/Core/Array.h \
+  /usr/include/eigen3/Eigen/src/Core/CwiseTernaryOp.h \
+  /usr/include/eigen3/Eigen/src/Core/CwiseBinaryOp.h \
+  /usr/include/eigen3/Eigen/src/Core/CwiseUnaryOp.h \
+  /usr/include/eigen3/Eigen/src/Core/CwiseNullaryOp.h \
+  /usr/include/eigen3/Eigen/src/Core/CwiseUnaryView.h \
+  /usr/include/eigen3/Eigen/src/Core/SelfCwiseBinaryOp.h \
+  /usr/include/eigen3/Eigen/src/Core/Dot.h \
+  /usr/include/eigen3/Eigen/src/Core/StableNorm.h \
+  /usr/include/eigen3/Eigen/src/Core/Stride.h \
+  /usr/include/eigen3/Eigen/src/Core/MapBase.h \
+  /usr/include/eigen3/Eigen/src/Core/Map.h \
+  /usr/include/eigen3/Eigen/src/Core/Ref.h \
+  /usr/include/eigen3/Eigen/src/Core/Block.h \
+  /usr/include/eigen3/Eigen/src/Core/VectorBlock.h \
+  /usr/include/eigen3/Eigen/src/Core/IndexedView.h \
+  /usr/include/eigen3/Eigen/src/Core/Reshaped.h \
+  /usr/include/eigen3/Eigen/src/Core/Transpose.h \
+  /usr/include/eigen3/Eigen/src/Core/DiagonalMatrix.h \
+  /usr/include/eigen3/Eigen/src/Core/Diagonal.h \
+  /usr/include/eigen3/Eigen/src/Core/DiagonalProduct.h \
+  /usr/include/eigen3/Eigen/src/Core/Redux.h \
+  /usr/include/eigen3/Eigen/src/Core/Visitor.h \
+  /usr/include/eigen3/Eigen/src/Core/Fuzzy.h \
+  /usr/include/eigen3/Eigen/src/Core/Swap.h \
+  /usr/include/eigen3/Eigen/src/Core/CommaInitializer.h \
+  /usr/include/eigen3/Eigen/src/Core/GeneralProduct.h \
+  /usr/include/eigen3/Eigen/src/Core/Solve.h \
+  /usr/include/eigen3/Eigen/src/Core/Inverse.h \
+  /usr/include/eigen3/Eigen/src/Core/SolverBase.h \
+  /usr/include/eigen3/Eigen/src/Core/PermutationMatrix.h \
+  /usr/include/eigen3/Eigen/src/Core/Transpositions.h \
+  /usr/include/eigen3/Eigen/src/Core/TriangularMatrix.h \
+  /usr/include/eigen3/Eigen/src/Core/SelfAdjointView.h \
+  /usr/include/eigen3/Eigen/src/Core/products/GeneralBlockPanelKernel.h \
+  /usr/include/eigen3/Eigen/src/Core/products/Parallelizer.h \
+  /usr/include/eigen3/Eigen/src/Core/ProductEvaluators.h \
+  /usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixVector.h \
+  /usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixMatrix.h \
+  /usr/include/eigen3/Eigen/src/Core/SolveTriangular.h \
+  /usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixMatrixTriangular.h \
+  /usr/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixVector.h \
+  /usr/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixMatrix.h \
+  /usr/include/eigen3/Eigen/src/Core/products/SelfadjointProduct.h \
+  /usr/include/eigen3/Eigen/src/Core/products/SelfadjointRank2Update.h \
+  /usr/include/eigen3/Eigen/src/Core/products/TriangularMatrixVector.h \
+  /usr/include/eigen3/Eigen/src/Core/products/TriangularMatrixMatrix.h \
+  /usr/include/eigen3/Eigen/src/Core/products/TriangularSolverMatrix.h \
+  /usr/include/eigen3/Eigen/src/Core/products/TriangularSolverVector.h \
+  /usr/include/eigen3/Eigen/src/Core/BandMatrix.h \
+  /usr/include/eigen3/Eigen/src/Core/CoreIterators.h \
+  /usr/include/eigen3/Eigen/src/Core/ConditionEstimator.h \
+  /usr/include/eigen3/Eigen/src/Core/BooleanRedux.h \
+  /usr/include/eigen3/Eigen/src/Core/Select.h \
+  /usr/include/eigen3/Eigen/src/Core/VectorwiseOp.h \
+  /usr/include/eigen3/Eigen/src/Core/PartialReduxEvaluator.h \
+  /usr/include/eigen3/Eigen/src/Core/Random.h \
+  /usr/include/eigen3/Eigen/src/Core/Replicate.h \
+  /usr/include/eigen3/Eigen/src/Core/Reverse.h \
+  /usr/include/eigen3/Eigen/src/Core/ArrayWrapper.h \
+  /usr/include/eigen3/Eigen/src/Core/StlIterators.h \
+  /usr/include/eigen3/Eigen/src/Core/GlobalFunctions.h \
+  /usr/include/eigen3/Eigen/src/Core/util/ReenableStupidWarnings.h
 
+
+/usr/include/eigen3/Eigen/src/Core/util/ReenableStupidWarnings.h:
+
+/usr/include/eigen3/Eigen/src/Core/GlobalFunctions.h:
+
+/usr/include/eigen3/Eigen/src/Core/StlIterators.h:
+
+/usr/include/eigen3/Eigen/src/Core/VectorwiseOp.h:
+
+/usr/include/eigen3/Eigen/src/Core/BooleanRedux.h:
+
+/usr/include/eigen3/Eigen/src/Core/CoreIterators.h:
+
+/usr/include/eigen3/Eigen/src/Core/products/TriangularSolverMatrix.h:
+
+/usr/include/eigen3/Eigen/src/Core/products/TriangularMatrixMatrix.h:
+
+/usr/include/eigen3/Eigen/src/Core/products/TriangularMatrixVector.h:
+
+/usr/include/eigen3/Eigen/src/Core/products/SelfadjointProduct.h:
+
+/usr/include/eigen3/Eigen/src/Core/products/Parallelizer.h:
+
+/usr/include/eigen3/Eigen/src/Core/SelfAdjointView.h:
+
+/usr/include/eigen3/Eigen/src/Core/TriangularMatrix.h:
+
+/usr/include/eigen3/Eigen/src/Core/Solve.h:
+
+/usr/include/eigen3/Eigen/src/Core/CommaInitializer.h:
+
+/usr/include/eigen3/Eigen/src/Core/Redux.h:
+
+/usr/include/eigen3/Eigen/src/Core/DiagonalProduct.h:
+
+/usr/include/eigen3/Eigen/src/Core/DiagonalMatrix.h:
+
+/usr/include/eigen3/Eigen/src/Core/Reshaped.h:
+
+/usr/include/eigen3/Eigen/src/Core/IndexedView.h:
+
+/usr/include/eigen3/Eigen/src/Core/VectorBlock.h:
+
+/usr/include/eigen3/Eigen/src/Core/Block.h:
+
+/usr/include/eigen3/Eigen/src/Core/Map.h:
+
+/usr/include/eigen3/Eigen/src/Core/StableNorm.h:
+
+/usr/include/eigen3/Eigen/src/Core/SelfCwiseBinaryOp.h:
+
+/usr/include/eigen3/Eigen/src/Core/CwiseBinaryOp.h:
+
+/usr/include/eigen3/Eigen/src/Core/Array.h:
+
+/usr/include/eigen3/Eigen/src/Core/Matrix.h:
+
+/usr/include/eigen3/Eigen/src/Core/NoAlias.h:
+
+/usr/include/eigen3/Eigen/src/Core/ReturnByValue.h:
+
+/usr/include/eigen3/Eigen/src/plugins/ArrayCwiseBinaryOps.h:
+
+/usr/include/eigen3/Eigen/src/plugins/ArrayCwiseUnaryOps.h:
+
+/usr/include/eigen3/Eigen/src/Core/ArrayBase.h:
+
+/usr/include/eigen3/Eigen/src/Core/Product.h:
+
+/usr/include/eigen3/Eigen/src/Core/EigenBase.h:
+
+/usr/include/eigen3/Eigen/src/plugins/MatrixCwiseBinaryOps.h:
+
+/usr/include/eigen3/Eigen/src/plugins/MatrixCwiseUnaryOps.h:
+
+/usr/include/eigen3/Eigen/src/plugins/CommonCwiseBinaryOps.h:
+
+/usr/include/eigen3/Eigen/src/plugins/ReshapedMethods.h:
+
+/usr/include/eigen3/Eigen/src/plugins/IndexedViewMethods.h:
+
+/usr/include/eigen3/Eigen/src/Core/AssignEvaluator.h:
+
+/usr/include/eigen3/Eigen/src/plugins/BlockMethods.h:
+
+/usr/include/eigen3/Eigen/src/Core/IO.h:
+
+/usr/include/eigen3/Eigen/src/Core/ArithmeticSequence.h:
+
+/usr/include/eigen3/Eigen/src/Core/util/ReshapedHelper.h:
+
+/usr/include/eigen3/Eigen/src/Core/functors/NullaryFunctors.h:
+
+/usr/include/eigen3/Eigen/src/plugins/CommonCwiseUnaryOps.h:
+
+/usr/include/eigen3/Eigen/src/Core/functors/BinaryFunctors.h:
+
+/usr/include/eigen3/Eigen/src/Core/arch/SSE/Complex.h:
+
+/usr/include/eigen3/Eigen/src/Core/arch/SSE/MathFunctions.h:
+
+/usr/include/eigen3/Eigen/src/Core/arch/SSE/TypeCasting.h:
+
+/usr/include/eigen3/Eigen/src/Core/arch/Default/GenericPacketMathFunctions.h:
+
+/usr/include/eigen3/Eigen/src/Core/arch/SSE/PacketMath.h:
+
+/usr/include/eigen3/Eigen/src/Core/arch/Default/GenericPacketMathFunctionsFwd.h:
+
+/usr/include/eigen3/Eigen/src/Core/arch/Default/TypeCasting.h:
+
+/usr/include/eigen3/Eigen/src/Core/arch/Default/BFloat16.h:
+
+/usr/include/eigen3/Eigen/src/Core/arch/Default/Settings.h:
+
+/usr/include/eigen3/Eigen/src/Core/arch/Default/Half.h:
+
+/usr/include/eigen3/Eigen/src/Core/MathFunctionsImpl.h:
+
+/usr/include/eigen3/Eigen/src/Core/GenericPacketMath.h:
+
+/usr/include/eigen3/Eigen/src/Core/util/Memory.h:
+
+/usr/include/eigen3/Eigen/src/Core/util/XprHelper.h:
+
+/usr/include/eigen3/Eigen/src/Core/util/StaticAssert.h:
+
+/usr/include/eigen3/Eigen/src/Core/util/Meta.h:
+
+/usr/include/eigen3/Eigen/src/Core/util/Constants.h:
+
+/usr/include/eigen3/Eigen/src/Core/util/ConfigureVectorization.h:
+
+/usr/include/eigen3/Eigen/src/Core/util/Macros.h:
+
+/usr/include/eigen3/Eigen/Core:
 
 /opt/ros/humble/include/ament_index_cpp/ament_index_cpp/visibility_control.h:
 
@@ -759,7 +1023,11 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 
 /usr/include/opencv4/opencv2/videoio.hpp:
 
+/usr/include/eigen3/Eigen/src/Core/functors/UnaryFunctors.h:
+
 /usr/include/opencv4/opencv2/imgcodecs.hpp:
+
+/usr/include/eigen3/Eigen/src/Core/Diagonal.h:
 
 /usr/include/opencv4/opencv2/highgui.hpp:
 
@@ -773,7 +1041,11 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 
 /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/camera_info.hpp:
 
+/usr/include/eigen3/Eigen/src/Core/util/IndexedViewHelper.h:
+
 /opt/ros/humble/include/image_transport/image_transport/camera_publisher.hpp:
+
+/usr/include/eigen3/Eigen/src/Core/CoreEvaluators.h:
 
 /opt/ros/humble/include/image_transport/image_transport/image_transport.hpp:
 
@@ -784,6 +1056,8 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 /usr/include/opencv4/opencv2/imgproc/imgproc.hpp:
 
 /usr/include/opencv4/opencv2/core/optim.hpp:
+
+/usr/include/eigen3/Eigen/src/Core/DenseStorage.h:
 
 /usr/include/opencv4/opencv2/core/cvstd.inl.hpp:
 
@@ -799,17 +1073,25 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 
 /usr/include/opencv4/opencv2/core/matx.hpp:
 
+/usr/include/eigen3/Eigen/src/Core/util/BlasUtil.h:
+
 /usr/include/opencv4/opencv2/core/traits.hpp:
+
+/usr/include/eigen3/Eigen/src/Core/NumTraits.h:
 
 /usr/include/opencv4/opencv2/core/vsx_utils.hpp:
 
 /usr/include/opencv4/opencv2/core/neon_utils.hpp:
+
+/usr/include/eigen3/Eigen/src/Core/Reverse.h:
 
 /usr/include/opencv4/opencv2/core/cvstd_wrapper.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/uio_lim.h:
 
 /usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
+
+/usr/include/eigen3/Eigen/src/Core/MathFunctions.h:
 
 /usr/include/linux/limits.h:
 
@@ -833,6 +1115,8 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 
 /usr/include/opencv4/opencv2/core.hpp:
 
+/usr/include/eigen3/Eigen/src/Core/functors/StlFunctors.h:
+
 /opt/ros/humble/include/sensor_msgs/sensor_msgs/image_encodings.hpp:
 
 /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/detail/compressed_image__builder.hpp:
@@ -846,6 +1130,8 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 /opt/ros/humble/include/cv_bridge/cv_bridge/cv_bridge.h:
 
 /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/detail/image__builder.hpp:
+
+/usr/include/eigen3/Eigen/src/Core/functors/TernaryFunctors.h:
 
 /opt/ros/humble/include/std_msgs/std_msgs/msg/detail/header__struct.hpp:
 
@@ -878,6 +1164,8 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 /opt/ros/humble/include/rcl_interfaces/rcl_interfaces/srv/set_parameters_atomically.hpp:
 
 /opt/ros/humble/include/rcl_interfaces/rcl_interfaces/srv/detail/set_parameters__struct.hpp:
+
+/usr/include/eigen3/Eigen/src/Core/products/SelfadjointRank2Update.h:
 
 /opt/ros/humble/include/rcl_interfaces/rcl_interfaces/srv/detail/list_parameters__traits.hpp:
 
@@ -923,6 +1211,8 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 
 /opt/ros/humble/include/rclcpp/rclcpp/node_interfaces/node_parameters_interface_traits.hpp:
 
+/usr/include/eigen3/Eigen/src/Core/GeneralProduct.h:
+
 /opt/ros/humble/include/image_transport/image_transport/publisher.hpp:
 
 /opt/ros/humble/include/rclcpp/rclcpp/create_client.hpp:
@@ -944,6 +1234,8 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 /opt/ros/humble/include/rcl_interfaces/rcl_interfaces/msg/detail/parameter_type__builder.hpp:
 
 /opt/ros/humble/include/rcl_interfaces/rcl_interfaces/msg/parameter_type.hpp:
+
+/usr/include/eigen3/Eigen/src/Core/CwiseUnaryView.h:
 
 /opt/ros/humble/include/rcl_interfaces/rcl_interfaces/msg/parameter.hpp:
 
@@ -973,15 +1265,23 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 
 /opt/ros/humble/include/rcl_interfaces/rcl_interfaces/msg/detail/parameter_event__traits.hpp:
 
+/usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixVector.h:
+
+/usr/include/eigen3/Eigen/src/Core/CwiseTernaryOp.h:
+
 /opt/ros/humble/include/rcl_interfaces/rcl_interfaces/msg/detail/parameter__struct.hpp:
 
 /opt/ros/humble/include/rcl_interfaces/rcl_interfaces/msg/parameter_event.hpp:
 
 /opt/ros/humble/include/rcl_interfaces/rcl_interfaces/msg/detail/integer_range__traits.hpp:
 
+/usr/include/eigen3/Eigen/src/Core/MatrixBase.h:
+
 /opt/ros/humble/include/rcl_interfaces/rcl_interfaces/msg/detail/parameter_event__builder.hpp:
 
 /opt/ros/humble/include/rcl_interfaces/rcl_interfaces/msg/detail/parameter_descriptor__traits.hpp:
+
+/usr/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixMatrix.h:
 
 /opt/ros/humble/include/rcl_interfaces/rcl_interfaces/msg/detail/integer_range__struct.hpp:
 
@@ -1029,6 +1329,8 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 
 /usr/include/c++/11/bits/stl_relops.h:
 
+/usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixMatrixTriangular.h:
+
 /usr/include/c++/11/bits/uses_allocator.h:
 
 /usr/include/c++/11/bits/unique_lock.h:
@@ -1058,6 +1360,8 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 /usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
 
 /usr/include/time.h:
+
+/usr/include/eigen3/Eigen/src/Core/util/SymbolicIndex.h:
 
 /usr/include/x86_64-linux-gnu/bits/environments.h:
 
@@ -1101,6 +1405,8 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 
 /usr/include/c++/11/bits/istream.tcc:
 
+/usr/include/eigen3/Eigen/src/Core/SolverBase.h:
+
 /usr/include/c++/11/csignal:
 
 /usr/include/c++/11/pstl/glue_memory_defs.h:
@@ -1130,6 +1436,8 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 /usr/include/c++/11/bits/streambuf_iterator.h:
 
 /usr/include/c++/11/cwctype:
+
+/usr/include/eigen3/Eigen/src/Core/BandMatrix.h:
 
 /usr/include/c++/11/bits/exception.h:
 
@@ -1267,6 +1575,8 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 
 /usr/include/c++/11/typeinfo:
 
+/usr/include/eigen3/Eigen/src/Core/Dot.h:
+
 /usr/include/x86_64-linux-gnu/bits/cpu-set.h:
 
 /opt/ros/humble/include/rclcpp/rclcpp/allocator/allocator_deleter.hpp:
@@ -1397,6 +1707,8 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 
 /usr/include/c++/11/debug/assertions.h:
 
+/usr/include/eigen3/Eigen/src/Core/CwiseNullaryOp.h:
+
 /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h:
@@ -1405,7 +1717,11 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 
 /usr/include/c++/11/pstl/execution_defs.h:
 
+/usr/include/eigen3/Eigen/src/Core/products/TriangularSolverVector.h:
+
 /usr/include/stdc-predef.h:
+
+/usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h:
 
 /usr/include/asm-generic/errno-base.h:
 
@@ -1419,15 +1735,27 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 
 /usr/include/c++/11/pstl/pstl_config.h:
 
+/usr/include/eigen3/Eigen/src/Core/Ref.h:
+
 /usr/include/x86_64-linux-gnu/sys/single_threaded.h:
+
+/usr/include/eigen3/Eigen/src/Core/Select.h:
 
 /opt/ros/humble/include/libstatistics_collector/libstatistics_collector/topic_statistics_collector/received_message_age.hpp:
 
 /usr/include/strings.h:
 
+/usr/include/eigen3/Eigen/src/Core/Fuzzy.h:
+
 /usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
 
+/usr/include/eigen3/Eigen/src/Core/PartialReduxEvaluator.h:
+
+/usr/include/eigen3/Eigen/src/Core/arch/Default/ConjHelper.h:
+
 /usr/include/x86_64-linux-gnu/bits/timex.h:
+
+/usr/include/eigen3/Eigen/src/Core/ProductEvaluators.h:
 
 /usr/include/c++/11/unordered_set:
 
@@ -1637,6 +1965,8 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 
 /usr/include/c++/11/bits/stl_pair.h:
 
+/usr/include/eigen3/Eigen/src/Core/DenseBase.h:
+
 /opt/ros/humble/include/rcutils/rcutils/types/uint8_array.h:
 
 /usr/include/c++/11/ext/atomicity.h:
@@ -1677,6 +2007,8 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 
 /opt/ros/humble/include/rmw/rmw/incompatible_qos_events_statuses.h:
 
+/usr/include/eigen3/Eigen/src/Core/Assign.h:
+
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
 /opt/ros/humble/include/rclcpp/rclcpp/qos_overriding_options.hpp:
@@ -1684,6 +2016,8 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 /opt/ros/humble/include/rmw/rmw/qos_string_conversions.h:
 
 /usr/include/x86_64-linux-gnu/bits/sigcontext.h:
+
+/usr/include/eigen3/Eigen/src/Core/Visitor.h:
 
 /usr/include/c++/11/ext/new_allocator.h:
 
@@ -1714,6 +2048,8 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 /usr/include/c++/11/set:
 
 /usr/include/x86_64-linux-gnu/gnu/stubs.h:
+
+/usr/include/eigen3/Eigen/src/Core/CwiseUnaryOp.h:
 
 /usr/include/c++/11/bits/algorithmfwd.h:
 
@@ -1795,6 +2131,8 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 
 /opt/ros/humble/include/rclcpp/rclcpp/network_flow_endpoint.hpp:
 
+/usr/include/eigen3/Eigen/src/Core/Replicate.h:
+
 /opt/ros/humble/include/rmw/rmw/init_options.h:
 
 /opt/ros/humble/include/rmw/rmw/domain_id.h:
@@ -1814,6 +2152,8 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 /opt/ros/humble/include/rcl/rcl/log_level.h:
 
 /opt/ros/humble/include/rcl/rcl/macros.h:
+
+/usr/include/eigen3/Eigen/src/Core/functors/AssignmentFunctors.h:
 
 /opt/ros/humble/include/rmw/rmw/types.h:
 
@@ -1845,11 +2185,15 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 
 /opt/ros/humble/include/rcutils/rcutils/qsort.h:
 
+/usr/include/eigen3/Eigen/src/Core/ArrayWrapper.h:
+
 /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h:
 
 /opt/ros/humble/include/rclcpp/rclcpp/detail/rmw_implementation_specific_subscription_payload.hpp:
 
 /opt/ros/humble/include/rmw/rmw/rmw.h:
+
+/usr/include/eigen3/Eigen/src/Core/util/ForwardDeclarations.h:
 
 /usr/include/c++/11/bits/ostream.tcc:
 
@@ -1862,6 +2206,8 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 /opt/ros/humble/include/rmw/rmw/events_statuses/events_statuses.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/cxxabi_tweaks.h:
+
+/usr/include/eigen3/Eigen/src/Core/Stride.h:
 
 /opt/ros/humble/include/rclcpp/rclcpp/timer.hpp:
 
@@ -1886,6 +2232,8 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 /opt/ros/humble/include/rmw/rmw/events_statuses/offered_deadline_missed.h:
 
 /opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:
+
+/usr/include/eigen3/Eigen/src/Core/PermutationMatrix.h:
 
 /opt/ros/humble/include/rmw/rmw/events_statuses/requested_deadline_missed.h:
 
@@ -1913,7 +2261,11 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 
 /opt/ros/humble/include/rcl/rcl/client.h:
 
+/usr/include/eigen3/Eigen/src/Core/products/GeneralBlockPanelKernel.h:
+
 /opt/ros/humble/include/rosidl_typesupport_interface/rosidl_typesupport_interface/macros.h:
+
+/usr/include/eigen3/Eigen/src/Core/SolveTriangular.h:
 
 /opt/ros/humble/include/rcl/rcl/context.h:
 
@@ -1931,11 +2283,15 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 
 /opt/ros/humble/include/rcl/rcl/subscription.h:
 
+/usr/include/eigen3/Eigen/src/Core/Inverse.h:
+
 /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/image.hpp:
 
 /opt/ros/humble/include/rcl/rcl/timer.h:
 
 /usr/include/c++/11/bits/locale_facets_nonio.h:
+
+/usr/include/eigen3/Eigen/src/Core/DenseCoeffsBase.h:
 
 /usr/include/c++/11/bits/stl_iterator_base_types.h:
 
@@ -1979,6 +2335,8 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 
 /opt/ros/humble/include/rclcpp/rclcpp/macros.hpp:
 
+/usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixMatrix.h:
+
 /opt/ros/humble/include/rclcpp/rclcpp/contexts/default_context.hpp:
 
 /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/detail/region_of_interest__struct.hpp:
@@ -2009,11 +2367,15 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 
 /usr/include/c++/11/sstream:
 
+/usr/include/eigen3/Eigen/src/Core/MapBase.h:
+
 /opt/ros/humble/include/rclcpp/rclcpp/exceptions/exceptions.hpp:
 
 /opt/ros/humble/include/rclcpp/rclcpp/expand_topic_or_service_name.hpp:
 
 /usr/include/c++/11/tr1/hypergeometric.tcc:
+
+/usr/include/eigen3/Eigen/src/Core/Transpose.h:
 
 /opt/ros/humble/include/rclcpp/rclcpp/function_traits.hpp:
 
@@ -2065,9 +2427,13 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 
 /opt/ros/humble/include/builtin_interfaces/builtin_interfaces/msg/detail/duration__builder.hpp:
 
+/usr/include/eigen3/Eigen/src/Core/Transpositions.h:
+
 /opt/ros/humble/include/rclcpp/rclcpp/subscription_content_filter_options.hpp:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/time_members.h:
+
+/usr/include/eigen3/Eigen/src/Core/Swap.h:
 
 /usr/include/c++/11/bits/basic_ios.h:
 
@@ -2084,6 +2450,8 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 /opt/ros/humble/include/rclcpp/rclcpp/subscription_traits.hpp:
 
 /usr/include/c++/11/bits/locale_facets_nonio.tcc:
+
+/usr/include/eigen3/Eigen/src/Core/Random.h:
 
 /usr/include/c++/11/bits/locale_conv.h:
 
@@ -2131,9 +2499,13 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 
 /opt/ros/humble/include/rclcpp/rclcpp/subscription_base.hpp:
 
+/usr/include/eigen3/Eigen/src/Core/util/MKL_support.h:
+
 /opt/ros/humble/include/rclcpp/rclcpp/any_subscription_callback.hpp:
 
 /opt/ros/humble/include/rclcpp/rclcpp/message_info.hpp:
+
+/usr/include/eigen3/Eigen/src/Core/ConditionEstimator.h:
 
 /opt/ros/humble/include/rcl_interfaces/rcl_interfaces/srv/detail/set_parameters_atomically__builder.hpp:
 
@@ -2151,7 +2523,11 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 
 /opt/ros/humble/include/rclcpp/rclcpp/experimental/buffers/buffer_implementation_base.hpp:
 
+/usr/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixVector.h:
+
 /opt/ros/humble/include/rclcpp/rclcpp/rate.hpp:
+
+/usr/include/eigen3/Eigen/src/Core/PlainObjectBase.h:
 
 /opt/ros/humble/include/rclcpp/rclcpp/clock.hpp:
 
@@ -2174,6 +2550,8 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 /usr/include/c++/11/thread:
 
 /opt/ros/humble/include/rclcpp/rclcpp/message_memory_strategy.hpp:
+
+/usr/include/eigen3/Eigen/src/Core/util/IntegralConstant.h:
 
 /opt/ros/humble/include/rclcpp/rclcpp/detail/rmw_implementation_specific_payload.hpp:
 
@@ -2218,6 +2596,8 @@ CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o: /home/megsindelar/
 /opt/ros/humble/include/rcl/rcl/error_handling.h:
 
 /usr/include/c++/11/tr1/exp_integral.tcc:
+
+/usr/include/eigen3/Eigen/src/Core/NestByValue.h:
 
 /usr/include/c++/11/tr1/modified_bessel_func.tcc:
 

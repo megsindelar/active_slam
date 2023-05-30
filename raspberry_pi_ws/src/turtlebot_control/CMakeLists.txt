@@ -14,9 +14,21 @@ find_package(OpenCV REQUIRED)
 find_package(cv_bridge REQUIRED)
 find_package(image_transport REQUIRED)
 find_package(ament_index_cpp REQUIRED)
+find_package(Eigen3 REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
+
+rosidl_generate_interfaces(${PROJECT_NAME}_msg
+  "msg/Keypoints.msg"
+  LIBRARY_NAME ${PROJECT_NAME}
+ )
+rosidl_get_typesupport_target(cpp_typesupport_target
+  ${PROJECT_NAME}_msg 
+  "rosidl_typesupport_cpp"
+ )
+
 
 add_executable(turtlebot_control src/turtlebot_control.cpp)
 
@@ -26,6 +38,7 @@ ament_target_dependencies(turtlebot_control
   sensor_msgs
   cv_bridge
   image_transport
+  Eigen3
 )
 
 # include_directories(${OpenCV_INCLUDE_DIRS}
@@ -37,7 +50,7 @@ include_directories(SYSTEM
   ${OpenCV_INCLUDE_DIRS}
 )
 
-target_link_libraries(turtlebot_control ${OpenCV_LIBS})
+target_link_libraries(turtlebot_control Eigen3::Eigen ${OpenCV_LIBS})
 
 install(TARGETS
   turtlebot_control

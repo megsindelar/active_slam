@@ -1,0 +1,14 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from turtlebot_control/msg/Keypoints.msg
+// generated code does not contain a copyright notice
+
+
+module turtlebot_control {
+  module msg {
+    struct Keypoints {
+      sequence<double> keypoints_1;
+
+      sequence<double> keypoints_2;
+    };
+  };
+};
