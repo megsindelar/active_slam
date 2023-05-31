@@ -106,7 +106,6 @@ install(TARGETS
 )
 
 install(DIRECTORY
-  images
   launch
   config
   DESTINATION share/${PROJECT_NAME}
