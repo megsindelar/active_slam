@@ -1,0 +1,11 @@
+<launch>
+  <node pkg="rviz2" exec="rviz2"
+        args="-d $(find-pkg-share img_transform)/config/transform.rviz"
+        namespace="global"/>
+
+  <node pkg="tf2_ros" exec="static_transform_publisher"
+        args="--frame-id world --child-frame-id previous" />
+
+  <node pkg="img_transform" exec="img_transform">
+  </node>
+</launch>
