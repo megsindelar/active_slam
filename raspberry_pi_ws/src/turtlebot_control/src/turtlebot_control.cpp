@@ -83,32 +83,32 @@ class TurtlebotControl : public rclcpp::Node
 
                 std::vector<KeyPoint> keypoints1, keypoints2;
 
-                if (!prev_frame.empty()){
-                    Ptr<FeatureDetector> detector = ORB::create();
-                    detector->detect (prev_frame ,keypoints1);
-                    detector->detect (current_frame ,keypoints2);
+                // if (!prev_frame.empty()){
+                    // Ptr<FeatureDetector> detector = ORB::create();
+                    // detector->detect (prev_frame ,keypoints1);
+                    // detector->detect (current_frame ,keypoints2);
 
-                    // publish keypoints
-                    turtlebot_control::msg::Keypoints keypoints;
-                    for (long unsigned int i = 0; i < sizeof(keypoints1); i++){
-                        RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 10 %ld", sizeof(keypoints1));
-                        keypoints.x_1.push_back(keypoints1.at(i).pt.x);
-                        keypoints.y_1.push_back(keypoints1.at(i).pt.y);
-                        keypoints.size_1.push_back(keypoints1.at(i).size);
-                        keypoints.angle_1.push_back(keypoints1.at(i).angle);
-                        keypoints.response_1.push_back(keypoints1.at(i).response);
-                        keypoints.octave_1.push_back(keypoints1.at(i).octave);
-                        keypoints.class_id_1.push_back(keypoints1.at(i).class_id);
-                        keypoints.x_2.push_back(keypoints2.at(i).pt.x);
-                        keypoints.y_2.push_back(keypoints2.at(i).pt.y);
-                        keypoints.size_2.push_back(keypoints2.at(i).size);
-                        keypoints.angle_2.push_back(keypoints2.at(i).angle);
-                        keypoints.response_2.push_back(keypoints2.at(i).response);
-                        keypoints.octave_2.push_back(keypoints2.at(i).octave);
-                        keypoints.class_id_2.push_back(keypoints2.at(i).class_id);
-                    }
-                    pub_keypoints_->publish(keypoints);
-                }
+                    // // publish keypoints
+                    // turtlebot_control::msg::Keypoints keypoints;
+                    // for (long unsigned int i = 0; i < sizeof(keypoints1); i++){
+                    //     RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 10 %ld", sizeof(keypoints1));
+                    //     keypoints.x_1.push_back(keypoints1.at(i).pt.x);
+                    //     keypoints.y_1.push_back(keypoints1.at(i).pt.y);
+                    //     keypoints.size_1.push_back(keypoints1.at(i).size);
+                    //     keypoints.angle_1.push_back(keypoints1.at(i).angle);
+                    //     keypoints.response_1.push_back(keypoints1.at(i).response);
+                    //     keypoints.octave_1.push_back(keypoints1.at(i).octave);
+                    //     keypoints.class_id_1.push_back(keypoints1.at(i).class_id);
+                    //     keypoints.x_2.push_back(keypoints2.at(i).pt.x);
+                    //     keypoints.y_2.push_back(keypoints2.at(i).pt.y);
+                    //     keypoints.size_2.push_back(keypoints2.at(i).size);
+                    //     keypoints.angle_2.push_back(keypoints2.at(i).angle);
+                    //     keypoints.response_2.push_back(keypoints2.at(i).response);
+                    //     keypoints.octave_2.push_back(keypoints2.at(i).octave);
+                    //     keypoints.class_id_2.push_back(keypoints2.at(i).class_id);
+                    // }
+                    // pub_keypoints_->publish(keypoints);
+                // }
 
                 // for(int i=0; i<num_frames; i++){
                 //     cap >> current_frame;
@@ -153,9 +153,9 @@ class TurtlebotControl : public rclcpp::Node
                 // sensor_msgs::msg::CompressedImage img_msg;
                 // cv_bridge::CvImage img_bridge = cv_bridge::CvImage(header, "bgr8", current_frame).toImageMsg();
                 // img_bridge.toCompressedImageMsg(img_msg)
-                // RCLCPP_INFO(rclcpp::get_logger("message"), "Image size %d %d", current_frame.rows, current_frame.cols);
+                RCLCPP_INFO(rclcpp::get_logger("message"), "Image size %d %d", current_frame.rows, current_frame.cols);
 
-                // pub_current_img_->publish(*cv_bridge::CvImage(header, "bgr8", current_frame).toImageMsg());
+                pub_current_img_->publish(*cv_bridge::CvImage(header, "bgr8", current_frame).toImageMsg());
                 // RCLCPP_INFO(rclcpp::get_logger("message"), "Published");
 
 
