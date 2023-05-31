@@ -1,0 +1,165 @@
+[0.010s] Invoking command in '/home/megsindelar/Final_Project/raspberry_pi_ws/build/turtlebot_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/raspberry_pi_ws/build/turtlebot_control -- -j8 -l8
+[0.046s] [  3%] Built target turtlebot_control_msg__cpp
+[0.047s] [ 12%] Built target turtlebot_control_msg__rosidl_generator_c
+[0.055s] [ 12%] Built target ament_cmake_python_copy_turtlebot_control
+[0.065s] [ 30%] Built target turtlebot_control_msg__rosidl_typesupport_fastrtps_c
+[0.065s] [ 30%] Built target turtlebot_control_msg__rosidl_typesupport_fastrtps_cpp
+[0.065s] [ 39%] Built target turtlebot_control_msg__rosidl_typesupport_c
+[0.065s] [ 48%] Built target turtlebot_control_msg__rosidl_typesupport_cpp
+[0.066s] [ 57%] Built target turtlebot_control_msg__rosidl_typesupport_introspection_c
+[0.066s] [ 66%] Built target turtlebot_control_msg__rosidl_typesupport_introspection_cpp
+[0.075s] [35m[1mConsolidate compiler generated dependencies of target turtlebot_control[0m
+[0.079s] [ 66%] Built target turtlebot_control_msg
+[0.087s] [ 69%] [32mBuilding CXX object CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o[0m
+[0.093s] [ 72%] Built target turtlebot_control_msg__py
+[0.109s] [ 78%] Built target turtlebot_control_msg__rosidl_generator_py
+[0.127s] [ 90%] Built target turtlebot_control__rosidl_typesupport_fastrtps_c__pyext
+[0.127s] [ 90%] Built target turtlebot_control__rosidl_typesupport_c__pyext
+[0.129s] [ 96%] Built target turtlebot_control__rosidl_typesupport_introspection_c__pyext
+[0.241s] running egg_info
+[0.241s] writing turtlebot_control.egg-info/PKG-INFO
+[0.241s] writing dependency_links to turtlebot_control.egg-info/dependency_links.txt
+[0.241s] writing top-level names to turtlebot_control.egg-info/top_level.txt
+[0.243s] reading manifest file 'turtlebot_control.egg-info/SOURCES.txt'
+[0.243s] writing manifest file 'turtlebot_control.egg-info/SOURCES.txt'
+[0.261s] [ 96%] Built target ament_cmake_python_build_turtlebot_control_egg
+[2.961s] [100%] [32m[1mLinking CXX executable turtlebot_control[0m
+[3.286s] [100%] Built target turtlebot_control
+[3.295s] Invoked command in '/home/megsindelar/Final_Project/raspberry_pi_ws/build/turtlebot_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/raspberry_pi_ws/build/turtlebot_control -- -j8 -l8
+[3.394s] Invoking command in '/home/megsindelar/Final_Project/raspberry_pi_ws/build/turtlebot_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --install /home/megsindelar/Final_Project/raspberry_pi_ws/build/turtlebot_control
+[3.402s] -- Install configuration: ""
+[3.402s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/ament_index/resource_index/rosidl_interfaces/turtlebot_control
+[3.402s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control
+[3.402s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg
+[3.402s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail
+[3.402s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail/keypoints__functions.h
+[3.402s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail/keypoints__functions.c
+[3.403s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail/keypoints__type_support.h
+[3.403s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail/keypoints__struct.h
+[3.403s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/keypoints.h
+[3.404s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/rosidl_generator_c__visibility_control.h
+[3.404s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/environment/library_path.sh
+[3.404s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/environment/library_path.dsv
+[3.405s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/lib/libturtlebot_control__rosidl_generator_c.so
+[3.405s] -- Set runtime path of "/home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/lib/libturtlebot_control__rosidl_generator_c.so" to ""
+[3.405s] -- Up-to-date: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control
+[3.405s] -- Up-to-date: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg
+[3.405s] -- Up-to-date: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail
+[3.405s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail/keypoints__rosidl_typesupport_fastrtps_c.h
+[3.406s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[3.406s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/lib/libturtlebot_control__rosidl_typesupport_fastrtps_c.so
+[3.406s] -- Set runtime path of "/home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/lib/libturtlebot_control__rosidl_typesupport_fastrtps_c.so" to ""
+[3.406s] -- Up-to-date: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control
+[3.406s] -- Up-to-date: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg
+[3.406s] -- Up-to-date: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail
+[3.406s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail/keypoints__struct.hpp
+[3.406s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail/keypoints__traits.hpp
+[3.406s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail/keypoints__builder.hpp
+[3.406s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/keypoints.hpp
+[3.406s] -- Up-to-date: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control
+[3.406s] -- Up-to-date: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg
+[3.407s] -- Up-to-date: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail
+[3.407s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail/dds_fastrtps
+[3.407s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail/keypoints__rosidl_typesupport_fastrtps_cpp.hpp
+[3.407s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[3.407s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/lib/libturtlebot_control__rosidl_typesupport_fastrtps_cpp.so
+[3.407s] -- Set runtime path of "/home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/lib/libturtlebot_control__rosidl_typesupport_fastrtps_cpp.so" to ""
+[3.407s] -- Up-to-date: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control
+[3.407s] -- Up-to-date: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg
+[3.407s] -- Up-to-date: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail
+[3.407s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail/keypoints__type_support.c
+[3.408s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail/keypoints__rosidl_typesupport_introspection_c.h
+[3.409s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[3.409s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/lib/libturtlebot_control__rosidl_typesupport_introspection_c.so
+[3.410s] -- Set runtime path of "/home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/lib/libturtlebot_control__rosidl_typesupport_introspection_c.so" to ""
+[3.410s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/lib/libturtlebot_control__rosidl_typesupport_c.so
+[3.410s] -- Set runtime path of "/home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/lib/libturtlebot_control__rosidl_typesupport_c.so" to ""
+[3.410s] -- Up-to-date: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control
+[3.410s] -- Up-to-date: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg
+[3.410s] -- Up-to-date: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail
+[3.410s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail/keypoints__rosidl_typesupport_introspection_cpp.hpp
+[3.410s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail/keypoints__type_support.cpp
+[3.411s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/lib/libturtlebot_control__rosidl_typesupport_introspection_cpp.so
+[3.411s] -- Set runtime path of "/home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/lib/libturtlebot_control__rosidl_typesupport_introspection_cpp.so" to ""
+[3.411s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/lib/libturtlebot_control__rosidl_typesupport_cpp.so
+[3.411s] -- Set runtime path of "/home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/lib/libturtlebot_control__rosidl_typesupport_cpp.so" to ""
+[3.411s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/environment/pythonpath.sh
+[3.411s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/environment/pythonpath.dsv
+[3.411s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control-0.0.0-py3.10.egg-info
+[3.411s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control-0.0.0-py3.10.egg-info/PKG-INFO
+[3.412s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control-0.0.0-py3.10.egg-info/top_level.txt
+[3.412s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control-0.0.0-py3.10.egg-info/dependency_links.txt
+[3.412s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control-0.0.0-py3.10.egg-info/SOURCES.txt
+[3.412s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control
+[3.412s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/libturtlebot_control_msg__rosidl_generator_py.so
+[3.412s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/__init__.py
+[3.412s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/_turtlebot_control_s.ep.rosidl_typesupport_c.c
+[3.412s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/turtlebot_control_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[3.412s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/msg
+[3.412s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/msg/__init__.py
+[3.412s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/msg/_keypoints.py
+[3.412s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/msg/_keypoints_s.c
+[3.412s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/_turtlebot_control_s.ep.rosidl_typesupport_introspection_c.c
+[3.412s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/_turtlebot_control_s.ep.rosidl_typesupport_fastrtps_c.c
+[3.413s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/turtlebot_control_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[3.413s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/turtlebot_control_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[3.444s] Listing '/home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control'...
+[3.444s] Compiling '/home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/__init__.py'...
+[3.444s] Listing '/home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/msg'...
+[3.444s] Compiling '/home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/msg/__init__.py'...
+[3.444s] Compiling '/home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/msg/_keypoints.py'...
+[3.447s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/turtlebot_control_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[3.447s] -- Set runtime path of "/home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/turtlebot_control_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""
+[3.447s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/turtlebot_control_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[3.447s] -- Set runtime path of "/home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/turtlebot_control_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""
+[3.447s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/turtlebot_control_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[3.447s] -- Set runtime path of "/home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/turtlebot_control_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""
+[3.447s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/lib/libturtlebot_control_msg__rosidl_generator_py.so
+[3.447s] -- Set runtime path of "/home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/lib/libturtlebot_control_msg__rosidl_generator_py.so" to ""
+[3.447s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/msg/Keypoints.idl
+[3.447s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/msg/Keypoints.msg
+[3.448s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/lib/turtlebot_control/turtlebot_control
+[3.448s] -- Set runtime path of "/home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/lib/turtlebot_control/turtlebot_control" to ""
+[3.449s] -- Up-to-date: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/images
+[3.449s] -- Up-to-date: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/images/test_pic.png
+[3.449s] -- Up-to-date: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/images/image.jpg
+[3.449s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/ament_index/resource_index/package_run_dependencies/turtlebot_control
+[3.449s] -- Up-to-date: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/ament_index/resource_index/parent_prefix_path/turtlebot_control
+[3.449s] -- Up-to-date: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/environment/ament_prefix_path.sh
+[3.449s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/environment/ament_prefix_path.dsv
+[3.449s] -- Up-to-date: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/environment/path.sh
+[3.449s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/environment/path.dsv
+[3.449s] -- Up-to-date: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/local_setup.bash
+[3.449s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/local_setup.sh
+[3.449s] -- Up-to-date: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/local_setup.zsh
+[3.449s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/local_setup.dsv
+[3.449s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/package.dsv
+[3.449s] -- Up-to-date: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/ament_index/resource_index/packages/turtlebot_control
+[3.449s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/cmake/export_turtlebot_control_msg__rosidl_generator_cExport.cmake
+[3.449s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/cmake/export_turtlebot_control_msg__rosidl_generator_cExport-noconfig.cmake
+[3.449s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/cmake/export_turtlebot_control_msg__rosidl_typesupport_fastrtps_cExport.cmake
+[3.450s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/cmake/export_turtlebot_control_msg__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[3.450s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/cmake/export_turtlebot_control_msg__rosidl_generator_cppExport.cmake
+[3.450s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/cmake/export_turtlebot_control_msg__rosidl_typesupport_fastrtps_cppExport.cmake
+[3.450s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/cmake/export_turtlebot_control_msg__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[3.450s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/cmake/turtlebot_control_msg__rosidl_typesupport_introspection_cExport.cmake
+[3.450s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/cmake/turtlebot_control_msg__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[3.450s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/cmake/turtlebot_control_msg__rosidl_typesupport_cExport.cmake
+[3.450s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/cmake/turtlebot_control_msg__rosidl_typesupport_cExport-noconfig.cmake
+[3.450s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/cmake/turtlebot_control_msg__rosidl_typesupport_introspection_cppExport.cmake
+[3.450s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/cmake/turtlebot_control_msg__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[3.450s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/cmake/turtlebot_control_msg__rosidl_typesupport_cppExport.cmake
+[3.450s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/cmake/turtlebot_control_msg__rosidl_typesupport_cppExport-noconfig.cmake
+[3.450s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/cmake/export_turtlebot_control_msg__rosidl_generator_pyExport.cmake
+[3.450s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/cmake/export_turtlebot_control_msg__rosidl_generator_pyExport-noconfig.cmake
+[3.451s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/cmake/rosidl_cmake-extras.cmake
+[3.451s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/cmake/ament_cmake_export_include_directories-extras.cmake
+[3.451s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/cmake/ament_cmake_export_libraries-extras.cmake
+[3.451s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/cmake/ament_cmake_export_targets-extras.cmake
+[3.451s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[3.451s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/cmake/ament_cmake_export_dependencies-extras.cmake
+[3.451s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[3.451s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/cmake/turtlebot_controlConfig.cmake
+[3.451s] -- Up-to-date: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/cmake/turtlebot_controlConfig-version.cmake
+[3.451s] -- Installing: /home/megsindelar/Final_Project/raspberry_pi_ws/install/turtlebot_control/share/turtlebot_control/package.xml
+[3.453s] Invoked command in '/home/megsindelar/Final_Project/raspberry_pi_ws/build/turtlebot_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --install /home/megsindelar/Final_Project/raspberry_pi_ws/build/turtlebot_control

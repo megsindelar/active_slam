@@ -1,0 +1,108 @@
+[0.010s] Invoking command in '/home/megsindelar/Final_Project/raspberry_pi_ws/build/turtlebot_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/raspberry_pi_ws/build/turtlebot_control -- -j8 -l8
+[0.044s] [ 12%] Built target turtlebot_control_msg__cpp
+[0.044s] [ 12%] Built target turtlebot_control_msg__rosidl_generator_c
+[0.052s] [ 12%] Built target ament_cmake_python_copy_turtlebot_control
+[0.062s] [ 30%] Built target turtlebot_control_msg__rosidl_typesupport_cpp
+[0.062s] [ 30%] Built target turtlebot_control_msg__rosidl_typesupport_introspection_c
+[0.063s] [ 39%] Built target turtlebot_control_msg__rosidl_typesupport_c
+[0.064s] [ 48%] Built target turtlebot_control_msg__rosidl_typesupport_fastrtps_c
+[0.064s] [ 57%] Built target turtlebot_control_msg__rosidl_typesupport_fastrtps_cpp
+[0.064s] [ 66%] Built target turtlebot_control_msg__rosidl_typesupport_introspection_cpp
+[0.071s] [35m[1mConsolidate compiler generated dependencies of target turtlebot_control[0m
+[0.078s] [ 66%] Built target turtlebot_control_msg
+[0.084s] [ 69%] [32mBuilding CXX object CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o[0m
+[0.091s] [ 72%] Built target turtlebot_control_msg__py
+[0.106s] [ 78%] Built target turtlebot_control_msg__rosidl_generator_py
+[0.121s] [ 84%] Built target turtlebot_control__rosidl_typesupport_introspection_c__pyext
+[0.121s] [ 90%] Built target turtlebot_control__rosidl_typesupport_c__pyext
+[0.127s] [ 96%] Built target turtlebot_control__rosidl_typesupport_fastrtps_c__pyext
+[0.246s] running egg_info
+[0.246s] writing turtlebot_control.egg-info/PKG-INFO
+[0.246s] writing dependency_links to turtlebot_control.egg-info/dependency_links.txt
+[0.246s] writing top-level names to turtlebot_control.egg-info/top_level.txt
+[0.248s] reading manifest file 'turtlebot_control.egg-info/SOURCES.txt'
+[0.248s] writing manifest file 'turtlebot_control.egg-info/SOURCES.txt'
+[0.266s] [ 96%] Built target ament_cmake_python_build_turtlebot_control_egg
+[1.856s] [01m[K/home/megsindelar/Final_Project/raspberry_pi_ws/src/turtlebot_control/src/turtlebot_control.cpp:[m[K In member function ‘[01m[Kvoid TurtlebotControl::timer_callback()[m[K’:
+[1.856s] [01m[K/home/megsindelar/Final_Project/raspberry_pi_ws/src/turtlebot_control/src/turtlebot_control.cpp:91:45:[m[K [01;31m[Kerror: [m[Kno match for ‘[01m[Koperator=[m[K’ (operand types are ‘[01m[Kturtlebot_control::msg::Keypoints_<std::allocator<void> >::_keypoints_1_type[m[K’ {aka ‘[01m[Kstd::vector<double, std::allocator<double> >[m[K’} and ‘[01m[Kstd::vector<cv::KeyPoint>[m[K’)
+[1.856s]    91 |                     keypoints.keypoints_1 = [01;31m[Kkeypoints_1[m[K;
+[1.856s]       |                                             [01;31m[K^~~~~~~~~~~[m[K
+[1.856s] In file included from [01m[K/usr/include/c++/11/vector:72[m[K,
+[1.856s]                  from [01m[K/usr/include/c++/11/functional:62[m[K,
+[1.856s]                  from [01m[K/usr/include/c++/11/pstl/glue_algorithm_defs.h:13[m[K,
+[1.856s]                  from [01m[K/usr/include/c++/11/algorithm:74[m[K,
+[1.856s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:18[m[K,
+[1.856s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+[1.856s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+[1.856s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+[1.856s]                  from [01m[K/home/megsindelar/Final_Project/raspberry_pi_ws/src/turtlebot_control/src/turtlebot_control.cpp:2[m[K:
+[1.856s] [01m[K/usr/include/c++/11/bits/vector.tcc:198:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(const std::vector<_Tp, _Alloc>&) [with _Tp = double; _Alloc = std::allocator<double>][m[K’
+[1.857s]   198 |     [01;36m[Kvector<_Tp, _Alloc>[m[K::
+[1.857s]       |     [01;36m[K^~~~~~~~~~~~~~~~~~~[m[K
+[1.857s] [01m[K/usr/include/c++/11/bits/vector.tcc:199:42:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kstd::vector<cv::KeyPoint>[m[K’ to ‘[01m[Kconst std::vector<double, std::allocator<double> >&[m[K’
+[1.857s]   199 |     operator=([01;36m[Kconst vector<_Tp, _Alloc>& __x[m[K)
+[1.857s]       |               [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~[m[K
+[1.857s] In file included from [01m[K/usr/include/c++/11/vector:67[m[K,
+[1.857s]                  from [01m[K/usr/include/c++/11/functional:62[m[K,
+[1.857s]                  from [01m[K/usr/include/c++/11/pstl/glue_algorithm_defs.h:13[m[K,
+[1.857s]                  from [01m[K/usr/include/c++/11/algorithm:74[m[K,
+[1.857s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:18[m[K,
+[1.857s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+[1.857s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+[1.857s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+[1.857s]                  from [01m[K/home/megsindelar/Final_Project/raspberry_pi_ws/src/turtlebot_control/src/turtlebot_control.cpp:2[m[K:
+[1.857s] [01m[K/usr/include/c++/11/bits/stl_vector.h:709:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(std::vector<_Tp, _Alloc>&&) [with _Tp = double; _Alloc = std::allocator<double>][m[K’
+[1.857s]   709 |       [01;36m[Koperator[m[K=(vector&& __x) noexcept(_Alloc_traits::_S_nothrow_move())
+[1.857s]       |       [01;36m[K^~~~~~~~[m[K
+[1.857s] [01m[K/usr/include/c++/11/bits/stl_vector.h:709:26:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kstd::vector<cv::KeyPoint>[m[K’ to ‘[01m[Kstd::vector<double, std::allocator<double> >&&[m[K’
+[1.857s]   709 |       operator=([01;36m[Kvector&& __x[m[K) noexcept(_Alloc_traits::_S_nothrow_move())
+[1.857s]       |                 [01;36m[K~~~~~~~~~^~~[m[K
+[1.857s] [01m[K/usr/include/c++/11/bits/stl_vector.h:730:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(std::initializer_list<_Tp>) [with _Tp = double; _Alloc = std::allocator<double>][m[K’
+[1.857s]   730 |       [01;36m[Koperator[m[K=(initializer_list<value_type> __l)
+[1.857s]       |       [01;36m[K^~~~~~~~[m[K
+[1.857s] [01m[K/usr/include/c++/11/bits/stl_vector.h:730:46:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kstd::vector<cv::KeyPoint>[m[K’ to ‘[01m[Kstd::initializer_list<double>[m[K’
+[1.857s]   730 |       operator=([01;36m[Kinitializer_list<value_type> __l[m[K)
+[1.857s]       |                 [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~[m[K
+[1.857s] [01m[K/home/megsindelar/Final_Project/raspberry_pi_ws/src/turtlebot_control/src/turtlebot_control.cpp:92:45:[m[K [01;31m[Kerror: [m[Kno match for ‘[01m[Koperator=[m[K’ (operand types are ‘[01m[Kturtlebot_control::msg::Keypoints_<std::allocator<void> >::_keypoints_2_type[m[K’ {aka ‘[01m[Kstd::vector<double, std::allocator<double> >[m[K’} and ‘[01m[Kstd::vector<cv::KeyPoint>[m[K’)
+[1.857s]    92 |                     keypoints.keypoints_2 = [01;31m[Kkeypoints_2[m[K;
+[1.857s]       |                                             [01;31m[K^~~~~~~~~~~[m[K
+[1.857s] In file included from [01m[K/usr/include/c++/11/vector:72[m[K,
+[1.857s]                  from [01m[K/usr/include/c++/11/functional:62[m[K,
+[1.857s]                  from [01m[K/usr/include/c++/11/pstl/glue_algorithm_defs.h:13[m[K,
+[1.858s]                  from [01m[K/usr/include/c++/11/algorithm:74[m[K,
+[1.858s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:18[m[K,
+[1.858s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+[1.858s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+[1.858s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+[1.858s]                  from [01m[K/home/megsindelar/Final_Project/raspberry_pi_ws/src/turtlebot_control/src/turtlebot_control.cpp:2[m[K:
+[1.858s] [01m[K/usr/include/c++/11/bits/vector.tcc:198:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(const std::vector<_Tp, _Alloc>&) [with _Tp = double; _Alloc = std::allocator<double>][m[K’
+[1.858s]   198 |     [01;36m[Kvector<_Tp, _Alloc>[m[K::
+[1.858s]       |     [01;36m[K^~~~~~~~~~~~~~~~~~~[m[K
+[1.858s] [01m[K/usr/include/c++/11/bits/vector.tcc:199:42:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kstd::vector<cv::KeyPoint>[m[K’ to ‘[01m[Kconst std::vector<double, std::allocator<double> >&[m[K’
+[1.858s]   199 |     operator=([01;36m[Kconst vector<_Tp, _Alloc>& __x[m[K)
+[1.858s]       |               [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~[m[K
+[1.858s] In file included from [01m[K/usr/include/c++/11/vector:67[m[K,
+[1.858s]                  from [01m[K/usr/include/c++/11/functional:62[m[K,
+[1.858s]                  from [01m[K/usr/include/c++/11/pstl/glue_algorithm_defs.h:13[m[K,
+[1.858s]                  from [01m[K/usr/include/c++/11/algorithm:74[m[K,
+[1.858s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:18[m[K,
+[1.858s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+[1.858s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+[1.858s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+[1.858s]                  from [01m[K/home/megsindelar/Final_Project/raspberry_pi_ws/src/turtlebot_control/src/turtlebot_control.cpp:2[m[K:
+[1.858s] [01m[K/usr/include/c++/11/bits/stl_vector.h:709:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(std::vector<_Tp, _Alloc>&&) [with _Tp = double; _Alloc = std::allocator<double>][m[K’
+[1.858s]   709 |       [01;36m[Koperator[m[K=(vector&& __x) noexcept(_Alloc_traits::_S_nothrow_move())
+[1.858s]       |       [01;36m[K^~~~~~~~[m[K
+[1.858s] [01m[K/usr/include/c++/11/bits/stl_vector.h:709:26:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kstd::vector<cv::KeyPoint>[m[K’ to ‘[01m[Kstd::vector<double, std::allocator<double> >&&[m[K’
+[1.858s]   709 |       operator=([01;36m[Kvector&& __x[m[K) noexcept(_Alloc_traits::_S_nothrow_move())
+[1.858s]       |                 [01;36m[K~~~~~~~~~^~~[m[K
+[1.858s] [01m[K/usr/include/c++/11/bits/stl_vector.h:730:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(std::initializer_list<_Tp>) [with _Tp = double; _Alloc = std::allocator<double>][m[K’
+[1.858s]   730 |       [01;36m[Koperator[m[K=(initializer_list<value_type> __l)
+[1.858s]       |       [01;36m[K^~~~~~~~[m[K
+[1.858s] [01m[K/usr/include/c++/11/bits/stl_vector.h:730:46:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kstd::vector<cv::KeyPoint>[m[K’ to ‘[01m[Kstd::initializer_list<double>[m[K’
+[1.858s]   730 |       operator=([01;36m[Kinitializer_list<value_type> __l[m[K)
+[1.858s]       |                 [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~[m[K
+[2.460s] gmake[2]: *** [CMakeFiles/turtlebot_control.dir/build.make:76: CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o] Error 1
+[2.460s] gmake[1]: *** [CMakeFiles/Makefile2:593: CMakeFiles/turtlebot_control.dir/all] Error 2
+[2.460s] gmake: *** [Makefile:146: all] Error 2
+[2.461s] Invoked command in '/home/megsindelar/Final_Project/raspberry_pi_ws/build/turtlebot_control' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/raspberry_pi_ws/build/turtlebot_control -- -j8 -l8

@@ -1,0 +1,84 @@
+[0.000000] (-) TimerEvent: {}
+[0.000120] (turtlebot_control) JobQueued: {'identifier': 'turtlebot_control', 'dependencies': OrderedDict()}
+[0.000141] (turtlebot_control) JobStarted: {'identifier': 'turtlebot_control'}
+[0.006268] (turtlebot_control) JobProgress: {'identifier': 'turtlebot_control', 'progress': 'cmake'}
+[0.006393] (turtlebot_control) JobProgress: {'identifier': 'turtlebot_control', 'progress': 'build'}
+[0.006963] (turtlebot_control) Command: {'cmd': ['/usr/bin/cmake', '--build', '/ros_ws/aarch64_build/turtlebot_control', '--', '-j8', '-l8'], 'cwd': '/ros_ws/aarch64_build/turtlebot_control', 'env': OrderedDict([('HOSTNAME', '15aa98f7939f'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/msr'), ('ROS_PYTHON_VERSION', '3'), ('LC_CTYPE', 'C.UTF-8'), ('ROS_DISTRO', 'humble'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('PWD', '/ros_ws/aarch64_build/turtlebot_control'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.043059] (turtlebot_control) StdoutLine: {'line': b'[  3%] Built target turtlebot_control_msg__cpp\n'}
+[0.043228] (turtlebot_control) StdoutLine: {'line': b'[ 12%] Built target turtlebot_control_msg__rosidl_generator_c\n'}
+[0.048776] (turtlebot_control) StdoutLine: {'line': b'[ 12%] Built target ament_cmake_python_copy_turtlebot_control\n'}
+[0.060112] (turtlebot_control) StdoutLine: {'line': b'[ 21%] Built target turtlebot_control_msg__rosidl_typesupport_cpp\n'}
+[0.060297] (turtlebot_control) StdoutLine: {'line': b'[ 30%] Built target turtlebot_control_msg__rosidl_typesupport_introspection_cpp\n'}
+[0.060437] (turtlebot_control) StdoutLine: {'line': b'[ 39%] Built target turtlebot_control_msg__rosidl_typesupport_fastrtps_cpp\n'}
+[0.064830] (turtlebot_control) StdoutLine: {'line': b'[ 48%] Built target turtlebot_control_msg__rosidl_typesupport_c\n'}
+[0.065035] (turtlebot_control) StdoutLine: {'line': b'[ 57%] Built target turtlebot_control_msg__rosidl_typesupport_introspection_c\n'}
+[0.068104] (turtlebot_control) StdoutLine: {'line': b'[ 66%] Built target turtlebot_control_msg__rosidl_typesupport_fastrtps_c\n'}
+[0.069126] (turtlebot_control) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target turtlebot_control\x1b[0m\n'}
+[0.081594] (turtlebot_control) StdoutLine: {'line': b'[ 66%] Built target turtlebot_control_msg\n'}
+[0.084460] (turtlebot_control) StdoutLine: {'line': b'[ 69%] \x1b[32mBuilding CXX object CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o\x1b[0m\n'}
+[0.094888] (turtlebot_control) StdoutLine: {'line': b'[ 72%] Built target turtlebot_control_msg__py\n'}
+[0.099139] (-) TimerEvent: {}
+[0.109433] (turtlebot_control) StdoutLine: {'line': b'[ 78%] Built target turtlebot_control_msg__rosidl_generator_py\n'}
+[0.125157] (turtlebot_control) StdoutLine: {'line': b'[ 84%] Built target turtlebot_control__rosidl_typesupport_introspection_c__pyext\n'}
+[0.127555] (turtlebot_control) StdoutLine: {'line': b'[ 90%] Built target turtlebot_control__rosidl_typesupport_c__pyext\n'}
+[0.128711] (turtlebot_control) StdoutLine: {'line': b'[ 96%] Built target turtlebot_control__rosidl_typesupport_fastrtps_c__pyext\n'}
+[0.199476] (-) TimerEvent: {}
+[0.206638] (turtlebot_control) StdoutLine: {'line': b'running egg_info\n'}
+[0.207323] (turtlebot_control) StdoutLine: {'line': b'writing turtlebot_control.egg-info/PKG-INFO\n'}
+[0.207493] (turtlebot_control) StdoutLine: {'line': b'writing dependency_links to turtlebot_control.egg-info/dependency_links.txt\n'}
+[0.207702] (turtlebot_control) StdoutLine: {'line': b'writing top-level names to turtlebot_control.egg-info/top_level.txt\n'}
+[0.209132] (turtlebot_control) StdoutLine: {'line': b"reading manifest file 'turtlebot_control.egg-info/SOURCES.txt'\n"}
+[0.209597] (turtlebot_control) StdoutLine: {'line': b"writing manifest file 'turtlebot_control.egg-info/SOURCES.txt'\n"}
+[0.226142] (turtlebot_control) StdoutLine: {'line': b'[ 96%] Built target ament_cmake_python_build_turtlebot_control_egg\n'}
+[0.299622] (-) TimerEvent: {}
+[0.399941] (-) TimerEvent: {}
+[0.500290] (-) TimerEvent: {}
+[0.600640] (-) TimerEvent: {}
+[0.701132] (-) TimerEvent: {}
+[0.801447] (-) TimerEvent: {}
+[0.901888] (-) TimerEvent: {}
+[1.002384] (-) TimerEvent: {}
+[1.102619] (-) TimerEvent: {}
+[1.202963] (-) TimerEvent: {}
+[1.303280] (-) TimerEvent: {}
+[1.403785] (-) TimerEvent: {}
+[1.504385] (-) TimerEvent: {}
+[1.604880] (-) TimerEvent: {}
+[1.705204] (-) TimerEvent: {}
+[1.805545] (-) TimerEvent: {}
+[1.905935] (-) TimerEvent: {}
+[2.006318] (-) TimerEvent: {}
+[2.106641] (-) TimerEvent: {}
+[2.206920] (-) TimerEvent: {}
+[2.307261] (-) TimerEvent: {}
+[2.407494] (-) TimerEvent: {}
+[2.507882] (-) TimerEvent: {}
+[2.608138] (-) TimerEvent: {}
+[2.708395] (-) TimerEvent: {}
+[2.740337] (turtlebot_control) StderrLine: {'line': b'\x1b[01m\x1b[K/ros_ws/src/turtlebot_control/src/turtlebot_control.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid TurtlebotControl::timer_callback()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.740887] (turtlebot_control) StderrLine: {'line': b'\x1b[01m\x1b[K/ros_ws/src/turtlebot_control/src/turtlebot_control.cpp:151:42:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno matching function for call to \xe2\x80\x98\x1b[01m\x1b[Kimage_transport::Publisher::publish(std::__shared_ptr_access<sensor_msgs::msg::Image_<std::allocator<void> >, __gnu_cxx::_S_atomic, false, false>::element_type&, sensor_msgs::msg::CameraInfo&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.740942] (turtlebot_control) StderrLine: {'line': b'  151 |                 \x1b[01;31m\x1b[Kpub_current_img_->publish(*(cv_bridge::CvImage(header, "bgr8", current_frame).toImageMsg()), cam_info_)\x1b[m\x1b[K;\n'}
+[2.740992] (turtlebot_control) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.741054] (turtlebot_control) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/image_transport/image_transport/image_transport.hpp:41\x1b[m\x1b[K,\n'}
+[2.741103] (turtlebot_control) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/ros_ws/src/turtlebot_control/src/turtlebot_control.cpp:5\x1b[m\x1b[K:\n'}
+[2.741159] (turtlebot_control) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/image_transport/image_transport/publisher.hpp:97:8:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kvoid image_transport::Publisher::publish(const Image&) const\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.741220] (turtlebot_control) StderrLine: {'line': b'   97 |   void \x1b[01;36m\x1b[Kpublish\x1b[m\x1b[K(const sensor_msgs::msg::Image & message) const;\n'}
+[2.741273] (turtlebot_control) StderrLine: {'line': b'      |        \x1b[01;36m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.741334] (turtlebot_control) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/image_transport/image_transport/publisher.hpp:97:8:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 1 argument, 2 provided\n'}
+[2.741382] (turtlebot_control) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/image_transport/image_transport/publisher.hpp:103:8:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kvoid image_transport::Publisher::publish(const ConstSharedPtr&) const\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.741428] (turtlebot_control) StderrLine: {'line': b'  103 |   void \x1b[01;36m\x1b[Kpublish\x1b[m\x1b[K(const sensor_msgs::msg::Image::ConstSharedPtr & message) const;\n'}
+[2.741473] (turtlebot_control) StderrLine: {'line': b'      |        \x1b[01;36m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[2.741528] (turtlebot_control) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/image_transport/image_transport/publisher.hpp:103:8:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 1 argument, 2 provided\n'}
+[2.810078] (-) TimerEvent: {}
+[2.910473] (-) TimerEvent: {}
+[3.010808] (-) TimerEvent: {}
+[3.111124] (-) TimerEvent: {}
+[3.211461] (-) TimerEvent: {}
+[3.311898] (-) TimerEvent: {}
+[3.412272] (-) TimerEvent: {}
+[3.436545] (turtlebot_control) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/turtlebot_control.dir/build.make:76: CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o] Error 1\n'}
+[3.436823] (turtlebot_control) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:593: CMakeFiles/turtlebot_control.dir/all] Error 2\n'}
+[3.436903] (turtlebot_control) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[3.438613] (turtlebot_control) CommandEnded: {'returncode': 2}
+[3.493185] (turtlebot_control) JobEnded: {'identifier': 'turtlebot_control', 'rc': 2}
+[3.503492] (-) EventReactorShutdown: {}

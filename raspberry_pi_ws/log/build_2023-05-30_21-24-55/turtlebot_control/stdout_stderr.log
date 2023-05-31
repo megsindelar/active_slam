@@ -1,0 +1,36 @@
+[  3%] Built target turtlebot_control_msg__cpp
+[ 12%] Built target turtlebot_control_msg__rosidl_generator_c
+[ 12%] Built target ament_cmake_python_copy_turtlebot_control
+[ 30%] Built target turtlebot_control_msg__rosidl_typesupport_fastrtps_cpp
+[ 30%] Built target turtlebot_control_msg__rosidl_typesupport_introspection_c
+[ 39%] Built target turtlebot_control_msg__rosidl_typesupport_c
+[ 57%] Built target turtlebot_control_msg__rosidl_typesupport_fastrtps_c
+[ 57%] Built target turtlebot_control_msg__rosidl_typesupport_cpp
+[ 66%] Built target turtlebot_control_msg__rosidl_typesupport_introspection_cpp
+[35m[1mConsolidate compiler generated dependencies of target turtlebot_control[0m
+[ 66%] Built target turtlebot_control_msg
+[ 69%] [32mBuilding CXX object CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o[0m
+[ 72%] Built target turtlebot_control_msg__py
+[ 78%] Built target turtlebot_control_msg__rosidl_generator_py
+[ 84%] Built target turtlebot_control__rosidl_typesupport_fastrtps_c__pyext
+[ 90%] Built target turtlebot_control__rosidl_typesupport_c__pyext
+[ 96%] Built target turtlebot_control__rosidl_typesupport_introspection_c__pyext
+running egg_info
+writing turtlebot_control.egg-info/PKG-INFO
+writing dependency_links to turtlebot_control.egg-info/dependency_links.txt
+writing top-level names to turtlebot_control.egg-info/top_level.txt
+reading manifest file 'turtlebot_control.egg-info/SOURCES.txt'
+writing manifest file 'turtlebot_control.egg-info/SOURCES.txt'
+[ 96%] Built target ament_cmake_python_build_turtlebot_control_egg
+[01m[K/ros_ws/src/turtlebot_control/src/turtlebot_control.cpp:[m[K In member function ‘[01m[Kvoid TurtlebotControl::timer_callback()[m[K’:
+[01m[K/ros_ws/src/turtlebot_control/src/turtlebot_control.cpp:154:109:[m[K [01;31m[Kerror: [m[Kconversion from ‘[01m[Ksensor_msgs::msg::Image_<std::allocator<void> >::SharedPtr[m[K’ {aka ‘[01m[Kstd::shared_ptr<sensor_msgs::msg::Image_<std::allocator<void> > >[m[K’} to non-scalar type ‘[01m[Kcv_bridge::CvImage[m[K’ requested
+  154 | ridge::CvImage img_bridge = [01;31m[Kcv_bridge::CvImage(header, "bgr8", current_frame).toImageMsg()[m[K;
+      |                             [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~[m[K
+
+[01m[K/ros_ws/src/turtlebot_control/src/turtlebot_control.cpp:155:28:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass cv_bridge::CvImage[m[K’ has no member named ‘[01m[KtoCompressedImage[m[K’; did you mean ‘[01m[KtoCompressedImageMsg[m[K’?
+  155 |                 img_bridge.[01;31m[KtoCompressedImage[m[K(img_msg)
+      |                            [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+      |                            [32m[KtoCompressedImageMsg[m[K
+gmake[2]: *** [CMakeFiles/turtlebot_control.dir/build.make:76: CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:593: CMakeFiles/turtlebot_control.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

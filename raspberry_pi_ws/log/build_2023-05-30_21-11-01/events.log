@@ -1,0 +1,105 @@
+[0.000000] (-) TimerEvent: {}
+[0.000085] (turtlebot_control) JobQueued: {'identifier': 'turtlebot_control', 'dependencies': OrderedDict()}
+[0.000106] (turtlebot_control) JobStarted: {'identifier': 'turtlebot_control'}
+[0.006621] (turtlebot_control) JobProgress: {'identifier': 'turtlebot_control', 'progress': 'cmake'}
+[0.007310] (turtlebot_control) JobProgress: {'identifier': 'turtlebot_control', 'progress': 'build'}
+[0.007424] (turtlebot_control) Command: {'cmd': ['/usr/bin/cmake', '--build', '/ros_ws/aarch64_build/turtlebot_control', '--', '-j8', '-l8'], 'cwd': '/ros_ws/aarch64_build/turtlebot_control', 'env': OrderedDict([('HOSTNAME', '9e433f512a6e'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/msr'), ('ROS_PYTHON_VERSION', '3'), ('LC_CTYPE', 'C.UTF-8'), ('ROS_DISTRO', 'humble'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('PWD', '/ros_ws/aarch64_build/turtlebot_control'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.042736] (turtlebot_control) StdoutLine: {'line': b'[  3%] Built target turtlebot_control_msg__cpp\n'}
+[0.043211] (turtlebot_control) StdoutLine: {'line': b'[ 12%] Built target turtlebot_control_msg__rosidl_generator_c\n'}
+[0.048477] (turtlebot_control) StdoutLine: {'line': b'[ 12%] Built target ament_cmake_python_copy_turtlebot_control\n'}
+[0.059543] (turtlebot_control) StdoutLine: {'line': b'[ 21%] Built target turtlebot_control_msg__rosidl_typesupport_introspection_cpp\n'}
+[0.059894] (turtlebot_control) StdoutLine: {'line': b'[ 30%] Built target turtlebot_control_msg__rosidl_typesupport_fastrtps_cpp\n'}
+[0.060048] (turtlebot_control) StdoutLine: {'line': b'[ 39%] Built target turtlebot_control_msg__rosidl_typesupport_cpp\n'}
+[0.064570] (turtlebot_control) StdoutLine: {'line': b'[ 48%] Built target turtlebot_control_msg__rosidl_typesupport_introspection_c\n'}
+[0.065156] (turtlebot_control) StdoutLine: {'line': b'[ 57%] Built target turtlebot_control_msg__rosidl_typesupport_c\n'}
+[0.067083] (turtlebot_control) StdoutLine: {'line': b'[ 66%] Built target turtlebot_control_msg__rosidl_typesupport_fastrtps_c\n'}
+[0.070567] (turtlebot_control) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target turtlebot_control\x1b[0m\n'}
+[0.080192] (turtlebot_control) StdoutLine: {'line': b'[ 66%] Built target turtlebot_control_msg\n'}
+[0.085123] (turtlebot_control) StdoutLine: {'line': b'[ 69%] \x1b[32mBuilding CXX object CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o\x1b[0m\n'}
+[0.093214] (turtlebot_control) StdoutLine: {'line': b'[ 72%] Built target turtlebot_control_msg__py\n'}
+[0.099316] (-) TimerEvent: {}
+[0.107843] (turtlebot_control) StdoutLine: {'line': b'[ 78%] Built target turtlebot_control_msg__rosidl_generator_py\n'}
+[0.124705] (turtlebot_control) StdoutLine: {'line': b'[ 90%] Built target turtlebot_control__rosidl_typesupport_fastrtps_c__pyext\n'}
+[0.125043] (turtlebot_control) StdoutLine: {'line': b'[ 90%] Built target turtlebot_control__rosidl_typesupport_introspection_c__pyext\n'}
+[0.128421] (turtlebot_control) StdoutLine: {'line': b'[ 96%] Built target turtlebot_control__rosidl_typesupport_c__pyext\n'}
+[0.198917] (turtlebot_control) StdoutLine: {'line': b'running egg_info\n'}
+[0.199198] (turtlebot_control) StdoutLine: {'line': b'writing turtlebot_control.egg-info/PKG-INFO\n'}
+[0.199328] (turtlebot_control) StdoutLine: {'line': b'writing dependency_links to turtlebot_control.egg-info/dependency_links.txt\n'}
+[0.199372] (-) TimerEvent: {}
+[0.199500] (turtlebot_control) StdoutLine: {'line': b'writing top-level names to turtlebot_control.egg-info/top_level.txt\n'}
+[0.200925] (turtlebot_control) StdoutLine: {'line': b"reading manifest file 'turtlebot_control.egg-info/SOURCES.txt'\n"}
+[0.201299] (turtlebot_control) StdoutLine: {'line': b"writing manifest file 'turtlebot_control.egg-info/SOURCES.txt'\n"}
+[0.217443] (turtlebot_control) StdoutLine: {'line': b'[ 96%] Built target ament_cmake_python_build_turtlebot_control_egg\n'}
+[0.299489] (-) TimerEvent: {}
+[0.399765] (-) TimerEvent: {}
+[0.500046] (-) TimerEvent: {}
+[0.600334] (-) TimerEvent: {}
+[0.700651] (-) TimerEvent: {}
+[0.800960] (-) TimerEvent: {}
+[0.901256] (-) TimerEvent: {}
+[1.001534] (-) TimerEvent: {}
+[1.101817] (-) TimerEvent: {}
+[1.202103] (-) TimerEvent: {}
+[1.302380] (-) TimerEvent: {}
+[1.402671] (-) TimerEvent: {}
+[1.502967] (-) TimerEvent: {}
+[1.603261] (-) TimerEvent: {}
+[1.703552] (-) TimerEvent: {}
+[1.803844] (-) TimerEvent: {}
+[1.904138] (-) TimerEvent: {}
+[2.004437] (-) TimerEvent: {}
+[2.104747] (-) TimerEvent: {}
+[2.205022] (-) TimerEvent: {}
+[2.305295] (-) TimerEvent: {}
+[2.405573] (-) TimerEvent: {}
+[2.505893] (-) TimerEvent: {}
+[2.606197] (-) TimerEvent: {}
+[2.706525] (-) TimerEvent: {}
+[2.806850] (-) TimerEvent: {}
+[2.907169] (-) TimerEvent: {}
+[2.951581] (turtlebot_control) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/aarch64-linux-gnu/include/c++/11/aarch64-linux-gnu/bits/c++allocator.h:33\x1b[m\x1b[K,\n'}
+[2.951785] (turtlebot_control) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/aarch64-linux-gnu/include/c++/11/bits/allocator.h:46\x1b[m\x1b[K,\n'}
+[2.951837] (turtlebot_control) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/aarch64-linux-gnu/include/c++/11/string:41\x1b[m\x1b[K,\n'}
+[2.951880] (turtlebot_control) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/aarch64-linux-gnu/include/c++/11/bits/locale_classes.h:40\x1b[m\x1b[K,\n'}
+[2.951920] (turtlebot_control) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/aarch64-linux-gnu/include/c++/11/bits/ios_base.h:41\x1b[m\x1b[K,\n'}
+[2.951960] (turtlebot_control) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/aarch64-linux-gnu/include/c++/11/ios:42\x1b[m\x1b[K,\n'}
+[2.952000] (turtlebot_control) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/aarch64-linux-gnu/include/c++/11/ostream:38\x1b[m\x1b[K,\n'}
+[2.952040] (turtlebot_control) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/aarch64-linux-gnu/include/c++/11/iostream:39\x1b[m\x1b[K,\n'}
+[2.952080] (turtlebot_control) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/ros_ws/src/turtlebot_control/src/turtlebot_control.cpp:1\x1b[m\x1b[K:\n'}
+[2.952120] (turtlebot_control) StderrLine: {'line': b'/usr/aarch64-linux-gnu/include/c++/11/ext/new_allocator.h: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Kvoid __gnu_cxx::new_allocator<_Tp>::construct(_Up*, _Args&& ...) [with _Up = image_transport::CameraPublisher; _Args = {image_transport::Publisher}; _Tp = image_transport::CameraPublisher]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.952164] (turtlebot_control) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/aarch64-linux-gnu/include/c++/11/bits/alloc_traits.h:516:17:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kstatic void std::allocator_traits<std::allocator<_CharT> >::construct(std::allocator_traits<std::allocator<_CharT> >::allocator_type&, _Up*, _Args&& ...) [with _Up = image_transport::CameraPublisher; _Args = {image_transport::Publisher}; _Tp = image_transport::CameraPublisher; std::allocator_traits<std::allocator<_CharT> >::allocator_type = std::allocator<image_transport::CameraPublisher>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.952209] (turtlebot_control) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/aarch64-linux-gnu/include/c++/11/bits/shared_ptr_base.h:519:39:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kstd::_Sp_counted_ptr_inplace<_Tp, _Alloc, _Lp>::_Sp_counted_ptr_inplace(_Alloc, _Args&& ...) [with _Args = {image_transport::Publisher}; _Tp = image_transport::CameraPublisher; _Alloc = std::allocator<image_transport::CameraPublisher>; __gnu_cxx::_Lock_policy _Lp = __gnu_cxx::_S_atomic]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.952255] (turtlebot_control) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/aarch64-linux-gnu/include/c++/11/bits/shared_ptr_base.h:650:16:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kstd::__shared_count<_Lp>::__shared_count(_Tp*&, std::_Sp_alloc_shared_tag<_Alloc>, _Args&& ...) [with _Tp = image_transport::CameraPublisher; _Alloc = std::allocator<image_transport::CameraPublisher>; _Args = {image_transport::Publisher}; __gnu_cxx::_Lock_policy _Lp = __gnu_cxx::_S_atomic]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.952298] (turtlebot_control) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/aarch64-linux-gnu/include/c++/11/bits/shared_ptr_base.h:1342:14:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kstd::__shared_ptr<_Tp, _Lp>::__shared_ptr(std::_Sp_alloc_shared_tag<_Tp>, _Args&& ...) [with _Alloc = std::allocator<image_transport::CameraPublisher>; _Args = {image_transport::Publisher}; _Tp = image_transport::CameraPublisher; __gnu_cxx::_Lock_policy _Lp = __gnu_cxx::_S_atomic]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.952343] (turtlebot_control) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/aarch64-linux-gnu/include/c++/11/bits/shared_ptr.h:409:59:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<_Tp>::shared_ptr(std::_Sp_alloc_shared_tag<_Tp>, _Args&& ...) [with _Alloc = std::allocator<image_transport::CameraPublisher>; _Args = {image_transport::Publisher}; _Tp = image_transport::CameraPublisher]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.952380] (turtlebot_control) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/aarch64-linux-gnu/include/c++/11/bits/shared_ptr.h:862:14:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<_Tp> std::allocate_shared(const _Alloc&, _Args&& ...) [with _Tp = image_transport::CameraPublisher; _Alloc = std::allocator<image_transport::CameraPublisher>; _Args = {image_transport::Publisher}]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.952415] (turtlebot_control) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/aarch64-linux-gnu/include/c++/11/bits/shared_ptr.h:878:39:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<_Tp> std::make_shared(_Args&& ...) [with _Tp = image_transport::CameraPublisher; _Args = {image_transport::Publisher}]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.952449] (turtlebot_control) StderrLine: {'line': b'\x1b[01m\x1b[K/ros_ws/src/turtlebot_control/src/turtlebot_control.cpp:36:78:\x1b[m\x1b[K   required from here\n'}
+[2.952483] (turtlebot_control) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/aarch64-linux-gnu/include/c++/11/ext/new_allocator.h:162:11:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno matching function for call to \xe2\x80\x98\x1b[01m\x1b[Kimage_transport::CameraPublisher::CameraPublisher(image_transport::Publisher)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.952520] (turtlebot_control) StderrLine: {'line': b'  162 |         { \x1b[01;31m\x1b[K::new((void *)__p) _Up(std::forward<_Args>(__args)...)\x1b[m\x1b[K; }\n'}
+[2.952553] (turtlebot_control) StderrLine: {'line': b'      |           \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.952587] (turtlebot_control) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/image_transport/image_transport/image_transport.hpp:39\x1b[m\x1b[K,\n'}
+[2.952622] (turtlebot_control) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/ros_ws/src/turtlebot_control/src/turtlebot_control.cpp:5\x1b[m\x1b[K:\n'}
+[2.952657] (turtlebot_control) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/image_transport/image_transport/camera_publisher.hpp:71:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kimage_transport::CameraPublisher::CameraPublisher(rclcpp::Node*, const string&, rmw_qos_profile_t)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.952692] (turtlebot_control) StderrLine: {'line': b'   71 |   \x1b[01;36m\x1b[KCameraPublisher\x1b[m\x1b[K(\n'}
+[2.952726] (turtlebot_control) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.952759] (turtlebot_control) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/image_transport/image_transport/camera_publisher.hpp:71:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 3 arguments, 1 provided\n'}
+[2.952796] (turtlebot_control) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/image_transport/image_transport/camera_publisher.hpp:68:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kconstexpr image_transport::CameraPublisher::CameraPublisher()\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.952831] (turtlebot_control) StderrLine: {'line': b'   68 |   \x1b[01;36m\x1b[KCameraPublisher\x1b[m\x1b[K() = default;\n'}
+[2.952863] (turtlebot_control) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.952896] (turtlebot_control) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/image_transport/image_transport/camera_publisher.hpp:68:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 0 arguments, 1 provided\n'}
+[2.952939] (turtlebot_control) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/image_transport/image_transport/camera_publisher.hpp:64:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kimage_transport::CameraPublisher::CameraPublisher(const image_transport::CameraPublisher&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.952975] (turtlebot_control) StderrLine: {'line': b'   64 | class \x1b[01;36m\x1b[KCameraPublisher\x1b[m\x1b[K\n'}
+[2.953008] (turtlebot_control) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.953042] (turtlebot_control) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/image_transport/image_transport/camera_publisher.hpp:64:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  no known conversion for argument 1 from \xe2\x80\x98\x1b[01m\x1b[Kimage_transport::Publisher\x1b[m\x1b[K\xe2\x80\x99 to \xe2\x80\x98\x1b[01m\x1b[Kconst image_transport::CameraPublisher&\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.953078] (turtlebot_control) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/image_transport/image_transport/camera_publisher.hpp:64:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kimage_transport::CameraPublisher::CameraPublisher(image_transport::CameraPublisher&&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[2.953110] (turtlebot_control) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/image_transport/image_transport/camera_publisher.hpp:64:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  no known conversion for argument 1 from \xe2\x80\x98\x1b[01m\x1b[Kimage_transport::Publisher\x1b[m\x1b[K\xe2\x80\x99 to \xe2\x80\x98\x1b[01m\x1b[Kimage_transport::CameraPublisher&&\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.007347] (-) TimerEvent: {}
+[3.107662] (-) TimerEvent: {}
+[3.207970] (-) TimerEvent: {}
+[3.221109] (turtlebot_control) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/turtlebot_control.dir/build.make:76: CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o] Error 1\n'}
+[3.221251] (turtlebot_control) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:593: CMakeFiles/turtlebot_control.dir/all] Error 2\n'}
+[3.221321] (turtlebot_control) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[3.222982] (turtlebot_control) CommandEnded: {'returncode': 2}
+[3.274500] (turtlebot_control) JobEnded: {'identifier': 'turtlebot_control', 'rc': 2}
+[3.285065] (-) EventReactorShutdown: {}

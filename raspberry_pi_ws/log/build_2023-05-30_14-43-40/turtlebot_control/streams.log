@@ -1,0 +1,62 @@
+[0.010s] Invoking command in '/home/megsindelar/Final_Project/raspberry_pi_ws/build/turtlebot_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/raspberry_pi_ws/build/turtlebot_control -- -j8 -l8
+[0.026s] -- Found ament_cmake: 1.3.3 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.127s] -- Found rclcpp: 16.0.3 (/opt/ros/humble/share/rclcpp/cmake)
+[0.145s] -- Found rosidl_generator_c: 3.1.4 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.147s] -- Found rosidl_adapter: 3.1.4 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.150s] -- Found rosidl_generator_cpp: 3.1.4 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.157s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.166s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.202s] -- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.203s] -- Found rmw_fastrtps_cpp: 6.2.2 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.284s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.385s] -- Found sensor_msgs: 4.2.3 (/opt/ros/humble/share/sensor_msgs/cmake)
+[0.473s] -- Found cv_bridge: 3.2.1 (/opt/ros/humble/share/cv_bridge/cmake)
+[0.478s] -- Found image_transport: 3.1.5 (/opt/ros/humble/share/image_transport/cmake)
+[0.503s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[0.632s] [31mCMake Error at /opt/ros/humble/share/rosidl_adapter/cmake/rosidl_adapt_interfaces.cmake:59 (message):
+[0.632s]   execute_process(/usr/bin/python3.10 -m rosidl_adapter --package-name
+[0.632s]   turtlebot_control --arguments-file
+[0.632s]   /home/megsindelar/Final_Project/raspberry_pi_ws/build/turtlebot_control/rosidl_adapter__arguments__turtlebot_control_msg.json
+[0.632s]   --output-dir
+[0.633s]   /home/megsindelar/Final_Project/raspberry_pi_ws/build/turtlebot_control/rosidl_adapter/turtlebot_control
+[0.633s]   --output-file
+[0.633s]   /home/megsindelar/Final_Project/raspberry_pi_ws/build/turtlebot_control/rosidl_adapter/turtlebot_control_msg.idls)
+[0.633s]   returned error code 1:
+[0.633s] 
+[0.633s]   Error processing 'int[] octave_1' of 'turtlebot_control/Keypoints': ''int'
+[0.633s]   is an invalid message name.  It should have the pattern
+[0.633s]   '^[A-Z][A-Za-z0-9]*$''
+[0.633s] 
+[0.633s]   Traceback (most recent call last):
+[0.633s] 
+[0.633s]     File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+[0.633s]       return _run_code(code, main_globals, None,
+[0.633s]     File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+[0.633s]       exec(code, run_globals)
+[0.633s]     File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/__main__.py", line 19, in <module>
+[0.633s]       sys.exit(main())
+[0.633s]     File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/main.py", line 53, in main
+[0.633s]       abs_idl_file = convert_to_idl(
+[0.633s]     File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/__init__.py", line 19, in convert_to_idl
+[0.633s]       return convert_msg_to_idl(
+[0.633s]     File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/msg/__init__.py", line 28, in convert_msg_to_idl
+[0.633s]       msg = parse_message_string(package_name, input_file.stem, content)
+[0.633s]     File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/parser.py", line 520, in parse_message_string
+[0.633s]       Type(type_string, context_package_name=pkg_name),
+[0.634s]     File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/parser.py", line 277, in __init__
+[0.634s]       super(Type, self).__init__(
+[0.634s]     File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/parser.py", line 205, in __init__
+[0.634s]       raise InvalidResourceName(
+[0.634s] 
+[0.634s]   rosidl_adapter.parser.InvalidResourceName: 'int' is an invalid message
+[0.634s]   name.  It should have the pattern '^[A-Z][A-Za-z0-9]*$'
+[0.634s] 
+[0.634s] Call Stack (most recent call first):
+[0.634s]   /opt/ros/humble/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:130 (rosidl_adapt_interfaces)
+[0.634s]   CMakeLists.txt:23 (rosidl_generate_interfaces)
+[0.634s] 
+[0.634s] [0m
+[0.634s] -- Configuring incomplete, errors occurred!
+[0.634s] See also "/home/megsindelar/Final_Project/raspberry_pi_ws/build/turtlebot_control/CMakeFiles/CMakeOutput.log".
+[0.638s] gmake: *** [Makefile:788: cmake_check_build_system] Error 1
+[0.639s] Invoked command in '/home/megsindelar/Final_Project/raspberry_pi_ws/build/turtlebot_control' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/raspberry_pi_ws/build/turtlebot_control -- -j8 -l8

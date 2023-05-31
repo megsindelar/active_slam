@@ -1,0 +1,17 @@
+[01m[K/ros_ws/src/turtlebot_control/src/turtlebot_control.cpp:[m[K In member function ‘[01m[Kvoid TurtlebotControl::timer_callback()[m[K’:
+[01m[K/ros_ws/src/turtlebot_control/src/turtlebot_control.cpp:151:42:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kimage_transport::Publisher::publish(std::__shared_ptr_access<sensor_msgs::msg::Image_<std::allocator<void> >, __gnu_cxx::_S_atomic, false, false>::element_type&, sensor_msgs::msg::CameraInfo&)[m[K’
+  151 |                 [01;31m[Kpub_current_img_->publish(*(cv_bridge::CvImage(header, "bgr8", current_frame).toImageMsg()), cam_info_)[m[K;
+      |                 [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/humble/include/image_transport/image_transport/image_transport.hpp:41[m[K,
+                 from [01m[K/ros_ws/src/turtlebot_control/src/turtlebot_control.cpp:5[m[K:
+[01m[K/opt/ros/humble/include/image_transport/image_transport/publisher.hpp:97:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid image_transport::Publisher::publish(const Image&) const[m[K’
+   97 |   void [01;36m[Kpublish[m[K(const sensor_msgs::msg::Image & message) const;
+      |        [01;36m[K^~~~~~~[m[K
+[01m[K/opt/ros/humble/include/image_transport/image_transport/publisher.hpp:97:8:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 2 provided
+[01m[K/opt/ros/humble/include/image_transport/image_transport/publisher.hpp:103:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid image_transport::Publisher::publish(const ConstSharedPtr&) const[m[K’
+  103 |   void [01;36m[Kpublish[m[K(const sensor_msgs::msg::Image::ConstSharedPtr & message) const;
+      |        [01;36m[K^~~~~~~[m[K
+[01m[K/opt/ros/humble/include/image_transport/image_transport/publisher.hpp:103:8:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 2 provided
+gmake[2]: *** [CMakeFiles/turtlebot_control.dir/build.make:76: CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:593: CMakeFiles/turtlebot_control.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

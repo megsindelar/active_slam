@@ -587,7 +587,8 @@ CMakeFiles/turtlebot_control__rosidl_typesupport_c__pyext.dir/clean:
 # Target rules for target CMakeFiles/turtlebot_control.dir
 
 # All Build rule for target.
-CMakeFiles/turtlebot_control.dir/all:
+CMakeFiles/turtlebot_control.dir/all: CMakeFiles/turtlebot_control_msg__cpp.dir/all
+CMakeFiles/turtlebot_control.dir/all: CMakeFiles/turtlebot_control_msg__rosidl_typesupport_cpp.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/turtlebot_control.dir/build.make CMakeFiles/turtlebot_control.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/turtlebot_control.dir/build.make CMakeFiles/turtlebot_control.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/megsindelar/Final_Project/raspberry_pi_ws/build/turtlebot_control/CMakeFiles --progress-num=1,2 "Built target turtlebot_control"
@@ -595,7 +596,7 @@ CMakeFiles/turtlebot_control.dir/all:
 
 # Build rule for subdir invocation for target.
 CMakeFiles/turtlebot_control.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/megsindelar/Final_Project/raspberry_pi_ws/build/turtlebot_control/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/megsindelar/Final_Project/raspberry_pi_ws/build/turtlebot_control/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/turtlebot_control.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/megsindelar/Final_Project/raspberry_pi_ws/build/turtlebot_control/CMakeFiles 0
 .PHONY : CMakeFiles/turtlebot_control.dir/rule

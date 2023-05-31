@@ -1,0 +1,6 @@
+{
+  "package_name": "turtlebot_control",
+  "non_idl_tuples": [
+    "/ros_ws/src/turtlebot_control:msg/Keypoints.msg"
+  ]
+}

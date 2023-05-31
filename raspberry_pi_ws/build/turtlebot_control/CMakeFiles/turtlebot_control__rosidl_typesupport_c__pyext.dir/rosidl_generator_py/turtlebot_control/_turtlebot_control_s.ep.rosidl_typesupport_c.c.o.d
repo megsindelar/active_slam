@@ -204,4 +204,5 @@ CMakeFiles/turtlebot_control__rosidl_typesupport_c__pyext.dir/rosidl_generator_p
  /home/megsindelar/Final_Project/raspberry_pi_ws/build/turtlebot_control/rosidl_generator_c/turtlebot_control/msg/detail/keypoints__type_support.h \
  /home/megsindelar/Final_Project/raspberry_pi_ws/build/turtlebot_control/rosidl_generator_c/turtlebot_control/msg/rosidl_generator_c__visibility_control.h \
  /home/megsindelar/Final_Project/raspberry_pi_ws/build/turtlebot_control/rosidl_generator_c/turtlebot_control/msg/detail/keypoints__struct.h \
+ /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/primitives_sequence.h \
  /home/megsindelar/Final_Project/raspberry_pi_ws/build/turtlebot_control/rosidl_generator_c/turtlebot_control/msg/detail/keypoints__functions.h

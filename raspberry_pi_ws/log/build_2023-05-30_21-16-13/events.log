@@ -1,0 +1,202 @@
+[0.000000] (-) TimerEvent: {}
+[0.000117] (turtlebot_control) JobQueued: {'identifier': 'turtlebot_control', 'dependencies': OrderedDict()}
+[0.000403] (turtlebot_control) JobStarted: {'identifier': 'turtlebot_control'}
+[0.007115] (turtlebot_control) JobProgress: {'identifier': 'turtlebot_control', 'progress': 'cmake'}
+[0.007786] (turtlebot_control) JobProgress: {'identifier': 'turtlebot_control', 'progress': 'build'}
+[0.007841] (turtlebot_control) Command: {'cmd': ['/usr/bin/cmake', '--build', '/ros_ws/aarch64_build/turtlebot_control', '--', '-j8', '-l8'], 'cwd': '/ros_ws/aarch64_build/turtlebot_control', 'env': OrderedDict([('HOSTNAME', 'c53963f543c1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/msr'), ('ROS_PYTHON_VERSION', '3'), ('LC_CTYPE', 'C.UTF-8'), ('ROS_DISTRO', 'humble'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('PWD', '/ros_ws/aarch64_build/turtlebot_control'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.043973] (turtlebot_control) StdoutLine: {'line': b'[  3%] Built target turtlebot_control_msg__cpp\n'}
+[0.044182] (turtlebot_control) StdoutLine: {'line': b'[ 12%] Built target turtlebot_control_msg__rosidl_generator_c\n'}
+[0.051434] (turtlebot_control) StdoutLine: {'line': b'[ 12%] Built target ament_cmake_python_copy_turtlebot_control\n'}
+[0.059130] (turtlebot_control) StdoutLine: {'line': b'[ 21%] Built target turtlebot_control_msg__rosidl_typesupport_c\n'}
+[0.060954] (turtlebot_control) StdoutLine: {'line': b'[ 30%] Built target turtlebot_control_msg__rosidl_typesupport_cpp\n'}
+[0.061607] (turtlebot_control) StdoutLine: {'line': b'[ 39%] Built target turtlebot_control_msg__rosidl_typesupport_introspection_c\n'}
+[0.062813] (turtlebot_control) StdoutLine: {'line': b'[ 48%] Built target turtlebot_control_msg__rosidl_typesupport_fastrtps_cpp\n'}
+[0.063442] (turtlebot_control) StdoutLine: {'line': b'[ 57%] Built target turtlebot_control_msg__rosidl_typesupport_introspection_cpp\n'}
+[0.068811] (turtlebot_control) StdoutLine: {'line': b'[ 66%] Built target turtlebot_control_msg__rosidl_typesupport_fastrtps_c\n'}
+[0.071125] (turtlebot_control) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target turtlebot_control\x1b[0m\n'}
+[0.081130] (turtlebot_control) StdoutLine: {'line': b'[ 66%] Built target turtlebot_control_msg\n'}
+[0.085961] (turtlebot_control) StdoutLine: {'line': b'[ 69%] \x1b[32mBuilding CXX object CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o\x1b[0m\n'}
+[0.094204] (turtlebot_control) StdoutLine: {'line': b'[ 72%] Built target turtlebot_control_msg__py\n'}
+[0.100067] (-) TimerEvent: {}
+[0.109145] (turtlebot_control) StdoutLine: {'line': b'[ 78%] Built target turtlebot_control_msg__rosidl_generator_py\n'}
+[0.125791] (turtlebot_control) StdoutLine: {'line': b'[ 84%] Built target turtlebot_control__rosidl_typesupport_c__pyext\n'}
+[0.126804] (turtlebot_control) StdoutLine: {'line': b'[ 90%] Built target turtlebot_control__rosidl_typesupport_fastrtps_c__pyext\n'}
+[0.127755] (turtlebot_control) StdoutLine: {'line': b'[ 96%] Built target turtlebot_control__rosidl_typesupport_introspection_c__pyext\n'}
+[0.200129] (-) TimerEvent: {}
+[0.202394] (turtlebot_control) StdoutLine: {'line': b'running egg_info\n'}
+[0.203016] (turtlebot_control) StdoutLine: {'line': b'writing turtlebot_control.egg-info/PKG-INFO\n'}
+[0.203339] (turtlebot_control) StdoutLine: {'line': b'writing dependency_links to turtlebot_control.egg-info/dependency_links.txt\n'}
+[0.203566] (turtlebot_control) StdoutLine: {'line': b'writing top-level names to turtlebot_control.egg-info/top_level.txt\n'}
+[0.204640] (turtlebot_control) StdoutLine: {'line': b"reading manifest file 'turtlebot_control.egg-info/SOURCES.txt'\n"}
+[0.204949] (turtlebot_control) StdoutLine: {'line': b"writing manifest file 'turtlebot_control.egg-info/SOURCES.txt'\n"}
+[0.221185] (turtlebot_control) StdoutLine: {'line': b'[ 96%] Built target ament_cmake_python_build_turtlebot_control_egg\n'}
+[0.300312] (-) TimerEvent: {}
+[0.400649] (-) TimerEvent: {}
+[0.500879] (-) TimerEvent: {}
+[0.601214] (-) TimerEvent: {}
+[0.701520] (-) TimerEvent: {}
+[0.801837] (-) TimerEvent: {}
+[0.902156] (-) TimerEvent: {}
+[1.002469] (-) TimerEvent: {}
+[1.102791] (-) TimerEvent: {}
+[1.203115] (-) TimerEvent: {}
+[1.303518] (-) TimerEvent: {}
+[1.403864] (-) TimerEvent: {}
+[1.504174] (-) TimerEvent: {}
+[1.604495] (-) TimerEvent: {}
+[1.704782] (-) TimerEvent: {}
+[1.805169] (-) TimerEvent: {}
+[1.905459] (-) TimerEvent: {}
+[2.005776] (-) TimerEvent: {}
+[2.106054] (-) TimerEvent: {}
+[2.206376] (-) TimerEvent: {}
+[2.306697] (-) TimerEvent: {}
+[2.407007] (-) TimerEvent: {}
+[2.507325] (-) TimerEvent: {}
+[2.607662] (-) TimerEvent: {}
+[2.707997] (-) TimerEvent: {}
+[2.808326] (-) TimerEvent: {}
+[2.908655] (-) TimerEvent: {}
+[3.008900] (-) TimerEvent: {}
+[3.109185] (-) TimerEvent: {}
+[3.209473] (-) TimerEvent: {}
+[3.309793] (-) TimerEvent: {}
+[3.410132] (-) TimerEvent: {}
+[3.510472] (-) TimerEvent: {}
+[3.610823] (-) TimerEvent: {}
+[3.711149] (-) TimerEvent: {}
+[3.811466] (-) TimerEvent: {}
+[3.891166] (turtlebot_control) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable turtlebot_control\x1b[0m\n'}
+[3.911682] (-) TimerEvent: {}
+[4.012017] (-) TimerEvent: {}
+[4.112273] (-) TimerEvent: {}
+[4.205846] (turtlebot_control) StdoutLine: {'line': b'[100%] Built target turtlebot_control\n'}
+[4.212498] (-) TimerEvent: {}
+[4.214880] (turtlebot_control) CommandEnded: {'returncode': 0}
+[4.263209] (turtlebot_control) JobProgress: {'identifier': 'turtlebot_control', 'progress': 'install'}
+[4.269225] (turtlebot_control) Command: {'cmd': ['/usr/bin/cmake', '--install', '/ros_ws/aarch64_build/turtlebot_control'], 'cwd': '/ros_ws/aarch64_build/turtlebot_control', 'env': OrderedDict([('HOSTNAME', 'c53963f543c1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/msr'), ('ROS_PYTHON_VERSION', '3'), ('LC_CTYPE', 'C.UTF-8'), ('ROS_DISTRO', 'humble'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('PWD', '/ros_ws/aarch64_build/turtlebot_control'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[4.275227] (turtlebot_control) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[4.275382] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/ament_index/resource_index/rosidl_interfaces/turtlebot_control\n'}
+[4.275425] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control\n'}
+[4.275463] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg\n'}
+[4.275500] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail\n'}
+[4.275536] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail/keypoints__functions.h\n'}
+[4.275574] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail/keypoints__functions.c\n'}
+[4.275630] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail/keypoints__type_support.h\n'}
+[4.275700] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail/keypoints__struct.h\n'}
+[4.275736] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/keypoints.h\n'}
+[4.275783] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/rosidl_generator_c__visibility_control.h\n'}
+[4.275819] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/environment/library_path.sh\n'}
+[4.275856] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/environment/library_path.dsv\n'}
+[4.275893] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/lib/libturtlebot_control__rosidl_generator_c.so\n'}
+[4.275955] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control\n'}
+[4.276482] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg\n'}
+[4.276599] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail\n'}
+[4.276649] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail/keypoints__rosidl_typesupport_fastrtps_c.h\n'}
+[4.276691] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[4.276730] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/lib/libturtlebot_control__rosidl_typesupport_fastrtps_c.so\n'}
+[4.276768] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control\n'}
+[4.276828] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg\n'}
+[4.276867] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail\n'}
+[4.276904] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail/keypoints__struct.hpp\n'}
+[4.276942] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail/keypoints__traits.hpp\n'}
+[4.276979] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail/keypoints__builder.hpp\n'}
+[4.277017] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/keypoints.hpp\n'}
+[4.277055] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control\n'}
+[4.277092] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg\n'}
+[4.277129] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail\n'}
+[4.277166] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail/dds_fastrtps\n'}
+[4.277204] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail/keypoints__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[4.277263] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[4.277303] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/lib/libturtlebot_control__rosidl_typesupport_fastrtps_cpp.so\n'}
+[4.277342] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control\n'}
+[4.277380] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg\n'}
+[4.277421] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail\n'}
+[4.277459] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail/keypoints__type_support.c\n'}
+[4.277497] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail/keypoints__rosidl_typesupport_introspection_c.h\n'}
+[4.277536] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[4.277574] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/lib/libturtlebot_control__rosidl_typesupport_introspection_c.so\n'}
+[4.277612] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/lib/libturtlebot_control__rosidl_typesupport_c.so\n'}
+[4.277683] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control\n'}
+[4.277723] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg\n'}
+[4.277762] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail\n'}
+[4.277823] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail/keypoints__rosidl_typesupport_introspection_cpp.hpp\n'}
+[4.277860] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/include/turtlebot_control/turtlebot_control/msg/detail/keypoints__type_support.cpp\n'}
+[4.277898] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/lib/libturtlebot_control__rosidl_typesupport_introspection_cpp.so\n'}
+[4.277937] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/lib/libturtlebot_control__rosidl_typesupport_cpp.so\n'}
+[4.277975] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/environment/pythonpath.sh\n'}
+[4.278013] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/environment/pythonpath.dsv\n'}
+[4.278051] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control-0.0.0-py3.10.egg-info\n'}
+[4.278089] (turtlebot_control) StdoutLine: {'line': b'-- Installing: /ros_ws/aarch64_install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control-0.0.0-py3.10.egg-info/PKG-INFO\n'}
+[4.278127] (turtlebot_control) StdoutLine: {'line': b'-- Installing: /ros_ws/aarch64_install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control-0.0.0-py3.10.egg-info/top_level.txt\n'}
+[4.278203] (turtlebot_control) StdoutLine: {'line': b'-- Installing: /ros_ws/aarch64_install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control-0.0.0-py3.10.egg-info/dependency_links.txt\n'}
+[4.278239] (turtlebot_control) StdoutLine: {'line': b'-- Installing: /ros_ws/aarch64_install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control-0.0.0-py3.10.egg-info/SOURCES.txt\n'}
+[4.278275] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control\n'}
+[4.278314] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/libturtlebot_control_msg__rosidl_generator_py.so\n'}
+[4.278348] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/__init__.py\n'}
+[4.278381] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/_turtlebot_control_s.ep.rosidl_typesupport_c.c\n'}
+[4.278415] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/turtlebot_control_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[4.278449] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/msg\n'}
+[4.278483] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/msg/__init__.py\n'}
+[4.278518] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/msg/_keypoints.py\n'}
+[4.278552] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/msg/_keypoints_s.c\n'}
+[4.278586] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/_turtlebot_control_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[4.278622] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/_turtlebot_control_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[4.278655] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/turtlebot_control_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[4.278690] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/turtlebot_control_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[4.298681] (turtlebot_control) StdoutLine: {'line': b"Listing '/ros_ws/aarch64_install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control'...\n"}
+[4.298791] (turtlebot_control) StdoutLine: {'line': b"Listing '/ros_ws/aarch64_install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/msg'...\n"}
+[4.301340] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/turtlebot_control_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[4.301439] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/turtlebot_control_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[4.301516] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/local/lib/python3.10/dist-packages/turtlebot_control/turtlebot_control_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[4.301595] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/lib/libturtlebot_control_msg__rosidl_generator_py.so\n'}
+[4.301667] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/msg/Keypoints.idl\n'}
+[4.301716] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/msg/Keypoints.msg\n'}
+[4.301789] (turtlebot_control) StdoutLine: {'line': b'-- Installing: /ros_ws/aarch64_install/turtlebot_control/lib/turtlebot_control/turtlebot_control\n'}
+[4.302679] (turtlebot_control) StdoutLine: {'line': b'-- Set runtime path of "/ros_ws/aarch64_install/turtlebot_control/lib/turtlebot_control/turtlebot_control" to ""\n'}
+[4.302723] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/images\n'}
+[4.302764] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/images/test_pic.png\n'}
+[4.302805] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/images/image.jpg\n'}
+[4.302883] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/ament_index/resource_index/package_run_dependencies/turtlebot_control\n'}
+[4.302924] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/ament_index/resource_index/parent_prefix_path/turtlebot_control\n'}
+[4.302968] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/environment/ament_prefix_path.sh\n'}
+[4.303008] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/environment/ament_prefix_path.dsv\n'}
+[4.303049] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/environment/path.sh\n'}
+[4.303090] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/environment/path.dsv\n'}
+[4.303130] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/local_setup.bash\n'}
+[4.303168] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/local_setup.sh\n'}
+[4.303205] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/local_setup.zsh\n'}
+[4.303242] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/local_setup.dsv\n'}
+[4.303279] (turtlebot_control) StdoutLine: {'line': b'-- Installing: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/package.dsv\n'}
+[4.303329] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/ament_index/resource_index/packages/turtlebot_control\n'}
+[4.303399] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/cmake/export_turtlebot_control_msg__rosidl_generator_cExport.cmake\n'}
+[4.303438] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/cmake/export_turtlebot_control_msg__rosidl_generator_cExport-noconfig.cmake\n'}
+[4.303477] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/cmake/export_turtlebot_control_msg__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[4.303531] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/cmake/export_turtlebot_control_msg__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[4.303569] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/cmake/export_turtlebot_control_msg__rosidl_generator_cppExport.cmake\n'}
+[4.303606] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/cmake/export_turtlebot_control_msg__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[4.303644] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/cmake/export_turtlebot_control_msg__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[4.303681] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/cmake/turtlebot_control_msg__rosidl_typesupport_introspection_cExport.cmake\n'}
+[4.303719] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/cmake/turtlebot_control_msg__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[4.303766] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/cmake/turtlebot_control_msg__rosidl_typesupport_cExport.cmake\n'}
+[4.303804] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/cmake/turtlebot_control_msg__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[4.303841] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/cmake/turtlebot_control_msg__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[4.303877] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/cmake/turtlebot_control_msg__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[4.303914] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/cmake/turtlebot_control_msg__rosidl_typesupport_cppExport.cmake\n'}
+[4.303985] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/cmake/turtlebot_control_msg__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[4.304022] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/cmake/export_turtlebot_control_msg__rosidl_generator_pyExport.cmake\n'}
+[4.304060] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/cmake/export_turtlebot_control_msg__rosidl_generator_pyExport-noconfig.cmake\n'}
+[4.304102] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/cmake/rosidl_cmake-extras.cmake\n'}
+[4.304137] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[4.304173] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[4.304212] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[4.304248] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[4.304283] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[4.304320] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[4.304354] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/cmake/turtlebot_controlConfig.cmake\n'}
+[4.304389] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/cmake/turtlebot_controlConfig-version.cmake\n'}
+[4.304424] (turtlebot_control) StdoutLine: {'line': b'-- Up-to-date: /ros_ws/aarch64_install/turtlebot_control/share/turtlebot_control/package.xml\n'}
+[4.305660] (turtlebot_control) CommandEnded: {'returncode': 0}
+[4.314085] (-) TimerEvent: {}
+[4.365146] (turtlebot_control) JobEnded: {'identifier': 'turtlebot_control', 'rc': 0}
+[4.365781] (-) EventReactorShutdown: {}

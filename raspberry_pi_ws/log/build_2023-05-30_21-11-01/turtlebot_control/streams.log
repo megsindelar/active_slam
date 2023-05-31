@@ -1,0 +1,66 @@
+[0.009s] Invoking command in '/ros_ws/aarch64_build/turtlebot_control': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /ros_ws/aarch64_build/turtlebot_control -- -j8 -l8
+[0.043s] [  3%] Built target turtlebot_control_msg__cpp
+[0.043s] [ 12%] Built target turtlebot_control_msg__rosidl_generator_c
+[0.048s] [ 12%] Built target ament_cmake_python_copy_turtlebot_control
+[0.060s] [ 21%] Built target turtlebot_control_msg__rosidl_typesupport_introspection_cpp
+[0.060s] [ 30%] Built target turtlebot_control_msg__rosidl_typesupport_fastrtps_cpp
+[0.060s] [ 39%] Built target turtlebot_control_msg__rosidl_typesupport_cpp
+[0.065s] [ 48%] Built target turtlebot_control_msg__rosidl_typesupport_introspection_c
+[0.065s] [ 57%] Built target turtlebot_control_msg__rosidl_typesupport_c
+[0.067s] [ 66%] Built target turtlebot_control_msg__rosidl_typesupport_fastrtps_c
+[0.071s] [35m[1mConsolidate compiler generated dependencies of target turtlebot_control[0m
+[0.080s] [ 66%] Built target turtlebot_control_msg
+[0.085s] [ 69%] [32mBuilding CXX object CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o[0m
+[0.093s] [ 72%] Built target turtlebot_control_msg__py
+[0.108s] [ 78%] Built target turtlebot_control_msg__rosidl_generator_py
+[0.125s] [ 90%] Built target turtlebot_control__rosidl_typesupport_fastrtps_c__pyext
+[0.125s] [ 90%] Built target turtlebot_control__rosidl_typesupport_introspection_c__pyext
+[0.128s] [ 96%] Built target turtlebot_control__rosidl_typesupport_c__pyext
+[0.199s] running egg_info
+[0.199s] writing turtlebot_control.egg-info/PKG-INFO
+[0.199s] writing dependency_links to turtlebot_control.egg-info/dependency_links.txt
+[0.199s] writing top-level names to turtlebot_control.egg-info/top_level.txt
+[0.201s] reading manifest file 'turtlebot_control.egg-info/SOURCES.txt'
+[0.201s] writing manifest file 'turtlebot_control.egg-info/SOURCES.txt'
+[0.217s] [ 96%] Built target ament_cmake_python_build_turtlebot_control_egg
+[2.952s] In file included from [01m[K/usr/aarch64-linux-gnu/include/c++/11/aarch64-linux-gnu/bits/c++allocator.h:33[m[K,
+[2.952s]                  from [01m[K/usr/aarch64-linux-gnu/include/c++/11/bits/allocator.h:46[m[K,
+[2.952s]                  from [01m[K/usr/aarch64-linux-gnu/include/c++/11/string:41[m[K,
+[2.952s]                  from [01m[K/usr/aarch64-linux-gnu/include/c++/11/bits/locale_classes.h:40[m[K,
+[2.952s]                  from [01m[K/usr/aarch64-linux-gnu/include/c++/11/bits/ios_base.h:41[m[K,
+[2.952s]                  from [01m[K/usr/aarch64-linux-gnu/include/c++/11/ios:42[m[K,
+[2.952s]                  from [01m[K/usr/aarch64-linux-gnu/include/c++/11/ostream:38[m[K,
+[2.952s]                  from [01m[K/usr/aarch64-linux-gnu/include/c++/11/iostream:39[m[K,
+[2.952s]                  from [01m[K/ros_ws/src/turtlebot_control/src/turtlebot_control.cpp:1[m[K:
+[2.952s] /usr/aarch64-linux-gnu/include/c++/11/ext/new_allocator.h: In instantiation of ‘[01m[Kvoid __gnu_cxx::new_allocator<_Tp>::construct(_Up*, _Args&& ...) [with _Up = image_transport::CameraPublisher; _Args = {image_transport::Publisher}; _Tp = image_transport::CameraPublisher][m[K’:
+[2.952s] [01m[K/usr/aarch64-linux-gnu/include/c++/11/bits/alloc_traits.h:516:17:[m[K   required from ‘[01m[Kstatic void std::allocator_traits<std::allocator<_CharT> >::construct(std::allocator_traits<std::allocator<_CharT> >::allocator_type&, _Up*, _Args&& ...) [with _Up = image_transport::CameraPublisher; _Args = {image_transport::Publisher}; _Tp = image_transport::CameraPublisher; std::allocator_traits<std::allocator<_CharT> >::allocator_type = std::allocator<image_transport::CameraPublisher>][m[K’
+[2.952s] [01m[K/usr/aarch64-linux-gnu/include/c++/11/bits/shared_ptr_base.h:519:39:[m[K   required from ‘[01m[Kstd::_Sp_counted_ptr_inplace<_Tp, _Alloc, _Lp>::_Sp_counted_ptr_inplace(_Alloc, _Args&& ...) [with _Args = {image_transport::Publisher}; _Tp = image_transport::CameraPublisher; _Alloc = std::allocator<image_transport::CameraPublisher>; __gnu_cxx::_Lock_policy _Lp = __gnu_cxx::_S_atomic][m[K’
+[2.952s] [01m[K/usr/aarch64-linux-gnu/include/c++/11/bits/shared_ptr_base.h:650:16:[m[K   required from ‘[01m[Kstd::__shared_count<_Lp>::__shared_count(_Tp*&, std::_Sp_alloc_shared_tag<_Alloc>, _Args&& ...) [with _Tp = image_transport::CameraPublisher; _Alloc = std::allocator<image_transport::CameraPublisher>; _Args = {image_transport::Publisher}; __gnu_cxx::_Lock_policy _Lp = __gnu_cxx::_S_atomic][m[K’
+[2.952s] [01m[K/usr/aarch64-linux-gnu/include/c++/11/bits/shared_ptr_base.h:1342:14:[m[K   required from ‘[01m[Kstd::__shared_ptr<_Tp, _Lp>::__shared_ptr(std::_Sp_alloc_shared_tag<_Tp>, _Args&& ...) [with _Alloc = std::allocator<image_transport::CameraPublisher>; _Args = {image_transport::Publisher}; _Tp = image_transport::CameraPublisher; __gnu_cxx::_Lock_policy _Lp = __gnu_cxx::_S_atomic][m[K’
+[2.952s] [01m[K/usr/aarch64-linux-gnu/include/c++/11/bits/shared_ptr.h:409:59:[m[K   required from ‘[01m[Kstd::shared_ptr<_Tp>::shared_ptr(std::_Sp_alloc_shared_tag<_Tp>, _Args&& ...) [with _Alloc = std::allocator<image_transport::CameraPublisher>; _Args = {image_transport::Publisher}; _Tp = image_transport::CameraPublisher][m[K’
+[2.952s] [01m[K/usr/aarch64-linux-gnu/include/c++/11/bits/shared_ptr.h:862:14:[m[K   required from ‘[01m[Kstd::shared_ptr<_Tp> std::allocate_shared(const _Alloc&, _Args&& ...) [with _Tp = image_transport::CameraPublisher; _Alloc = std::allocator<image_transport::CameraPublisher>; _Args = {image_transport::Publisher}][m[K’
+[2.952s] [01m[K/usr/aarch64-linux-gnu/include/c++/11/bits/shared_ptr.h:878:39:[m[K   required from ‘[01m[Kstd::shared_ptr<_Tp> std::make_shared(_Args&& ...) [with _Tp = image_transport::CameraPublisher; _Args = {image_transport::Publisher}][m[K’
+[2.952s] [01m[K/ros_ws/src/turtlebot_control/src/turtlebot_control.cpp:36:78:[m[K   required from here
+[2.952s] [01m[K/usr/aarch64-linux-gnu/include/c++/11/ext/new_allocator.h:162:11:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kimage_transport::CameraPublisher::CameraPublisher(image_transport::Publisher)[m[K’
+[2.952s]   162 |         { [01;31m[K::new((void *)__p) _Up(std::forward<_Args>(__args)...)[m[K; }
+[2.952s]       |           [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.953s] In file included from [01m[K/opt/ros/humble/include/image_transport/image_transport/image_transport.hpp:39[m[K,
+[2.953s]                  from [01m[K/ros_ws/src/turtlebot_control/src/turtlebot_control.cpp:5[m[K:
+[2.953s] [01m[K/opt/ros/humble/include/image_transport/image_transport/camera_publisher.hpp:71:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kimage_transport::CameraPublisher::CameraPublisher(rclcpp::Node*, const string&, rmw_qos_profile_t)[m[K’
+[2.953s]    71 |   [01;36m[KCameraPublisher[m[K(
+[2.953s]       |   [01;36m[K^~~~~~~~~~~~~~~[m[K
+[2.953s] [01m[K/opt/ros/humble/include/image_transport/image_transport/camera_publisher.hpp:71:3:[m[K [01;36m[Knote: [m[K  candidate expects 3 arguments, 1 provided
+[2.953s] [01m[K/opt/ros/humble/include/image_transport/image_transport/camera_publisher.hpp:68:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconstexpr image_transport::CameraPublisher::CameraPublisher()[m[K’
+[2.953s]    68 |   [01;36m[KCameraPublisher[m[K() = default;
+[2.953s]       |   [01;36m[K^~~~~~~~~~~~~~~[m[K
+[2.953s] [01m[K/opt/ros/humble/include/image_transport/image_transport/camera_publisher.hpp:68:3:[m[K [01;36m[Knote: [m[K  candidate expects 0 arguments, 1 provided
+[2.953s] [01m[K/opt/ros/humble/include/image_transport/image_transport/camera_publisher.hpp:64:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kimage_transport::CameraPublisher::CameraPublisher(const image_transport::CameraPublisher&)[m[K’
+[2.953s]    64 | class [01;36m[KCameraPublisher[m[K
+[2.953s]       |       [01;36m[K^~~~~~~~~~~~~~~[m[K
+[2.953s] [01m[K/opt/ros/humble/include/image_transport/image_transport/camera_publisher.hpp:64:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kimage_transport::Publisher[m[K’ to ‘[01m[Kconst image_transport::CameraPublisher&[m[K’
+[2.953s] [01m[K/opt/ros/humble/include/image_transport/image_transport/camera_publisher.hpp:64:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kimage_transport::CameraPublisher::CameraPublisher(image_transport::CameraPublisher&&)[m[K’
+[2.953s] [01m[K/opt/ros/humble/include/image_transport/image_transport/camera_publisher.hpp:64:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kimage_transport::Publisher[m[K’ to ‘[01m[Kimage_transport::CameraPublisher&&[m[K’
+[3.221s] gmake[2]: *** [CMakeFiles/turtlebot_control.dir/build.make:76: CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o] Error 1
+[3.221s] gmake[1]: *** [CMakeFiles/Makefile2:593: CMakeFiles/turtlebot_control.dir/all] Error 2
+[3.221s] gmake: *** [Makefile:146: all] Error 2
+[3.223s] Invoked command in '/ros_ws/aarch64_build/turtlebot_control' returned '2': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /ros_ws/aarch64_build/turtlebot_control -- -j8 -l8

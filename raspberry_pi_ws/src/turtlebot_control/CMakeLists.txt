@@ -29,7 +29,6 @@ rosidl_get_typesupport_target(cpp_typesupport_target
   "rosidl_typesupport_cpp"
  )
 
-
 add_executable(turtlebot_control src/turtlebot_control.cpp)
 
 ament_target_dependencies(turtlebot_control
@@ -50,7 +49,11 @@ include_directories(SYSTEM
   ${OpenCV_INCLUDE_DIRS}
 )
 
-target_link_libraries(turtlebot_control Eigen3::Eigen ${OpenCV_LIBS})
+target_link_libraries(turtlebot_control
+  Eigen3::Eigen
+  ${OpenCV_LIBS}
+  "${cpp_typesupport_target}"
+)
 
 install(TARGETS
   turtlebot_control

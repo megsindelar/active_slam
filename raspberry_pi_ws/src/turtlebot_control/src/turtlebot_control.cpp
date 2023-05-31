@@ -7,6 +7,7 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/videoio.hpp>
 #include <opencv2/imgcodecs.hpp>
+#include <opencv2/features2d/features2d.hpp>
 #include <stdio.h>
 #include <vector>
 #include <ament_index_cpp/get_package_share_directory.hpp>
@@ -32,15 +33,17 @@ class TurtlebotControl : public rclcpp::Node
     {
         // publish raw image
         // referenced from Nick Morales: https://github.com/ngmor/unitree_camera/blob/main/unitree_camera/src/img_publisher.cpp
-        pub_current_img_ = std::make_shared<image_transport::CameraPublisher>(
-            image_transport::create_camera_publisher(
+        pub_current_img_ = std::make_shared<image_transport::Publisher>(
+            image_transport::create_publisher(
                 this,
                 "current_image",
                 rclcpp::QoS {10}.get_rmw_qos_profile()
             )
         );
 
-        pub_keypoints_ = std::make_shared<turtlebot_control::msg::Keypoints>("/keypoints", 10);
+        pub_compressed_ = this->create_publisher<sensor_msgs::msg::CompressedImage>("image/compressed", 10);
+
+        pub_keypoints_ = this->create_publisher<turtlebot_control::msg::Keypoints>("/keypoints", 10);
 
         // Timer
         declare_parameter("rate", 50);
@@ -78,16 +81,32 @@ class TurtlebotControl : public rclcpp::Node
                 }
 
 
-                std::vector<KeyPoint> keypoints_1, keypoints_2;
+                std::vector<KeyPoint> keypoints1, keypoints2;
 
                 if (!prev_frame.empty()){
-                    detector->detect (prev_frame ,keypoints_1 );
-                    detector->detect (current_frame ,keypoints_2 );
+                    Ptr<FeatureDetector> detector = ORB::create();
+                    detector->detect (prev_frame ,keypoints1);
+                    detector->detect (current_frame ,keypoints2);
 
                     // publish keypoints
-                    turtlebot_control::Keypoints keypoints;
-                    keypoints.keypoints_1 = keypoints_1;
-                    keypoints.keypoints_2 = keypoints_2;
+                    turtlebot_control::msg::Keypoints keypoints;
+                    for (long unsigned int i = 0; i < sizeof(keypoints1); i++){
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 10 %ld", sizeof(keypoints1));
+                        keypoints.x_1.push_back(keypoints1.at(i).pt.x);
+                        keypoints.y_1.push_back(keypoints1.at(i).pt.y);
+                        keypoints.size_1.push_back(keypoints1.at(i).size);
+                        keypoints.angle_1.push_back(keypoints1.at(i).angle);
+                        keypoints.response_1.push_back(keypoints1.at(i).response);
+                        keypoints.octave_1.push_back(keypoints1.at(i).octave);
+                        keypoints.class_id_1.push_back(keypoints1.at(i).class_id);
+                        keypoints.x_2.push_back(keypoints2.at(i).pt.x);
+                        keypoints.y_2.push_back(keypoints2.at(i).pt.y);
+                        keypoints.size_2.push_back(keypoints2.at(i).size);
+                        keypoints.angle_2.push_back(keypoints2.at(i).angle);
+                        keypoints.response_2.push_back(keypoints2.at(i).response);
+                        keypoints.octave_2.push_back(keypoints2.at(i).octave);
+                        keypoints.class_id_2.push_back(keypoints2.at(i).class_id);
+                    }
                     pub_keypoints_->publish(keypoints);
                 }
 
@@ -130,8 +149,13 @@ class TurtlebotControl : public rclcpp::Node
                 // find a way to check if raspberry pi cam is on
 
 
+                // resize()
+                // sensor_msgs::msg::CompressedImage img_msg;
+                // cv_bridge::CvImage img_bridge = cv_bridge::CvImage(header, "bgr8", current_frame).toImageMsg();
+                // img_bridge.toCompressedImageMsg(img_msg)
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "Image size %d %d", current_frame.rows, current_frame.cols);
 
-                // pub_current_img_->publish(*(cv_bridge::CvImage(header, "bgr8", current_frame).toImageMsg()), cam_info_);
+                // pub_current_img_->publish(*cv_bridge::CvImage(header, "bgr8", current_frame).toImageMsg());
                 // RCLCPP_INFO(rclcpp::get_logger("message"), "Published");
 
 
@@ -148,14 +172,15 @@ class TurtlebotControl : public rclcpp::Node
                 //     begin = std::chrono::high_resolution_clock::now();
                 //     num_frames = 0;
                 // }
-                prev_frame = current_frame
+                prev_frame = current_frame;
             }
             
             sleep(5);
         }
 
         rclcpp::TimerBase::SharedPtr timer_;
-        std::shared_ptr<image_transport::CameraPublisher> pub_current_img_;
+        std::shared_ptr<image_transport::Publisher> pub_current_img_;
+        rclcpp::Publisher<sensor_msgs::msg::CompressedImage>::SharedPtr pub_compressed_;
         rclcpp::Publisher<turtlebot_control::msg::Keypoints>::SharedPtr pub_keypoints_;
         sensor_msgs::msg::CameraInfo cam_info_;
         int num_frames = 0;

@@ -1,0 +1,24 @@
+[  3%] Built target turtlebot_control_msg__cpp
+[ 12%] Built target turtlebot_control_msg__rosidl_generator_c
+[ 12%] Built target ament_cmake_python_copy_turtlebot_control
+[ 21%] Built target turtlebot_control_msg__rosidl_typesupport_introspection_cpp
+[ 30%] Built target turtlebot_control_msg__rosidl_typesupport_fastrtps_cpp
+[ 39%] Built target turtlebot_control_msg__rosidl_typesupport_cpp
+[ 48%] Built target turtlebot_control_msg__rosidl_typesupport_introspection_c
+[ 57%] Built target turtlebot_control_msg__rosidl_typesupport_c
+[ 66%] Built target turtlebot_control_msg__rosidl_typesupport_fastrtps_c
+[35m[1mConsolidate compiler generated dependencies of target turtlebot_control[0m
+[ 66%] Built target turtlebot_control_msg
+[ 69%] [32mBuilding CXX object CMakeFiles/turtlebot_control.dir/src/turtlebot_control.cpp.o[0m
+[ 72%] Built target turtlebot_control_msg__py
+[ 78%] Built target turtlebot_control_msg__rosidl_generator_py
+[ 90%] Built target turtlebot_control__rosidl_typesupport_fastrtps_c__pyext
+[ 90%] Built target turtlebot_control__rosidl_typesupport_introspection_c__pyext
+[ 96%] Built target turtlebot_control__rosidl_typesupport_c__pyext
+running egg_info
+writing turtlebot_control.egg-info/PKG-INFO
+writing dependency_links to turtlebot_control.egg-info/dependency_links.txt
+writing top-level names to turtlebot_control.egg-info/top_level.txt
+reading manifest file 'turtlebot_control.egg-info/SOURCES.txt'
+writing manifest file 'turtlebot_control.egg-info/SOURCES.txt'
+[ 96%] Built target ament_cmake_python_build_turtlebot_control_egg
