@@ -61,7 +61,6 @@ install(TARGETS
 )
 
 install(DIRECTORY
-  images
   DESTINATION share/${PROJECT_NAME}
 )
 
