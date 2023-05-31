@@ -22,9 +22,13 @@ find_package(PythonLibs 3.0 REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
+
+rosidl_generate_interfaces(${PROJECT_NAME}_msg "msg/Keypoints.msg" LIBRARY_NAME ${PROJECT_NAME})
+rosidl_get_typesupport_target(cpp_typesupport_target ${PROJECT_NAME}_msg "rosidl_typesupport_cpp")
 
 add_executable(img_transform src/img_transform.cpp)
 
@@ -71,6 +75,7 @@ target_link_libraries(img_transform ${OpenCV_LIBS}
   teaserpp::teaser_io
   ${PYTHON_LIBRARIES}
   Python3::NumPy
+  "${cpp_typesupport_target}"
 )
 
 target_link_libraries(video_frequency ${OpenCV_LIBS} 
