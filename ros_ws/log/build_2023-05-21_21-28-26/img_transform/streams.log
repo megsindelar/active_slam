@@ -1,5 +1,0 @@
-[0.011s] Invoking command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/ros_ws/build/img_transform -- -j8 -l8
-[0.022s] [0mCMake Error: The source directory "/home/megsindelar/Final_Project/ros_ws/src/active_slam" does not exist.
-[0.022s] Specify --help for usage, or press the help button on the CMake GUI.[0m
-[0.023s] gmake: *** [Makefile:267: cmake_check_build_system] Error 1
-[0.024s] Invoked command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/ros_ws/build/img_transform -- -j8 -l8
