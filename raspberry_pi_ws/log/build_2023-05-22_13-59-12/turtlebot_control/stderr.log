@@ -1,6 +1,0 @@
-[31mCMake Error at cmake_install.cmake:66 (file):
-  file INSTALL cannot find
-  "/home/megsindelar/Final_Project/raspberry_pi_ws/src/turtlebot_control/images":
-  No such file or directory.
-
-[0m

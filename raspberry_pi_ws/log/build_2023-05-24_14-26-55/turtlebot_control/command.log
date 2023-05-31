@@ -1,4 +1,0 @@
-Invoking command in '/ros_ws/aarch64_build/turtlebot_control': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /ros_ws/aarch64_build/turtlebot_control -- -j8 -l8
-Invoked command in '/ros_ws/aarch64_build/turtlebot_control' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /ros_ws/aarch64_build/turtlebot_control -- -j8 -l8
-Invoking command in '/ros_ws/aarch64_build/turtlebot_control': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /ros_ws/aarch64_build/turtlebot_control
-Invoked command in '/ros_ws/aarch64_build/turtlebot_control' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /ros_ws/aarch64_build/turtlebot_control

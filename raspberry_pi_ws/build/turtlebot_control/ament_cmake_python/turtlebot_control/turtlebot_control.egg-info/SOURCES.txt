@@ -1,8 +1,0 @@
-setup.py
-turtlebot_control/__init__.py
-turtlebot_control.egg-info/PKG-INFO
-turtlebot_control.egg-info/SOURCES.txt
-turtlebot_control.egg-info/dependency_links.txt
-turtlebot_control.egg-info/top_level.txt
-turtlebot_control/msg/__init__.py
-turtlebot_control/msg/_keypoints.py
