@@ -171,11 +171,13 @@ int main ( int argc, char** argv )
         key2_yp.push_back(keypoints_2.at(good_matches[i].trainIdx).pt.y);
     }
 
-    // plt::plot(key1_xw, key1_yw, {{"color", "blue"}, {"marker", "o"}, {"linestyle", " "}});
-    // // plt::plot(key1_xp, key1_yp, {{"color", "green"}, {"marker", "o"}, {"linestyle", " "}});
-    // plt::plot(key2_xw, key2_yw, {{"color", "red"}, {"marker", "o"}, {"linestyle", " "}});
-    // // plt::plot(key2_xp, key2_yp, {{"color", "yellow"}, {"marker", "o"}, {"linestyle", " "}});
-    // plt::show();
+    plt::plot(key1_xw, key1_yw, {{"color", "blue"}, {"marker", "o"}, {"linestyle", " "}, {"label", "Keypoints 1"}});
+    // plt::plot(key1_xp, key1_yp, {{"color", "green"}, {"marker", "o"}, {"linestyle", " "}});
+    plt::plot(key2_xw, key2_yw, {{"color", "red"}, {"marker", "o"}, {"linestyle", " "}, {"label", "Keypoints 2"}});
+    // plt::plot(key2_xp, key2_yp, {{"color", "yellow"}, {"marker", "o"}, {"linestyle", " "}});
+    plt::legend();
+    plt::title("Feature Detection");
+    plt::show();
 
 
     // // Load the .ply file
@@ -334,13 +336,13 @@ int main ( int argc, char** argv )
     drawKeypoints ( img_2, key_trans_2, outimg_test_1);
     // drawMatches ( img_1, keypoints_1, img_2, keypoints_2, good_matches, img_goodmatch );
     // imshow ( "image match", img_match );
-    // imshow ("transformed keypoints (keypoint 1 to image 2)", outimg_test_2);
+    imshow ("transformed keypoints (keypoint 1 to image 2)", outimg_test_2);
     // imshow ("transformed keypoints (keypoint 2 to image 1)", outimg_test_1);
-    // imshow("keypoint 1 detection image 1", outimg1);
-    // imshow("keypoint 2 detection image 2", outimg2);
+    imshow("keypoint 1 detection image 1", outimg1);
+    imshow("keypoint 2 detection image 2", outimg2);
     // imshow("keypoint 2 on detection image 1", outimg3);
     // imwrite("good_matches.jpg",outimg_test);
-    // waitKey(0);
+    waitKey(0);
 
     // compute entire time of program
     // later, add optimization to cmake to make program time faster
