@@ -1,0 +1,286 @@
+[0.016s] Invoking command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/ros_ws/build/img_transform -- -j8 -l8
+[0.037s] -- Found ament_cmake: 1.3.3 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.174s] -- Found rclcpp: 16.0.3 (/opt/ros/humble/share/rclcpp/cmake)
+[0.197s] -- Found rosidl_generator_c: 3.1.4 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.199s] -- Found rosidl_adapter: 3.1.4 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.204s] -- Found rosidl_generator_cpp: 3.1.4 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.212s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.224s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.267s] -- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.268s] -- Found rmw_fastrtps_cpp: 6.2.2 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.369s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.489s] -- Found sensor_msgs: 4.2.3 (/opt/ros/humble/share/sensor_msgs/cmake)
+[0.587s] -- Found cv_bridge: 3.2.1 (/opt/ros/humble/share/cv_bridge/cmake)
+[0.593s] -- Found image_transport: 3.1.5 (/opt/ros/humble/share/image_transport/cmake)
+[0.625s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found version "3.10.6") 
+[0.948s] -- Found Python3: /usr/bin/python3.10 (found version "3.10.6") found components: Interpreter Development NumPy Development.Module Development.Embed 
+[0.950s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.6", minimum required is "3.0") 
+[0.950s] -- Found tf2: 0.25.2 (/opt/ros/humble/share/tf2/cmake)
+[0.957s] -- Found tf2_ros: 0.25.2 (/opt/ros/humble/share/tf2_ros/cmake)
+[1.216s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[1.276s] -- Found Python3: /usr/bin/python3.10 (found version "3.10.6") found components: Interpreter 
+[1.448s] -- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[1.732s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.843s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.870s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[1.893s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.6", minimum required is "3.5") 
+[1.894s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[1.894s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[1.894s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+[2.172s] -- Found ament_lint_auto: 0.12.5 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[2.179s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[2.180s] -- Configured cppcheck include dirs: 
+[2.180s] -- Configured cppcheck exclude dirs and/or files: 
+[2.180s] -- Added test 'lint_cmake' to check CMake code style
+[2.181s] -- Added test 'uncrustify' to check C / C++ code style
+[2.181s] -- Configured uncrustify additional arguments: 
+[2.181s] -- Added test 'xmllint' to check XML markup files
+[2.183s] -- Configuring done
+[2.218s] -- Generating done
+[2.221s] -- Build files have been written to: /home/megsindelar/Final_Project/ros_ws/build/img_transform
+[2.250s] [35m[1mConsolidate compiler generated dependencies of target img_transform_srv__rosidl_generator_c[0m
+[2.253s] [35m[1mConsolidate compiler generated dependencies of target video_frequency[0m
+[2.261s] [  2%] Built target img_transform_srv__cpp
+[2.262s] [ 11%] Built target img_transform_srv__rosidl_generator_c
+[2.273s] [ 11%] Built target ament_cmake_python_copy_img_transform
+[2.273s] [35m[1mConsolidate compiler generated dependencies of target img_transform_srv__rosidl_typesupport_introspection_cpp[0m
+[2.276s] [35m[1mConsolidate compiler generated dependencies of target img_transform_srv__rosidl_typesupport_cpp[0m
+[2.276s] [35m[1mConsolidate compiler generated dependencies of target img_transform_srv__rosidl_typesupport_fastrtps_cpp[0m
+[2.276s] [35m[1mConsolidate compiler generated dependencies of target img_transform_srv__rosidl_typesupport_fastrtps_c[0m
+[2.276s] [35m[1mConsolidate compiler generated dependencies of target img_transform_srv__rosidl_typesupport_c[0m
+[2.280s] [35m[1mConsolidate compiler generated dependencies of target img_transform_srv__rosidl_typesupport_introspection_c[0m
+[2.285s] [ 17%] Built target video_frequency
+[2.294s] [ 34%] Built target img_transform_srv__rosidl_typesupport_introspection_cpp
+[2.294s] [ 34%] Built target img_transform_srv__rosidl_typesupport_c
+[2.295s] [ 42%] Built target img_transform_srv__rosidl_typesupport_cpp
+[2.295s] [ 51%] Built target img_transform_srv__rosidl_typesupport_fastrtps_cpp
+[2.296s] [ 60%] Built target img_transform_srv__rosidl_typesupport_fastrtps_c
+[2.296s] [ 68%] Built target img_transform_srv__rosidl_typesupport_introspection_c
+[2.307s] [35m[1mConsolidate compiler generated dependencies of target img_transform[0m
+[2.318s] [ 68%] Built target img_transform_srv
+[2.328s] [ 71%] [32mBuilding CXX object CMakeFiles/img_transform.dir/src/img_transform.cpp.o[0m
+[2.339s] [ 74%] [34m[1mGenerating Python code for ROS interfaces[0m
+[2.585s] running egg_info
+[2.586s] writing img_transform.egg-info/PKG-INFO
+[2.587s] writing dependency_links to img_transform.egg-info/dependency_links.txt
+[2.587s] writing top-level names to img_transform.egg-info/top_level.txt
+[2.589s] reading manifest file 'img_transform.egg-info/SOURCES.txt'
+[2.590s] writing manifest file 'img_transform.egg-info/SOURCES.txt'
+[2.616s] [ 74%] Built target ament_cmake_python_build_img_transform_egg
+[2.720s] [ 74%] Built target img_transform_srv__py
+[2.741s] [ 77%] [32mBuilding C object CMakeFiles/img_transform_srv__rosidl_generator_py.dir/rosidl_generator_py/img_transform/srv/_teleport_s.c.o[0m
+[2.834s] [ 80%] [32m[1mLinking C shared library rosidl_generator_py/img_transform/libimg_transform_srv__rosidl_generator_py.so[0m
+[2.873s] [ 80%] Built target img_transform_srv__rosidl_generator_py
+[2.894s] [ 82%] [32mBuilding C object CMakeFiles/img_transform__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/img_transform/_img_transform_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[2.894s] [ 88%] [32mBuilding C object CMakeFiles/img_transform__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/img_transform/_img_transform_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[2.894s] [ 88%] [32mBuilding C object CMakeFiles/img_transform__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/img_transform/_img_transform_s.ep.rosidl_typesupport_c.c.o[0m
+[2.996s] [ 91%] [32m[1mLinking C shared library rosidl_generator_py/img_transform/img_transform_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so[0m
+[2.996s] [ 94%] [32m[1mLinking C shared library rosidl_generator_py/img_transform/img_transform_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so[0m
+[3.000s] [ 97%] [32m[1mLinking C shared library rosidl_generator_py/img_transform/img_transform_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so[0m
+[3.030s] [ 97%] Built target img_transform__rosidl_typesupport_c__pyext
+[3.030s] [ 97%] Built target img_transform__rosidl_typesupport_introspection_c__pyext
+[3.034s] [ 97%] Built target img_transform__rosidl_typesupport_fastrtps_c__pyext
+[5.835s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:[m[K In member function ‘[01m[Kvoid ImgTransform::timer_callback()[m[K’:
+[5.835s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:140:32:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<cv::DMatch>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[5.835s]   140 |                 for (int i=0; [01;35m[Ki<good_matches.size()[m[K; i++){
+[5.835s]       |                               [01;35m[K~^~~~~~~~~~~~~~~~~~~~[m[K
+[5.835s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:164:38:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[5.835s]   164 |                 for (size_t i = 0; [01;35m[Ki < N[m[K; ++i) {
+[5.836s]       |                                    [01;35m[K~~^~~[m[K
+[5.917s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:182:38:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[5.917s]   182 |                 for (size_t i = 0; [01;35m[Ki < N[m[K; ++i) {
+[5.918s]       |                                    [01;35m[K~~^~~[m[K
+[6.001s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:107:40:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kmax_dist[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[6.001s]   107 |                 double min_dist=10000, [01;35m[Kmax_dist[m[K=0;
+[6.001s]       |                                        [01;35m[K^~~~~~~~[m[K
+[8.677s] [100%] [32m[1mLinking CXX executable img_transform[0m
+[9.127s] [100%] Built target img_transform
+[9.139s] Invoked command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/ros_ws/build/img_transform -- -j8 -l8
+[9.248s] Invoking command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --install /home/megsindelar/Final_Project/ros_ws/build/img_transform
+[9.256s] -- Install configuration: ""
+[9.256s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/ament_index/resource_index/rosidl_interfaces/img_transform
+[9.256s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform
+[9.257s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv
+[9.257s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/teleport.h
+[9.257s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail
+[9.257s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail/test__functions.h
+[9.257s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail/teleport__functions.h
+[9.257s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail/teleport__struct.h
+[9.257s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail/teleport__functions.c
+[9.257s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail/test__struct.h
+[9.257s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail/teleport__type_support.h
+[9.257s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail/test__functions.c
+[9.257s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail/test__type_support.h
+[9.258s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/test.h
+[9.258s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg
+[9.258s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg/detail
+[9.258s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg/detail/keypoints__functions.h
+[9.258s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg/detail/keypoints__functions.c
+[9.258s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg/detail/keypoints__type_support.h
+[9.258s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg/detail/keypoints__struct.h
+[9.258s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg/keypoints.h
+[9.258s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg/rosidl_generator_c__visibility_control.h
+[9.258s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/environment/library_path.sh
+[9.258s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/environment/library_path.dsv
+[9.258s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/lib/libimg_transform__rosidl_generator_c.so
+[9.259s] -- Set runtime path of "/home/megsindelar/Final_Project/ros_ws/install/img_transform/lib/libimg_transform__rosidl_generator_c.so" to ""
+[9.259s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform
+[9.259s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv
+[9.259s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail
+[9.259s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail/test__rosidl_typesupport_fastrtps_c.h
+[9.259s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail/teleport__rosidl_typesupport_fastrtps_c.h
+[9.259s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg
+[9.259s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg/detail
+[9.259s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg/detail/keypoints__rosidl_typesupport_fastrtps_c.h
+[9.259s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[9.259s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/lib/libimg_transform__rosidl_typesupport_fastrtps_c.so
+[9.259s] -- Set runtime path of "/home/megsindelar/Final_Project/ros_ws/install/img_transform/lib/libimg_transform__rosidl_typesupport_fastrtps_c.so" to ""
+[9.259s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform
+[9.260s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv
+[9.260s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/test.hpp
+[9.260s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail
+[9.260s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail/teleport__struct.hpp
+[9.260s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail/test__builder.hpp
+[9.260s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail/teleport__builder.hpp
+[9.260s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail/test__traits.hpp
+[9.260s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail/test__struct.hpp
+[9.260s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail/teleport__traits.hpp
+[9.260s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/teleport.hpp
+[9.260s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg
+[9.260s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg/detail
+[9.260s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg/detail/keypoints__struct.hpp
+[9.261s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg/detail/keypoints__traits.hpp
+[9.261s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg/detail/keypoints__builder.hpp
+[9.261s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg/keypoints.hpp
+[9.261s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform
+[9.261s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv
+[9.261s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail
+[9.261s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail/dds_fastrtps
+[9.261s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail/teleport__rosidl_typesupport_fastrtps_cpp.hpp
+[9.261s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail/test__rosidl_typesupport_fastrtps_cpp.hpp
+[9.261s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg
+[9.261s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg/detail
+[9.261s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg/detail/dds_fastrtps
+[9.262s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg/detail/keypoints__rosidl_typesupport_fastrtps_cpp.hpp
+[9.262s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[9.262s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/lib/libimg_transform__rosidl_typesupport_fastrtps_cpp.so
+[9.262s] -- Set runtime path of "/home/megsindelar/Final_Project/ros_ws/install/img_transform/lib/libimg_transform__rosidl_typesupport_fastrtps_cpp.so" to ""
+[9.262s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform
+[9.262s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv
+[9.262s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail
+[9.262s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail/test__type_support.c
+[9.262s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail/teleport__rosidl_typesupport_introspection_c.h
+[9.262s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail/teleport__type_support.c
+[9.263s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail/test__rosidl_typesupport_introspection_c.h
+[9.263s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg
+[9.263s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg/detail
+[9.263s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg/detail/keypoints__type_support.c
+[9.263s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg/detail/keypoints__rosidl_typesupport_introspection_c.h
+[9.263s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[9.263s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/lib/libimg_transform__rosidl_typesupport_introspection_c.so
+[9.263s] -- Set runtime path of "/home/megsindelar/Final_Project/ros_ws/install/img_transform/lib/libimg_transform__rosidl_typesupport_introspection_c.so" to ""
+[9.263s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/lib/libimg_transform__rosidl_typesupport_c.so
+[9.263s] -- Set runtime path of "/home/megsindelar/Final_Project/ros_ws/install/img_transform/lib/libimg_transform__rosidl_typesupport_c.so" to ""
+[9.263s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform
+[9.263s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv
+[9.264s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail
+[9.264s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail/test__type_support.cpp
+[9.264s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail/teleport__rosidl_typesupport_introspection_cpp.hpp
+[9.264s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail/teleport__type_support.cpp
+[9.264s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/srv/detail/test__rosidl_typesupport_introspection_cpp.hpp
+[9.264s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg
+[9.264s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg/detail
+[9.264s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg/detail/keypoints__rosidl_typesupport_introspection_cpp.hpp
+[9.264s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/include/img_transform/img_transform/msg/detail/keypoints__type_support.cpp
+[9.264s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/lib/libimg_transform__rosidl_typesupport_introspection_cpp.so
+[9.264s] -- Set runtime path of "/home/megsindelar/Final_Project/ros_ws/install/img_transform/lib/libimg_transform__rosidl_typesupport_introspection_cpp.so" to ""
+[9.264s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/lib/libimg_transform__rosidl_typesupport_cpp.so
+[9.264s] -- Set runtime path of "/home/megsindelar/Final_Project/ros_ws/install/img_transform/lib/libimg_transform__rosidl_typesupport_cpp.so" to ""
+[9.264s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/environment/pythonpath.sh
+[9.265s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/environment/pythonpath.dsv
+[9.265s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/local/lib/python3.10/dist-packages/img_transform-0.0.0-py3.10.egg-info
+[9.265s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/local/lib/python3.10/dist-packages/img_transform-0.0.0-py3.10.egg-info/PKG-INFO
+[9.265s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/local/lib/python3.10/dist-packages/img_transform-0.0.0-py3.10.egg-info/top_level.txt
+[9.265s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/local/lib/python3.10/dist-packages/img_transform-0.0.0-py3.10.egg-info/dependency_links.txt
+[9.265s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/local/lib/python3.10/dist-packages/img_transform-0.0.0-py3.10.egg-info/SOURCES.txt
+[9.265s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/local/lib/python3.10/dist-packages/img_transform
+[9.265s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/local/lib/python3.10/dist-packages/img_transform/_img_transform_s.ep.rosidl_typesupport_c.c
+[9.265s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/local/lib/python3.10/dist-packages/img_transform/libimg_transform_srv__rosidl_generator_py.so
+[9.265s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/local/lib/python3.10/dist-packages/img_transform/srv
+[9.265s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/local/lib/python3.10/dist-packages/img_transform/srv/_teleport_s.c
+[9.265s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/local/lib/python3.10/dist-packages/img_transform/srv/__init__.py
+[9.265s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/local/lib/python3.10/dist-packages/img_transform/srv/_teleport.py
+[9.266s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/local/lib/python3.10/dist-packages/img_transform/img_transform_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[9.266s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/local/lib/python3.10/dist-packages/img_transform/__init__.py
+[9.266s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/local/lib/python3.10/dist-packages/img_transform/_img_transform_s.ep.rosidl_typesupport_introspection_c.c
+[9.266s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/local/lib/python3.10/dist-packages/img_transform/_img_transform_s.ep.rosidl_typesupport_fastrtps_c.c
+[9.266s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/local/lib/python3.10/dist-packages/img_transform/img_transform_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[9.266s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/local/lib/python3.10/dist-packages/img_transform/img_transform_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[9.308s] Listing '/home/megsindelar/Final_Project/ros_ws/install/img_transform/local/lib/python3.10/dist-packages/img_transform'...
+[9.308s] Compiling '/home/megsindelar/Final_Project/ros_ws/install/img_transform/local/lib/python3.10/dist-packages/img_transform/__init__.py'...
+[9.308s] Listing '/home/megsindelar/Final_Project/ros_ws/install/img_transform/local/lib/python3.10/dist-packages/img_transform/srv'...
+[9.309s] Compiling '/home/megsindelar/Final_Project/ros_ws/install/img_transform/local/lib/python3.10/dist-packages/img_transform/srv/__init__.py'...
+[9.309s] Compiling '/home/megsindelar/Final_Project/ros_ws/install/img_transform/local/lib/python3.10/dist-packages/img_transform/srv/_teleport.py'...
+[9.313s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/local/lib/python3.10/dist-packages/img_transform/img_transform_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[9.314s] -- Set runtime path of "/home/megsindelar/Final_Project/ros_ws/install/img_transform/local/lib/python3.10/dist-packages/img_transform/img_transform_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""
+[9.314s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/local/lib/python3.10/dist-packages/img_transform/img_transform_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[9.314s] -- Set runtime path of "/home/megsindelar/Final_Project/ros_ws/install/img_transform/local/lib/python3.10/dist-packages/img_transform/img_transform_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""
+[9.314s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/local/lib/python3.10/dist-packages/img_transform/img_transform_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[9.314s] -- Set runtime path of "/home/megsindelar/Final_Project/ros_ws/install/img_transform/local/lib/python3.10/dist-packages/img_transform/img_transform_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""
+[9.314s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/lib/libimg_transform_srv__rosidl_generator_py.so
+[9.314s] -- Set runtime path of "/home/megsindelar/Final_Project/ros_ws/install/img_transform/lib/libimg_transform_srv__rosidl_generator_py.so" to ""
+[9.314s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/srv/Teleport.idl
+[9.314s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/srv/Teleport.srv
+[9.315s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/srv/Teleport_Request.msg
+[9.315s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/srv/Teleport_Response.msg
+[9.315s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/lib/img_transform/img_transform
+[9.316s] -- Set runtime path of "/home/megsindelar/Final_Project/ros_ws/install/img_transform/lib/img_transform/img_transform" to ""
+[9.316s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/lib/img_transform/video_frequency
+[9.317s] -- Set runtime path of "/home/megsindelar/Final_Project/ros_ws/install/img_transform/lib/img_transform/video_frequency" to ""
+[9.317s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/images
+[9.317s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/images/image2.jpg
+[9.317s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/images/image.jpg
+[9.317s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/launch
+[9.317s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/launch/transform.launch.xml
+[9.317s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/config
+[9.317s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/config/transform.rviz
+[9.317s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/ament_index/resource_index/package_run_dependencies/img_transform
+[9.317s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/ament_index/resource_index/parent_prefix_path/img_transform
+[9.317s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/environment/ament_prefix_path.sh
+[9.317s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/environment/ament_prefix_path.dsv
+[9.317s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/environment/path.sh
+[9.318s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/environment/path.dsv
+[9.318s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/local_setup.bash
+[9.318s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/local_setup.sh
+[9.318s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/local_setup.zsh
+[9.318s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/local_setup.dsv
+[9.318s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/package.dsv
+[9.318s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/ament_index/resource_index/packages/img_transform
+[9.318s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/cmake/export_img_transform_srv__rosidl_generator_cExport.cmake
+[9.318s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/cmake/export_img_transform_srv__rosidl_generator_cExport-noconfig.cmake
+[9.319s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/cmake/export_img_transform_srv__rosidl_typesupport_fastrtps_cExport.cmake
+[9.319s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/cmake/export_img_transform_srv__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[9.319s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/cmake/export_img_transform_srv__rosidl_generator_cppExport.cmake
+[9.319s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/cmake/export_img_transform_srv__rosidl_typesupport_fastrtps_cppExport.cmake
+[9.319s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/cmake/export_img_transform_srv__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[9.319s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/cmake/img_transform_srv__rosidl_typesupport_introspection_cExport.cmake
+[9.319s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/cmake/img_transform_srv__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[9.319s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/cmake/img_transform_srv__rosidl_typesupport_cExport.cmake
+[9.319s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/cmake/img_transform_srv__rosidl_typesupport_cExport-noconfig.cmake
+[9.319s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/cmake/img_transform_srv__rosidl_typesupport_introspection_cppExport.cmake
+[9.319s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/cmake/img_transform_srv__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[9.319s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/cmake/img_transform_srv__rosidl_typesupport_cppExport.cmake
+[9.319s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/cmake/img_transform_srv__rosidl_typesupport_cppExport-noconfig.cmake
+[9.320s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/cmake/export_img_transform_srv__rosidl_generator_pyExport.cmake
+[9.320s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/cmake/export_img_transform_srv__rosidl_generator_pyExport-noconfig.cmake
+[9.320s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/cmake/rosidl_cmake-extras.cmake
+[9.320s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/cmake/ament_cmake_export_include_directories-extras.cmake
+[9.320s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/cmake/ament_cmake_export_libraries-extras.cmake
+[9.320s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/cmake/ament_cmake_export_targets-extras.cmake
+[9.320s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[9.320s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/cmake/ament_cmake_export_dependencies-extras.cmake
+[9.320s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[9.320s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/cmake/img_transformConfig.cmake
+[9.321s] -- Up-to-date: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/cmake/img_transformConfig-version.cmake
+[9.321s] -- Installing: /home/megsindelar/Final_Project/ros_ws/install/img_transform/share/img_transform/package.xml
+[9.324s] Invoked command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --install /home/megsindelar/Final_Project/ros_ws/build/img_transform

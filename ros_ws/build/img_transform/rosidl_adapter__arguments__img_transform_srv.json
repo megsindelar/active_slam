@@ -1,0 +1,6 @@
+{
+  "package_name": "img_transform",
+  "non_idl_tuples": [
+    "/home/megsindelar/Final_Project/ros_ws/src/img_transform:srv/Teleport.srv"
+  ]
+}

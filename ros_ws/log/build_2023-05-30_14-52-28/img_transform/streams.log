@@ -1,0 +1,130 @@
+[0.011s] Invoking command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/ros_ws/build/img_transform -- -j8 -l8
+[0.039s] [35m[1mConsolidate compiler generated dependencies of target img_transform_msg__rosidl_generator_c[0m
+[0.045s] [  2%] Built target img_transform_msg__cpp
+[0.045s] [ 11%] Built target img_transform_msg__rosidl_generator_c
+[0.053s] [ 14%] Built target ament_cmake_python_copy_img_transform
+[0.053s] [ 17%] Built target video_frequency
+[0.053s] [35m[1mConsolidate compiler generated dependencies of target img_transform_msg__rosidl_typesupport_c[0m
+[0.054s] [35m[1mConsolidate compiler generated dependencies of target img_transform_msg__rosidl_typesupport_cpp[0m
+[0.054s] [35m[1mConsolidate compiler generated dependencies of target img_transform_msg__rosidl_typesupport_introspection_c[0m
+[0.055s] [35m[1mConsolidate compiler generated dependencies of target img_transform_msg__rosidl_typesupport_fastrtps_cpp[0m
+[0.055s] [35m[1mConsolidate compiler generated dependencies of target img_transform_msg__rosidl_typesupport_introspection_cpp[0m
+[0.062s] [ 25%] Built target img_transform_msg__rosidl_typesupport_c
+[0.062s] [35m[1mConsolidate compiler generated dependencies of target img_transform_msg__rosidl_typesupport_fastrtps_c[0m
+[0.064s] [ 34%] Built target img_transform_msg__rosidl_typesupport_introspection_c
+[0.065s] [ 42%] Built target img_transform_msg__rosidl_typesupport_cpp
+[0.065s] [ 51%] Built target img_transform_msg__rosidl_typesupport_introspection_cpp
+[0.066s] [ 60%] Built target img_transform_msg__rosidl_typesupport_fastrtps_cpp
+[0.071s] [ 68%] Built target img_transform_msg__rosidl_typesupport_fastrtps_c
+[0.075s] [35m[1mConsolidate compiler generated dependencies of target img_transform[0m
+[0.084s] [ 68%] Built target img_transform_msg
+[0.088s] [ 71%] [32mBuilding CXX object CMakeFiles/img_transform.dir/src/img_transform.cpp.o[0m
+[0.098s] [ 74%] Built target img_transform_msg__py
+[0.105s] [35m[1mConsolidate compiler generated dependencies of target img_transform_msg__rosidl_generator_py[0m
+[0.114s] [ 80%] Built target img_transform_msg__rosidl_generator_py
+[0.121s] [35m[1mConsolidate compiler generated dependencies of target img_transform__rosidl_typesupport_c__pyext[0m
+[0.121s] [35m[1mConsolidate compiler generated dependencies of target img_transform__rosidl_typesupport_introspection_c__pyext[0m
+[0.124s] [35m[1mConsolidate compiler generated dependencies of target img_transform__rosidl_typesupport_fastrtps_c__pyext[0m
+[0.130s] [ 85%] Built target img_transform__rosidl_typesupport_introspection_c__pyext
+[0.130s] [ 91%] Built target img_transform__rosidl_typesupport_c__pyext
+[0.136s] [ 97%] Built target img_transform__rosidl_typesupport_fastrtps_c__pyext
+[0.250s] running egg_info
+[0.250s] writing img_transform.egg-info/PKG-INFO
+[0.250s] writing dependency_links to img_transform.egg-info/dependency_links.txt
+[0.250s] writing top-level names to img_transform.egg-info/top_level.txt
+[0.251s] reading manifest file 'img_transform.egg-info/SOURCES.txt'
+[0.251s] writing manifest file 'img_transform.egg-info/SOURCES.txt'
+[0.270s] [ 97%] Built target ament_cmake_python_build_img_transform_egg
+[2.505s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:[m[K In member function ‘[01m[Kvoid ImgTransform::timer_callback()[m[K’:
+[2.505s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:140:32:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<cv::DMatch>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[2.505s]   140 |                 for (int i=0; [01;35m[Ki<good_matches.size()[m[K; i++){
+[2.505s]       |                               [01;35m[K~^~~~~~~~~~~~~~~~~~~~[m[K
+[2.505s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:164:38:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[2.505s]   164 |                 for (size_t i = 0; [01;35m[Ki < N[m[K; ++i) {
+[2.506s]       |                                    [01;35m[K~~^~~[m[K
+[2.561s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:182:38:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[2.561s]   182 |                 for (size_t i = 0; [01;35m[Ki < N[m[K; ++i) {
+[2.561s]       |                                    [01;35m[K~~^~~[m[K
+[2.617s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:107:40:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kmax_dist[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[2.618s]   107 |                 double min_dist=10000, [01;35m[Kmax_dist[m[K=0;
+[2.618s]       |                                        [01;35m[K^~~~~~~~[m[K
+[2.624s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:[m[K In member function ‘[01m[Kvoid ImgTransform::keypoint_callback(const ConstSharedPtr&, const ConstSharedPtr&)[m[K’:
+[2.624s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:354:29:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass std::vector<cv::KeyPoint>[m[K’ has no member named ‘[01m[Kpt[m[K’; did you mean ‘[01m[Kat[m[K’?
+[2.624s]   354 |                 keypoints_1.[01;31m[Kpt[m[K.x = x_1.at(i);
+[2.624s]       |                             [01;31m[K^~[m[K
+[2.624s]       |                             [32m[Kat[m[K
+[2.630s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:354:36:[m[K [01;31m[Kerror: [m[K‘[01m[Kx_1[m[K’ was not declared in this scope
+[2.630s]   354 |                 keypoints_1.pt.x = [01;31m[Kx_1[m[K.at(i);
+[2.630s]       |                                    [01;31m[K^~~[m[K
+[2.630s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:355:29:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass std::vector<cv::KeyPoint>[m[K’ has no member named ‘[01m[Kpt[m[K’; did you mean ‘[01m[Kat[m[K’?
+[2.630s]   355 |                 keypoints_1.[01;31m[Kpt[m[K.y = y_1.at(i);
+[2.630s]       |                             [01;31m[K^~[m[K
+[2.630s]       |                             [32m[Kat[m[K
+[2.635s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:355:36:[m[K [01;31m[Kerror: [m[K‘[01m[Ky_1[m[K’ was not declared in this scope; did you mean ‘[01m[Ky1[m[K’?
+[2.635s]   355 |                 keypoints_1.pt.y = [01;31m[Ky_1[m[K.at(i);
+[2.635s]       |                                    [01;31m[K^~~[m[K
+[2.635s]       |                                    [32m[Ky1[m[K
+[2.641s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:356:36:[m[K [01;31m[Kerror: [m[K‘[01m[Ksize_1[m[K’ was not declared in this scope; did you mean ‘[01m[Ksize_t[m[K’?
+[2.641s]   356 |                 keypoints_1.size = [01;31m[Ksize_1[m[K.at(i);
+[2.641s]       |                                    [01;31m[K^~~~~~[m[K
+[2.641s]       |                                    [32m[Ksize_t[m[K
+[2.641s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:357:29:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass std::vector<cv::KeyPoint>[m[K’ has no member named ‘[01m[Kangle[m[K’
+[2.641s]   357 |                 keypoints_1.[01;31m[Kangle[m[K = angle_1.at(i);
+[2.641s]       |                             [01;31m[K^~~~~[m[K
+[2.648s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:357:37:[m[K [01;31m[Kerror: [m[K‘[01m[Kangle_1[m[K’ was not declared in this scope
+[2.648s]   357 |                 keypoints_1.angle = [01;31m[Kangle_1[m[K.at(i);
+[2.648s]       |                                     [01;31m[K^~~~~~~[m[K
+[2.648s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:358:29:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass std::vector<cv::KeyPoint>[m[K’ has no member named ‘[01m[Kresponse[m[K’
+[2.648s]   358 |                 keypoints_1.[01;31m[Kresponse[m[K = response_1.at(i);
+[2.648s]       |                             [01;31m[K^~~~~~~~[m[K
+[2.657s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:358:40:[m[K [01;31m[Kerror: [m[K‘[01m[Kresponse_1[m[K’ was not declared in this scope
+[2.657s]   358 |                 keypoints_1.response = [01;31m[Kresponse_1[m[K.at(i);
+[2.657s]       |                                        [01;31m[K^~~~~~~~~~[m[K
+[2.657s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:359:29:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass std::vector<cv::KeyPoint>[m[K’ has no member named ‘[01m[Koctave[m[K’
+[2.657s]   359 |                 keypoints_1.[01;31m[Koctave[m[K = octave_1.at(i);
+[2.657s]       |                             [01;31m[K^~~~~~[m[K
+[2.664s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:359:38:[m[K [01;31m[Kerror: [m[K‘[01m[Koctave_1[m[K’ was not declared in this scope
+[2.664s]   359 |                 keypoints_1.octave = [01;31m[Koctave_1[m[K.at(i);
+[2.664s]       |                                      [01;31m[K^~~~~~~~[m[K
+[2.665s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:360:29:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass std::vector<cv::KeyPoint>[m[K’ has no member named ‘[01m[Kclass_id[m[K’
+[2.665s]   360 |                 keypoints_1.[01;31m[Kclass_id[m[K = class_id_1.at(i);
+[2.665s]       |                             [01;31m[K^~~~~~~~[m[K
+[2.673s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:360:40:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass_id_1[m[K’ was not declared in this scope
+[2.673s]   360 |                 keypoints_1.class_id = [01;31m[Kclass_id_1[m[K.at(i);
+[2.673s]       |                                        [01;31m[K^~~~~~~~~~[m[K
+[2.673s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:362:29:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass std::vector<cv::KeyPoint>[m[K’ has no member named ‘[01m[Kpt[m[K’; did you mean ‘[01m[Kat[m[K’?
+[2.673s]   362 |                 keypoints_2.[01;31m[Kpt[m[K.x = x_2.at(i);
+[2.673s]       |                             [01;31m[K^~[m[K
+[2.673s]       |                             [32m[Kat[m[K
+[2.678s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:362:36:[m[K [01;31m[Kerror: [m[K‘[01m[Kx_2[m[K’ was not declared in this scope
+[2.678s]   362 |                 keypoints_2.pt.x = [01;31m[Kx_2[m[K.at(i);
+[2.678s]       |                                    [01;31m[K^~~[m[K
+[2.678s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:363:29:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass std::vector<cv::KeyPoint>[m[K’ has no member named ‘[01m[Kpt[m[K’; did you mean ‘[01m[Kat[m[K’?
+[2.678s]   363 |                 keypoints_2.[01;31m[Kpt[m[K.y = x_2.at(i);
+[2.678s]       |                             [01;31m[K^~[m[K
+[2.678s]       |                             [32m[Kat[m[K
+[2.678s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:365:29:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass std::vector<cv::KeyPoint>[m[K’ has no member named ‘[01m[Kangle[m[K’
+[2.678s]   365 |                 keypoints_2.[01;31m[Kangle[m[K = x_2.at(i);
+[2.678s]       |                             [01;31m[K^~~~~[m[K
+[2.678s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:366:29:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass std::vector<cv::KeyPoint>[m[K’ has no member named ‘[01m[Kresponse[m[K’
+[2.678s]   366 |                 keypoints_2.[01;31m[Kresponse[m[K = response.at(i);
+[2.678s]       |                             [01;31m[K^~~~~~~~[m[K
+[2.685s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:366:40:[m[K [01;31m[Kerror: [m[K‘[01m[Kresponse[m[K’ was not declared in this scope
+[2.685s]   366 |                 keypoints_2.response = [01;31m[Kresponse[m[K.at(i);
+[2.685s]       |                                        [01;31m[K^~~~~~~~[m[K
+[2.685s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:367:29:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass std::vector<cv::KeyPoint>[m[K’ has no member named ‘[01m[Koctave[m[K’
+[2.685s]   367 |                 keypoints_2.[01;31m[Koctave[m[K = msg.octave.at(i);
+[2.685s]       |                             [01;31m[K^~~~~~[m[K
+[2.685s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:367:42:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst ConstSharedPtr[m[K’ {aka ‘[01m[Kconst class std::shared_ptr<const img_transform::msg::Keypoints_<std::allocator<void> > >[m[K’} has no member named ‘[01m[Koctave[m[K’
+[2.686s]   367 |                 keypoints_2.octave = msg.[01;31m[Koctave[m[K.at(i);
+[2.686s]       |                                          [01;31m[K^~~~~~[m[K
+[2.686s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:368:29:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass std::vector<cv::KeyPoint>[m[K’ has no member named ‘[01m[Kclass_id[m[K’
+[2.686s]   368 |                 keypoints_2.[01;31m[Kclass_id[m[K = msg.class_id.at(i);
+[2.686s]       |                             [01;31m[K^~~~~~~~[m[K
+[2.686s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:368:44:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst ConstSharedPtr[m[K’ {aka ‘[01m[Kconst class std::shared_ptr<const img_transform::msg::Keypoints_<std::allocator<void> > >[m[K’} has no member named ‘[01m[Kclass_id[m[K’
+[2.686s]   368 |                 keypoints_2.class_id = msg.[01;31m[Kclass_id[m[K.at(i);
+[2.686s]       |                                            [01;31m[K^~~~~~~~[m[K
+[3.720s] gmake[2]: *** [CMakeFiles/img_transform.dir/build.make:76: CMakeFiles/img_transform.dir/src/img_transform.cpp.o] Error 1
+[3.721s] gmake[1]: *** [CMakeFiles/Makefile2:595: CMakeFiles/img_transform.dir/all] Error 2
+[3.721s] gmake: *** [Makefile:146: all] Error 2
+[3.722s] Invoked command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/ros_ws/build/img_transform -- -j8 -l8

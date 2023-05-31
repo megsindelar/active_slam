@@ -23,6 +23,7 @@
 #include "tf2/LinearMath/Quaternion.h"
 #include <string>
 #include <math.h>
+#include "img_transform/msg/keypoints.hpp"
 
 using namespace std;
 using namespace cv;
@@ -68,20 +69,22 @@ class ImgTransform : public rclcpp::Node
         void timer_callback()
         {
             if (!current_img.empty() && !prev_img.empty() && done != 1)
+            // if (sizeof(keypoints_1) > 6)
             {
                 // RCLCPP_INFO(rclcpp::get_logger("right_rad"), "sending back response: [%d]", right_rad);
                 RCLCPP_INFO(rclcpp::get_logger("message"), "NEW TRANSFORM!!!!");
 
                 auto begin_total = std::chrono::high_resolution_clock::now();
-                std::vector<KeyPoint> keypoints_1, keypoints_2;
                 Mat descriptors_1, descriptors_2;
                 Ptr<FeatureDetector> detector = ORB::create();
                 Ptr<DescriptorExtractor> descriptor = ORB::create();
-                
+                std::vector<KeyPoint> keypoints_1, keypoints_2;
+
                 Ptr<DescriptorMatcher> matcher  = DescriptorMatcher::create ( "BruteForce-Hamming" );
 
                 detector->detect ( prev_img,keypoints_1 );
                 detector->detect ( current_img,keypoints_2 );
+
                 RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 1");
                 descriptor->compute ( prev_img, keypoints_1, descriptors_1 );
                 descriptor->compute ( current_img, keypoints_2, descriptors_2 );
@@ -345,6 +348,29 @@ class ImgTransform : public rclcpp::Node
             // waitKey(1);
         }
 
+        void keypoint_callback(
+            const img_transform::msg::Keypoints::ConstSharedPtr& msg,
+            const img_transform::msg::Keypoints::ConstSharedPtr&
+        ){
+            for (long unsigned int i = 0; i < sizeof(msg->x_1); i++){
+                keypoints_1.at(i).pt.x = msg->x_1.at(i);
+                keypoints_1.at(i).pt.y = msg->y_1.at(i);
+                keypoints_1.at(i).size = msg->size_1.at(i);
+                keypoints_1.at(i).angle = msg->angle_1.at(i);
+                keypoints_1.at(i).response = msg->response_1.at(i);
+                keypoints_1.at(i).octave = msg->octave_1.at(i);
+                keypoints_1.at(i).class_id = msg->class_id_1.at(i);
+                
+                keypoints_2.at(i).pt.x = msg->x_2.at(i);
+                keypoints_2.at(i).pt.y = msg->y_2.at(i);
+                keypoints_2.at(i).size = msg->size_2.at(i);
+                keypoints_2.at(i).angle = msg->angle_2.at(i);
+                keypoints_2.at(i).response = msg->response_2.at(i);
+                keypoints_2.at(i).octave = msg->octave_2.at(i);
+                keypoints_2.at(i).class_id = msg->class_id_2.at(i);
+            }
+        }
+
         rclcpp::TimerBase::SharedPtr timer_;
         std::shared_ptr<image_transport::CameraSubscriber> sub_current_img_;
         std::shared_ptr<tf2_ros::StaticTransformBroadcaster> tf_static_broadcaster_;
@@ -357,6 +383,7 @@ class ImgTransform : public rclcpp::Node
         int num_transforms = 0;
         vector<int> prev_position {0,0,1};
         tf2::Quaternion q;
+        // std::vector<KeyPoint> keypoints_1, keypoints_2;
         // int count = 0;
 };
 

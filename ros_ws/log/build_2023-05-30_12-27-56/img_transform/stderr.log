@@ -1,0 +1,8 @@
+[01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:26:10:[m[K [01;31m[Kfatal error: [m[Kimg_transform/srv/teleport.hpp: No such file or directory
+   26 | #include [01;31m[K"img_transform/srv/teleport.hpp"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+gmake[2]: *** [CMakeFiles/img_transform.dir/build.make:76: CMakeFiles/img_transform.dir/src/img_transform.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:594: CMakeFiles/img_transform.dir/all] Error 2
+gmake[1]: *** Waiting for unfinished jobs....
+gmake: *** [Makefile:146: all] Error 2

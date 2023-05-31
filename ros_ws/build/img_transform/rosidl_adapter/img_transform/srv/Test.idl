@@ -1,0 +1,15 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from img_transform/srv/Test.srv
+// generated code does not contain a copyright notice
+
+
+module img_transform {
+  module srv {
+    struct Test_Request {
+      double n;
+    };
+    struct Test_Response {
+      uint8 structure_needs_at_least_one_member;
+    };
+  };
+};

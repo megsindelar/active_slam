@@ -1,0 +1,180 @@
+[0.000000] (-) TimerEvent: {}
+[0.000766] (img_transform) JobQueued: {'identifier': 'img_transform', 'dependencies': OrderedDict()}
+[0.000797] (img_transform) JobStarted: {'identifier': 'img_transform'}
+[0.011998] (img_transform) JobProgress: {'identifier': 'img_transform', 'progress': 'cmake'}
+[0.016428] (img_transform) JobProgress: {'identifier': 'img_transform', 'progress': 'build'}
+[0.016484] (img_transform) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/megsindelar/Final_Project/ros_ws/build/img_transform', '--', '-j8', '-l8'], 'cwd': '/home/megsindelar/Final_Project/ros_ws/build/img_transform', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('PYTHONWARNINGS', 'ignore:::setuptools.command.install,ignore:::setuptools.command.easy_install,ignore:::pkg_resources'), ('LANGUAGE', 'en'), ('USER', 'megsindelar'), ('LC_TIME', 'en_US.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/megsindelar/nuws/install/lib:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing_interfaces/lib:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka_interfaces/lib:/home/megsindelar/ME_495/Final_Proj/install/apriltag_ros/lib:/home/megsindelar/ME_495/Final_Proj/install/apriltag_msgs/lib:/home/megsindelar/ME_495/Final_Proj/install/apriltag/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('PICO_EXTRAS_PATH', '/home/megsindelar/Winter_Project/pico_setup/pico/pico-extras'), ('HOME', '/home/megsindelar'), ('OLDPWD', '/home/megsindelar/Final_Project'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'en_US.UTF-8'), ('MANAGERPID', '1975'), ('SYSTEMD_EXEC_PID', '2355'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator25ef4b219e3b005583550f2b0f9f990c3'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '5555'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/megsindelar/nuws/install:/home/megsindelar/ME_495/Final_Proj/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'megsindelar'), ('JOURNAL_STREAM', '8:36930'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('PKG_CONFIG_PATH', '/home/megsindelar/nuws/install/lib/x86_64-linux-gnu/pkgconfig:/home/megsindelar/nuws/install/lib/pkgconfig:/home/megsindelar/ME_495/Final_Proj/install/apriltag/lib/x86_64-linux-gnu/pkgconfig:/home/megsindelar/ME_495/Final_Proj/install/apriltag/lib/pkgconfig'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'megsindelar'), ('TERM', 'xterm-256color'), ('COPPELIASIM_ROOT_DIR', '/home/megsindelar/CoppeliaSim_Edu_V4_4_0_rev0_Ubuntu20_04'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/megsindelar/nuws/install/bin:/home/megsindelar/ME_495/Final_Proj/install/apriltag/bin:/opt/ros/humble/bin:/home/megsindelar/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/meg:@/tmp/.ICE-unix/2173,unix/meg:/tmp/.ICE-unix/2173'), ('INVOCATION_ID', '34a5a575500c489cbd11232edaca29ba'), ('PAPERSIZE', 'letter'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'en_US.UTF-8'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('IBUS_DISABLE_SNOOPER', '1'), ('LC_TELEPHONE', 'en_US.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.NFRJ51'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('PICO_EXAMPLES_PATH', '/home/megsindelar/Winter_Project/pico_setup/pico/pico-examples'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '4'), ('AMENT_PREFIX_PATH', '/home/megsindelar/nuws/install:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing_interfaces:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka_interfaces:/home/megsindelar/ME_495/Final_Proj/install/apriltag_ros:/home/megsindelar/ME_495/Final_Proj/install/apriltag_msgs:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'en_US.UTF-8'), ('TERMINATOR_UUID', 'urn:uuid:b1da1f12-4cb4-4bfa-872e-05e91009920e'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CMAKE_MODULE_PATH', '/home/megsindelar/nuws/install/share/warehouse_ros_mongo/cmake'), ('LC_MEASUREMENT', 'en_US.UTF-8'), ('LC_IDENTIFICATION', 'en_US.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/megsindelar/Final_Project/ros_ws/build/img_transform'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PICO_PLAYGROUND_PATH', '/home/megsindelar/Winter_Project/pico_setup/pico/pico-playground'), ('PYTHONPATH', '/home/megsindelar/nuws/install/lib/python3.10/pyrealsense2:/home/megsindelar/nuws/install/local/lib/python3.10/dist-packages:/home/megsindelar/nuws/install/lib/python3.10/site-packages:/home/megsindelar/ME_495/Final_Proj/build/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka/lib/python3.10/site-packages:/home/megsindelar/ME_495/Final_Proj/build/moveit_testing:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing/lib/python3.10/site-packages:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing_interfaces/local/lib/python3.10/dist-packages:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka_interfaces/local/lib/python3.10/dist-packages:/home/megsindelar/ME_495/Final_Proj/install/apriltag_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages:/home/megsindelar/Downloads/CARLA_DRIFT_0.9.5/PythonAPI/carla/dist/carla-0.9.5-py3.5-linux-x86_64.egg:/home/megsindelar/Downloads/CARLA_DRIFT_0.9.5/PythonAPI/carla/'), ('LC_NUMERIC', 'en_US.UTF-8'), ('LC_PAPER', 'en_US.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/megsindelar/nuws/install:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing_interfaces:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka_interfaces:/home/megsindelar/ME_495/Final_Proj/install/apriltag_ros:/home/megsindelar/ME_495/Final_Proj/install/apriltag_msgs:/home/megsindelar/ME_495/Final_Proj/install/apriltag:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble')]), 'shell': False}
+[0.043285] (img_transform) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.3 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.099449] (-) TimerEvent: {}
+[0.117487] (img_transform) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3.10 (found version "3.10.6") found components: Interpreter \n'}
+[0.181333] (img_transform) StdoutLine: {'line': b'-- Found rclcpp: 16.0.3 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[0.199673] (-) TimerEvent: {}
+[0.204369] (img_transform) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.4 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.206165] (img_transform) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.4 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.210720] (img_transform) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.4 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.219222] (img_transform) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.231601] (img_transform) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.275382] (img_transform) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[0.276422] (img_transform) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.2 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.299840] (-) TimerEvent: {}
+[0.376674] (img_transform) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.400052] (-) TimerEvent: {}
+[0.497013] (img_transform) StdoutLine: {'line': b'-- Found sensor_msgs: 4.2.3 (/opt/ros/humble/share/sensor_msgs/cmake)\n'}
+[0.500149] (-) TimerEvent: {}
+[0.596259] (img_transform) StdoutLine: {'line': b'-- Found cv_bridge: 3.2.1 (/opt/ros/humble/share/cv_bridge/cmake)\n'}
+[0.600348] (-) TimerEvent: {}
+[0.601771] (img_transform) StdoutLine: {'line': b'-- Found image_transport: 3.1.5 (/opt/ros/humble/share/image_transport/cmake)\n'}
+[0.642166] (img_transform) StdoutLine: {'line': b'-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found version "3.10.6") \n'}
+[0.700619] (-) TimerEvent: {}
+[0.800991] (-) TimerEvent: {}
+[0.901339] (-) TimerEvent: {}
+[0.957746] (img_transform) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3.10 (found version "3.10.6") found components: Interpreter Development NumPy Development.Module Development.Embed \n'}
+[0.959968] (img_transform) StdoutLine: {'line': b'-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.6", minimum required is "3.0") \n'}
+[0.967452] (img_transform) StdoutLine: {'line': b'-- Found tf2: 0.25.2 (/opt/ros/humble/share/tf2/cmake)\n'}
+[0.973997] (img_transform) StdoutLine: {'line': b'-- Found tf2_ros: 0.25.2 (/opt/ros/humble/share/tf2_ros/cmake)\n'}
+[1.001501] (-) TimerEvent: {}
+[1.101856] (-) TimerEvent: {}
+[1.202248] (-) TimerEvent: {}
+[1.233768] (img_transform) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)\n'}
+[1.294564] (img_transform) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3.10 (found version "3.10.6") found components: Interpreter \n'}
+[1.302486] (-) TimerEvent: {}
+[1.402925] (-) TimerEvent: {}
+[1.469085] (img_transform) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)\n'}
+[1.503208] (-) TimerEvent: {}
+[1.603586] (-) TimerEvent: {}
+[1.704030] (-) TimerEvent: {}
+[1.754448] (img_transform) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.804143] (-) TimerEvent: {}
+[1.870227] (img_transform) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.893324] (img_transform) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.6", minimum required is "3.6") \n'}
+[1.895430] (img_transform) StdoutLine: {'line': b'-- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)\n'}
+[1.904239] (-) TimerEvent: {}
+[1.919906] (img_transform) StdoutLine: {'line': b'-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.6", minimum required is "3.5") \n'}
+[1.920114] (img_transform) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[1.920200] (img_transform) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10\n'}
+[1.920291] (img_transform) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so\n'}
+[1.942712] (img_transform) StdoutLine: {'line': b'-- Found PythonExtra: .so  \n'}
+[2.004434] (-) TimerEvent: {}
+[2.104787] (-) TimerEvent: {}
+[2.205173] (-) TimerEvent: {}
+[2.305618] (-) TimerEvent: {}
+[2.317524] (img_transform) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.5 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[2.325040] (img_transform) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[2.325821] (img_transform) StdoutLine: {'line': b'-- Configured cppcheck include dirs: \n'}
+[2.325932] (img_transform) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[2.326347] (img_transform) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[2.327283] (img_transform) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[2.327429] (img_transform) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[2.327570] (img_transform) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[2.329381] (img_transform) StdoutLine: {'line': b'-- Configuring done\n'}
+[2.364013] (img_transform) StdoutLine: {'line': b'-- Generating done\n'}
+[2.367037] (img_transform) StdoutLine: {'line': b'-- Build files have been written to: /home/megsindelar/Final_Project/ros_ws/build/img_transform\n'}
+[2.396079] (img_transform) StdoutLine: {'line': b'[  2%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[2.398217] (img_transform) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target img_transform\x1b[0m\n'}
+[2.398650] (img_transform) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target video_frequency\x1b[0m\n'}
+[2.405845] (-) TimerEvent: {}
+[2.413829] (img_transform) StdoutLine: {'line': b'[  5%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[2.419896] (img_transform) StdoutLine: {'line': b'[  5%] Built target ament_cmake_python_copy_img_transform\n'}
+[2.423145] (img_transform) StdoutLine: {'line': b'[  8%] \x1b[32mBuilding CXX object CMakeFiles/img_transform.dir/src/img_transform.cpp.o\x1b[0m\n'}
+[2.423821] (img_transform) StdoutLine: {'line': b'[ 11%] \x1b[32mBuilding CXX object CMakeFiles/video_frequency.dir/src/video_frequency.cpp.o\x1b[0m\n'}
+[2.506128] (-) TimerEvent: {}
+[2.606492] (-) TimerEvent: {}
+[2.706841] (-) TimerEvent: {}
+[2.756179] (img_transform) StdoutLine: {'line': b'[ 11%] Built target img_transform_msg__cpp\n'}
+[2.768483] (img_transform) StdoutLine: {'line': b'[ 14%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[2.771580] (img_transform) StdoutLine: {'line': b'[ 17%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[2.772635] (img_transform) StdoutLine: {'line': b'[ 20%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[2.806945] (-) TimerEvent: {}
+[2.907361] (-) TimerEvent: {}
+[2.946613] (img_transform) StdoutLine: {'line': b'[ 22%] \x1b[32mBuilding C object CMakeFiles/img_transform_msg__rosidl_generator_c.dir/rosidl_generator_c/img_transform/msg/detail/keypoints__functions.c.o\x1b[0m\n'}
+[2.987643] (img_transform) StdoutLine: {'line': b'running egg_info\n'}
+[2.989098] (img_transform) StdoutLine: {'line': b'creating img_transform.egg-info\n'}
+[2.989540] (img_transform) StdoutLine: {'line': b'writing img_transform.egg-info/PKG-INFO\n'}
+[2.989781] (img_transform) StdoutLine: {'line': b'writing dependency_links to img_transform.egg-info/dependency_links.txt\n'}
+[2.989970] (img_transform) StdoutLine: {'line': b'writing top-level names to img_transform.egg-info/top_level.txt\n'}
+[2.990520] (img_transform) StdoutLine: {'line': b"writing manifest file 'img_transform.egg-info/SOURCES.txt'\n"}
+[2.994120] (img_transform) StdoutLine: {'line': b"reading manifest file 'img_transform.egg-info/SOURCES.txt'\n"}
+[2.995430] (img_transform) StdoutLine: {'line': b"writing manifest file 'img_transform.egg-info/SOURCES.txt'\n"}
+[3.007475] (-) TimerEvent: {}
+[3.033262] (img_transform) StdoutLine: {'line': b'[ 25%] \x1b[32m\x1b[1mLinking C shared library libimg_transform__rosidl_generator_c.so\x1b[0m\n'}
+[3.034815] (img_transform) StdoutLine: {'line': b'[ 25%] Built target ament_cmake_python_build_img_transform_egg\n'}
+[3.074041] (img_transform) StdoutLine: {'line': b'[ 25%] Built target img_transform_msg__rosidl_generator_c\n'}
+[3.089303] (img_transform) StdoutLine: {'line': b'[ 31%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[3.089547] (img_transform) StdoutLine: {'line': b'[ 34%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[3.089747] (img_transform) StdoutLine: {'line': b'[ 31%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[3.094073] (img_transform) StderrLine: {'line': b'\x1b[01m\x1b[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:26:10:\x1b[m\x1b[K \x1b[01;31m\x1b[Kfatal error: \x1b[m\x1b[Kimg_transform/msg/keypoints.hpp: No such file or directory\n'}
+[3.094373] (img_transform) StderrLine: {'line': b'   26 | #include \x1b[01;31m\x1b[K"img_transform/msg/keypoints.hpp"\x1b[m\x1b[K\n'}
+[3.094502] (img_transform) StderrLine: {'line': b'      |          \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.094611] (img_transform) StderrLine: {'line': b'compilation terminated.\n'}
+[3.101619] (img_transform) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/img_transform.dir/build.make:76: CMakeFiles/img_transform.dir/src/img_transform.cpp.o] Error 1\n'}
+[3.101929] (img_transform) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:594: CMakeFiles/img_transform.dir/all] Error 2\n'}
+[3.102050] (img_transform) StderrLine: {'line': b'gmake[1]: *** Waiting for unfinished jobs....\n'}
+[3.107545] (-) TimerEvent: {}
+[3.113770] (img_transform) StdoutLine: {'line': b'[ 37%] \x1b[32mBuilding CXX object CMakeFiles/img_transform_msg__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/img_transform/msg/detail/keypoints__type_support.cpp.o\x1b[0m\n'}
+[3.198753] (img_transform) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding CXX object CMakeFiles/img_transform_msg__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/img_transform/msg/keypoints__type_support.cpp.o\x1b[0m\n'}
+[3.207674] (-) TimerEvent: {}
+[3.234971] (img_transform) StdoutLine: {'line': b'[ 42%] \x1b[32mBuilding CXX object CMakeFiles/img_transform_msg__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/img_transform/msg/detail/dds_fastrtps/keypoints__type_support.cpp.o\x1b[0m\n'}
+[3.307800] (-) TimerEvent: {}
+[3.408194] (-) TimerEvent: {}
+[3.430156] (img_transform) StdoutLine: {'line': b'[ 45%] \x1b[32mBuilding C object CMakeFiles/img_transform_msg__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/img_transform/msg/detail/keypoints__type_support.c.o\x1b[0m\n'}
+[3.476456] (img_transform) StdoutLine: {'line': b'[ 48%] \x1b[32m\x1b[1mLinking C shared library libimg_transform__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[3.508322] (-) TimerEvent: {}
+[3.509314] (img_transform) StdoutLine: {'line': b'[ 48%] Built target img_transform_msg__rosidl_typesupport_introspection_c\n'}
+[3.539861] (img_transform) StdoutLine: {'line': b'[ 51%] \x1b[32mBuilding CXX object CMakeFiles/img_transform_msg__rosidl_typesupport_c.dir/rosidl_typesupport_c/img_transform/msg/keypoints__type_support.cpp.o\x1b[0m\n'}
+[3.568135] (img_transform) StdoutLine: {'line': b'[ 54%] \x1b[32mBuilding CXX object CMakeFiles/img_transform_msg__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/img_transform/msg/detail/keypoints__type_support_c.cpp.o\x1b[0m\n'}
+[3.571296] (img_transform) StdoutLine: {'line': b'[ 57%] \x1b[32m\x1b[1mLinking CXX shared library libimg_transform__rosidl_typesupport_c.so\x1b[0m\n'}
+[3.608581] (-) TimerEvent: {}
+[3.615092] (img_transform) StdoutLine: {'line': b'[ 57%] Built target img_transform_msg__rosidl_typesupport_c\n'}
+[3.647163] (img_transform) StdoutLine: {'line': b'[ 60%] \x1b[32m\x1b[1mLinking CXX shared library libimg_transform__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[3.691159] (img_transform) StdoutLine: {'line': b'[ 60%] Built target img_transform_msg__rosidl_typesupport_cpp\n'}
+[3.708733] (-) TimerEvent: {}
+[3.744904] (img_transform) StdoutLine: {'line': b'[ 62%] \x1b[32m\x1b[1mLinking CXX shared library libimg_transform__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[3.808848] (-) TimerEvent: {}
+[3.824005] (img_transform) StdoutLine: {'line': b'[ 62%] Built target img_transform_msg__rosidl_typesupport_introspection_cpp\n'}
+[3.884370] (img_transform) StdoutLine: {'line': b'[ 65%] \x1b[32m\x1b[1mLinking CXX shared library libimg_transform__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[3.908967] (-) TimerEvent: {}
+[3.912708] (img_transform) StdoutLine: {'line': b'[ 68%] \x1b[32m\x1b[1mLinking CXX shared library libimg_transform__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[3.960003] (img_transform) StdoutLine: {'line': b'[ 68%] Built target img_transform_msg__rosidl_typesupport_fastrtps_cpp\n'}
+[3.988375] (img_transform) StdoutLine: {'line': b'[ 68%] Built target img_transform_msg__rosidl_typesupport_fastrtps_c\n'}
+[4.009097] (-) TimerEvent: {}
+[4.109400] (-) TimerEvent: {}
+[4.215960] (-) TimerEvent: {}
+[4.316514] (-) TimerEvent: {}
+[4.416783] (-) TimerEvent: {}
+[4.517171] (-) TimerEvent: {}
+[4.617584] (-) TimerEvent: {}
+[4.717983] (-) TimerEvent: {}
+[4.818421] (-) TimerEvent: {}
+[4.918813] (-) TimerEvent: {}
+[5.019499] (-) TimerEvent: {}
+[5.119930] (-) TimerEvent: {}
+[5.220413] (-) TimerEvent: {}
+[5.320761] (-) TimerEvent: {}
+[5.421147] (-) TimerEvent: {}
+[5.521653] (-) TimerEvent: {}
+[5.622040] (-) TimerEvent: {}
+[5.722460] (-) TimerEvent: {}
+[5.822935] (-) TimerEvent: {}
+[5.923528] (-) TimerEvent: {}
+[6.023961] (-) TimerEvent: {}
+[6.124410] (-) TimerEvent: {}
+[6.224771] (-) TimerEvent: {}
+[6.325162] (-) TimerEvent: {}
+[6.425569] (-) TimerEvent: {}
+[6.525992] (-) TimerEvent: {}
+[6.626458] (-) TimerEvent: {}
+[6.726883] (-) TimerEvent: {}
+[6.827474] (-) TimerEvent: {}
+[6.927921] (-) TimerEvent: {}
+[7.023910] (img_transform) StdoutLine: {'line': b'[ 71%] \x1b[32m\x1b[1mLinking CXX executable video_frequency\x1b[0m\n'}
+[7.028179] (-) TimerEvent: {}
+[7.128729] (-) TimerEvent: {}
+[7.229048] (-) TimerEvent: {}
+[7.329356] (-) TimerEvent: {}
+[7.409021] (img_transform) StdoutLine: {'line': b'[ 71%] Built target video_frequency\n'}
+[7.410187] (img_transform) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[7.412197] (img_transform) CommandEnded: {'returncode': 2}
+[7.429452] (-) TimerEvent: {}
+[7.530414] (-) TimerEvent: {}
+[7.545111] (img_transform) JobEnded: {'identifier': 'img_transform', 'rc': 2}
+[7.555770] (-) EventReactorShutdown: {}

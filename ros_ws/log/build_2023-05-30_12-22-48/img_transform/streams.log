@@ -1,0 +1,79 @@
+[0.014s] Invoking command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/ros_ws/build/img_transform -- -j8 -l8
+[0.038s] -- Found ament_cmake: 1.3.3 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.175s] -- Found rclcpp: 16.0.3 (/opt/ros/humble/share/rclcpp/cmake)
+[0.198s] -- Found rosidl_generator_c: 3.1.4 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.200s] -- Found rosidl_adapter: 3.1.4 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.205s] -- Found rosidl_generator_cpp: 3.1.4 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.212s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.224s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.269s] -- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.270s] -- Found rmw_fastrtps_cpp: 6.2.2 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.370s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.487s] -- Found sensor_msgs: 4.2.3 (/opt/ros/humble/share/sensor_msgs/cmake)
+[0.584s] -- Found cv_bridge: 3.2.1 (/opt/ros/humble/share/cv_bridge/cmake)
+[0.589s] -- Found image_transport: 3.1.5 (/opt/ros/humble/share/image_transport/cmake)
+[0.620s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found version "3.10.6") 
+[0.937s] -- Found Python3: /usr/bin/python3.10 (found version "3.10.6") found components: Interpreter Development NumPy Development.Module Development.Embed 
+[0.939s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.6", minimum required is "3.0") 
+[0.939s] -- Found tf2: 0.25.2 (/opt/ros/humble/share/tf2/cmake)
+[0.946s] -- Found tf2_ros: 0.25.2 (/opt/ros/humble/share/tf2_ros/cmake)
+[1.192s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[1.254s] -- Found Python3: /usr/bin/python3.10 (found version "3.10.6") found components: Interpreter 
+[1.424s] -- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[1.714s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.826s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.852s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[1.875s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.6", minimum required is "3.5") 
+[1.875s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[1.875s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[1.875s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+[2.188s] -- Found ament_lint_auto: 0.12.5 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[2.197s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[2.198s] -- Configured cppcheck include dirs: 
+[2.198s] -- Configured cppcheck exclude dirs and/or files: 
+[2.198s] -- Added test 'lint_cmake' to check CMake code style
+[2.199s] -- Added test 'uncrustify' to check C / C++ code style
+[2.200s] -- Configured uncrustify additional arguments: 
+[2.200s] -- Added test 'xmllint' to check XML markup files
+[2.201s] -- Configuring done
+[2.235s] -- Generating done
+[2.237s] -- Build files have been written to: /home/megsindelar/Final_Project/ros_ws/build/img_transform
+[2.267s] [  2%] [34m[1mGenerating C code for ROS interfaces[0m
+[2.269s] [35m[1mConsolidate compiler generated dependencies of target img_transform[0m
+[2.273s] [35m[1mConsolidate compiler generated dependencies of target video_frequency[0m
+[2.284s] [  5%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[2.287s] [  5%] Built target ament_cmake_python_copy_img_transform
+[2.292s] [  8%] [32mBuilding CXX object CMakeFiles/img_transform.dir/src/img_transform.cpp.o[0m
+[2.307s] [ 14%] Built target video_frequency
+[2.614s] [ 14%] Built target img_transform_srv__cpp
+[2.619s] [ 17%] [32mBuilding C object CMakeFiles/img_transform_srv__rosidl_generator_c.dir/rosidl_generator_c/img_transform/srv/detail/test__functions.c.o[0m
+[2.622s] running egg_info
+[2.623s] writing img_transform.egg-info/PKG-INFO
+[2.624s] writing dependency_links to img_transform.egg-info/dependency_links.txt
+[2.624s] writing top-level names to img_transform.egg-info/top_level.txt
+[2.626s] [ 20%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[2.629s] reading manifest file 'img_transform.egg-info/SOURCES.txt'
+[2.629s] [ 22%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[2.629s] writing manifest file 'img_transform.egg-info/SOURCES.txt'
+[2.630s] [ 25%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[2.660s] [ 25%] Built target ament_cmake_python_build_img_transform_egg
+[2.713s] [ 28%] [32m[1mLinking C shared library libimg_transform__rosidl_generator_c.so[0m
+[2.753s] [01m[K/home/megsindelar/Final_Project/ros_ws/src/img_transform/src/img_transform.cpp:26:10:[m[K [01;31m[Kfatal error: [m[Kimg_transform/srv/keypoints.hpp: No such file or directory
+[2.754s]    26 | #include [01;31m[K"img_transform/srv/keypoints.hpp"[m[K
+[2.754s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.754s] compilation terminated.
+[2.759s] gmake[2]: *** [CMakeFiles/img_transform.dir/build.make:76: CMakeFiles/img_transform.dir/src/img_transform.cpp.o] Error 1
+[2.759s] gmake[1]: *** [CMakeFiles/Makefile2:594: CMakeFiles/img_transform.dir/all] Error 2
+[2.759s] gmake[1]: *** Waiting for unfinished jobs....
+[2.768s] [ 28%] Built target img_transform_srv__rosidl_generator_c
+[2.915s] [ 31%] [32mBuilding CXX object CMakeFiles/img_transform_srv__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/img_transform/srv/test__type_support.cpp.o[0m
+[2.931s] [ 34%] [32mBuilding CXX object CMakeFiles/img_transform_srv__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/img_transform/srv/detail/test__type_support.cpp.o[0m
+[2.951s] [ 37%] [32mBuilding CXX object CMakeFiles/img_transform_srv__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/img_transform/srv/detail/dds_fastrtps/test__type_support.cpp.o[0m
+[3.175s] [ 40%] [32m[1mLinking CXX shared library libimg_transform__rosidl_typesupport_cpp.so[0m
+[3.219s] [ 40%] Built target img_transform_srv__rosidl_typesupport_cpp
+[3.291s] [ 42%] [32m[1mLinking CXX shared library libimg_transform__rosidl_typesupport_introspection_cpp.so[0m
+[3.327s] [ 45%] [32m[1mLinking CXX shared library libimg_transform__rosidl_typesupport_fastrtps_cpp.so[0m
+[3.329s] [ 45%] Built target img_transform_srv__rosidl_typesupport_introspection_cpp
+[3.391s] [ 45%] Built target img_transform_srv__rosidl_typesupport_fastrtps_cpp
+[3.392s] gmake: *** [Makefile:146: all] Error 2
+[3.395s] Invoked command in '/home/megsindelar/Final_Project/ros_ws/build/img_transform' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/megsindelar/ME_495/Final_Proj/install/attack_of_the_franka:/home/megsindelar/ME_495/Final_Proj/install/moveit_testing:/opt/ros/humble /usr/bin/cmake --build /home/megsindelar/Final_Project/ros_ws/build/img_transform -- -j8 -l8
