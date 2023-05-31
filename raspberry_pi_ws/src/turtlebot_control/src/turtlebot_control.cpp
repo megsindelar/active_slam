@@ -12,18 +12,7 @@
 #include <vector>
 #include <ament_index_cpp/get_package_share_directory.hpp>
 #include <time.h>
-#include <Eigen/Core>
-#include "turtlebot_control/msg/keypoints.hpp"
 
-
-using namespace std;
-using namespace cv;
-
-// Macro constants for generating noise and outliers
-#define NOISE_BOUND 0.05
-#define N_OUTLIERS 1700
-#define OUTLIER_TRANSLATION_LB 5
-#define OUTLIER_TRANSLATION_UB 10
 
 class TurtlebotControl : public rclcpp::Node
 {
@@ -41,10 +30,13 @@ class TurtlebotControl : public rclcpp::Node
             )
         );
 
+<<<<<<< HEAD
         pub_compressed_ = this->create_publisher<sensor_msgs::msg::CompressedImage>("image/compressed", 10);
 
         pub_keypoints_ = this->create_publisher<turtlebot_control::msg::Keypoints>("/keypoints", 10);
 
+=======
+>>>>>>> parent of 980ff37 (ros node for the raspberry pi on turtlebot)
         // Timer
         declare_parameter("rate", 50);
         int rate_ms = 1000 / (get_parameter("rate").get_parameter_value().get<int>());
@@ -60,26 +52,27 @@ class TurtlebotControl : public rclcpp::Node
             cam_info_.header = header;
 
             // take image
-            Mat current_frame;
-            VideoCapture cap;
+            cv::Mat current_frame;
+            cv::VideoCapture cap;
 
             int deviceID = -1;
-            int apiID = CAP_V4L;
+            int apiID = cv::CAP_V4L;
             // open raspberry pi camera
             cap.open(deviceID, apiID);
             // check if camera is open
             if (!cap.isOpened()) {
-                cerr << "ERROR! Unable to open camera\n";
+                std::cerr << "ERROR! Unable to open camera\n";
                 // return -1;
             }
             else {
                 cap.read(current_frame);
                 // check if got a frame from camera
                 if (current_frame.empty()) {
-                    cerr << "ERROR! blank frame grabbed\n";
+                    std::cerr << "ERROR! blank frame grabbed\n";
                     // break;
                 }
 
+<<<<<<< HEAD
 
                 std::vector<KeyPoint> keypoints1, keypoints2;
 
@@ -110,6 +103,8 @@ class TurtlebotControl : public rclcpp::Node
                     pub_keypoints_->publish(keypoints);
                 }
 
+=======
+>>>>>>> parent of 980ff37 (ros node for the raspberry pi on turtlebot)
                 // for(int i=0; i<num_frames; i++){
                 //     cap >> current_frame;
                 // }
@@ -147,6 +142,7 @@ class TurtlebotControl : public rclcpp::Node
                 //change image from rasp pi to cv mat current_frame 
 
                 // find a way to check if raspberry pi cam is on
+<<<<<<< HEAD
 
 
                 // resize()
@@ -161,6 +157,10 @@ class TurtlebotControl : public rclcpp::Node
 
 
 
+=======
+                pub_current_img_->publish(*(cv_bridge::CvImage(header, "bgr8", current_frame).toImageMsg()), cam_info_);
+                RCLCPP_INFO(rclcpp::get_logger("message"), "Published");
+>>>>>>> parent of 980ff37 (ros node for the raspberry pi on turtlebot)
                 // num_frames++;
                 // std::cout << "published" << std::endl;
 
@@ -172,20 +172,26 @@ class TurtlebotControl : public rclcpp::Node
                 //     begin = std::chrono::high_resolution_clock::now();
                 //     num_frames = 0;
                 // }
+<<<<<<< HEAD
                 prev_frame = current_frame;
+=======
+>>>>>>> parent of 980ff37 (ros node for the raspberry pi on turtlebot)
             }
             
             sleep(5);
         }
 
         rclcpp::TimerBase::SharedPtr timer_;
+<<<<<<< HEAD
         std::shared_ptr<image_transport::Publisher> pub_current_img_;
         rclcpp::Publisher<sensor_msgs::msg::CompressedImage>::SharedPtr pub_compressed_;
         rclcpp::Publisher<turtlebot_control::msg::Keypoints>::SharedPtr pub_keypoints_;
+=======
+        std::shared_ptr<image_transport::CameraPublisher> pub_current_img_;
+>>>>>>> parent of 980ff37 (ros node for the raspberry pi on turtlebot)
         sensor_msgs::msg::CameraInfo cam_info_;
         int num_frames = 0;
         std::chrono::system_clock::time_point begin = std::chrono::high_resolution_clock::now();
-        Mat prev_frame;
 };
 
 int main(int argc, char** argv)
