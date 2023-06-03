@@ -348,28 +348,28 @@ class ImgTransform : public rclcpp::Node
             // waitKey(1);
         }
 
-        void keypoint_callback(
-            const img_transform::msg::Keypoints::ConstSharedPtr& msg,
-            const img_transform::msg::Keypoints::ConstSharedPtr&
-        ){
-            for (long unsigned int i = 0; i < sizeof(msg->x_1); i++){
-                keypoints_1.at(i).pt.x = msg->x_1.at(i);
-                keypoints_1.at(i).pt.y = msg->y_1.at(i);
-                keypoints_1.at(i).size = msg->size_1.at(i);
-                keypoints_1.at(i).angle = msg->angle_1.at(i);
-                keypoints_1.at(i).response = msg->response_1.at(i);
-                keypoints_1.at(i).octave = msg->octave_1.at(i);
-                keypoints_1.at(i).class_id = msg->class_id_1.at(i);
+        // void keypoint_callback(
+        //     const img_transform::msg::Keypoints::ConstSharedPtr& msg,
+        //     const img_transform::msg::Keypoints::ConstSharedPtr&
+        // ){
+        //     for (long unsigned int i = 0; i < sizeof(msg->x_1); i++){
+        //         keypoints_1.at(i).pt.x = msg->x_1.at(i);
+        //         keypoints_1.at(i).pt.y = msg->y_1.at(i);
+        //         keypoints_1.at(i).size = msg->size_1.at(i);
+        //         keypoints_1.at(i).angle = msg->angle_1.at(i);
+        //         keypoints_1.at(i).response = msg->response_1.at(i);
+        //         keypoints_1.at(i).octave = msg->octave_1.at(i);
+        //         keypoints_1.at(i).class_id = msg->class_id_1.at(i);
                 
-                keypoints_2.at(i).pt.x = msg->x_2.at(i);
-                keypoints_2.at(i).pt.y = msg->y_2.at(i);
-                keypoints_2.at(i).size = msg->size_2.at(i);
-                keypoints_2.at(i).angle = msg->angle_2.at(i);
-                keypoints_2.at(i).response = msg->response_2.at(i);
-                keypoints_2.at(i).octave = msg->octave_2.at(i);
-                keypoints_2.at(i).class_id = msg->class_id_2.at(i);
-            }
-        }
+        //         keypoints_2.at(i).pt.x = msg->x_2.at(i);
+        //         keypoints_2.at(i).pt.y = msg->y_2.at(i);
+        //         keypoints_2.at(i).size = msg->size_2.at(i);
+        //         keypoints_2.at(i).angle = msg->angle_2.at(i);
+        //         keypoints_2.at(i).response = msg->response_2.at(i);
+        //         keypoints_2.at(i).octave = msg->octave_2.at(i);
+        //         keypoints_2.at(i).class_id = msg->class_id_2.at(i);
+        //     }
+        // }
 
         rclcpp::TimerBase::SharedPtr timer_;
         std::shared_ptr<image_transport::CameraSubscriber> sub_current_img_;
