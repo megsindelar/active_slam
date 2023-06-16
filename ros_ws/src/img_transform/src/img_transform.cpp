@@ -21,6 +21,9 @@
 #include "tf2_ros/static_transform_broadcaster.h"
 #include "tf2_ros/transform_broadcaster.h"
 #include "tf2/LinearMath/Quaternion.h"
+#include "geometry_msgs/msg/quaternion.hpp"
+#include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
+
 #include <string>
 #include <math.h>
 #include "img_transform/msg/keypoints.hpp"
@@ -88,12 +91,17 @@ class ImgTransform : public rclcpp::Node
         }
         void timer_callback()
         {
-            RCLCPP_INFO(rclcpp::get_logger("message"), "NEW TRANSFORM!!!!");
-            if (!current_img.empty() && !prev_img.empty() && done != 1)
+            if (first){
+                prev_pos(0) = 0.0;
+                prev_pos(1) = 0.0;
+                prev_pos(2) = 1.0;
+            }
+            // RCLCPP_INFO(rclcpp::get_logger("message"), "NEW TRANSFORM!!!!");
+            if (!current_img.empty() && !prev_img.empty()) // && done != 1)
             // if (sizeof(keypoints_1) > 6)
             {
                 // RCLCPP_INFO(rclcpp::get_logger("right_rad"), "sending back response: [%d]", right_rad);
-                RCLCPP_INFO(rclcpp::get_logger("message"), "NEW TRANSFORM!!!!");
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "NEW TRANSFORM!!!!");
 
                 auto begin_total = std::chrono::high_resolution_clock::now();
                 Mat descriptors_1, descriptors_2;
@@ -106,7 +114,7 @@ class ImgTransform : public rclcpp::Node
                 detector->detect ( prev_img,keypoints_1 );
                 detector->detect ( current_img,keypoints_2 );
 
-                RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 1");
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 1");
                 descriptor->compute ( prev_img, keypoints_1, descriptors_1 );
                 descriptor->compute ( current_img, keypoints_2, descriptors_2 );
 
@@ -128,7 +136,7 @@ class ImgTransform : public rclcpp::Node
                     rclcpp::shutdown();
                 }
                 double min_dist=10000, max_dist=0;
-                RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 2");
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 2");
 
                 min_dist = 10.0;
 
@@ -177,7 +185,7 @@ class ImgTransform : public rclcpp::Node
                     key2_xp.push_back(keypoints_2.at(good_matches[i].trainIdx).pt.x);
                     key2_yp.push_back(keypoints_2.at(good_matches[i].trainIdx).pt.y);
                 }
-                RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 3");
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 3");
 
                 // Convert the point cloud to Eigen
                 int N = good_matches.size();
@@ -189,7 +197,7 @@ class ImgTransform : public rclcpp::Node
                     src.col(i) << key1_xw.at(i), key1_yw.at(i), key1_zw.at(i);
                     std::cout << "z1: " << key1_zw.at(i) << std::endl;
                 }
-                RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 10");
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 10");
 
                 // Homogeneous coordinates
                 Eigen::Matrix<double, 4, Eigen::Dynamic> src_h;
@@ -199,7 +207,7 @@ class ImgTransform : public rclcpp::Node
 
                 // Apply an arbitrary SE(3) transformation
                 Eigen::Matrix4d T;
-                RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 11");
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 11");
 
                 Eigen::Matrix<double, 3, Eigen::Dynamic> tgt(3, N);
                 for (size_t i = 0; i < N; ++i) {
@@ -207,7 +215,7 @@ class ImgTransform : public rclcpp::Node
                     tgt.col(i) << key2_xw.at(i), key2_yw.at(i), key2_zw.at(i);
                     std::cout << "z2: " << key2_zw.at(i) << std::endl;
                 }
-                RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 12");
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 12");
 
                 // Run TEASER++ registration
                 // Prepare solver parameters
@@ -220,7 +228,7 @@ class ImgTransform : public rclcpp::Node
                 params.rotation_estimation_algorithm =
                     teaser::RobustRegistrationSolver::ROTATION_ESTIMATION_ALGORITHM::GNC_TLS;
                 params.rotation_cost_threshold = 0.005;
-                RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 13");
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 13");
 
                 // Solve with TEASER++
                 teaser::RobustRegistrationSolver solver(params);
@@ -229,7 +237,7 @@ class ImgTransform : public rclcpp::Node
                 std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
                 auto solution = solver.getSolution();
-                RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 4");
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 4");
 
                 // Compare results
                 std::cout << "=====================================" << std::endl;
@@ -255,7 +263,7 @@ class ImgTransform : public rclcpp::Node
                                 1000000.0
                             << std::endl;
 
-                RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 6");
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 6");
 
 
                 // draw transformation on first image to visualize
@@ -267,14 +275,16 @@ class ImgTransform : public rclcpp::Node
                     keypnts.col(i) << key1_xw.at(i), key1_yw.at(i), key1_zw.at(i);
                     keypnts2.col(i) << key2_xw.at(i), key2_yw.at(i), key2_zw.at(i);
                 }
-                RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 7");
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 7");
                 Eigen::Matrix<double, 3, 3> transformation;
                 for (int i = 0; i < 2; i++){
                     transformation.row(i) << solution.rotation(i,0), solution.rotation(i,1), solution.translation(i);
+                    RCLCPP_INFO(rclcpp::get_logger("message"), "Transformation Matrix %d: %f %f %f", i, solution.rotation(i,0), solution.rotation(i,1), solution.translation(i));
                 }
                 transformation.row(2) << solution.rotation(2,0), solution.rotation(2,1), solution.rotation(2,2);
+                RCLCPP_INFO(rclcpp::get_logger("message"), "Transformation Matrix 3: %f %f %f", solution.rotation(2,0), solution.rotation(2,1), solution.rotation(2,2));
                 std::cout << transformation << std::endl;
-                RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 5");
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 5");
 
                 // std::vector<KeyPoint> key_trans_2 = keypoints_2;
                 // std::vector<KeyPoint> key_trans_1 = keypoints_1;
@@ -299,6 +309,9 @@ class ImgTransform : public rclcpp::Node
                 // imshow("keypoint 2 detection image 2", outimg2);
                 // imshow("keypoint 2 on detection image 1", outimg3);
 
+                // TODO: get rid of
+                done = 1;
+
                 // for (int i = 0; i < 3; i++){
                 //         RCLCPP_INFO(rclcpp::get_logger("message"), "Transformation: [%f] [%f] [%f]", transformation(i,0),transformation(i,1), transformation(i,2));
                 // }
@@ -308,31 +321,78 @@ class ImgTransform : public rclcpp::Node
                 // printf("Time to complete program: %.3f seconds\n", elapsed.count()*1e-9);
 
 
-                Eigen::Matrix<double, 3, Eigen::Dynamic> prev_pos(3, 1);
-                prev_pos(0) = prev_position.at(0);
-                prev_pos(1) = prev_position.at(1);
-                prev_pos(2) = prev_position.at(2);
+                // Eigen::Matrix<double, 3, Eigen::Dynamic> prev_pos(3, 1);
+                // prev_pos(0) = prev_position(0,0);
+                // prev_pos(1) = prev_position(1,0);
+                // prev_pos(2) = prev_position(2,0);
+                // prev_pos.col(0) = prev_position;
+                RCLCPP_INFO(rclcpp::get_logger("message"), "Prev Pos: %f %f %f", prev_pos(0), prev_pos(1), prev_pos(2));
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "Solution translation: %f %f %f", solution.translation(0), solution.translation(1), solution.translation(2));
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "Prev Pos blahhhh: %d %d %d", prev_position.at(0), prev_position.at(1), prev_position.at(2));
 
 
-                Eigen::Matrix<double, 3, Eigen::Dynamic> current_pos(3, 1);
+                Eigen::VectorXd current_pos(3);
                 geometry_msgs::msg::TransformStamped t;
                 t.header.stamp = this->get_clock()->now();
                 t.header.frame_id = parent_frame;
                 t.child_frame_id = child_frame + std::to_string(num_transforms);
 
                 current_pos = transformation.inverse()*prev_pos;
+                // current_pos(0) = solution.translation(0)*prev_pos(0);
+                // current_pos(1) = solution.translation(1)*prev_pos(1);
+                // current_pos(2) = solution.translation(2)*prev_pos(2);
 
-                t.transform.translation.x = current_pos(0);
-                t.transform.translation.y = current_pos(1);
+                t.transform.translation.x = current_pos(0)/100;
+                t.transform.translation.y = current_pos(1)/100;
+                RCLCPP_INFO(rclcpp::get_logger("message"), "Current Pos: %f %f %f", current_pos(0), current_pos(1), current_pos(2));
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "Current Pos: %f %f", current_pos(0), current_pos(1));
 
                 // double r21 = transformation(1,0);
                 // double r11 = transformation(0,0);
 
                 // double roll = atan2(r21,r11);
-                // // double pitch = atan2(-transformation(2,0),sqrt(transformation(2,1)**2 + transformation(2,2)**2));
+                // double pitch = atan2(-transformation(2,0),sqrt(pow(transformation(2,1), 2) + pow(transformation(2,2),2)));
                 // double yaw = atan2(transformation(2,1),transformation(2,2));
-                // q.setRPY(roll, 0, yaw);
+                // q.setRPY(roll, pitch, yaw);
                 // geometry_msgs::msg::Quaternion msg_quaternion = tf2::toMsg(q);
+
+                // compute quaternion
+
+                // TODO: FIX!!!!
+                double trace = solution.rotation(0,0) + solution.rotation(1,1) + solution.rotation(2,2);
+
+                if (trace>0)
+                {
+                    t.transform.rotation.x = 0; //sqrt(trace + 1)/2;
+                    t.transform.rotation.y = 0; //(solution.rotation(2,1)-solution.rotation(1,2))/(4*sqrt(trace));
+                    t.transform.rotation.z = (solution.rotation(0,2)-solution.rotation(2,0))/(4*sqrt(trace));
+                    t.transform.rotation.w = 1; //(solution.rotation(1,0)-solution.rotation(0,1))/(4*sqrt(trace));
+                }
+                else{
+                    double max_diag = max(max(solution.rotation(0,0), solution.rotation(1,1)), solution.rotation(2,2));
+                    if (max_diag == solution.rotation(0,0))
+                    {
+                        t.transform.rotation.x = 0; //sqrt(solution.rotation(0,0) - solution.rotation(1,1) - solution.rotation(2,2) + 1)/2;
+                        t.transform.rotation.y = 0; //(solution.rotation(0,1)+solution.rotation(1,0))/(4*sqrt(solution.rotation(0,0) - solution.rotation(1,1) - solution.rotation(2,2) + 1));
+                        t.transform.rotation.z = (solution.rotation(0,2)-solution.rotation(2,0))/(4*sqrt(solution.rotation(0,0) - solution.rotation(1,1) - solution.rotation(2,2) + 1));
+                        t.transform.rotation.w = 1; //(solution.rotation(2,1)-solution.rotation(1,2))/(4*sqrt(solution.rotation(0,0) - solution.rotation(1,1) - solution.rotation(2,2) + 1));
+                    }
+                    else if (max_diag == solution.rotation(1,1))
+                    {
+                        t.transform.rotation.x = 0; //(solution.rotation(0,1)-solution.rotation(1,0))/(4*sqrt(solution.rotation(1,1) - solution.rotation(0,0) - solution.rotation(2,2) + 1));
+                        t.transform.rotation.y = 0; //sqrt(solution.rotation(1,1) - solution.rotation(0,0) - solution.rotation(2,2) + 1)/2;
+                        t.transform.rotation.z = (solution.rotation(1,2)-solution.rotation(2,1))/(4*sqrt(solution.rotation(1,1) - solution.rotation(0,0) - solution.rotation(2,2) + 1));
+                        t.transform.rotation.w = 1; //(solution.rotation(0,2)-solution.rotation(2,0))/(4*sqrt(solution.rotation(1,1) - solution.rotation(0,0) - solution.rotation(2,2) + 1));
+                    }
+                    else if (max_diag == solution.rotation(2,2))
+                    {
+                        t.transform.rotation.x = 0; //(solution.rotation(0,2)-solution.rotation(2,0))/(4*sqrt(solution.rotation(2,2) - solution.rotation(0,0) - solution.rotation(1,1) + 1));
+                        t.transform.rotation.y = 0; //(solution.rotation(1,2)-solution.rotation(2,1))/(4*sqrt(solution.rotation(2,2) - solution.rotation(0,0) - solution.rotation(1,1) + 1));
+                        t.transform.rotation.z = sqrt(solution.rotation(1,1) - solution.rotation(0,0) - solution.rotation(2,2) + 1)/2;
+                        t.transform.rotation.w = 1; //(solution.rotation(0,1)-solution.rotation(1,0))/(4*sqrt(solution.rotation(2,2) - solution.rotation(0,0) - solution.rotation(1,1) + 1));
+                    }
+                }
+
                 // t.transform.rotation.x = msg_quaternion.x;
                 // t.transform.rotation.y = msg_quaternion.y;
                 // t.transform.rotation.z = msg_quaternion.z;
@@ -343,9 +403,13 @@ class ImgTransform : public rclcpp::Node
 
                 tf_static_broadcaster_->sendTransform(t);
 
-                prev_position.at(0) = current_pos(0);
-                prev_position.at(1) = current_pos(1);
-                prev_position.at(2) = current_pos(2);
+                prev_pos(0) = current_pos(0);
+                prev_pos(1) = current_pos(1);
+                prev_pos(2) = current_pos(2);
+                first = false;
+                // prev_position = current_pos.col(0);
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "Current pos test 2: %f %f %f", current_pos(0), current_pos(1), current_pos(2));
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "Prev Pos test 2: %d %d %d", prev_position.at(0), prev_position.at(1), prev_position.at(2));
             }
         }
 
@@ -358,6 +422,12 @@ class ImgTransform : public rclcpp::Node
             prev_img = current_img.clone();
             current_img.release();
             current_img = cv_bridge::toCvCopy(*msg, msg->encoding)->image;
+            done = 0;
+            // if (count < 10){
+            //     done = 0;
+            //     count++;
+            // }
+            // waitKey(1);
         }
 
         rclcpp::TimerBase::SharedPtr timer_;
@@ -366,12 +436,15 @@ class ImgTransform : public rclcpp::Node
         sensor_msgs::msg::CameraInfo cam_info_;
         Mat current_img;
         Mat prev_img;
+        int done = 0;
         std::string child_frame = "current";
         std::string parent_frame = "previous";
+        Eigen::VectorXd prev_pos = Eigen::VectorXd(3);
         int num_transforms = 0;
-        vector<int> prev_position {0,0,1};
+        bool first = true;
         tf2::Quaternion q;
         // std::vector<KeyPoint> keypoints_1, keypoints_2;
+        int count = 0;
 };
 
 int main(int argc, char** argv)
