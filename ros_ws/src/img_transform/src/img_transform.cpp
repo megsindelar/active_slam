@@ -40,6 +40,25 @@ class ImgTransform : public rclcpp::Node
     ImgTransform()
     : Node("img_transform")
     {
+        size_t depth = 1;
+        rmw_qos_reliability_policy_t reliability_policy = RMW_QOS_POLICY_RELIABILITY_BEST_EFFORT;
+        rmw_qos_history_policy_t history_policy = RMW_QOS_POLICY_HISTORY_KEEP_LAST;
+        rmw_qos_profile_t custom_camera_qos_profile = rmw_qos_profile_default;
+
+        // Depth represents how many messages to store in history when the history policy is KEEP_LAST.
+        custom_camera_qos_profile.depth = depth;
+
+        // The reliability policy can be reliable, meaning that the underlying transport layer will try
+        // ensure that every message gets received in order, or best effort, meaning that the transport
+        // makes no guarantees about the order or reliability of delivery.
+        custom_camera_qos_profile.reliability = reliability_policy;
+
+        // The history policy determines how messages are saved until the message is taken by the reader.
+        // KEEP_ALL saves all messages until they are taken.
+        // KEEP_LAST enforces a limit on the number of messages that are saved, specified by the "depth"
+        // parameter.
+        custom_camera_qos_profile.history = history_policy;
+
         // subscribe to raw image
         // referenced from Nick Morales: https://github.com/ngmor/unitree_camera/blob/main/unitree_camera/src/img_subscriber.cpp
         sub_current_img_ = std::make_shared<image_transport::CameraSubscriber>(
@@ -48,7 +67,7 @@ class ImgTransform : public rclcpp::Node
                 "current_image",
                 std::bind(&ImgTransform::image_callback, this, std::placeholders::_1, std::placeholders::_2),
                 "compressed",
-                rclcpp::QoS {10}.get_rmw_qos_profile()
+                custom_camera_qos_profile
             )
         );
 
@@ -61,6 +80,7 @@ class ImgTransform : public rclcpp::Node
         timer_ = create_wall_timer(
           std::chrono::milliseconds(rate_ms),
           std::bind(&ImgTransform::timer_callback, this));
+
     }
     private:
         inline double getAngularError(Eigen::Matrix3d R_exp, Eigen::Matrix3d R_est) {
@@ -68,6 +88,7 @@ class ImgTransform : public rclcpp::Node
         }
         void timer_callback()
         {
+            RCLCPP_INFO(rclcpp::get_logger("message"), "NEW TRANSFORM!!!!");
             if (!current_img.empty() && !prev_img.empty() && done != 1)
             // if (sizeof(keypoints_1) > 6)
             {
@@ -278,16 +299,13 @@ class ImgTransform : public rclcpp::Node
                 // imshow("keypoint 2 detection image 2", outimg2);
                 // imshow("keypoint 2 on detection image 1", outimg3);
 
-                // TODO: get rid of
-                done = 1;
+                // for (int i = 0; i < 3; i++){
+                //         RCLCPP_INFO(rclcpp::get_logger("message"), "Transformation: [%f] [%f] [%f]", transformation(i,0),transformation(i,1), transformation(i,2));
+                // }
 
-                for (int i = 0; i < 3; i++){
-                        RCLCPP_INFO(rclcpp::get_logger("message"), "Transformation: [%f] [%f] [%f]", transformation(i,0),transformation(i,1), transformation(i,2));
-                }
-
-                auto end_total = std::chrono::high_resolution_clock::now();
-                auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end_total - begin_total);
-                printf("Time to complete program: %.3f seconds\n", elapsed.count()*1e-9);
+                // auto end_total = std::chrono::high_resolution_clock::now();
+                // auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end_total - begin_total);
+                // printf("Time to complete program: %.3f seconds\n", elapsed.count()*1e-9);
 
 
                 Eigen::Matrix<double, 3, Eigen::Dynamic> prev_pos(3, 1);
@@ -320,7 +338,7 @@ class ImgTransform : public rclcpp::Node
                 // t.transform.rotation.z = msg_quaternion.z;
                 // t.transform.rotation.w = msg_quaternion.w;
 
-                num_transforms += 1;
+                num_transforms ++;
                 parent_frame = t.child_frame_id;
 
                 tf_static_broadcaster_->sendTransform(t);
@@ -340,36 +358,7 @@ class ImgTransform : public rclcpp::Node
             prev_img = current_img.clone();
             current_img.release();
             current_img = cv_bridge::toCvCopy(*msg, msg->encoding)->image;
-            done = 0;
-            // if (count < 10){
-            //     done = 0;
-            //     count++;
-            // }
-            // waitKey(1);
         }
-
-        // void keypoint_callback(
-        //     const img_transform::msg::Keypoints::ConstSharedPtr& msg,
-        //     const img_transform::msg::Keypoints::ConstSharedPtr&
-        // ){
-        //     for (long unsigned int i = 0; i < sizeof(msg->x_1); i++){
-        //         keypoints_1.at(i).pt.x = msg->x_1.at(i);
-        //         keypoints_1.at(i).pt.y = msg->y_1.at(i);
-        //         keypoints_1.at(i).size = msg->size_1.at(i);
-        //         keypoints_1.at(i).angle = msg->angle_1.at(i);
-        //         keypoints_1.at(i).response = msg->response_1.at(i);
-        //         keypoints_1.at(i).octave = msg->octave_1.at(i);
-        //         keypoints_1.at(i).class_id = msg->class_id_1.at(i);
-                
-        //         keypoints_2.at(i).pt.x = msg->x_2.at(i);
-        //         keypoints_2.at(i).pt.y = msg->y_2.at(i);
-        //         keypoints_2.at(i).size = msg->size_2.at(i);
-        //         keypoints_2.at(i).angle = msg->angle_2.at(i);
-        //         keypoints_2.at(i).response = msg->response_2.at(i);
-        //         keypoints_2.at(i).octave = msg->octave_2.at(i);
-        //         keypoints_2.at(i).class_id = msg->class_id_2.at(i);
-        //     }
-        // }
 
         rclcpp::TimerBase::SharedPtr timer_;
         std::shared_ptr<image_transport::CameraSubscriber> sub_current_img_;
@@ -377,14 +366,12 @@ class ImgTransform : public rclcpp::Node
         sensor_msgs::msg::CameraInfo cam_info_;
         Mat current_img;
         Mat prev_img;
-        int done = 0;
         std::string child_frame = "current";
         std::string parent_frame = "previous";
         int num_transforms = 0;
         vector<int> prev_position {0,0,1};
         tf2::Quaternion q;
         // std::vector<KeyPoint> keypoints_1, keypoints_2;
-        // int count = 0;
 };
 
 int main(int argc, char** argv)

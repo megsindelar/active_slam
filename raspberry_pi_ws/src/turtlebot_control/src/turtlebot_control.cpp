@@ -31,15 +31,36 @@ class TurtlebotControl : public rclcpp::Node
     TurtlebotControl()
     : Node("turtlebot_control")
     {
+        size_t depth = 1;
+        rmw_qos_reliability_policy_t reliability_policy = RMW_QOS_POLICY_RELIABILITY_BEST_EFFORT;
+        rmw_qos_history_policy_t history_policy = RMW_QOS_POLICY_HISTORY_KEEP_LAST;
+        rmw_qos_profile_t custom_camera_qos_profile = rmw_qos_profile_default;
+
+        // Depth represents how many messages to store in history when the history policy is KEEP_LAST.
+        custom_camera_qos_profile.depth = depth;
+
+        // The reliability policy can be reliable, meaning that the underlying transport layer will try
+        // ensure that every message gets received in order, or best effort, meaning that the transport
+        // makes no guarantees about the order or reliability of delivery.
+        custom_camera_qos_profile.reliability = reliability_policy;
+
+        // The history policy determines how messages are saved until the message is taken by the reader.
+        // KEEP_ALL saves all messages until they are taken.
+        // KEEP_LAST enforces a limit on the number of messages that are saved, specified by the "depth"
+        // parameter.
+        custom_camera_qos_profile.history = history_policy;
+
         // publish raw image
         // referenced from Nick Morales: https://github.com/ngmor/unitree_camera/blob/main/unitree_camera/src/img_publisher.cpp
-        pub_current_img_ = std::make_shared<image_transport::Publisher>(
-            image_transport::create_publisher(
+        pub_current_img_ = std::make_shared<image_transport::CameraPublisher>(
+            image_transport::create_camera_publisher(
                 this,
                 "current_image",
-                rclcpp::QoS {10}.get_rmw_qos_profile()
+                custom_camera_qos_profile
             )
         );
+
+        // rclcpp::QoS {10}.get_rmw_qos_profile()
 
         pub_compressed_ = this->create_publisher<sensor_msgs::msg::CompressedImage>("image/compressed", 10);
 
@@ -51,6 +72,9 @@ class TurtlebotControl : public rclcpp::Node
         timer_ = create_wall_timer(
           std::chrono::milliseconds(rate_ms),
           std::bind(&TurtlebotControl::timer_callback, this));
+
+        // open raspberry pi camera
+        cap.open(deviceID, apiID);
     }
     private:
         void timer_callback()
@@ -60,13 +84,9 @@ class TurtlebotControl : public rclcpp::Node
             cam_info_.header = header;
 
             // take image
-            Mat current_frame;
-            VideoCapture cap;
+            // Mat current_frame;
+            // VideoCapture cap;
 
-            int deviceID = -1;
-            int apiID = CAP_V4L;
-            // open raspberry pi camera
-            cap.open(deviceID, apiID);
             // check if camera is open
             if (!cap.isOpened()) {
                 cerr << "ERROR! Unable to open camera\n";
@@ -155,7 +175,8 @@ class TurtlebotControl : public rclcpp::Node
                 // img_bridge.toCompressedImageMsg(img_msg)
                 RCLCPP_INFO(rclcpp::get_logger("message"), "Image size %d %d", current_frame.rows, current_frame.cols);
 
-                pub_current_img_->publish(*cv_bridge::CvImage(header, "bgr8", current_frame).toImageMsg());
+                // publish(*(cv_bridge::CvImage(header, color_encoding_, raw_left).toImageMsg()), camera_info_);
+                pub_current_img_->publish(*(cv_bridge::CvImage(header, "bgr8", current_frame).toImageMsg()), cam_info_);
                 // RCLCPP_INFO(rclcpp::get_logger("message"), "Published");
 
 
@@ -175,17 +196,21 @@ class TurtlebotControl : public rclcpp::Node
                 prev_frame = current_frame;
             }
             
-            sleep(5);
+            // sleep(5);
         }
 
         rclcpp::TimerBase::SharedPtr timer_;
-        std::shared_ptr<image_transport::Publisher> pub_current_img_;
+        std::shared_ptr<image_transport::CameraPublisher> pub_current_img_;
         rclcpp::Publisher<sensor_msgs::msg::CompressedImage>::SharedPtr pub_compressed_;
         rclcpp::Publisher<turtlebot_control::msg::Keypoints>::SharedPtr pub_keypoints_;
         sensor_msgs::msg::CameraInfo cam_info_;
         int num_frames = 0;
         std::chrono::system_clock::time_point begin = std::chrono::high_resolution_clock::now();
         Mat prev_frame;
+        Mat current_frame;
+        VideoCapture cap;
+        int deviceID = -1;
+        int apiID = CAP_V4L;
 };
 
 int main(int argc, char** argv)

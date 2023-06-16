@@ -31,6 +31,10 @@ rosidl_get_typesupport_target(cpp_typesupport_target
 
 add_executable(turtlebot_control src/turtlebot_control.cpp)
 
+# include_directories(include)
+# add_executable(cam2image src/cam2image.cpp)
+# add_executable(cam2img src/cam2img.cpp)
+
 ament_target_dependencies(turtlebot_control
   rclcpp
   std_msgs
@@ -39,6 +43,25 @@ ament_target_dependencies(turtlebot_control
   image_transport
   Eigen3
 )
+
+
+# ament_target_dependencies(cam2image
+#   rclcpp
+#   std_msgs
+#   sensor_msgs
+#   cv_bridge
+#   image_transport
+#   Eigen3
+# )
+
+# ament_target_dependencies(cam2img
+#   rclcpp
+#   std_msgs
+#   sensor_msgs
+#   cv_bridge
+#   image_transport
+#   Eigen3
+# )
 
 # include_directories(${OpenCV_INCLUDE_DIRS}
 #                     ${PYTHON3_INCLUDE_DIRS}
@@ -55,6 +78,16 @@ target_link_libraries(turtlebot_control
   "${cpp_typesupport_target}"
 )
 
+# target_link_libraries(cam2image
+#   ${OpenCV_LIBS}
+#   "${cpp_typesupport_target}"
+# )
+
+# target_link_libraries(cam2img
+#   ${OpenCV_LIBS}
+#   "${cpp_typesupport_target}"
+# )
+
 install(TARGETS
   turtlebot_control
   DESTINATION lib/${PROJECT_NAME}
@@ -62,6 +95,11 @@ install(TARGETS
 
 install(DIRECTORY
   DESTINATION share/${PROJECT_NAME}
+)
+
+install(
+  DIRECTORY include/
+  DESTINATION include
 )
 
 if(BUILD_TESTING)
