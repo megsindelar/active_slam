@@ -16,6 +16,7 @@ find_package(image_transport REQUIRED)
 find_package(ament_index_cpp REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
+
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
@@ -29,9 +30,10 @@ rosidl_get_typesupport_target(cpp_typesupport_target
   "rosidl_typesupport_cpp"
  )
 
+include_directories(include)
+# include_directories(pigpio)
 add_executable(turtlebot_control src/turtlebot_control.cpp)
 
-# include_directories(include)
 # add_executable(cam2image src/cam2image.cpp)
 # add_executable(cam2img src/cam2img.cpp)
 

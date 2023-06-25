@@ -14,7 +14,7 @@
 #include <time.h>
 #include <Eigen/Core>
 #include "turtlebot_control/msg/keypoints.hpp"
-
+#include "rgb_lights.hpp"
 
 using namespace std;
 using namespace cv;
@@ -60,6 +60,8 @@ class TurtlebotControl : public rclcpp::Node
             )
         );
 
+        // custom_camera_qos_profile
+
         // rclcpp::QoS {10}.get_rmw_qos_profile()
 
         pub_compressed_ = this->create_publisher<sensor_msgs::msg::CompressedImage>("image/compressed", 10);
@@ -75,6 +77,56 @@ class TurtlebotControl : public rclcpp::Node
 
         // open raspberry pi camera
         cap.open(deviceID, apiID);
+
+        // Turn on lights
+        turtlebot_control::writeGPIO(redPin, "0");
+        sleep(1);
+        turtlebot_control::writeGPIO(greenPin, "0");
+        sleep(1);
+        turtlebot_control::writeGPIO(bluePin, "0");
+
+        // std::ofstream file_export("/sys/class/gpio/export");
+        // if (file_export.is_open())
+        // {
+        //     file_export << "17";
+        //     file_export.close();
+        // }
+        // else{
+        //     RCLCPP_INFO(rclcpp::get_logger("message"), "Failed to open GPIO export file");
+        // }
+        // sleep(1);
+
+        // std::ofstream file_dir("/sys/class/gpio/gpio17/direction");
+        // if (file_dir.is_open())
+        // {
+        //     file_dir << "out";
+        //     file_dir.close();
+        // }
+        // else{
+        //     RCLCPP_INFO(rclcpp::get_logger("message"), "Failed to open GPIO direction file");
+        // }
+        // sleep(1);
+
+        // std::ofstream file_val("/sys/class/gpio/gpio17/value");
+        // if (file_val.is_open())
+        // {
+        //     file_val << "0";
+        //     file_val.close();
+        // }
+        // else{
+        //     RCLCPP_INFO(rclcpp::get_logger("message"), "Failed to open GPIO value file");
+        // }
+        // sleep(1);
+
+        // std::ofstream file_unexport("/sys/class/gpio/unexport");
+        // if (file_unexport.is_open())
+        // {
+        //     file_unexport << "17";
+        //     file_unexport.close();
+        // }
+        // else{
+        //     RCLCPP_INFO(rclcpp::get_logger("message"), "Failed to open GPIO export file");
+        // }
     }
     private:
         void timer_callback()
@@ -195,8 +247,6 @@ class TurtlebotControl : public rclcpp::Node
                 // }
                 prev_frame = current_frame;
             }
-            
-            // sleep(5);
         }
 
         rclcpp::TimerBase::SharedPtr timer_;
@@ -211,6 +261,11 @@ class TurtlebotControl : public rclcpp::Node
         VideoCapture cap;
         int deviceID = -1;
         int apiID = CAP_V4L;
+
+        // GPIO pins
+        std::string redPin = "17";
+        std::string greenPin = "18";
+        std::string bluePin = "27";
 };
 
 int main(int argc, char** argv)
