@@ -24,6 +24,9 @@ find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
+find_package(tf2_eigen REQUIRED)
+find_package(nuturtlebot_msgs REQUIRED)
+find_package(Sophus REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
@@ -31,9 +34,15 @@ find_package(tf2_geometry_msgs REQUIRED)
 rosidl_generate_interfaces(${PROJECT_NAME}_msg "msg/Keypoints.msg" LIBRARY_NAME ${PROJECT_NAME})
 rosidl_get_typesupport_target(cpp_typesupport_target ${PROJECT_NAME}_msg "rosidl_typesupport_cpp")
 
+include_directories(include)
+
 add_executable(img_transform src/img_transform.cpp)
 
 add_executable(video_frequency src/video_frequency.cpp)
+
+add_executable(wheel_control src/wheel_control.cpp)
+
+add_executable(sort src/sort.cpp)
 
 ament_target_dependencies(img_transform
   rclcpp
@@ -47,6 +56,9 @@ ament_target_dependencies(img_transform
   tf2
   tf2_ros
   tf2_geometry_msgs
+  tf2_eigen
+  OpenCV
+  Sophus
 )
 
 ament_target_dependencies(video_frequency
@@ -62,6 +74,20 @@ ament_target_dependencies(video_frequency
   tf2_ros
 )
 
+ament_target_dependencies(wheel_control
+  rclcpp
+  std_msgs
+  geometry_msgs
+  nuturtlebot_msgs
+)
+
+ament_target_dependencies(sort
+  rclcpp
+  std_msgs
+  OpenCV
+)
+
+
 # include_directories(${OpenCV_INCLUDE_DIRS}
 #                     ${PYTHON3_INCLUDE_DIRS}
 #                     ${NumPy_INCLUDE_DIRS}
@@ -72,9 +98,10 @@ include_directories(SYSTEM
 )
 
 target_link_libraries(img_transform ${OpenCV_LIBS} 
-  Eigen3::Eigen 
+  Eigen3::Eigen
   teaserpp::teaser_registration 
   teaserpp::teaser_io
+  Sophus::Sophus
   ${PYTHON_LIBRARIES}
   Python3::NumPy
   "${cpp_typesupport_target}"
@@ -84,6 +111,19 @@ target_link_libraries(video_frequency ${OpenCV_LIBS}
   Eigen3::Eigen 
   teaserpp::teaser_registration 
   teaserpp::teaser_io
+  ${PYTHON_LIBRARIES}
+  Python3::NumPy
+)
+
+target_link_libraries(wheel_control ${OpenCV_LIBS} 
+  Eigen3::Eigen 
+  teaserpp::teaser_registration 
+  teaserpp::teaser_io
+  ${PYTHON_LIBRARIES}
+  Python3::NumPy
+)
+
+target_link_libraries(sort ${OpenCV_LIBS}
   ${PYTHON_LIBRARIES}
   Python3::NumPy
 )
@@ -104,6 +144,7 @@ include_directories(SYSTEM ${matplotlib_SOURCE_DIR})
 install(TARGETS
   img_transform
   video_frequency
+  wheel_control
   DESTINATION lib/${PROJECT_NAME}
 )
 
@@ -111,6 +152,11 @@ install(DIRECTORY
   launch
   config
   DESTINATION share/${PROJECT_NAME}
+)
+
+install(
+  DIRECTORY include/
+  DESTINATION include
 )
 
 if(BUILD_TESTING)
