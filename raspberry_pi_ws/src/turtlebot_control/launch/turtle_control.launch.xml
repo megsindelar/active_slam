@@ -1,0 +1,9 @@
+<launch>
+  <set_env name="TURTLEBOT3_MODEL" value="burger"/>
+
+  <include file="$(find-pkg-share turtlebot3_bringup)/launch/robot.launch.py">
+  </include>
+
+  <node pkg="turtlebot_control" exec="turtlebot_control">
+  </node>
+</launch>

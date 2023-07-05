@@ -13,8 +13,9 @@
 #include <ament_index_cpp/get_package_share_directory.hpp>
 #include <time.h>
 #include <Eigen/Core>
-#include "turtlebot_control/msg/keypoints.hpp"
+#include "turtlebot_control/msg/wheel_commands.hpp"
 #include "rgb_lights.hpp"
+#include "geometry_msgs/msg/twist.hpp"
 
 using namespace std;
 using namespace cv;
@@ -50,6 +51,9 @@ class TurtlebotControl : public rclcpp::Node
         // parameter.
         custom_camera_qos_profile.history = history_policy;
 
+        // sub_cmd_vel_ = this->create_subscription<geometry_msgs::msg::Twist>(
+        //     "/cmd_vel", 10, std::bind(&TurtlebotControl::velocity_callback, this, std::placeholders::_1));
+
         // publish raw image
         // referenced from Nick Morales: https://github.com/ngmor/unitree_camera/blob/main/unitree_camera/src/img_publisher.cpp
         pub_current_img_ = std::make_shared<image_transport::CameraPublisher>(
@@ -60,13 +64,17 @@ class TurtlebotControl : public rclcpp::Node
             )
         );
 
+        // pub_wheel_vel_ = this->create_publisher<turtlebot_control::msg::WheelCommands>("/wheel_cmd", 10);
+
         // custom_camera_qos_profile
 
         // rclcpp::QoS {10}.get_rmw_qos_profile()
 
         pub_compressed_ = this->create_publisher<sensor_msgs::msg::CompressedImage>("image/compressed", 10);
 
-        pub_keypoints_ = this->create_publisher<turtlebot_control::msg::Keypoints>("/keypoints", 10);
+        // pub_keypoints_ = this->create_publisher<turtlebot_control::msg::Keypoints>("/keypoints", 10);
+
+        // pub_cmd_vel_ = this->create_publisher<geometry_msgs::msg::Twist>("/cmd_vel", 10);
 
         // Timer
         declare_parameter("rate", 50);
@@ -79,11 +87,11 @@ class TurtlebotControl : public rclcpp::Node
         cap.open(deviceID, apiID);
 
         // Turn on lights
-        turtlebot_control::writeGPIO(redPin, "0");
+        turtlebot_control::writeGPIO(redPin, "1");
         sleep(1);
-        turtlebot_control::writeGPIO(greenPin, "0");
+        turtlebot_control::writeGPIO(greenPin, "1");
         sleep(1);
-        turtlebot_control::writeGPIO(bluePin, "0");
+        turtlebot_control::writeGPIO(bluePin, "1");
 
         // std::ofstream file_export("/sys/class/gpio/export");
         // if (file_export.is_open())
@@ -246,13 +254,49 @@ class TurtlebotControl : public rclcpp::Node
                 //     num_frames = 0;
                 // }
                 prev_frame = current_frame;
+
+                // auto msg = geometry_msgs::msg::Twist();
+                // msg.angular.z = 1.0;
+                // msg.linear.x = 1.0 * 1.0;
+                // msg.linear.y = 0.0;
+                // pub_cmd_vel_->publish(msg);
             }
         }
+
+        // void velocity_callback(const geometry_msgs::msg::Twist::SharedPtr msg)
+        // {
+        //     // double theta = msg->angular.z;
+        //     // double x = msg->linear.x;
+        //     // double y = msg->linear.y;
+        //     // turtlelib::Twist2D twist = {theta, x, y};
+        //     // turtlelib::DiffDrive robot = {track_width, wheel_radius};
+        //     // // turtlelib::DiffDrive rob_new = robot.Inverse_Kin(q);
+        //     // turtlelib::Phi wheel_vel = robot.Inverse_Kin(twist);
+        //     // double temp_phi_r = wheel_vel.r / motor_cmd_per_rad_sec;
+        //     // if (temp_phi_r > motor_cmd_max) {
+        //     // temp_phi_r = motor_cmd_max;
+        //     // } else if (temp_phi_r < -motor_cmd_max) {
+        //     // temp_phi_r = -motor_cmd_max;
+        //     // }
+        //     // double temp_phi_l = wheel_vel.l / motor_cmd_per_rad_sec;
+        //     // if (temp_phi_l > motor_cmd_max) {
+        //     // temp_phi_l = motor_cmd_max;
+        //     // } else if (temp_phi_l < -motor_cmd_max) {
+        //     // temp_phi_l = -motor_cmd_max;
+        //     // }
+        //     auto mesg = turtlebot_control::msg::WheelCommands();
+        //     mesg.left_velocity = 1.0;
+        //     mesg.right_velocity = 1.0;
+        //     pub_wheel_vel_->publish(mesg);
+        // }
 
         rclcpp::TimerBase::SharedPtr timer_;
         std::shared_ptr<image_transport::CameraPublisher> pub_current_img_;
         rclcpp::Publisher<sensor_msgs::msg::CompressedImage>::SharedPtr pub_compressed_;
-        rclcpp::Publisher<turtlebot_control::msg::Keypoints>::SharedPtr pub_keypoints_;
+        // rclcpp::Publisher<turtlebot_control::msg::Keypoints>::SharedPtr pub_keypoints_;
+        // rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr sub_cmd_vel_;
+        // rclcpp::Publisher<turtlebot_control::msg::WheelCommands>::SharedPtr pub_wheel_vel_;
+        // rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr pub_cmd_vel_;
         sensor_msgs::msg::CameraInfo cam_info_;
         int num_frames = 0;
         std::chrono::system_clock::time_point begin = std::chrono::high_resolution_clock::now();

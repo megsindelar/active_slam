@@ -16,13 +16,14 @@ find_package(image_transport REQUIRED)
 find_package(ament_index_cpp REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
+find_package(geometry_msgs REQUIRED)
 
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}_msg
-  "msg/Keypoints.msg"
+  "msg/WheelCommands.msg"
   LIBRARY_NAME ${PROJECT_NAME}
  )
 rosidl_get_typesupport_target(cpp_typesupport_target
@@ -44,6 +45,7 @@ ament_target_dependencies(turtlebot_control
   cv_bridge
   image_transport
   Eigen3
+  geometry_msgs
 )
 
 
@@ -96,6 +98,7 @@ install(TARGETS
 )
 
 install(DIRECTORY
+  launch
   DESTINATION share/${PROJECT_NAME}
 )
 
