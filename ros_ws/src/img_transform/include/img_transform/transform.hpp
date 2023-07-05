@@ -1,5 +1,5 @@
-#ifndef SORT_INCLUDE_GUARD_HPP
-#define SORT_INCLUDE_GUARD_HPP
+#ifndef TRANSFORM_INCLUDE_GUARD_HPP
+#define TRANSFORM_INCLUDE_GUARD_HPP
 /// \file
 /// \brief Calculating the discriminant of a quadratic.
 

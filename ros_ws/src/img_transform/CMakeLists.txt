@@ -27,6 +27,7 @@ find_package(tf2_geometry_msgs REQUIRED)
 find_package(tf2_eigen REQUIRED)
 find_package(nuturtlebot_msgs REQUIRED)
 find_package(Sophus REQUIRED)
+find_package(std_srvs REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
@@ -42,7 +43,7 @@ add_executable(video_frequency src/video_frequency.cpp)
 
 add_executable(wheel_control src/wheel_control.cpp)
 
-add_executable(sort src/sort.cpp)
+add_library(transform src/transform.cpp)
 
 ament_target_dependencies(img_transform
   rclcpp
@@ -79,13 +80,14 @@ ament_target_dependencies(wheel_control
   std_msgs
   geometry_msgs
   nuturtlebot_msgs
+  std_srvs
 )
 
-ament_target_dependencies(sort
-  rclcpp
-  std_msgs
-  OpenCV
-)
+# ament_target_dependencies(sort
+#   rclcpp
+#   std_msgs
+#   OpenCV
+# )
 
 
 # include_directories(${OpenCV_INCLUDE_DIRS}
@@ -102,6 +104,7 @@ target_link_libraries(img_transform ${OpenCV_LIBS}
   teaserpp::teaser_registration 
   teaserpp::teaser_io
   Sophus::Sophus
+  transform
   ${PYTHON_LIBRARIES}
   Python3::NumPy
   "${cpp_typesupport_target}"
@@ -111,6 +114,7 @@ target_link_libraries(video_frequency ${OpenCV_LIBS}
   Eigen3::Eigen 
   teaserpp::teaser_registration 
   teaserpp::teaser_io
+  transform
   ${PYTHON_LIBRARIES}
   Python3::NumPy
 )
@@ -119,14 +123,12 @@ target_link_libraries(wheel_control ${OpenCV_LIBS}
   Eigen3::Eigen 
   teaserpp::teaser_registration 
   teaserpp::teaser_io
+  transform
   ${PYTHON_LIBRARIES}
   Python3::NumPy
 )
 
-target_link_libraries(sort ${OpenCV_LIBS}
-  ${PYTHON_LIBRARIES}
-  Python3::NumPy
-)
+target_compile_features(transform PUBLIC cxx_std_17)
 
 # populate matplotlib repository
 include(FetchContent)
