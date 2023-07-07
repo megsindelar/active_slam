@@ -35,6 +35,13 @@
 #include "sophus/se3.hpp"
 #include "img_transform/transform.hpp"
 
+#include <sensor_msgs/msg/image.hpp>
+#include <sensor_msgs/msg/camera_info.hpp>
+#include <message_filters/subscriber.h>
+#include <message_filters/time_synchronizer.h>
+#include <message_filters/synchronizer.h>
+#include <message_filters/sync_policies/approximate_time.h>
+
 using namespace std;
 using namespace cv;
 
@@ -81,7 +88,7 @@ class ImgTransform : public rclcpp::Node
                 "current_image",
                 std::bind(&ImgTransform::image_callback, this, std::placeholders::_1, std::placeholders::_2),
                 "compressed",
-                custom_camera_qos_profile
+                rclcpp::QoS {10}.get_rmw_qos_profile()
             )
         );
 
@@ -89,6 +96,27 @@ class ImgTransform : public rclcpp::Node
 
         //a transform broadcaster to publish position and orientation of the turtlebot
         tf_static_broadcaster_ = std::make_shared<tf2_ros::StaticTransformBroadcaster>(*this);
+
+        // publish raw image
+        // referenced from Nick Morales: https://github.com/ngmor/unitree_camera/blob/main/unitree_camera/src/img_publisher.cpp
+        pub_keypoint_img_ = std::make_shared<image_transport::CameraPublisher>(
+            image_transport::create_camera_publisher(
+                this,
+                "keypoint_image",
+                rclcpp::QoS {10}.get_rmw_qos_profile()
+            )
+        );
+
+        // raspi_cam_sub_.subscribe(this, "current_image/compressed", custom_camera_qos_profile);
+        // raspi_cam_info_sub_.subscribe(this, "camera_info", custom_camera_qos_profile);
+
+        // // sync.reset(new Sync(MySyncPolicy(1), raspi_cam_sub_, raspi_cam_info_sub_));
+
+        // sync = std::make_shared<message_filters::TimeSynchronizer<sensor_msgs::msg::Image, sensor_msgs::msg::CameraInfo>>(
+        // raspi_cam_sub_, raspi_cam_info_sub_, 10);
+        // sync->registerCallback(
+        //     std::bind(
+        //         &ImgTransform::synchronized_img_callback, this, std::placeholders::_1, std::placeholders::_2));
 
         // Timer
         declare_parameter("rate", 200);
@@ -109,6 +137,9 @@ class ImgTransform : public rclcpp::Node
                 prev_pos(1) = 0.0;
                 prev_pos(2) = z;
                 prev_pos(3) = 1.0;
+                rotation_mat_prev.row(0) << 1.0, 0.0, 0.0;
+                rotation_mat_prev.row(1) << 0.0, 1.0, 0.0;
+                rotation_mat_prev.row(2) << 0.0, 0.0, 1.0;
             }
             // RCLCPP_INFO(rclcpp::get_logger("message"), "NEW TRANSFORM!!!!");
             if (!current_img.empty() && !prev_img.empty()) // && done != 1)
@@ -139,6 +170,12 @@ class ImgTransform : public rclcpp::Node
                 Mat outimg3;
                 drawKeypoints( prev_img, keypoints_2, outimg3, Scalar::all(-1), DrawMatchesFlags::DEFAULT );
 
+
+                std_msgs::msg::Header header;
+                header.stamp = get_clock()->now();
+                cam_info_.header = header;
+                pub_keypoint_img_->publish(*(cv_bridge::CvImage(header, "bgr8", outimg2).toImageMsg()), cam_info_);
+
                 vector<DMatch> matches;
                 try{
                     matcher->match ( descriptors_1, descriptors_2, matches );
@@ -160,6 +197,8 @@ class ImgTransform : public rclcpp::Node
                 RCLCPP_INFO(rclcpp::get_logger("message"), "Matches size: %ld", matches.size());
                 // std::sort(matches.begin(), matches.end(), img_transform::compare);
 
+
+                Eigen::VectorXd current_pos(4);
                 if (matches.size() < 12)
                 {
                     matched = false;
@@ -211,6 +250,8 @@ class ImgTransform : public rclcpp::Node
                     RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
                     RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
                     RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                    current_pos = Transformation_prev.inverse().matrix()*prev_pos;
+                    rotation_mat = rotation_mat_prev;
                 }
                 else{
                     matched = true;
@@ -369,7 +410,6 @@ class ImgTransform : public rclcpp::Node
                     //      [-omg[1], omg[0],       0]])
 
                     // Eigen::Matrix<double, 3, 3> transformation;
-                    Eigen::Matrix<double, 3, 3> rotation_mat;
                     // Eigen::Matrix<double, 3, 3> trans_mat;
                     Eigen::VectorXd translation(3);
                     for (int i = 0; i < 3; i++){
@@ -400,65 +440,76 @@ class ImgTransform : public rclcpp::Node
                     // TODO: get rid of
                     done = 1;
 
-                    Eigen::VectorXd current_pos(4);
-                    geometry_msgs::msg::TransformStamped t;
-                    t.header.stamp = this->get_clock()->now();
-                    t.header.frame_id = parent_frame;
-                    t.child_frame_id = child_frame + std::to_string(num_transforms);
-
                     // current_pos = transformation.inverse()*prev_pos;
                     // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 3");
                     current_pos = Transformation.inverse().matrix()*prev_pos;
-                    // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 4");
+                    Eigen::Matrix<double, 4, 4> Inv_Trans = Transformation.inverse().matrix();
 
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Prev pos: %f %f %f %f", prev_pos(0), prev_pos(1), prev_pos(2), prev_pos(3));
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Current pos: %f %f", current_pos(0), current_pos(1));
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Current minus prev pos: %f %f", prev_pos(0) - current_pos(0), prev_pos(1) - current_pos(1));
+                    // for (int i = 0; i < 3; i++){
+                    //     rotation_mat.row(i) << Inv_Trans(i,0), Inv_Trans(i,1), Inv_Trans(i,2);
+                    //     translation(i) = Inv_Trans(i,3);
+                    // }
 
-                    // RCLCPP_INFO(rclcpp::get_logger("message"), "Prev pos: %f %f", prev_pos(0), prev_pos(1));
+                    int error = (current_pos(0) - prev_pos(0)) + (current_pos(1) - prev_pos(1));
 
-                    t.transform.translation.x = current_pos(0) - prev_pos(0);
-                    t.transform.translation.y = current_pos(1) - prev_pos(1);
-                    // t.transform.translation.x = solution.translation(0);
-                    // t.transform.translation.y = solution.translation(1);
-                    total_trans_x += current_pos(0) - prev_pos(0);
-                    total_trans_y += current_pos(1) - prev_pos(1);
-                    // RCLCPP_INFO(rclcpp::get_logger("message"), "Translation: %f %f", t.transform.translation.x, t.transform.translation.y);
-
-                    // RCLCPP_INFO(rclcpp::get_logger("message"), "Total Translation: %f %f", total_trans_x, total_trans_y);
-
-                    // RCLCPP_INFO(rclcpp::get_logger("message"), "Current Pos: %f %f", current_pos(0), current_pos(1));
-
-                    Eigen::Quaterniond q(rotation_mat);
-                    geometry_msgs::msg::Quaternion msg_quaternion = tf2::toMsg(q);
-
-                    // t.transform.rotation.x = q.x;
-                    // t.transform.rotation.y = q.y;
-                    // t.transform.rotation.z = q.z;
-                    // t.transform.rotation.w = q.w;
-
-
-                    t.transform.rotation.x = msg_quaternion.x;
-                    t.transform.rotation.y = msg_quaternion.y;
-                    t.transform.rotation.z = msg_quaternion.z;
-                    t.transform.rotation.w = msg_quaternion.w;
-
-                    num_transforms ++;
-                    parent_frame = t.child_frame_id;
-
-                    tf_static_broadcaster_->sendTransform(t);
-
-                    prev_pos(0) = current_pos(0);
-                    prev_pos(1) = current_pos(1);
-                    prev_pos(2) = current_pos(2);
-                    prev_pos(3) = current_pos(3);
-                    first = false;
-                    // prev_position = current_pos.col(0);
-                    // RCLCPP_INFO(rclcpp::get_logger("message"), "Current pos test 2: %f %f %f", current_pos(0), current_pos(1), current_pos(2));
-                    // RCLCPP_INFO(rclcpp::get_logger("message"), "Prev Pos test 2: %d %d %d", prev_position.at(0), prev_position.at(1), prev_position.at(2));
+                    // fix for if TEASER finds an unreasonable transformation
+                    if (error > 0.1)
+                    {
+                        current_pos = Transformation_prev.inverse().matrix()*prev_pos;
+                    }
+                    else
+                    {
+                        Transformation_prev = Transformation;
+                    }
+                    rotation_mat_prev = rotation_mat;
                 }
 
-                
+                geometry_msgs::msg::TransformStamped t;
+                t.header.stamp = this->get_clock()->now();
+                t.header.frame_id = parent_frame;
+                t.child_frame_id = child_frame + std::to_string(num_transforms);
+                RCLCPP_INFO(rclcpp::get_logger("message"), "Prev pos: %f %f %f %f", prev_pos(0), prev_pos(1), prev_pos(2), prev_pos(3));
+                RCLCPP_INFO(rclcpp::get_logger("message"), "Current pos: %f %f", current_pos(0), current_pos(1));
+                RCLCPP_INFO(rclcpp::get_logger("message"), "Current minus prev pos: %f %f", prev_pos(0) - current_pos(0), prev_pos(1) - current_pos(1));
+
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "Prev pos: %f %f", prev_pos(0), prev_pos(1));
+
+                t.transform.translation.x = current_pos(0) - prev_pos(0);
+                t.transform.translation.y = current_pos(1) - prev_pos(1);
+                // t.transform.translation.x = solution.translation(0);
+                // t.transform.translation.y = solution.translation(1);
+                total_trans_x += current_pos(0) - prev_pos(0);
+                total_trans_y += current_pos(1) - prev_pos(1);
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "Translation: %f %f", t.transform.translation.x, t.transform.translation.y);
+
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "Total Translation: %f %f", total_trans_x, total_trans_y);
+
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "Current Pos: %f %f", current_pos(0), current_pos(1));
+
+                Eigen::Quaterniond q(rotation_mat);
+                geometry_msgs::msg::Quaternion msg_quaternion = tf2::toMsg(q);
+
+                // t.transform.rotation.x = q.x;
+                // t.transform.rotation.y = q.y;
+                // t.transform.rotation.z = q.z;
+                // t.transform.rotation.w = q.w;
+
+
+                t.transform.rotation.x = msg_quaternion.x;
+                t.transform.rotation.y = msg_quaternion.y;
+                t.transform.rotation.z = msg_quaternion.z;
+                t.transform.rotation.w = msg_quaternion.w;
+
+                num_transforms ++;
+                parent_frame = t.child_frame_id;
+
+                tf_static_broadcaster_->sendTransform(t);
+
+                prev_pos(0) = current_pos(0);
+                prev_pos(1) = current_pos(1);
+                prev_pos(2) = current_pos(2);
+                prev_pos(3) = current_pos(3);
+                first = false;
             }
         }
 
@@ -467,25 +518,46 @@ class ImgTransform : public rclcpp::Node
             const sensor_msgs::msg::CameraInfo::ConstSharedPtr&
         ){
             // imshow("subscribed_image",cv_bridge::toCvCopy(*msg, msg->encoding)->image);
-            if (matched == true)
-            {
-                prev_img.release();
-                prev_img = current_img.clone();
-            }
+            // if (matched == true)
+            // {
+            //     prev_img.release();
+            //     prev_img = current_img.clone();
+            // }
+            prev_img.release();
+            prev_img = current_img.clone();
             current_img.release();
             current_img = cv_bridge::toCvCopy(*msg, msg->encoding)->image;
             done = 0;
-            // if (count < 10){
-            //     done = 0;
-            //     count++;
-            // }
-            // waitKey(1);
         }
+
+        // void synchronized_img_callback(
+        //     const sensor_msgs::msg::Image::ConstSharedPtr& msg,
+        //     const sensor_msgs::msg::CameraInfo::ConstSharedPtr&
+        // ){
+        //     RCLCPP_INFO(rclcpp::get_logger("message"), "Testing");
+        //     if (matched == true)
+        //     {
+        //         prev_img.release();
+        //         prev_img = current_img.clone();
+        //     }
+        //     current_img.release();
+        //     current_img = cv_bridge::toCvCopy(*msg, msg->encoding)->image;
+        //     done = 0;
+        // }
 
         rclcpp::TimerBase::SharedPtr timer_;
         std::shared_ptr<image_transport::CameraSubscriber> sub_current_img_;
         std::shared_ptr<tf2_ros::StaticTransformBroadcaster> tf_static_broadcaster_;
         sensor_msgs::msg::CameraInfo cam_info_;
+        std::shared_ptr<image_transport::CameraPublisher> pub_keypoint_img_;
+
+        // message_filters::Subscriber<sensor_msgs::msg::Image> raspi_cam_sub_;
+        // message_filters::Subscriber<sensor_msgs::msg::CameraInfo> raspi_cam_info_sub_;
+        // typedef message_filters::sync_policies::ApproximateTime<sensor_msgs::msg::Image , 
+        // sensor_msgs::msg::CameraInfo> MySyncPolicy;
+        // // typedef message_filters::Synchronizer<MySyncPolicy> Sync;
+        // std::shared_ptr<message_filters::TimeSynchronizer<sensor_msgs::msg::Image, sensor_msgs::msg::CameraInfo>> sync;
+
         Mat current_img;
         Mat prev_img;
         int done = 0;
@@ -501,6 +573,9 @@ class ImgTransform : public rclcpp::Node
         double total_trans_y = 0;
         bool matched = true;
         float z = 0.095;
+        Sophus::SE3d Transformation_prev;
+        Eigen::Matrix<double, 3, 3> rotation_mat_prev;
+        Eigen::Matrix<double, 3, 3> rotation_mat;
 };
 
 int main(int argc, char** argv)

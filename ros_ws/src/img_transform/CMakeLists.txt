@@ -28,6 +28,7 @@ find_package(tf2_eigen REQUIRED)
 find_package(nuturtlebot_msgs REQUIRED)
 find_package(Sophus REQUIRED)
 find_package(std_srvs REQUIRED)
+find_package(message_filters REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
@@ -60,6 +61,7 @@ ament_target_dependencies(img_transform
   tf2_eigen
   OpenCV
   Sophus
+  message_filters
 )
 
 ament_target_dependencies(video_frequency
