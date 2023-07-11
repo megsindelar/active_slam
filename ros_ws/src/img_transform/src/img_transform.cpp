@@ -31,6 +31,7 @@
 #include <string>
 #include <math.h>
 #include "img_transform/msg/keypoints.hpp"
+#include "img_transform/msg/transform.hpp"
 
 #include "sophus/se3.hpp"
 #include "img_transform/transform.hpp"
@@ -41,6 +42,11 @@
 #include <message_filters/time_synchronizer.h>
 #include <message_filters/synchronizer.h>
 #include <message_filters/sync_policies/approximate_time.h>
+
+#include "nav_msgs/msg/path.hpp"
+#include "tf2_ros/transform_broadcaster.h"
+
+#include "sensor_msgs/msg/compressed_image.hpp"
 
 using namespace std;
 using namespace cv;
@@ -82,20 +88,38 @@ class ImgTransform : public rclcpp::Node
 
         // subscribe to raw image
         // referenced from Nick Morales: https://github.com/ngmor/unitree_camera/blob/main/unitree_camera/src/img_subscriber.cpp
-        sub_current_img_ = std::make_shared<image_transport::CameraSubscriber>(
-            image_transport::create_camera_subscription(
-                this,
-                "current_image",
-                std::bind(&ImgTransform::image_callback, this, std::placeholders::_1, std::placeholders::_2),
-                "compressed",
-                rclcpp::QoS {10}.get_rmw_qos_profile()
-            )
+        //std::make_shared<image_transport::Subscriber>(
+        // sub_current_img_ = this->create_subscription<sensor_msgs::msg::CompressedImage>(
+        //     "/current_image/compressed", 10, std::bind(
+        //         &ImgTransform::image_callback,
+        //         this, std::placeholders::_1)
+        //     // image_transport::create_subscription(
+        //         // this,
+        //         // "current_image",
+        //         // std::bind(&ImgTransform::image_callback, this, std::placeholders::_1, std::placeholders::_2),
+        //         // "compressed",
+        //         // rclcpp::QoS {10}.get_rmw_qos_profile()
+            
+        // );
+
+        sub_current_img_ = this->create_subscription<sensor_msgs::msg::CompressedImage>(
+            "/current_image/compressed", 10,
+            std::bind(&ImgTransform::image_callback, this, std::placeholders::_1)
         );
 
-        // rclcpp::QoS {10}.get_rmw_qos_profile()
+        // publish robot path to see where it has been
+        pub_path_ = this->create_publisher<nav_msgs::msg::Path>("path", 10);
 
-        //a transform broadcaster to publish position and orientation of the turtlebot
-        tf_static_broadcaster_ = std::make_shared<tf2_ros::StaticTransformBroadcaster>(*this);
+        // publish transforms for cpl_slam
+        pub_transform_ = this->create_publisher<img_transform::msg::Transform>("transform", 10);
+
+        // publish robot state for cpl_slam
+        pub_robot_state_ = this->create_publisher<img_transform::msg::Transform>("robot_state", 10);
+
+        tf_broadcaster_ =
+            std::make_unique<tf2_ros::TransformBroadcaster>(*this);
+
+        // rclcpp::QoS {10}.get_rmw_qos_profile()
 
         // publish raw image
         // referenced from Nick Morales: https://github.com/ngmor/unitree_camera/blob/main/unitree_camera/src/img_publisher.cpp
@@ -106,17 +130,6 @@ class ImgTransform : public rclcpp::Node
                 rclcpp::QoS {10}.get_rmw_qos_profile()
             )
         );
-
-        // raspi_cam_sub_.subscribe(this, "current_image/compressed", custom_camera_qos_profile);
-        // raspi_cam_info_sub_.subscribe(this, "camera_info", custom_camera_qos_profile);
-
-        // // sync.reset(new Sync(MySyncPolicy(1), raspi_cam_sub_, raspi_cam_info_sub_));
-
-        // sync = std::make_shared<message_filters::TimeSynchronizer<sensor_msgs::msg::Image, sensor_msgs::msg::CameraInfo>>(
-        // raspi_cam_sub_, raspi_cam_info_sub_, 10);
-        // sync->registerCallback(
-        //     std::bind(
-        //         &ImgTransform::synchronized_img_callback, this, std::placeholders::_1, std::placeholders::_2));
 
         // Timer
         declare_parameter("rate", 200);
@@ -133,21 +146,18 @@ class ImgTransform : public rclcpp::Node
         void timer_callback()
         {
             if (first){
-                prev_pos(0) = 0.0;
-                prev_pos(1) = 0.0;
-                prev_pos(2) = z;
-                prev_pos(3) = 1.0;
-                rotation_mat_prev.row(0) << 1.0, 0.0, 0.0;
-                rotation_mat_prev.row(1) << 0.0, 1.0, 0.0;
-                rotation_mat_prev.row(2) << 0.0, 0.0, 1.0;
+                rotation_current.row(0) << 1.0, 0.0, 0.0;
+                rotation_current.row(1) << 0.0, 1.0, 0.0;
+                rotation_current.row(2) << 0.0, 0.0, 1.0;
+                translation_current(0) = 0.0;
+                translation_current(1) = 0.0;
+                translation_current(1) = 0.0;
+                Sophus::SE3d Transformation_prev(rotation_current, translation_current);
             }
-            // RCLCPP_INFO(rclcpp::get_logger("message"), "NEW TRANSFORM!!!!");
-            if (!current_img.empty() && !prev_img.empty()) // && done != 1)
-            // if (sizeof(keypoints_1) > 6)
-            {
-                // RCLCPP_INFO(rclcpp::get_logger("right_rad"), "sending back response: [%d]", right_rad);
-                // RCLCPP_INFO(rclcpp::get_logger("message"), "NEW TRANSFORM!!!!");
 
+            Eigen::Matrix<double, 4, 4> Transformation_current = Transformation_prev.matrix();
+            if (!current_img.empty() && !prev_img.empty()) // && done != 1)
+            {
                 auto begin_total = std::chrono::high_resolution_clock::now();
                 Mat descriptors_1, descriptors_2;
                 Ptr<FeatureDetector> detector = ORB::create();
@@ -159,7 +169,6 @@ class ImgTransform : public rclcpp::Node
                 detector->detect ( prev_img,keypoints_1 );
                 detector->detect ( current_img,keypoints_2 );
 
-                // RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 1");
                 descriptor->compute ( prev_img, keypoints_1, descriptors_1 );
                 descriptor->compute ( current_img, keypoints_2, descriptors_2 );
 
@@ -187,18 +196,15 @@ class ImgTransform : public rclcpp::Node
                     rclcpp::shutdown();
                 }
                 double min_dist=10000, max_dist=0;
-                // RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 2");
 
                 min_dist = 10.0;
 
                 // sort and then take a certain num of matches every time (use std sort)
 
                 std::vector< DMatch > good_matches;
-                RCLCPP_INFO(rclcpp::get_logger("message"), "Matches size: %ld", matches.size());
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "Matches size: %ld", matches.size());
                 // std::sort(matches.begin(), matches.end(), img_transform::compare);
 
-
-                Eigen::VectorXd current_pos(4);
                 if (matches.size() < 12)
                 {
                     matched = false;
@@ -250,8 +256,11 @@ class ImgTransform : public rclcpp::Node
                     RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
                     RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
                     RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    current_pos = Transformation_prev.inverse().matrix()*prev_pos;
-                    rotation_mat = rotation_mat_prev;
+                    rotation_current = rotation_mat;
+                    translation_current = translation;
+                    Sophus::SE3d Transformation(rotation_mat, translation);
+                    Sophus::SE3d Trans = Transformation_prev*Transformation;
+                    Transformation_current = Trans.matrix();
                 }
                 else{
                     matched = true;
@@ -261,19 +270,8 @@ class ImgTransform : public rclcpp::Node
 
                     for (int i = 0; i < 12; i++)
                     {
-                        // RCLCPP_INFO(rclcpp::get_logger("message"), "Match distances: %f", matches[i].distance);
                         good_matches.push_back(matches[i]);
                     }
-
-                    // for ( int i = 0; i < descriptors_1.rows; i++ )
-                    // {
-                    //     if ( matches[i].distance <= min ( 2*min_dist, 30.0 ) )s
-                    //     {
-                    //         good_matches.push_back ( matches[i] );
-                    //     }
-                    // }
-
-                    // std::cout << "num of matches: " << good_matches.size() << std::endl;
 
 
                     float f_1 = 295.009696;
@@ -283,13 +281,9 @@ class ImgTransform : public rclcpp::Node
                     std::vector<float> key1_xw;
                     std::vector<float> key1_yw;
                     std::vector<float> key1_zw;
-                    // std::vector<float> key1_xp;
-                    // std::vector<float> key1_yp;
                     std::vector<float> key2_xw;
                     std::vector<float> key2_yw;
                     std::vector<float> key2_zw;
-                    // std::vector<float> key2_xp;
-                    // std::vector<float> key2_yp;
 
                     // first get transform point by multiplying by camera matrix
                     int counter_matches = 0;
@@ -300,20 +294,14 @@ class ImgTransform : public rclcpp::Node
                         float k2_yw = (z/f_2)*(keypoints_2.at(good_matches[i].trainIdx).pt.y - p_2*z);
 
                         key1_xw.push_back(k1_xw);
-                        // std::cout << "x1: " << k1_xw << std::endl;
                         key1_yw.push_back(k1_yw);
                         key1_zw.push_back(z);
-                        // key1_xp.push_back(keypoints_1.at(good_matches[i].queryIdx).pt.x);
-                        // key1_yp.push_back(keypoints_1.at(good_matches[i].queryIdx).pt.y);
                         key2_xw.push_back(k2_xw);
                         key2_yw.push_back(k2_yw);
                         key2_zw.push_back(z);
-                        // key2_xp.push_back(keypoints_2.at(good_matches[i].trainIdx).pt.x);
-                        // key2_yp.push_back(keypoints_2.at(good_matches[i].trainIdx).pt.y);
 
                         counter_matches++;
                     }
-                    // RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 3");
 
                     // Convert the point cloud to Eigen
                     size_t N = good_matches.size();
@@ -325,7 +313,6 @@ class ImgTransform : public rclcpp::Node
                         src.col(i) << key1_xw.at(i), key1_yw.at(i), key1_zw.at(i);
                         std::cout << "z1: " << key1_zw.at(i) << std::endl;
                     }
-                    // RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 10");
 
                     // Homogeneous coordinates
                     Eigen::Matrix<double, 4, Eigen::Dynamic> src_h;
@@ -335,7 +322,6 @@ class ImgTransform : public rclcpp::Node
 
                     // Apply an arbitrary SE(3) transformation
                     Eigen::Matrix4d T;
-                    // RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 11");
 
                     Eigen::Matrix<double, 3, Eigen::Dynamic> tgt(3, N);
                     for (size_t i = 0; i < N; ++i) {
@@ -343,7 +329,6 @@ class ImgTransform : public rclcpp::Node
                         tgt.col(i) << key2_xw.at(i), key2_yw.at(i), key2_zw.at(i);
                         std::cout << "z2: " << key2_zw.at(i) << std::endl;
                     }
-                    // RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 12");
 
                     // Run TEASER++ registration
                     // Prepare solver parameters
@@ -356,7 +341,6 @@ class ImgTransform : public rclcpp::Node
                     params.rotation_estimation_algorithm =
                         teaser::RobustRegistrationSolver::ROTATION_ESTIMATION_ALGORITHM::GNC_TLS;
                     params.rotation_cost_threshold = 0.005;
-                    // RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 13");
 
                     // Solve with TEASER++
                     teaser::RobustRegistrationSolver solver(params);
@@ -365,7 +349,6 @@ class ImgTransform : public rclcpp::Node
                     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
                     auto solution = solver.getSolution();
-                    // RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 4");
 
                     // Compare results
                     std::cout << "=====================================" << std::endl;
@@ -391,191 +374,142 @@ class ImgTransform : public rclcpp::Node
                                     1000000.0
                                 << std::endl;
 
-                    // RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 6");
 
-                    // draw transformation on first image to visualize
-                    std::vector<float> trans_x;
-                    Eigen::Matrix<double, 3, Eigen::Dynamic> keypnts(3, N);
-                    Eigen::Matrix<double, 3, Eigen::Dynamic> keypnts2(3, N);
-                    for(int i = 0; i < N; i++){
-                        // std::cout << "i " << i << std::endl;
-                        keypnts.col(i) << key1_xw.at(i), key1_yw.at(i), key1_zw.at(i);
-                        keypnts2.col(i) << key2_xw.at(i), key2_yw.at(i), key2_zw.at(i);
-                    }
-                    // RCLCPP_INFO(rclcpp::get_logger("message"), "TEST 7");
-
-
-                    // np.array([[0,      -omg[2],  omg[1]],
-                    //      [omg[2],       0, -omg[0]],
-                    //      [-omg[1], omg[0],       0]])
-
-                    // Eigen::Matrix<double, 3, 3> transformation;
-                    // Eigen::Matrix<double, 3, 3> trans_mat;
-                    Eigen::VectorXd translation(3);
                     for (int i = 0; i < 3; i++){
                         rotation_mat.row(i) << solution.rotation(i,0), solution.rotation(i,1), solution.rotation(i,2);
                         translation(i) = solution.translation(i);
                     }
 
-                    // trans_mat.row(0) << 0, -solution.translation(2), solution.translation(1);
-                    // trans_mat.row(1) << solution.translation(2), 0, -solution.translation(0);
-                    // trans_mat.row(2) << -solution.translation(1), solution.translation(0), 0;
-                    // RCLCPP_INFO(rclcpp::get_logger("message"), "Transformation Matrix 3: %f %f %f", solution.rotation(2,0), solution.rotation(2,1), solution.rotation(2,2));
-
-                    // Eigen::Matrix<double, 4, 4> inv_trans;
-                    // Eigen::Matrix<double, 3, 3> inv_rot;
-                    // Eigen::VectorXd inv_rot_p(3);
-                    // inv_rot = rotation_mat.transpose();
-                    // inv_rot_p = -inv_rot*translation;
-                    // // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 1");
-                    // for (int i = 0; i < 3; i++)
-                    // {
-                    //     inv_trans.row(i) << inv_rot(i,0), inv_rot(i,1), inv_rot(i,2), inv_rot_p(i);
-                    //     RCLCPP_INFO(rclcpp::get_logger("message"), "Inverse Transform Matrix: %f %f %f %f", inv_rot(i,0), inv_rot(i,1), inv_rot(i,2), inv_rot_p(i));
-                    // }
-                    // inv_trans.row(3) << 0.0, 0.0, 0.0, 1.0;
-                    // RCLCPP_INFO(rclcpp::get_logger("message"), "Inverse Transform Matrix: %f %f %f %f", 0.0, 0.0, 0.0, 1.0);
                     Sophus::SE3d Transformation(rotation_mat, translation);
 
                     // TODO: get rid of
                     done = 1;
 
-                    // current_pos = transformation.inverse()*prev_pos;
-                    // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 3");
-                    current_pos = Transformation.inverse().matrix()*prev_pos;
-                    Eigen::Matrix<double, 4, 4> Inv_Trans = Transformation.inverse().matrix();
-
-                    // for (int i = 0; i < 3; i++){
-                    //     rotation_mat.row(i) << Inv_Trans(i,0), Inv_Trans(i,1), Inv_Trans(i,2);
-                    //     translation(i) = Inv_Trans(i,3);
-                    // }
-
-                    int error = (current_pos(0) - prev_pos(0)) + (current_pos(1) - prev_pos(1));
-
-                    // fix for if TEASER finds an unreasonable transformation
-                    if (error > 0.1)
-                    {
-                        current_pos = Transformation_prev.inverse().matrix()*prev_pos;
+                    Sophus::SE3d Trans = Transformation_prev*Transformation;
+                    Transformation_current = Trans.matrix();//Transformation_prev.matrix()*Transformation.matrix();
+                    for (int i = 0; i < 3; i++){
+                        rotation_current.row(i) << Transformation_current(i,0), Transformation_current(i,1), Transformation_current(i,2);
+                        translation_current(i) = Transformation_current(i,3);
                     }
-                    else
-                    {
-                        Transformation_prev = Transformation;
-                    }
-                    rotation_mat_prev = rotation_mat;
+                    Transformation_prev = Trans;
                 }
 
+
+                // publish path to see how the robot has moved
+                geometry_msgs::msg::PoseStamped pos;
+                path.header.stamp = this->get_clock()->now();
+                path.header.frame_id = "world";
+                pos.header.stamp = this->get_clock()->now();
+                pos.header.frame_id = "world";
+                pos.pose.position.x = translation_current(0);
+                pos.pose.position.y = translation_current(1);
+
+                Eigen::Quaterniond q(rotation_current);
+                geometry_msgs::msg::Quaternion msg_quaternion_path = tf2::toMsg(q);
+                pos.pose.orientation.x = msg_quaternion_path.x;
+                pos.pose.orientation.y = msg_quaternion_path.y;
+                pos.pose.orientation.z = msg_quaternion_path.z;
+                pos.pose.orientation.w = msg_quaternion_path.w;
+                path.poses.push_back(pos);
+                pub_path_->publish(path);
+
+
+                // publish frame to visualize orientation
                 geometry_msgs::msg::TransformStamped t;
                 t.header.stamp = this->get_clock()->now();
-                t.header.frame_id = parent_frame;
-                t.child_frame_id = child_frame + std::to_string(num_transforms);
-                RCLCPP_INFO(rclcpp::get_logger("message"), "Prev pos: %f %f %f %f", prev_pos(0), prev_pos(1), prev_pos(2), prev_pos(3));
-                RCLCPP_INFO(rclcpp::get_logger("message"), "Current pos: %f %f", current_pos(0), current_pos(1));
-                RCLCPP_INFO(rclcpp::get_logger("message"), "Current minus prev pos: %f %f", prev_pos(0) - current_pos(0), prev_pos(1) - current_pos(1));
+                t.header.frame_id = "previous";
+                t.child_frame_id = "current";
 
-                // RCLCPP_INFO(rclcpp::get_logger("message"), "Prev pos: %f %f", prev_pos(0), prev_pos(1));
+                t.transform.translation.x = translation_current(0);
+                t.transform.translation.y = translation_current(1);
+                t.transform.rotation.x = msg_quaternion_path.x;
+                t.transform.rotation.y = msg_quaternion_path.y;
+                t.transform.rotation.z = msg_quaternion_path.z;
+                t.transform.rotation.w = msg_quaternion_path.w;
 
-                t.transform.translation.x = current_pos(0) - prev_pos(0);
-                t.transform.translation.y = current_pos(1) - prev_pos(1);
-                // t.transform.translation.x = solution.translation(0);
-                // t.transform.translation.y = solution.translation(1);
-                total_trans_x += current_pos(0) - prev_pos(0);
-                total_trans_y += current_pos(1) - prev_pos(1);
-                // RCLCPP_INFO(rclcpp::get_logger("message"), "Translation: %f %f", t.transform.translation.x, t.transform.translation.y);
-
-                // RCLCPP_INFO(rclcpp::get_logger("message"), "Total Translation: %f %f", total_trans_x, total_trans_y);
-
-                // RCLCPP_INFO(rclcpp::get_logger("message"), "Current Pos: %f %f", current_pos(0), current_pos(1));
-
-                Eigen::Quaterniond q(rotation_mat);
-                geometry_msgs::msg::Quaternion msg_quaternion = tf2::toMsg(q);
-
-                // t.transform.rotation.x = q.x;
-                // t.transform.rotation.y = q.y;
-                // t.transform.rotation.z = q.z;
-                // t.transform.rotation.w = q.w;
+                tf_broadcaster_->sendTransform(t);
 
 
-                t.transform.rotation.x = msg_quaternion.x;
-                t.transform.rotation.y = msg_quaternion.y;
-                t.transform.rotation.z = msg_quaternion.z;
-                t.transform.rotation.w = msg_quaternion.w;
+                // publish transform for cpl_slam
+                img_transform::msg::Transform T_01;
+                img_transform::msg::Transform rob_state;
+                T_01.id = id;
+                rob_state.id = id;
+                for (int i = 0; i < 4; i++)
+                {
+                    T_01.row_1.push_back((Transformation.matrix())(0,i));
+                    T_01.row_2.push_back((Transformation.matrix())(1,i));
+                    T_01.row_3.push_back((Transformation.matrix())(2,i));
+                    T_01.row_4.push_back((Transformation.matrix())(3,i));
+                    rob_state.row_1.push_back((Transformation_current.matrix())(0,i));
+                    rob_state.row_2.push_back((Transformation_current.matrix())(1,i));
+                    rob_state.row_3.push_back((Transformation_current.matrix())(2,i));
+                    rob_state.row_4.push_back((Transformation_current.matrix())(3,i));
+                }
+
+                pub_transform_->publish(T_01);
+
+                pub_robot_state_->publish(rob_state);
 
                 num_transforms ++;
-                parent_frame = t.child_frame_id;
 
-                tf_static_broadcaster_->sendTransform(t);
-
-                prev_pos(0) = current_pos(0);
-                prev_pos(1) = current_pos(1);
-                prev_pos(2) = current_pos(2);
-                prev_pos(3) = current_pos(3);
                 first = false;
+                id ++;
             }
         }
 
         void image_callback(
-            const sensor_msgs::msg::Image::ConstSharedPtr& msg,
-            const sensor_msgs::msg::CameraInfo::ConstSharedPtr&
+            const sensor_msgs::msg::CompressedImage::ConstSharedPtr& msg
         ){
-            // imshow("subscribed_image",cv_bridge::toCvCopy(*msg, msg->encoding)->image);
-            // if (matched == true)
+            auto end_total = std::chrono::high_resolution_clock::now();
+            auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(end_total - begin_total);
+            // every 10 Hz
+            // RCLCPP_INFO(rclcpp::get_logger("message"), "Elapsed time: %ld", elapsed.count());
+            // if ((elapsed*100) > std::chrono::duration<long int>(1))
             // {
-            //     prev_img.release();
-            //     prev_img = current_img.clone();
-            // }
             prev_img.release();
             prev_img = current_img.clone();
             current_img.release();
-            current_img = cv_bridge::toCvCopy(*msg, msg->encoding)->image;
+            // current_img = cv_bridge::toCvCopy(*msg, msg->encoding)->image;
+            current_img = cv_bridge::toCvCopy(*msg, sensor_msgs::image_encodings::BGR8)->image;
             done = 0;
+            begin_total = std::chrono::high_resolution_clock::now();
+            // }
         }
 
-        // void synchronized_img_callback(
-        //     const sensor_msgs::msg::Image::ConstSharedPtr& msg,
-        //     const sensor_msgs::msg::CameraInfo::ConstSharedPtr&
-        // ){
-        //     RCLCPP_INFO(rclcpp::get_logger("message"), "Testing");
-        //     if (matched == true)
-        //     {
-        //         prev_img.release();
-        //         prev_img = current_img.clone();
-        //     }
-        //     current_img.release();
-        //     current_img = cv_bridge::toCvCopy(*msg, msg->encoding)->image;
-        //     done = 0;
-        // }
-
         rclcpp::TimerBase::SharedPtr timer_;
-        std::shared_ptr<image_transport::CameraSubscriber> sub_current_img_;
-        std::shared_ptr<tf2_ros::StaticTransformBroadcaster> tf_static_broadcaster_;
+        rclcpp::Subscription<sensor_msgs::msg::CompressedImage>::SharedPtr sub_current_img_;
+        std::unique_ptr<tf2_ros::TransformBroadcaster> tf_broadcaster_;
         sensor_msgs::msg::CameraInfo cam_info_;
         std::shared_ptr<image_transport::CameraPublisher> pub_keypoint_img_;
+        rclcpp::Publisher<nav_msgs::msg::Path>::SharedPtr pub_path_;
+        rclcpp::Publisher<img_transform::msg::Transform>::SharedPtr pub_transform_;
+        rclcpp::Publisher<img_transform::msg::Transform>::SharedPtr pub_robot_state_;
 
-        // message_filters::Subscriber<sensor_msgs::msg::Image> raspi_cam_sub_;
-        // message_filters::Subscriber<sensor_msgs::msg::CameraInfo> raspi_cam_info_sub_;
-        // typedef message_filters::sync_policies::ApproximateTime<sensor_msgs::msg::Image , 
-        // sensor_msgs::msg::CameraInfo> MySyncPolicy;
-        // // typedef message_filters::Synchronizer<MySyncPolicy> Sync;
-        // std::shared_ptr<message_filters::TimeSynchronizer<sensor_msgs::msg::Image, sensor_msgs::msg::CameraInfo>> sync;
 
         Mat current_img;
         Mat prev_img;
         int done = 0;
         std::string child_frame = "current";
         std::string parent_frame = "previous";
-        Eigen::VectorXd prev_pos = Eigen::VectorXd(4);
         int num_transforms = 0;
         bool first = true;
         tf2::Quaternion q;
-        // std::vector<KeyPoint> keypoints_1, keypoints_2;
         int count = 0;
         double total_trans_x = 0;
         double total_trans_y = 0;
         bool matched = true;
         float z = 0.095;
         Sophus::SE3d Transformation_prev;
-        Eigen::Matrix<double, 3, 3> rotation_mat_prev;
+        Sophus::SE3d Trans;
+        Sophus::SE3d Transformation;
         Eigen::Matrix<double, 3, 3> rotation_mat;
+        Eigen::Matrix<double, 3, 3> rotation_current;
+        Eigen::VectorXd translation = Eigen::VectorXd(3);
+        Eigen::VectorXd translation_current = Eigen::VectorXd(3);
+        nav_msgs::msg::Path path;
+        std::chrono::system_clock::time_point begin_total = std::chrono::high_resolution_clock::now();
+        int id = 1;
 };
 
 int main(int argc, char** argv)

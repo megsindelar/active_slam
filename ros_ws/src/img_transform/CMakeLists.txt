@@ -29,11 +29,12 @@ find_package(nuturtlebot_msgs REQUIRED)
 find_package(Sophus REQUIRED)
 find_package(std_srvs REQUIRED)
 find_package(message_filters REQUIRED)
+find_package(nav_msgs REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-rosidl_generate_interfaces(${PROJECT_NAME}_msg "msg/Keypoints.msg" LIBRARY_NAME ${PROJECT_NAME})
+rosidl_generate_interfaces(${PROJECT_NAME}_msg "msg/Keypoints.msg" "msg/Transform.msg" LIBRARY_NAME ${PROJECT_NAME})
 rosidl_get_typesupport_target(cpp_typesupport_target ${PROJECT_NAME}_msg "rosidl_typesupport_cpp")
 
 include_directories(include)
@@ -43,6 +44,8 @@ add_executable(img_transform src/img_transform.cpp)
 add_executable(video_frequency src/video_frequency.cpp)
 
 add_executable(wheel_control src/wheel_control.cpp)
+
+add_executable(cpl_slam_node src/cpl_slam_node.cpp)
 
 add_library(transform src/transform.cpp)
 
@@ -62,6 +65,7 @@ ament_target_dependencies(img_transform
   OpenCV
   Sophus
   message_filters
+  nav_msgs
 )
 
 ament_target_dependencies(video_frequency
@@ -85,17 +89,14 @@ ament_target_dependencies(wheel_control
   std_srvs
 )
 
-# ament_target_dependencies(sort
-#   rclcpp
-#   std_msgs
-#   OpenCV
-# )
+ament_target_dependencies(cpl_slam_node
+  rclcpp
+  std_msgs
+  geometry_msgs
+  nuturtlebot_msgs
+  std_srvs
+)
 
-
-# include_directories(${OpenCV_INCLUDE_DIRS}
-#                     ${PYTHON3_INCLUDE_DIRS}
-#                     ${NumPy_INCLUDE_DIRS}
-#                     ${CMAKE_SOURCE_DIR}/headers)
 
 include_directories(SYSTEM 
   ${OpenCV_INCLUDE_DIRS}
@@ -129,6 +130,18 @@ target_link_libraries(wheel_control ${OpenCV_LIBS}
   ${PYTHON_LIBRARIES}
   Python3::NumPy
 )
+
+target_link_libraries(cpl_slam_node ${OpenCV_LIBS} 
+  Eigen3::Eigen 
+  teaserpp::teaser_registration 
+  teaserpp::teaser_io
+  transform
+  ${PYTHON_LIBRARIES}
+  Python3::NumPy
+  "${cpp_typesupport_target}"
+)
+
+target_link_libraries(transform Eigen3::Eigen)
 
 target_compile_features(transform PUBLIC cxx_std_17)
 

@@ -34,7 +34,6 @@ public:
 
 private:
   /// \brief timer callback running at a set frequency
-  /// publish: /cmd_vel (geometry_msgs/msg/Twist)
   void timer_callback()
   {
     // max linear is 0.26 m/s and max angular is 1.82 m/s
