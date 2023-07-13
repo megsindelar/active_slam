@@ -16,6 +16,8 @@
 #include "turtlebot_control/msg/wheel_commands.hpp"
 #include "rgb_lights.hpp"
 #include "geometry_msgs/msg/twist.hpp"
+#include <sensor_msgs/msg/image.hpp>
+#include <sensor_msgs/msg/camera_info.hpp>
 
 using namespace std;
 using namespace cv;
@@ -60,7 +62,7 @@ class TurtlebotControl : public rclcpp::Node
             image_transport::create_camera_publisher(
                 this,
                 "current_image",
-                custom_camera_qos_profile
+                rclcpp::QoS {10}.get_rmw_qos_profile()
             )
         );
 
