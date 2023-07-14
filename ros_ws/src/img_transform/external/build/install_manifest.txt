@@ -1,0 +1,15 @@
+/usr/local/lib/libSESync.so
+/usr/local/include/SESync/StiefelProduct.h
+/usr/local/include/SESync/RelativePoseMeasurement.h
+/usr/local/include/SESync/SESync_types.h
+/usr/local/include/SESync/SESync_utils.h
+/usr/local/include/SESync/SESyncProblem.h
+/usr/local/include/SESync/SESync.h
+/usr/local/lib/libCPL-SLAM.so
+/usr/local/include/CPL-SLAM/Oblique.h
+/usr/local/include/CPL-SLAM/RelativePoseMeasurement.h
+/usr/local/include/CPL-SLAM/RelativeLandmarkMeasurement.h
+/usr/local/include/CPL-SLAM/CPL-SLAM_types.h
+/usr/local/include/CPL-SLAM/CPL-SLAM_utils.h
+/usr/local/include/CPL-SLAM/CPL-SLAMProblem.h
+/usr/local/include/CPL-SLAM/CPL-SLAM.h

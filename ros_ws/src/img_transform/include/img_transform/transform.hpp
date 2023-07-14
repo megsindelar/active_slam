@@ -18,12 +18,14 @@ namespace img_transform
 
     // struct for VERTEX_SE2 for g2o files
     struct Vertex{
+        std::string type;
         int id;
         struct Vector2D state;
     };
 
     // struct for EDGE_SE2 for g2o files
     struct Edge{
+        std::string type;
         int id_a;
         int id_b;
         struct Vector2D transform;

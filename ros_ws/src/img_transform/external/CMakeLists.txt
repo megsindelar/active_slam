@@ -58,8 +58,8 @@ message(STATUS "Eigen3 include directory: ${EIGEN3_INCLUDE_DIR}\n")
 
 # FIND ADDITIONAL LIBRARIES
 # These next operations make use of the .cmake files shipped with Eigen3
-find_package(SPQR REQUIRED)
-find_package(Cholmod REQUIRED)
+find_package(SPQR CONFIG REQUIRED PATHS "/home/megsindelar/Final_Project/SuiteSparse/SPQR/cmake_modules")
+find_package(CHOLMOD CONFIG REQUIRED PATHS "/home/megsindelar/Final_Project/SuiteSparse/CHOLMOD/cmake_modules")
 find_package(BLAS REQUIRED)
 
 
@@ -76,7 +76,6 @@ if(OPENMP_FOUND)
 message(STATUS "\nFound OpenMP! Turning on support for parallelization\n")
 endif()
 endif()
-
 
 # FIND SPECTRA
 # Spectra doesn't ship with a .cmake file, but it's header-only, so it suffices to simply determine it's top-level directory
@@ -150,16 +149,16 @@ add_library(SESync SHARED ${SESync_HDRS} ${SESync_SRCS})
 target_include_directories(SESync PRIVATE ${SESync_PRIVATE_INCLUDES})
 target_include_directories(SESync PUBLIC ${SESync_INCLUDES})
 target_link_libraries(SESync Optimization ${BLAS_LIBRARIES} ${CHOLMOD_LIBRARIES} ${SPQR_LIBRARIES} ${M} ${LAPACK})
-install(TARGETS SESync DESTINATION /usr/local/lib)
-install(FILES ${SESync_HDRS} DESTINATION /usr/local/include/SESync)
+# install(TARGETS SESync DESTINATION /usr/local/lib)
+# install(FILES ${SESync_HDRS} DESTINATION /usr/local/include/SESync)
 
 # Build the CPL-SLAM library
 add_library(CPL-SLAM SHARED ${CPL-SLAM_HDRS} ${CPL-SLAM_SRCS})
 target_include_directories(CPL-SLAM PRIVATE ${CPL-SLAM_PRIVATE_INCLUDES})
 target_include_directories(CPL-SLAM PUBLIC ${CPL-SLAM_INCLUDES})
 target_link_libraries(CPL-SLAM Optimization ${BLAS_LIBRARIES} ${CHOLMOD_LIBRARIES} ${SPQR_LIBRARIES} ${M} ${LAPACK})
-install(TARGETS CPL-SLAM DESTINATION /usr/local/lib)
-install(FILES ${CPL-SLAM_HDRS} DESTINATION /usr/local/include/CPL-SLAM)
+# install(TARGETS CPL-SLAM DESTINATION /usr/local/lib)
+# install(FILES ${CPL-SLAM_HDRS} DESTINATION /usr/local/include/CPL-SLAM)
 
 if(OPENMP_FOUND)
 # Add additional compilation flags to enable OpenMP support

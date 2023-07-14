@@ -5,6 +5,8 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
+set(CMAKE_PREFIX_PATH /path/to/spqr/installation)
+
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
@@ -30,14 +32,54 @@ find_package(Sophus REQUIRED)
 find_package(std_srvs REQUIRED)
 find_package(message_filters REQUIRED)
 find_package(nav_msgs REQUIRED)
+# find_package(SPQR CONFIG REQUIRED PATHS "/home/megsindelar/Final_Project/SuiteSparse/SPQR/cmake_modules")
+# find_package(CHOLMOD CONFIG REQUIRED PATHS "/home/megsindelar/Final_Project/SuiteSparse/CHOLMOD/cmake_modules")
+# find_package(SuiteSparse REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
+
+
+# set(SPQR_LIBRARIES "/path/to/SPQR/lib/libspqr.so")  # Adjust the library path and name as necessary
+
+
+
+
+# # Locate CPL_SLAM library
+# find_path(SPINNAKER_INCLUDE_DIR NAMES Spinnaker.h PATHS /opt/spinnaker/include)
+# find_library(SPINNAKER_LIBRARY NAMES Spinnaker PATHS /opt/spinnaker/lib)
+
+# # Check if Spinnaker library and header files are found
+# if (SPINNAKER_INCLUDE_DIR AND SPINNAKER_LIBRARY)
+#     set(SPINNAKER_FOUND TRUE)
+# else()
+#     set(SPINNAKER_FOUND FALSE)
+# endif()
+
+# # Provide information about Spinnaker to CMake
+# if (SPINNAKER_FOUND)
+#     if (NOT Spinnaker_FOUND)
+#         set(Spinnaker_FOUND TRUE)
+#         set(Spinnaker_INCLUDE_DIRS ${SPINNAKER_INCLUDE_DIR})
+#         set(Spinnaker_LIBRARIES ${SPINNAKER_LIBRARY})
+#     endif()
+# endif()
+# message("SPINNAKER_FOUND: ${SPINNAKER_FOUND}")
+
+# # Provide variables to the user
+# mark_as_advanced(SPINNAKER_INCLUDE_DIR SPINNAKER_LIBRARY)
+
+# include(external/CMakeLists.txt)
+
+add_subdirectory(external)
+
+
+
 rosidl_generate_interfaces(${PROJECT_NAME}_msg "msg/Keypoints.msg" "msg/Transform.msg" LIBRARY_NAME ${PROJECT_NAME})
 rosidl_get_typesupport_target(cpp_typesupport_target ${PROJECT_NAME}_msg "rosidl_typesupport_cpp")
 
-include_directories(include)
+include_directories(include external/Optimization/include external/SE-Sync/include)
 
 add_executable(img_transform src/img_transform.cpp)
 
