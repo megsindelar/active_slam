@@ -30,7 +30,8 @@ find_package(teaserpp REQUIRED)
 find_package(PythonLibs REQUIRED)
 find_package(Python3 COMPONENTS Interpreter Development NumPy REQUIRED)
 find_package(PythonLibs 3.0 REQUIRED)
-find_package(geometry_msgs REQUIRED)
+find_package(
+     REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
@@ -40,9 +41,7 @@ find_package(nuturtlebot_msgs REQUIRED)
 find_package(Sophus REQUIRED)
 find_package(std_srvs REQUIRED)
 find_package(nav_msgs REQUIRED)
-# find_package(CHOLMOD REQUIRED)
-# find_package(CPL-SLAM REQUIRED)
-# find_package(SESync REQUIRED)
+find_package(visualization_msgs REQUIRED)
 
 # set(OPTIMIZATION_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Optimization/ CACHE PATH "Path to top-level directory of Optimization (the one containing CMakeLists.txt)")
 
@@ -114,6 +113,7 @@ ament_target_dependencies(se_sync
   nuturtlebot_msgs
   std_srvs
   nav_msgs
+  visualization_msgs
 #   CPL-SLAM
 #   SESync
 )
@@ -170,6 +170,7 @@ target_link_libraries(se_sync ${OpenCV_LIBS}
 
 target_link_libraries(transform
   Eigen3::Eigen
+  SESync
 )
 
 # target_link_libraries(transform Eigen3::Eigen)

@@ -9,8 +9,13 @@
 #include "SESync/SESync_utils.h"
 #include <Eigen/Core>
 
-// #include <visualization_msgs/msg/marker_array.hpp>
-// #include <visualization_msgs/msg/marker.hpp>
+#include <Eigen/CholmodSupport>
+#include <Eigen/Geometry>
+#include <Eigen/SPQRSupport>
+
+#include <visualization_msgs/msg/marker_array.hpp>
+#include <visualization_msgs/msg/marker.hpp>
+#include "geometry_msgs/msg/point.hpp"
 
 using namespace std;
 using namespace SESync;
@@ -35,13 +40,13 @@ public:
         &SE_SYNC::transform_callback,
         this, std::placeholders::_1));
 
-    // pub_nodes_ = this->create_publisher<visualization_msgs::msg::MarkerArray>(
-    //   "nodes", 10);
+    pub_nodes_ = this->create_publisher<visualization_msgs::msg::MarkerArray>(
+      "nodes", 10);
 
-    // pub_edges_ = this->create_publisher<visualization_msgs::msg::MarkerArray>(
-    //   "edges", 10);
+    pub_edges_ = this->create_publisher<visualization_msgs::msg::MarkerArray>(
+      "edges", 10);
 
-    // // subscriber to robot state
+    // subscriber to robot state
     // sub_robot_state_ = this->create_subscription<img_transform::msg::Transform>(
     //   "/robot_state", 10, std::bind(
     //     &SE_SYNC::robot_state_callback,
@@ -57,101 +62,202 @@ private:
     ////////////////////////////////////////////////////////////////////////////////////////////
     // SE_SYNC
     ////////////////////////////////////////////////////////////////////////////////////////////
-    size_t num_poses = 0;
-    measurements_t measurements = read_g2o_file("/home/megsindelar/Final_Project/ros_ws/src/active_slam/img_transform/data/city10000.g2o", num_poses);
 
-    if (measurements.size() == 0) {
-        throw std::logic_error("Error: No measurements were read! Are you sure the file exists?");
-    }
+    // measurements_t measurements = read_g2o_file("/home/megsindelar/Final_Project/ros_ws/src/active_slam/img_transform/data/city10000.g2o", num_poses);
+    // Preallocate output vector
 
-    SESyncOpts opts;
-    opts.verbose = true; // Print output to stdout
+    // A single measurement, whose values we will fill in
+    RelativePoseMeasurement measurement;
 
-    // Initialization method
-    // Options are:  Chordal, Random
-    opts.initialization = Initialization::Chordal;
+    // A string used to contain the contents of a single line
+    string line;
 
-    // Specific form of the synchronization problem to solve
-    // Options are: Simplified, Explicit, SOSync
-    opts.formulation = Formulation::Simplified;
+    // A string used to extract tokens from each line one-by-one
+    string token;
 
-    //   Initial
-    opts.num_threads = 4;
+    // Preallocate various useful quantities
+    Scalar dx, dy, dz, dtheta, dqx, dqy, dqz, dqw, I11, I12, I13, I14, I15, I16,
+        I22, I23, I24, I25, I26, I33, I34, I35, I36, I44, I45, I46, I55, I56, I66;
 
-    // #ifdef GPERFTOOLS
-    // ProfilerStart("SE-Sync.prof");
-    // #endif
+    size_t i, j;
 
-    //   / RUN SE-SYNC!
-    SESyncResult results = SESync::SESync(measurements, opts);
+    // while (std::getline(infile, line)) {
+
+    // This is a 2D pose measurement
+
+    /** The g2o format specifies a 2D relative pose measurement in the
+     * following form:
+     *
+     * EDGE_SE2 id1 id2 dx dy dtheta, I11, I12, I13, I22, I23, I33
+     *
+     */
+
+    // Extract formatted output
+    // strstrm >> i >> j >> dx >> dy >> dtheta >> I11 >> I12 >> I13 >> I22 >>
+    //     I23 >> I33;
+    // i = edges[i].id_a;
+    // j = edges[i].id_b;
+    // dx = edges[i].transform.x;
+    // dy = edges[i].transform.y;
+    // dtheta = edges[i].transform.theta;
+    // I11 = edges[i].info_matrix.row(0)(0);
+    // I12 = edges[i].info_matrix.row(0)(1);
+    // I13 = edges[i].info_matrix.row(0)(2);
+    // I22 = edges[i].info_matrix.row(1)(1);
+    // I23 = edges[i].info_matrix.row(1)(2);
+    // I33 = edges[i].info_matrix.row(2)(2);
+
+
+    // // Fill in elements of this measurement
+
+    // // Pose ids
+    // measurement.i = i;
+    // measurement.j = j;
+
+    // Raw measurements
+    measurement.t.resize(2);
+    measurement.t = Eigen::Matrix<Scalar, 2, 1>(dx, dy);
+    measurement.R.resize(2,2);
+
+    measurement.R = Eigen::Rotation2D<Scalar>(dtheta).toRotationMatrix();
+    // measurement.R = test.eval();
+    // Eigen::Matrix2d test =
+    // measurement.R.resize(3,3);
+    // Eigen::MatrixXd test2 = test.cast<Scalar>();
+    // test.conservativeResize(2,2);
+    // test << 1;
+    // test = Eigen::Rotation2D<Scalar>(dtheta).toRotationMatrix();
+    // measurement.R = Eigen::Rotation2D<Scalar>(dtheta);
+    // measurement.R.toRotationMatrix();
+    // Matrix meas;
+    // meas << test.row(0)(0), test.row(0)(1), test.row(1)(0), test.row(1)(1);
+    // measurement.R << test.row(0);
+    // Eigen::Matrix2d test = Eigen::Rotation2D<Scalar>(dtheta).toRotationMatrix();
+    // Eigen::Matrix<Scalar, Eigen::Dynamic, Eigen::Dynamic>;
+    // meas(0,0) = 1.0; //test(0,0);
+    //, test(0,1), test(1,0), test(1,1);
+
+    // Eigen::Matrix<Scalar, 2, 2> TranInfo;
+    // TranInfo << I11, I12, I12, I22;
+    // measurement.tau = 2 / TranInfo.inverse().trace();
+
+    // measurement.kappa = I33;
+    
+    // // Update maximum value of poses found so far
+    // size_t max_pair = std::max<size_t>(measurement.i, measurement.j);
+
+    // num_poses = ((max_pair > num_poses) ? max_pair : num_poses);
+    // measurements.push_back(measurement);
+
+    // num_poses++; // Account for the use of zero-based indexing
+
+    // if (measurements.size() == 0) {
+    //     throw std::logic_error("Error: No measurements were read! Are you sure the file exists?");
+    // }
+
+    // SESyncOpts opts;
+    // opts.verbose = true; // Print output to stdout
+
+    // // Initialization method
+    // // Options are:  Chordal, Random
+    // opts.initialization = Initialization::Chordal;
+
+    // // Specific form of the synchronization problem to solve
+    // // Options are: Simplified, Explicit, SOSync
+    // opts.formulation = Formulation::Simplified;
+
+    // //   Initial
+    // opts.num_threads = 4;
+
+    // // #ifdef GPERFTOOLS
+    // // ProfilerStart("SE-Sync.prof");
+    // // #endif
+
+    // //   / RUN SE-SYNC!
+    // SESyncResult results = SESync::SESync(measurements, opts);
 
     ///////////////////////////////////////////////////////////////////////////////////////////
     // SE_SYNC - done
     ///////////////////////////////////////////////////////////////////////////////////////////
 
-    Eigen::MatrixXd xhat = results.xhat;
-    int trans_size = xhat.row(0).size()/3;
-    for (int i = 0; i < trans_size; i++){
-        double x = xhat.col(i)(0);
-        double y = xhat.col(i)(1);
-        Eigen::MatrixXd R = xhat.block(0, ((trans_size-1) + i), 2, 2);
-        double theta = img_transform::Rot2Theta(R);
-    }
+    // make an id for each pose and each pose pair for edges (like connecting non-sequential nodes for looping back)
 
-//     visualization_msgs::msg::MarkerArray node_markers;
-//     visualization_msgs::msg::Marker node;
-//     node.header.frame_id = "world";
-//     node.header.stamp = this->get_clock()->now();
-//     node.id = 0;
-//     node.action = visualization_msgs::msg::Marker::ADD;
-//     node.pose.orientation.w = 1.0;
-//     node.pose.position.x = 0.0;
-//     node.pose.position.y = 0.0;
-//     node.type = visualization_msgs::msg::Marker::SPHERE;
-//     node.scale.x = 0.1;
-//     node.scale.y = 0.1;
-//     node.scale.z = 0.1;
-//     node.color.a = 1.0;
-//     node.color.r = 0.9;
-//     node.color.g = 0.3;
-//     node.color.b = 0.3;
+    // Eigen::MatrixXd xhat = results.xhat;
+    // vector<double> x;
+    // vector<double> y;
+    // vector<double> theta;
+    // // vector<int> ids;
+    // int trans_size = xhat.row(0).size()/3;
+    // for (int i = 0; i < trans_size; i++){
+    //     // ids.push_back()
+    //     x.push_back(xhat.col(i)(0));
+    //     y.push_back(xhat.col(i)(1));
+    //     Eigen::MatrixXd R = xhat.block(0, ((trans_size-1) + i), 2, 2);
+    //     theta.push_back(img_transform::Rot2Theta(R));
+    // }
 
-
-//     visualization_msgs::msg::MarkerArray edge_markers;
-//     visualization_msgs::msg::Marker edge;
-//     edge.header.frame_id = "world";
-//     edge.header.stamp = this->get_clock()->now();
-//     edge.id = 0;
-//     edge.action = visualization_msgs::msg::Marker::ADD;
-//     edge.pose.orientation.w = 1.0;
-//     edge.pose.position.x = 0.0;
-//     edge.pose.position.y = 0.0;
-//     edge.type = visualization_msgs::msg::Marker::SPHERE;
-//     edge.scale.x = 0.1;
-//     edge.scale.y = 0.1;
-//     edge.scale.z = 0.1;
-//     edge.color.a = 1.0;
-//     edge.color.r = 0.9;
-//     edge.color.g = 0.3;
-//     edge.color.b = 0.3;
+    // visualization_msgs::msg::MarkerArray node_markers;
+    // visualization_msgs::msg::Marker node;
+    // node.header.frame_id = "world";
+    // node.header.stamp = this->get_clock()->now();
+    // node.id = 0;
+    // node.action = visualization_msgs::msg::Marker::ADD;
+    // node.pose.orientation.w = 1.0;
+    // node.pose.position.x = 0.0;
+    // node.pose.position.y = 0.0;
+    // node.type = visualization_msgs::msg::Marker::SPHERE;
+    // node.scale.x = 0.1;
+    // node.scale.y = 0.1;
+    // node.scale.z = 0.1;
+    // node.color.a = 1.0;
+    // node.color.r = 0.9;
+    // node.color.g = 0.3;
+    // node.color.b = 0.3;
 
 
+    // visualization_msgs::msg::MarkerArray edge_markers;
+    // visualization_msgs::msg::Marker edge_m;
+    // edge_m.header.frame_id = "world";
+    // edge_m.header.stamp = this->get_clock()->now();
+    // edge_m.id = 0;
+    // edge_m.action = visualization_msgs::msg::Marker::ADD;
+    // edge_m.pose.orientation.w = 1.0;
+    // edge_m.pose.position.x = 0.0;
+    // edge_m.pose.position.y = 0.0;
+    // edge_m.type = visualization_msgs::msg::Marker::LINE_STRIP;
+    // edge_m.scale.x = 0.1;
+    // edge_m.scale.y = 0.1;
+    // edge_m.scale.z = 0.1;
+    // edge_m.color.a = 1.0;
+    // edge_m.color.r = 0.9;
+    // edge_m.color.g = 0.3;
+    // edge_m.color.b = 0.3;
 
-//     int id = 0;
-//     for (int i = 0; i < ; i++){
-        
-//         node_markers.markers.push_back(node);
-//         id++;
-//     }
+    // int id = 0;
+    // for (int i = 0; i < vertices.size(); i++){
+    //     node.id = id;
+    //     node.pose.position.x = vertices[i].state.x;
+    //     node.pose.position.y = vertices[i].state.y;
+    //     node_markers.markers.push_back(node);
+    //     id++;
+    // }
 
-//     for (int i = 0; i < ; i++){
-        
-//         edge_markers.markers.push_back(edge);
-//     }
+    // id = 0;
+    // // TODO: change later when having loop back to num_edges.size instead of x positions
+    // for (int i = 0; i < (x.size() - 1); i++){
+    //     edge_m.id = id;
+    //     geometry_msgs::msg::Point p;
+    //     p.x = x[i];
+    //     p.y = y[i];
+    //     edge_m.points.push_back(p);
+    //     p.x = x[i+1];
+    //     p.y = y[i+1];
+    //     edge_m.points.push_back(p);
+    //     edge_markers.markers.push_back(edge_m);
+    // }
 
-//     pub_nodes_->publish(node_markers);
-//     pub_edges_->publish(edge_markers);
-//   }
+    // pub_nodes_->publish(node_markers);
+    // pub_edges_->publish(edge_markers);
 
 
     // // publish path to see how the robot has moved
@@ -225,6 +331,8 @@ private:
   rclcpp::Subscription<img_transform::msg::Transform>::SharedPtr sub_transform_;
 //   rclcpp::Subscription<img_transform::msg::Transform>::SharedPtr sub_robot_state_;
 //   rclcpp::Publisher<nav_msgs::msg::Path>::SharedPtr pub_slam_path_;
+  rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr pub_nodes_;
+  rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr pub_edges_;
 
   img_transform::Vector2D transform;
   img_transform::Vector2D rob_state;
@@ -233,6 +341,8 @@ private:
   int id_trans = 0;
   int id_rob_state = 0;
   int a = 1;
+  size_t num_poses = 0;
+  measurements_t measurements;
 };
 
 int main(int argc, char * argv[])

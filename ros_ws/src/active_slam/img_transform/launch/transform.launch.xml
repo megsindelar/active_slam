@@ -14,4 +14,7 @@
 
   <node pkg="img_transform" exec="cpl_slam_node">
   </node>
+
+  <node pkg="img_transform" exec="se_sync">
+  </node>
 </launch>

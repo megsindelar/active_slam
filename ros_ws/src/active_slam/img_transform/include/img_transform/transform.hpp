@@ -6,30 +6,32 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/features2d/features2d.hpp>
 #include <Eigen/Core>
+#include "SESync/SESync.h"
+#include "SESync/SESync_utils.h"
 
 namespace img_transform
 {
     // 2D vector struct of x, y, and theta
     struct Vector2D{
-        double x;
-        double y;
-        double theta;
+        SESync::Scalar x;
+        SESync::Scalar y;
+        SESync::Scalar theta;
     };
 
     // struct for VERTEX_SE2 for g2o files
     struct Vertex{
         std::string type;
-        int id;
+        std::size_t id;
         struct Vector2D state;
     };
 
     // struct for EDGE_SE2 for g2o files
     struct Edge{
         std::string type;
-        int id_a;
-        int id_b;
+        std::size_t id_a;
+        std::size_t id_b;
         struct Vector2D transform;
-        Eigen::Matrix<double, 2, 3> info_matrix;
+        Eigen::Matrix<SESync::Scalar, 2, 3> info_matrix;
     };
 
     // convert rotation mat to yaw
