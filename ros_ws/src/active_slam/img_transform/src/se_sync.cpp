@@ -70,10 +70,10 @@ private:
     RelativePoseMeasurement measurement;
 
     // A string used to contain the contents of a single line
-    string line;
+    // string line;
 
     // A string used to extract tokens from each line one-by-one
-    string token;
+    // string token;
 
     // Preallocate various useful quantities
     Scalar dx, dy, dz, dtheta, dqx, dqy, dqz, dqw, I11, I12, I13, I14, I15, I16,
@@ -95,86 +95,70 @@ private:
     // Extract formatted output
     // strstrm >> i >> j >> dx >> dy >> dtheta >> I11 >> I12 >> I13 >> I22 >>
     //     I23 >> I33;
-    // i = edges[i].id_a;
-    // j = edges[i].id_b;
-    // dx = edges[i].transform.x;
-    // dy = edges[i].transform.y;
-    // dtheta = edges[i].transform.theta;
-    // I11 = edges[i].info_matrix.row(0)(0);
-    // I12 = edges[i].info_matrix.row(0)(1);
-    // I13 = edges[i].info_matrix.row(0)(2);
-    // I22 = edges[i].info_matrix.row(1)(1);
-    // I23 = edges[i].info_matrix.row(1)(2);
-    // I33 = edges[i].info_matrix.row(2)(2);
+    i = 0; //edges[i].id_a;
+    j = 1; //edges[i].id_b;  0.974351 -0.014717 0.0249173 50 0 0 50 0 100
+    dx = 0.974351; //edges[i].transform.x;
+    dy = -0.014717;//edges[i].transform.y;
+    dtheta = 0.0249173;//edges[i].transform.theta;
+    I11 = 50; //edges[i].info_matrix.row(0)(0);
+    I12 = 0; //edges[i].info_matrix.row(0)(1);
+    I13 = 0; //edges[i].info_matrix.row(0)(2);
+    I22 = 50; //edges[i].info_matrix.row(1)(1);
+    I23 = 0; //edges[i].info_matrix.row(1)(2);
+    I33 = 100; //edges[i].info_matrix.row(2)(2);
 
 
-    // // Fill in elements of this measurement
+    // Fill in elements of this measurement
 
-    // // Pose ids
-    // measurement.i = i;
-    // measurement.j = j;
+    // Pose ids
+    measurement.i = i;
+    measurement.j = j;
 
     // Raw measurements
     measurement.t.resize(2);
     measurement.t = Eigen::Matrix<Scalar, 2, 1>(dx, dy);
     measurement.R.resize(2,2);
-
     measurement.R = Eigen::Rotation2D<Scalar>(dtheta).toRotationMatrix();
-    // measurement.R = test.eval();
-    // Eigen::Matrix2d test =
-    // measurement.R.resize(3,3);
-    // Eigen::MatrixXd test2 = test.cast<Scalar>();
-    // test.conservativeResize(2,2);
-    // test << 1;
-    // test = Eigen::Rotation2D<Scalar>(dtheta).toRotationMatrix();
-    // measurement.R = Eigen::Rotation2D<Scalar>(dtheta);
-    // measurement.R.toRotationMatrix();
-    // Matrix meas;
-    // meas << test.row(0)(0), test.row(0)(1), test.row(1)(0), test.row(1)(1);
-    // measurement.R << test.row(0);
-    // Eigen::Matrix2d test = Eigen::Rotation2D<Scalar>(dtheta).toRotationMatrix();
-    // Eigen::Matrix<Scalar, Eigen::Dynamic, Eigen::Dynamic>;
-    // meas(0,0) = 1.0; //test(0,0);
-    //, test(0,1), test(1,0), test(1,1);
 
-    // Eigen::Matrix<Scalar, 2, 2> TranInfo;
-    // TranInfo << I11, I12, I12, I22;
-    // measurement.tau = 2 / TranInfo.inverse().trace();
+    Eigen::Matrix<Scalar, 2, 2> TranInfo;
+    TranInfo << I11, I12, I12, I22;
+    measurement.tau = 2 / TranInfo.inverse().trace();
 
-    // measurement.kappa = I33;
+    measurement.kappa = I33;
     
-    // // Update maximum value of poses found so far
-    // size_t max_pair = std::max<size_t>(measurement.i, measurement.j);
+    // Update maximum value of poses found so far
+    size_t max_pair = std::max<size_t>(measurement.i, measurement.j);
 
-    // num_poses = ((max_pair > num_poses) ? max_pair : num_poses);
-    // measurements.push_back(measurement);
+    num_poses = ((max_pair > num_poses) ? max_pair : num_poses);
+    measurements.push_back(measurement);
 
-    // num_poses++; // Account for the use of zero-based indexing
+    num_poses++; // Account for the use of zero-based indexing
 
-    // if (measurements.size() == 0) {
-    //     throw std::logic_error("Error: No measurements were read! Are you sure the file exists?");
-    // }
+    if (measurements.size() == 0) {
+        throw std::logic_error("Error: No measurements were read! Are you sure the file exists?");
+    }
+    else{
+        SESyncOpts opts;
+        opts.verbose = true; // Print output to stdout
 
-    // SESyncOpts opts;
-    // opts.verbose = true; // Print output to stdout
+        // Initialization method
+        // Options are:  Chordal, Random
+        opts.initialization = Initialization::Chordal;
 
-    // // Initialization method
-    // // Options are:  Chordal, Random
-    // opts.initialization = Initialization::Chordal;
+        // Specific form of the synchronization problem to solve
+        // Options are: Simplified, Explicit, SOSync
+        opts.formulation = Formulation::Simplified;
 
-    // // Specific form of the synchronization problem to solve
-    // // Options are: Simplified, Explicit, SOSync
-    // opts.formulation = Formulation::Simplified;
+        //   Initial
+        opts.num_threads = 4;
 
-    // //   Initial
-    // opts.num_threads = 4;
+        // #ifdef GPERFTOOLS
+        // ProfilerStart("SE-Sync.prof");
+        // #endif
 
-    // // #ifdef GPERFTOOLS
-    // // ProfilerStart("SE-Sync.prof");
-    // // #endif
-
-    // //   / RUN SE-SYNC!
-    // SESyncResult results = SESync::SESync(measurements, opts);
+        //   / RUN SE-SYNC!
+        SESyncResult results = SESync::SESync(measurements, opts);
+    }
 
     ///////////////////////////////////////////////////////////////////////////////////////////
     // SE_SYNC - done

@@ -7,12 +7,12 @@ endif()
 
 set(CMAKE_PREFIX_PATH /path/to/spqr/installation)
 
-# set(CHOLMOD_INSTALL_DIR "/usr/local/lib/cmake/SuiteSparse")
+# set(CHOLMOD_INSTALL_DIR "/home/megsindelar/Final_Project/SuiteSparse/CHOLMOD/cmake_modules")
 
 # set(SESYNC_INSTALL_DIR ${CMAKE_CURRENT_SOURCE_DIR}/external/)
 
 # Set the CMAKE_PREFIX_PATH to include the CHOLMOD installation directory
-# set(CMAKE_PREFIX_PATH ${CHOLMOD_INSTALL_DIR} ${SESYNC_INSTALL_DIR})
+# set(CMAKE_PREFIX_PATH ${CHOLMOD_INSTALL_DIR})
 
 # add_subdirectory(external)
 
@@ -30,8 +30,7 @@ find_package(teaserpp REQUIRED)
 find_package(PythonLibs REQUIRED)
 find_package(Python3 COMPONENTS Interpreter Development NumPy REQUIRED)
 find_package(PythonLibs 3.0 REQUIRED)
-find_package(
-     REQUIRED)
+find_package(geometry_msgs REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
