@@ -7,15 +7,6 @@ endif()
 
 set(CMAKE_PREFIX_PATH /path/to/spqr/installation)
 
-# set(CHOLMOD_INSTALL_DIR "/home/megsindelar/Final_Project/SuiteSparse/CHOLMOD/cmake_modules")
-
-# set(SESYNC_INSTALL_DIR ${CMAKE_CURRENT_SOURCE_DIR}/external/)
-
-# Set the CMAKE_PREFIX_PATH to include the CHOLMOD installation directory
-# set(CMAKE_PREFIX_PATH ${CHOLMOD_INSTALL_DIR})
-
-# add_subdirectory(external)
-
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
@@ -41,14 +32,8 @@ find_package(Sophus REQUIRED)
 find_package(std_srvs REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(visualization_msgs REQUIRED)
+find_package(turtlelib REQUIRED)
 
-# set(OPTIMIZATION_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Optimization/ CACHE PATH "Path to top-level directory of Optimization (the one containing CMakeLists.txt)")
-
-# # Run the Optimization package's CMake file
-# add_subdirectory(${OPTIMIZATION_DIR})
-
-# set(SPECTRA_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Spectra/include CACHE PATH "Path to top-level directory of Spectra template library")
-# add_library(SESync external/SE-Sync)
 include_directories(include)
 
 rosidl_generate_interfaces(${PROJECT_NAME}_msg "msg/Keypoints.msg" "msg/Transform.msg" LIBRARY_NAME ${PROJECT_NAME})
@@ -56,54 +41,56 @@ rosidl_get_typesupport_target(cpp_typesupport_target ${PROJECT_NAME}_msg "rosidl
 
 add_library(transform src/transform.cpp)
 
-# add_executable(img_transform src/img_transform.cpp)
+add_executable(img_transform src/img_transform.cpp)
 
-# add_executable(video_frequency src/video_frequency.cpp)
+add_executable(video_frequency src/video_frequency.cpp)
 
-# add_executable(wheel_control src/wheel_control.cpp)
+add_executable(wheel_control src/wheel_control.cpp)
 
 add_executable(se_sync src/se_sync.cpp)
 
+add_executable(wheel_encoder src/wheel_encoder.cpp)
+
 add_subdirectory(external)
 
-# ament_target_dependencies(img_transform
-#   rclcpp
-#   std_msgs
-#   sensor_msgs
-#   cv_bridge
-#   image_transport
-#   Eigen3
-#   teaserpp
-#   geometry_msgs
-#   tf2
-#   tf2_ros
-#   tf2_geometry_msgs
-#   tf2_eigen
-#   OpenCV
-#   Sophus
-#   nav_msgs
-# )
+ament_target_dependencies(img_transform
+  rclcpp
+  std_msgs
+  sensor_msgs
+  cv_bridge
+  image_transport
+  Eigen3
+  teaserpp
+  geometry_msgs
+  tf2
+  tf2_ros
+  tf2_geometry_msgs
+  tf2_eigen
+  OpenCV
+  Sophus
+  nav_msgs
+)
 
-# ament_target_dependencies(video_frequency
-#   rclcpp
-#   std_msgs
-#   sensor_msgs
-#   cv_bridge
-#   image_transport
-#   Eigen3
-#   teaserpp
-#   geometry_msgs
-#   tf2
-#   tf2_ros
-# )
+ament_target_dependencies(video_frequency
+  rclcpp
+  std_msgs
+  sensor_msgs
+  cv_bridge
+  image_transport
+  Eigen3
+  teaserpp
+  geometry_msgs
+  tf2
+  tf2_ros
+)
 
-# ament_target_dependencies(wheel_control
-#   rclcpp
-#   std_msgs
-#   geometry_msgs
-#   nuturtlebot_msgs
-#   std_srvs
-# )
+ament_target_dependencies(wheel_control
+  rclcpp
+  std_msgs
+  geometry_msgs
+  nuturtlebot_msgs
+  std_srvs
+)
 
 ament_target_dependencies(se_sync
   rclcpp
@@ -113,8 +100,19 @@ ament_target_dependencies(se_sync
   std_srvs
   nav_msgs
   visualization_msgs
-#   CPL-SLAM
-#   SESync
+)
+
+ament_target_dependencies(wheel_encoder
+  rclcpp
+  std_msgs
+  geometry_msgs
+  nuturtlebot_msgs
+  std_srvs
+  nav_msgs
+  visualization_msgs
+  turtlelib
+  tf2
+  tf2_ros
 )
 
 include_directories(SYSTEM 
@@ -124,34 +122,34 @@ include_directories(SYSTEM
 
 link_directories("usr/local/lib")
 
-# target_link_libraries(img_transform ${OpenCV_LIBS} 
-#   Eigen3::Eigen
-#   teaserpp::teaser_registration 
-#   teaserpp::teaser_io
-#   Sophus::Sophus
-#   transform
-#   ${PYTHON_LIBRARIES}
-#   Python3::NumPy
-#   "${cpp_typesupport_target}"
-# )
+target_link_libraries(img_transform ${OpenCV_LIBS} 
+  Eigen3::Eigen
+  teaserpp::teaser_registration 
+  teaserpp::teaser_io
+  Sophus::Sophus
+  transform
+  ${PYTHON_LIBRARIES}
+  Python3::NumPy
+  "${cpp_typesupport_target}"
+)
 
-# target_link_libraries(video_frequency ${OpenCV_LIBS} 
-#   Eigen3::Eigen 
-#   teaserpp::teaser_registration 
-#   teaserpp::teaser_io
-#   transform
-#   ${PYTHON_LIBRARIES}
-#   Python3::NumPy
-# )
+target_link_libraries(video_frequency ${OpenCV_LIBS} 
+  Eigen3::Eigen 
+  teaserpp::teaser_registration 
+  teaserpp::teaser_io
+  transform
+  ${PYTHON_LIBRARIES}
+  Python3::NumPy
+)
 
-# target_link_libraries(wheel_control ${OpenCV_LIBS} 
-#   Eigen3::Eigen 
-#   teaserpp::teaser_registration 
-#   teaserpp::teaser_io
-#   transform
-#   ${PYTHON_LIBRARIES}
-#   Python3::NumPy
-# )
+target_link_libraries(wheel_control ${OpenCV_LIBS} 
+  Eigen3::Eigen 
+  teaserpp::teaser_registration 
+  teaserpp::teaser_io
+  transform
+  ${PYTHON_LIBRARIES}
+  Python3::NumPy
+)
 
 target_link_libraries(se_sync ${OpenCV_LIBS} 
   Eigen3::Eigen 
@@ -162,17 +160,26 @@ target_link_libraries(se_sync ${OpenCV_LIBS}
   Python3::NumPy
   "${cpp_typesupport_target}"
   Optimization
-#   cholmod
-#   CPL-SLAM
   SESync
+)
+
+target_link_libraries(wheel_encoder ${OpenCV_LIBS} 
+  Eigen3::Eigen 
+  teaserpp::teaser_registration 
+  teaserpp::teaser_io
+  transform
+  ${PYTHON_LIBRARIES}
+  Python3::NumPy
+  "${cpp_typesupport_target}"
+  Optimization
+  SESync
+  turtlelib::turtlelib
 )
 
 target_link_libraries(transform
   Eigen3::Eigen
   SESync
 )
-
-# target_link_libraries(transform Eigen3::Eigen)
 
 target_compile_features(transform PUBLIC cxx_std_17)
 
@@ -190,10 +197,11 @@ endif()
 include_directories(SYSTEM ${matplotlib_SOURCE_DIR})
 
 install(TARGETS
-#   img_transform
-#   video_frequency
-#   wheel_control
+  img_transform
+  video_frequency
+  wheel_control
   se_sync
+  wheel_encoder
   DESTINATION lib/${PROJECT_NAME}
 )
 

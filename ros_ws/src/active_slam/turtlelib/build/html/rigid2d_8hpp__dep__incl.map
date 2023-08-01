@@ -1,0 +1,7 @@
+<map id="include/turtlelib/rigid2d.hpp" name="include/turtlelib/rigid2d.hpp">
+<area shape="rect" id="node1" title="Two&#45;dimensional rigid body transformations." alt="" coords="154,5,355,32"/>
+<area shape="rect" id="node2" href="$diff__drive_8hpp.html" title="Kinematics of wheeled mobile robots." alt="" coords="5,80,155,121"/>
+<area shape="rect" id="node4" href="$frame__main_8cpp.html" title="Tests functionality of rigid2D." alt="" coords="179,87,330,114"/>
+<area shape="rect" id="node5" href="$rigid2d_8cpp.html" title="perform 2D rigid body transformations and other functionality" alt="" coords="355,87,472,114"/>
+<area shape="rect" id="node3" href="$diff__drive_8cpp.html" title="Computes forward and inverse kinematics of turtlebot." alt="" coords="13,169,147,196"/>
+</map>

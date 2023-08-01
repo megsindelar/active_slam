@@ -106,10 +106,10 @@ class ImgTransform : public rclcpp::Node
         // publish robot path to see where it has been
         pub_path_ = this->create_publisher<nav_msgs::msg::Path>("path", 10);
 
-        // publish transforms for cpl_slam
+        // publish transforms for se_sync
         pub_transform_ = this->create_publisher<img_transform::msg::Transform>("transform", 10);
 
-        // publish robot state for cpl_slam
+        // publish robot state for se_sync
         pub_robot_state_ = this->create_publisher<img_transform::msg::Transform>("robot_state", 10);
 
         tf_broadcaster_ =
@@ -152,6 +152,7 @@ class ImgTransform : public rclcpp::Node
             }
 
             Eigen::Matrix<double, 4, 4> Transformation_current = Transformation_prev.matrix();
+            Eigen::Matrix<double, 4, 4> Tran_pub = Eigen::Matrix4d::Identity();
             if (!current_img.empty() && !prev_img.empty()) // && done != 1)
             {
                 auto begin_total = std::chrono::high_resolution_clock::now();
@@ -377,7 +378,12 @@ class ImgTransform : public rclcpp::Node
                     }
 
                     Sophus::SE3d Transformation(rotation_mat, translation);
-
+                    Tran_pub = Transformation.matrix();
+                    // RCLCPP_INFO(rclcpp::get_logger("message"), "Transformation Mat: ");
+                    // RCLCPP_INFO(rclcpp::get_logger("message"), "%f %f %f %f", ((Transformation.matrix()).matrix())(0,0), ((Transformation.matrix()).matrix())(0,1), ((Transformation.matrix()).matrix())(0,2), ((Transformation.matrix()).matrix())(0,3));
+                    // RCLCPP_INFO(rclcpp::get_logger("message"), "%f %f %f %f", ((Transformation.matrix()).matrix())(1,0), ((Transformation.matrix()).matrix())(1,1), ((Transformation.matrix()).matrix())(1,2), ((Transformation.matrix()).matrix())(1,3));
+                    // RCLCPP_INFO(rclcpp::get_logger("message"), "%f %f %f %f", ((Transformation.matrix()).matrix())(2,0), ((Transformation.matrix()).matrix())(2,1), ((Transformation.matrix()).matrix())(2,2), ((Transformation.matrix()).matrix())(2,3));
+                    // RCLCPP_INFO(rclcpp::get_logger("message"), "%f %f %f %f", ((Transformation.matrix()).matrix())(3,0), ((Transformation.matrix()).matrix())(3,1), ((Transformation.matrix()).matrix())(3,2), ((Transformation.matrix()).matrix())(3,3));
                     // TODO: get rid of
                     done = 1;
 
@@ -426,17 +432,17 @@ class ImgTransform : public rclcpp::Node
                 tf_broadcaster_->sendTransform(t);
 
 
-                // publish transform for cpl_slam
+                // publish transform for se_sync
                 img_transform::msg::Transform T_01;
                 img_transform::msg::Transform rob_state;
                 T_01.id = id;
                 rob_state.id = id;
                 for (int i = 0; i < 4; i++)
                 {
-                    T_01.row_1.push_back((Transformation.matrix())(0,i));
-                    T_01.row_2.push_back((Transformation.matrix())(1,i));
-                    T_01.row_3.push_back((Transformation.matrix())(2,i));
-                    T_01.row_4.push_back((Transformation.matrix())(3,i));
+                    T_01.row_1.push_back((Tran_pub.matrix())(0,i));
+                    T_01.row_2.push_back((Tran_pub.matrix())(1,i));
+                    T_01.row_3.push_back((Tran_pub.matrix())(2,i));
+                    T_01.row_4.push_back((Tran_pub.matrix())(3,i));
                     rob_state.row_1.push_back((Transformation_current.matrix())(0,i));
                     rob_state.row_2.push_back((Transformation_current.matrix())(1,i));
                     rob_state.row_3.push_back((Transformation_current.matrix())(2,i));
