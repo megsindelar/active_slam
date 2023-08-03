@@ -119,23 +119,23 @@ private:
         // Extract formatted output
         // strstrm >> i >> j >> dx >> dy >> dtheta >> I11 >> I12 >> I13 >> I22 >>
         //     I23 >> I33;
-        i = edges[i].id_a;
-        j = edges[i].id_b;
-        dx = edges[i].transform.x;
-        dy = edges[i].transform.y;
-        dtheta = edges[i].transform.theta;
-        I11 = edges[i].info_matrix.row(0)(0);
-        I12 = edges[i].info_matrix.row(0)(1);
-        I13 = edges[i].info_matrix.row(0)(2);
-        I22 = edges[i].info_matrix.row(1)(1);
-        I23 = edges[i].info_matrix.row(1)(2);
-        I33 = edges[i].info_matrix.row(2)(2);
+        i_ = edges[i_].id_a;
+        j_ = edges[i_].id_b;
+        dx = edges[i_].transform.x;
+        dy = edges[i_].transform.y;
+        dtheta = edges[i_].transform.theta;
+        I11 = edges[i_].info_matrix.row(0)(0);
+        I12 = edges[i_].info_matrix.row(0)(1);
+        I13 = edges[i_].info_matrix.row(0)(2);
+        I22 = edges[i_].info_matrix.row(1)(1);
+        I23 = edges[i_].info_matrix.row(1)(2);
+        I33 = edges[i_].info_matrix.row(2)(2);
 
         // Fill in elements of this measurement
 
         // Pose ids
-        measurement.i = i;
-        measurement.j = j;
+        measurement.i = i_;
+        measurement.j = j_;
 
         // Raw measurements
         measurement.t.resize(2);
@@ -197,8 +197,8 @@ private:
         vector<int> id_2;
         int trans_size = xhat.row(0).size()/3;
         for (int i = 0; i < trans_size; i++){
-            id_1.push_back(i);
-            id_2.push_back(j);
+            id_1.push_back(i_);
+            id_2.push_back(j_);
             x.push_back(xhat.col(i)(0));
             y.push_back(xhat.col(i)(1));
 
@@ -311,7 +311,7 @@ private:
     // Identity matrix times penalty weight
     Eigen::Matrix<double, 2, 3> information_matrix;
     information_matrix.row(0) << a*1, 0, 0;
-    information_matrix.row(1) << a*1, 0, a*1;
+    information_matrix.row(1) << a*1, 0, a*2;
 
     img_transform::Edge edge;
     edge.id_a = id_trans - 1;
@@ -354,11 +354,11 @@ private:
   std::vector<img_transform::Vertex> vertices{{"VERTEX_SE2", 0, {0.0, 0.0, 0.0}}};
   int id_trans = 0;
   int id_rob_state = 0;
-  int a = 1;
+  int a = 50;
   size_t num_poses = 0;
   measurements_t measurements;
-  size_t i = 0;
-  size_t j = 1;
+  size_t i_ = 0;
+  size_t j_ = 1;
   Scalar dx = 0.0;
   Scalar dy = 0.0;
   Scalar dtheta = 0.0;
