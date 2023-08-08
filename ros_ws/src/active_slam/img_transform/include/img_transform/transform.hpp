@@ -29,6 +29,8 @@ namespace img_transform
         std::size_t id_a;
         std::size_t id_b;
         struct Vector2D transform;
+        Eigen::Matrix<double, 3, 3> rot;
+        Eigen::Matrix<double, 3, 1> trans;
         Eigen::Matrix<SESync::Scalar, 3, 3> info_matrix;
     };
 

@@ -160,9 +160,13 @@ private:
             //     I23 >> I33;
             i_ = edges[i].id_a;
             j_ = edges[i].id_b;
-            dx = edges[i].transform.x;
-            dy = edges[i].transform.y;
-            dtheta = edges[i].transform.theta;
+            // dx = edges[i].transform.x;
+            // dy = edges[i].transform.y;
+            // dtheta = edges[i].transform.theta;
+            Eigen::Matrix<double, 3, 3> rotations = edges[i].rot;
+            Eigen::Matrix<double, 3, 1> translations = edges[i].trans;
+
+            Sophus::SE3 T_state(rotations, translations);
 
             RCLCPP_INFO(rclcpp::get_logger("message"), "dx: %f", dx);
             RCLCPP_INFO(rclcpp::get_logger("message"), "dy: %f", dy);
@@ -190,9 +194,13 @@ private:
 
             // Raw measurements
             measurement.t.resize(2);
-            measurement.t = Eigen::Matrix<Scalar, 2, 1>(dx, dy);
+            measurement.t = T_state.translation();
             measurement.R.resize(2,2);
-            measurement.R = Eigen::Rotation2D<Scalar>(dtheta).toRotationMatrix();
+            measurement.R = T_state.rotationMatrix();
+
+            RCLCPP_INFO(rclcpp::get_logger("message"), "Measurement 0: %f, %f", measurement.R(0,0), measurement.R(0,1));
+            RCLCPP_INFO(rclcpp::get_logger("message"), "Measurement 1: %f, %f", measurement.R(1,0), measurement.R(1,1));
+            RCLCPP_INFO(rclcpp::get_logger("message"), "Trans 1: %f, %f", measurement.t(0), measurement.t(1));
 
             Eigen::Matrix<Scalar, 2, 2> TranInfo;
             TranInfo << I11, I12, I12, I22;
@@ -506,6 +514,8 @@ private:
             // make an id for each pose and each pose pair for edges (like connecting non-sequential nodes for looping back)
 
             Eigen::MatrixXd xhat = results.xhat;
+            RCLCPP_INFO(rclcpp::get_logger("message"), "T 1: %f, %f, %f, %f, %f, %f, %f, %f, %f, %f, %f, %f", results.xhat.col(0)(0), results.xhat.col(1)(0), results.xhat.col(2)(0), results.xhat.col(3)(0), results.xhat.col(4)(0),results.xhat.col(5)(0), results.xhat.col(6)(0), results.xhat.col(7)(0), results.xhat.col(8)(0), results.xhat.col(9)(0), results.xhat.col(10)(0), results.xhat.col(11)(0), results.xhat.col(12)(0));
+            RCLCPP_INFO(rclcpp::get_logger("message"), "T 2: %f, %f, %f, %f, %f, %f, %f, %f, %f, %f, %f, %f", results.xhat.col(0)(1), results.xhat.col(1)(1), results.xhat.col(2)(1), results.xhat.col(3)(1), results.xhat.col(4)(1),results.xhat.col(5)(1), results.xhat.col(6)(1), results.xhat.col(7)(1), results.xhat.col(8)(1), results.xhat.col(9)(1), results.xhat.col(10)(1), results.xhat.col(11)(1), results.xhat.col(12)(1));
 
             std::vector<std::vector<double>> nodes;
 
@@ -518,10 +528,10 @@ private:
             double theta;
 
             for (int i = 0; i < trans_size; i++){
-                T_updated.row(0) << xhat.col((trans_size-1) + i)(0), xhat.col(trans_size + i)(0), 0.0, xhat.col(i)(0);
-                RCLCPP_INFO(rclcpp::get_logger("message"), "T 1: %f, %f, %f, %f", results.xhat.col((trans_size-1) + i)(0), results.xhat.col(trans_size + i)(0), 0.0, results.xhat.col(i)(0));
-                T_updated.row(1) << xhat.col((trans_size-1) + i)(1), xhat.col(trans_size + i)(1), 0.0, xhat.col(i)(1);
-                RCLCPP_INFO(rclcpp::get_logger("message"), "T 2: %f, %f, %f, %f", results.xhat.col((trans_size-1) + i)(1), results.xhat.col(trans_size + i)(1), 0.0, results.xhat.col(i)(1));
+                T_updated.row(0) << xhat.col(trans_size + i)(0), xhat.col(trans_size + 1 + i)(0), 0.0, xhat.col(i)(0);
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "T 1: %f, %f, %f, %f", results.xhat.col((trans_size-1) + i)(0), results.xhat.col(trans_size + i)(0), 0.0, results.xhat.col(i)(0));
+                T_updated.row(1) << xhat.col(trans_size + i)(1), xhat.col(trans_size + 1 + i)(1), 0.0, xhat.col(i)(1);
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "T 2: %f, %f, %f, %f", results.xhat.col((trans_size-1) + i)(1), results.xhat.col(trans_size + i)(1), 0.0, results.xhat.col(i)(1));
                 T_updated.row(2) << 0.0, 0.0, 1.0, 0.0;
                 T_updated.row(3) << 0.0, 0.0, 0.0, 1.0;
 
@@ -734,18 +744,21 @@ private:
         RCLCPP_INFO(rclcpp::get_logger("message"), "Transform callback");
         id_trans = msg->id;
         Eigen::Matrix<double, 4, 4> wheel_transformation;
-        wheel_transformation.row(0) << msg->row_1.at(0), msg->row_1.at(1), msg->row_1.at(2), msg->row_1.at(3);
-        wheel_transformation.row(1) << msg->row_2.at(0), msg->row_2.at(1), msg->row_2.at(2), msg->row_2.at(3);
-        wheel_transformation.row(2) << msg->row_3.at(0), msg->row_3.at(1), msg->row_3.at(2), msg->row_3.at(3);
-        wheel_transformation.row(3) << msg->row_4.at(0), msg->row_4.at(1), msg->row_4.at(2), msg->row_4.at(3);
+        r_w_updated.row(0) << msg->row_1.at(0), msg->row_1.at(1), msg->row_1.at(2);
+        r_w_updated.row(1) << msg->row_2.at(0), msg->row_2.at(1), msg->row_2.at(2);
+        r_w_updated.row(2) << msg->row_3.at(0), msg->row_3.at(1), msg->row_3.at(2);
+        t_w_updated(0) = msg->row_1.at(3);
+        t_w_updated(1) = msg->row_2.at(3);
+        t_w_updated(2) = msg->row_3.at(3);
 
-        img_transform::Vector2D trans;
-        trans = img_transform::trans_to_vec(wheel_transformation);
+        // img_transform::Vector2D trans;
+        // trans = img_transform::trans_to_vec(wheel_transformation);
 
-        RCLCPP_INFO(rclcpp::get_logger("message"), "t_x: %f", trans.x);
-        RCLCPP_INFO(rclcpp::get_logger("message"), "t_y: %f", trans.y);
-        RCLCPP_INFO(rclcpp::get_logger("message"), "t_theta: %f", trans.theta);
-        // RCLCPP_INFO(rclcpp::get_logger("message"), "id: %d", id_trans);
+        // RCLCPP_INFO(rclcpp::get_logger("message"), "t_x: %f", trans.x);
+        // RCLCPP_INFO(rclcpp::get_logger("message"), "t_y: %f", trans.y);
+        // RCLCPP_INFO(rclcpp::get_logger("message"), "t_theta: %f", trans.theta);
+        RCLCPP_INFO(rclcpp::get_logger("message"), "id a: %d", id_trans-1);
+        RCLCPP_INFO(rclcpp::get_logger("message"), "id b: %d", id_trans);
 
 
         // Identity matrix times penalty weight
@@ -758,7 +771,9 @@ private:
         img_transform::Edge edge;
         edge.id_a = id_trans - 1;
         edge.id_b = id_trans;
-        edge.transform = trans;
+        // edge.transform = trans;
+        edge.rot = r_w_updated;
+        edge.trans = t_w_updated;
         edge.type = "EDGE_SE2";
         edge.info_matrix = information_matrix;
         edges.push_back(edge);
@@ -767,10 +782,45 @@ private:
 
         RCLCPP_INFO(rclcpp::get_logger("message"), "Count: %d ", count);
 
-        if (count > 6){
+        if (count > 3){
             RCLCPP_INFO(rclcpp::get_logger("message"), "Reconstruction");
             reconstruction = true;
             done = true;
+
+            r_w_updated.row(0) << 1.0, 0.0, 0.0;
+            r_w_updated.row(1) << 0.0, 1.0, 0.0;
+            r_w_updated.row(2) << 0.0, 0.0, 1.0;
+            t_w_updated(0) = 0.0;
+            t_w_updated(1) = 0.0;
+            t_w_updated(2) = 0.0;
+
+            // img_transform::Vector2D trans;
+            // trans = img_transform::trans_to_vec(image_transformation);
+            // trans.x = 0.0;
+            // trans.y = 0.0;
+            // trans.theta = (2.0*M_PI);
+
+            // RCLCPP_INFO(rclcpp::get_logger("message"), "t_x: %f", trans.x);
+            // RCLCPP_INFO(rclcpp::get_logger("message"), "t_y: %f", trans.y);
+            // RCLCPP_INFO(rclcpp::get_logger("message"), "t_theta: %f", trans.theta);
+            RCLCPP_INFO(rclcpp::get_logger("message"), "id a: %d", id_trans);
+            RCLCPP_INFO(rclcpp::get_logger("message"), "id b: %d", 0);
+
+            // Identity matrix times penalty weight
+            Eigen::Matrix<double, 3, 3> information_matrix;
+            information_matrix.row(0) << I11, I12, I13;
+            information_matrix.row(1) << I21, I22, I23;
+            information_matrix.row(2) << I31, I32, I33;
+
+            img_transform::Edge edge;
+            edge.id_a = id_trans;
+            edge.id_b = 0;
+            // edge.transform = trans;
+            edge.rot = r_w_updated;
+            edge.trans = t_w_updated;
+            edge.type = "EDGE_SE2";
+            edge.info_matrix = information_matrix;
+            edges.push_back(edge);
         }
     }
     else{
@@ -820,6 +870,11 @@ private:
   int count = 0;
 
   bool done = false;
+
+  Eigen::Matrix<double, 3, 3> r_w_updated;
+  Eigen::Matrix<double, 3, 1> t_w_updated;
+  Eigen::Matrix<double, 3, 3> r_i_updated;
+  Eigen::Matrix<double, 3, 1> t_i_updated;
 
 };
 

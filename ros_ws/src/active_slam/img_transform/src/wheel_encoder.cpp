@@ -171,11 +171,16 @@ private:
     // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 2.5");
 
     Sophus::SE3d T1(rot_1, trans_1);
+    // double dx_ = 0.1;
+    // double dy_ = 0.1;
+    // double dtheta_ = 0.1;
+    // Eigen::Vector<Scalar,6> v01(dx_, dy_, 0.0, 0.0, 0.0, dtheta_);
+    // Sophus::SE3d T01_n = Sophus::SE3d::exp(v01);
     // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 2.7");
 
-    RCLCPP_INFO(rclcpp::get_logger("message"), "T0 x, y: %f, %f", T0.translation()(0), T0.translation()(1));
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "T0 x, y: %f, %f", T0.translation()(0), T0.translation()(1));
 
-    RCLCPP_INFO(rclcpp::get_logger("message"), "T1 x, y: %f, %f", T1.translation()(0), T1.translation()(1));
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "T1 x, y: %f, %f", T1.translation()(0), T1.translation()(1));
 
     Sophus::SE3d T_01 = T0.inverse()*T1;
 
@@ -195,7 +200,7 @@ private:
     // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 3");
  
     // need a subscriber of when recognize somewhere I've been before (aka bag of words that's from img_transform)
-    if (reconstruct_graph == false && (x_trans > 0.2 || y_trans > 0.2 || theta_rot > 0.3)){
+    if (reconstruct_graph == false){ // && (x_trans > 0.2 || y_trans > 0.2 || theta_rot > 0.3)){
         // Sophus::SE3 T0(rot_mat, trans_mat);
 
         RCLCPP_INFO(rclcpp::get_logger("message"), "Test 4");
@@ -207,7 +212,7 @@ private:
         pub_rob_pose_->publish(point_pub);
 
         // publish transform for SESync
-        Eigen::Matrix2d rot = Eigen::Rotation2D<double>(theta_rot).toRotationMatrix();
+        // Eigen::Matrix2d rot = Eigen::Rotation2D<double>(theta_rot).toRotationMatrix();
         // Eigen::Matrix<double, 3,3> rotate;
         // rotate.row(0) << rot(0,0), rot(0,1), 0.0;
         // rotate.row(1) << rot(1,0), rot(1,1), 0.0;
@@ -227,8 +232,8 @@ private:
 
         img_transform::msg::Transform T01;
         for (int i = 0; i < 2; i++){
-            T01.row_1.push_back(T_01.matrix()(0,i));
-            T01.row_2.push_back(T_01.matrix()(1,i));
+            T01.row_1.push_back(T_01.rotationMatrix()(0,i));
+            T01.row_2.push_back(T_01.rotationMatrix()(1,i));
             T01.row_3.push_back(0.0);
             T01.row_4.push_back(0.0);
         }
@@ -253,7 +258,7 @@ private:
         trans_0 = T1.translation();
     }
     m++;
-    if (m > 8){
+    if (m > 3){
         first_flag = false;
     }
     }
@@ -501,12 +506,12 @@ private:
 
   bool first_flag = true;
   bool ff_1 = true;
-  std::vector<double> x_arr {0.0, 0.401742, 0.441624, 0.847666, 0.90923, 0.533757, 0.494193, 0.047714, 0.0};
-  std::vector<double> y_arr {0.0, -0.526768, -0.578827, -0.27026, -0.223236, 0.177863, 0.220178, -0.038281, 0.0};
-  std::vector<double> theta_arr {0.0, 0.001898, 1.506935, 1.573059, 3.114796, 3.241666, 4.751765, 2.029354, 0.0};
-//   std::vector<double> x_arr {0.0, 1.0, 1.0, 0.0};
-//   std::vector<double> y_arr {1.0, 1.0, 0.0, 0.0};
-//   std::vector<double> theta_arr {0.0, M_PI/2.0, M_PI, (3.0*M_PI)/4.0, (2.0*M_PI)};
+//   std::vector<double> x_arr {0.0, 0.401742, 0.441624, 0.847666, 0.90923, 0.533757, 0.494193, 0.047714, 0.0};
+//   std::vector<double> y_arr {0.0, -0.526768, -0.578827, -0.27026, -0.223236, 0.177863, 0.220178, -0.038281, 0.0};
+//   std::vector<double> theta_arr {0.0, 0.001898, 1.506935, 1.573059, 3.114796, 3.241666, 4.751765, 2.029354, 0.0};
+  std::vector<double> x_arr {0.0, 1.0, 1.0};
+  std::vector<double> y_arr {1.0, 1.0, 0.0};
+  std::vector<double> theta_arr {M_PI/2.0, M_PI, (3.0*M_PI)/4.0};
   int m = 0;
 };
 
