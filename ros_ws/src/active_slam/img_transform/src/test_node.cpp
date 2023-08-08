@@ -145,12 +145,12 @@ private:
         dx = 0.62;
         dy = 0.59;
         dtheta = 0.056;
-        I11 = 50;
-        I12 = 0;
+        I11 = 5;
+        I12 = 5;
         I13 = 0;
-        I22 = 50;
+        I22 = 5;
         I23 = 0;
-        I33 = 100;
+        I33 = 10;
 
 
         // Extract formatted output

@@ -26,6 +26,10 @@
 #include "tf2/LinearMath/Quaternion.h"
 #include "tf2_ros/transform_broadcaster.h"
 
+#include "sophus/se3.hpp"
+
+#include "math.h"
+
 using namespace std;
 using namespace SESync;
 
@@ -78,7 +82,20 @@ private:
     // MarkerArrayVec marker_vec = img_transform::visualize_graph(nodes, header);
 
     if (reconstruction)
+    // if (count < 100)
     {
+        Eigen::Matrix<double, 3, 3> rot_;
+        Eigen::Matrix<double, 3, 1> trans_;
+        rot_.row(0) << cos(M_PI), -sin(M_PI), 0.0;
+        rot_.row(1) << sin(M_PI), cos(M_PI), 0.0;
+        rot_.row(2) << 0.0, 0.0, 1.0;
+        trans_(0) = 0.0;
+        trans_(1) = 0.0;
+        trans_(2) = 0.0;
+
+        Sophus::SE3d T_fix(rot_, trans_);
+
+
         reconstruction = false;
         ////////////////////////////////////////////////////////////////////////////////////////////
         // SE_SYNC
@@ -113,7 +130,7 @@ private:
         //     size_t max_pair = std::max<size_t>(measurement.i, measurement.j);
 
         //     measurements.push_back(measurement);
-            // first = false;
+        //     first = false;
         // }
         RCLCPP_INFO(rclcpp::get_logger("message"), "Edges size: %ld", edges.size());
         for (int i = 0; i < edges.size(); i++){
@@ -146,12 +163,24 @@ private:
             dx = edges[i].transform.x;
             dy = edges[i].transform.y;
             dtheta = edges[i].transform.theta;
-            I11 = 50; //edges[i].info_matrix.row(0)(0);
-            I12 = 0; //edges[i].info_matrix.row(0)(1);
-            I13 = 0; //edges[i].info_matrix.row(0)(2);
-            I22 = 50; //edges[i].info_matrix.row(1)(1);
-            I23 = 0; //edges[i].info_matrix.row(1)(2);
-            I33 = 100; //edges[i].info_matrix.row(2)(2);
+
+            RCLCPP_INFO(rclcpp::get_logger("message"), "dx: %f", dx);
+            RCLCPP_INFO(rclcpp::get_logger("message"), "dy: %f", dy);
+            RCLCPP_INFO(rclcpp::get_logger("message"), "dtheta: %f", dtheta);
+
+
+            I11 = edges[i].info_matrix(0,0);
+            RCLCPP_INFO(rclcpp::get_logger("message"), "I11: %f", I11);
+            I12 = edges[i].info_matrix(0,1);
+            RCLCPP_INFO(rclcpp::get_logger("message"), "I12: %f", I12);
+            I13 = edges[i].info_matrix(0,2);
+            RCLCPP_INFO(rclcpp::get_logger("message"), "I13: %f", I13);
+            I22 = edges[i].info_matrix(1,1);
+            RCLCPP_INFO(rclcpp::get_logger("message"), "I22: %f", I22);
+            I23 = edges[i].info_matrix(1,2);
+            RCLCPP_INFO(rclcpp::get_logger("message"), "I23: %f", I23);
+            I33 = edges[i].info_matrix(2,2);
+            RCLCPP_INFO(rclcpp::get_logger("message"), "I33: %f", I33);
 
             // Fill in elements of this measurement
 
@@ -176,6 +205,269 @@ private:
 
             measurements.push_back(measurement);
         }
+
+        // i_ = 0;
+        // j_ = 1;
+        // dx = 0.401742;
+        // dy = -0.526768;
+        // dtheta = 0.001898;
+
+
+        // I11 = 0.050000;
+        // I12 = 0.000000;
+        // I13 = 0.000000;
+        // I22 = 0.050000;
+        // I23 = 0.000000;
+        // I33 = 0.010000;
+
+        // // Pose ids
+        // measurement.i = i_;
+        // measurement.j = j_;
+
+        // // Raw measurements
+        // measurement.t.resize(2);
+        // measurement.t = Eigen::Matrix<Scalar, 2, 1>(dx, dy);
+        // measurement.R.resize(2,2);
+        // measurement.R = Eigen::Rotation2D<Scalar>(dtheta).toRotationMatrix();
+
+        // Eigen::Matrix<Scalar, 2, 2> TranInfo;
+        // TranInfo << I11, I12, I12, I22;
+        // measurement.tau = 2 / TranInfo.inverse().trace();
+
+        // measurement.kappa = I33;
+        
+        // // Update maximum value of poses found so far
+        // size_t max_pair = std::max<size_t>(measurement.i, measurement.j);
+
+        // measurements.push_back(measurement);
+
+
+
+        // i_ = 1;
+        // j_ = 2;
+        // dx = 0.039882;
+        // dy = -0.052059;
+        // dtheta = 1.505037;
+
+
+        // I11 = 0.050000;
+        // I12 = 0.000000;
+        // I13 = 0.000000;
+        // I22 = 0.050000;
+        // I23 = 0.000000;
+        // I33 = 0.010000;
+
+        // // Pose ids
+        // measurement.i = i_;
+        // measurement.j = j_;
+
+        // // Raw measurements
+        // measurement.t.resize(2);
+        // measurement.t = Eigen::Matrix<Scalar, 2, 1>(dx, dy);
+        // measurement.R.resize(2,2);
+        // measurement.R = Eigen::Rotation2D<Scalar>(dtheta).toRotationMatrix();
+
+        // // Eigen::Matrix<Scalar, 2, 2> TranInfo;
+        // TranInfo << I11, I12, I12, I22;
+        // measurement.tau = 2 / TranInfo.inverse().trace();
+
+        // measurement.kappa = I33;
+        
+        // // Update maximum value of poses found so far
+        // max_pair = std::max<size_t>(measurement.i, measurement.j);
+
+        // measurements.push_back(measurement);
+
+
+
+
+        // i_ = 2;
+        // j_ = 3;
+        // dx = 0.406042;
+        // dy = 0.308567;
+        // dtheta = 0.066124;
+
+
+        // I11 = 0.050000;
+        // I12 = 0.000000;
+        // I13 = 0.000000;
+        // I22 = 0.050000;
+        // I23 = 0.000000;
+        // I33 = 0.010000;
+
+        // // Pose ids
+        // measurement.i = i_;
+        // measurement.j = j_;
+
+        // // Raw measurements
+        // measurement.t.resize(2);
+        // measurement.t = Eigen::Matrix<Scalar, 2, 1>(dx, dy);
+        // measurement.R.resize(2,2);
+        // measurement.R = Eigen::Rotation2D<Scalar>(dtheta).toRotationMatrix();
+
+        // // Eigen::Matrix<Scalar, 2, 2> TranInfo;
+        // TranInfo << I11, I12, I12, I22;
+        // measurement.tau = 2 / TranInfo.inverse().trace();
+
+        // measurement.kappa = I33;
+        
+        // // Update maximum value of poses found so far
+        // max_pair = std::max<size_t>(measurement.i, measurement.j);
+
+        // measurements.push_back(measurement);
+
+
+
+
+        // i_ = 3;
+        // j_ = 4;
+        // dx = 0.061564;
+        // dy = 0.047024;
+        // dtheta = 1.541737;
+
+
+        // I11 = 0.050000;
+        // I12 = 0.000000;
+        // I13 = 0.000000;
+        // I22 = 0.050000;
+        // I23 = 0.000000;
+        // I33 = 0.010000;
+
+        // // Pose ids
+        // measurement.i = i_;
+        // measurement.j = j_;
+
+        // // Raw measurements
+        // measurement.t.resize(2);
+        // measurement.t = Eigen::Matrix<Scalar, 2, 1>(dx, dy);
+        // measurement.R.resize(2,2);
+        // measurement.R = Eigen::Rotation2D<Scalar>(dtheta).toRotationMatrix();
+
+        // // Eigen::Matrix<Scalar, 2, 2> TranInfo;
+        // TranInfo << I11, I12, I12, I22;
+        // measurement.tau = 2 / TranInfo.inverse().trace();
+
+        // measurement.kappa = I33;
+        
+        // // Update maximum value of poses found so far
+        // max_pair = std::max<size_t>(measurement.i, measurement.j);
+
+        // measurements.push_back(measurement);
+
+
+
+
+
+
+        // i_ = 4;
+        // j_ = 5;
+        // dx = -0.375473;
+        // dy = 0.401099;
+        // dtheta = 0.126870;
+
+
+        // I11 = 0.050000;
+        // I12 = 0.000000;
+        // I13 = 0.000000;
+        // I22 = 0.050000;
+        // I23 = 0.000000;
+        // I33 = 0.010000;
+
+        // // Pose ids
+        // measurement.i = i_;
+        // measurement.j = j_;
+
+        // // Raw measurements
+        // measurement.t.resize(2);
+        // measurement.t = Eigen::Matrix<Scalar, 2, 1>(dx, dy);
+        // measurement.R.resize(2,2);
+        // measurement.R = Eigen::Rotation2D<Scalar>(dtheta).toRotationMatrix();
+
+        // // Eigen::Matrix<Scalar, 2, 2> TranInfo;
+        // TranInfo << I11, I12, I12, I22;
+        // measurement.tau = 2 / TranInfo.inverse().trace();
+
+        // measurement.kappa = I33;
+        
+        // // Update maximum value of poses found so far
+        // max_pair = std::max<size_t>(measurement.i, measurement.j);
+
+        // measurements.push_back(measurement);
+
+
+
+
+
+        // i_ = 5;
+        // j_ = 6;
+        // dx = -0.039564;
+        // dy = 0.042315;
+        // dtheta = 1.510099;
+
+
+        // I11 = 0.050000;
+        // I12 = 0.000000;
+        // I13 = 0.000000;
+        // I22 = 0.050000;
+        // I23 = 0.000000;
+        // I33 = 0.010000;
+
+        // // Pose ids
+        // measurement.i = i_;
+        // measurement.j = j_;
+
+        // // Raw measurements
+        // measurement.t.resize(2);
+        // measurement.t = Eigen::Matrix<Scalar, 2, 1>(dx, dy);
+        // measurement.R.resize(2,2);
+        // measurement.R = Eigen::Rotation2D<Scalar>(dtheta).toRotationMatrix();
+
+        // // Eigen::Matrix<Scalar, 2, 2> TranInfo;
+        // TranInfo << I11, I12, I12, I22;
+        // measurement.tau = 2 / TranInfo.inverse().trace();
+
+        // measurement.kappa = I33;
+        
+        // // Update maximum value of poses found so far
+        // max_pair = std::max<size_t>(measurement.i, measurement.j);
+
+        // measurements.push_back(measurement);
+
+
+        // i_ = 6;
+        // j_ = 0;
+        // dx = 0.047714;
+        // dy = -0.038281;
+        // dtheta = 2.029354;
+
+
+        // I11 = 50.000000;
+        // I12 = 0.000000;
+        // I13 = 0.000000;
+        // I22 = 50.000000;
+        // I23 = 0.000000;
+        // I33 = 100.000000;
+
+        // // Pose ids
+        // measurement.i = i_;
+        // measurement.j = j_;
+
+        // // Raw measurements
+        // measurement.t.resize(2);
+        // measurement.t = Eigen::Matrix<Scalar, 2, 1>(dx, dy);
+        // measurement.R.resize(2,2);
+        // measurement.R = Eigen::Rotation2D<Scalar>(dtheta).toRotationMatrix();
+
+        // // Eigen::Matrix<Scalar, 2, 2> TranInfo;
+        // TranInfo << I11, I12, I12, I22;
+        // measurement.tau = 2 / TranInfo.inverse().trace();
+
+        // measurement.kappa = I33;
+        
+        // // Update maximum value of poses found so far
+        // max_pair = std::max<size_t>(measurement.i, measurement.j);
+
+        // measurements.push_back(measurement);
 
 
         if (measurements.size() == 0) {
@@ -217,21 +509,47 @@ private:
 
             std::vector<std::vector<double>> nodes;
 
+            Eigen::Matrix<double, 4,4> T_updated;
+            int trans_size = results.xhat.row(0).size()/3;
+            RCLCPP_INFO(rclcpp::get_logger("message"), "size: %d", trans_size);
+
             double x;
             double y;
             double theta;
-            int trans_size = xhat.row(0).size()/3;
+
             for (int i = 0; i < trans_size; i++){
-                x = xhat.col(i)(0);
-                y = xhat.col(i)(1);
+                T_updated.row(0) << xhat.col((trans_size-1) + i)(0), xhat.col(trans_size + i)(0), 0.0, xhat.col(i)(0);
+                RCLCPP_INFO(rclcpp::get_logger("message"), "T 1: %f, %f, %f, %f", results.xhat.col((trans_size-1) + i)(0), results.xhat.col(trans_size + i)(0), 0.0, results.xhat.col(i)(0));
+                T_updated.row(1) << xhat.col((trans_size-1) + i)(1), xhat.col(trans_size + i)(1), 0.0, xhat.col(i)(1);
+                RCLCPP_INFO(rclcpp::get_logger("message"), "T 2: %f, %f, %f, %f", results.xhat.col((trans_size-1) + i)(1), results.xhat.col(trans_size + i)(1), 0.0, results.xhat.col(i)(1));
+                T_updated.row(2) << 0.0, 0.0, 1.0, 0.0;
+                T_updated.row(3) << 0.0, 0.0, 0.0, 1.0;
+
+                std::cout << "T0: " << std::endl;
+                Eigen::Matrix<double, 4, 4> xhat_ = T_fix.matrix()*T_updated;
+
+                x = xhat_(0,3); //xhat.col(i)(0);
+                y = xhat_(1,3); //xhat.col(i)(1);
 
                 //TODO maybe change if needed
-                Eigen::MatrixXd R = xhat.block(0, ((trans_size-1) + i), 2, 2);
+                // Eigen::MatrixXd R = xhat.block(0, ((trans_size-1) + i), 2, 2);
+                Eigen::MatrixXd R = xhat_.block(0, 0, 2, 2);
                 theta = img_transform::Rot2Theta(R);
 
                 nodes.push_back({x, y, theta});
             }
-            RCLCPP_INFO(rclcpp::get_logger("message"), "Test 3");
+
+            
+            // for (int i = 0; i < trans_size; i++){
+            //     x = xhat.col(i)(0);
+            //     y = xhat.col(i)(1);
+
+            //     //TODO maybe change if needed
+            //     Eigen::MatrixXd R = xhat.block(0, ((trans_size-1) + i), 2, 2);
+            //     theta = img_transform::Rot2Theta(R);
+
+            //     nodes.push_back({x, y, theta});
+            // }
 
             std_msgs::msg::Header header;
             header.stamp = this->get_clock()->now();
@@ -239,6 +557,7 @@ private:
             // MarkerArrayVec marker_vec = img_transform::visualize_graph(nodes, header);
 
             geometry_msgs::msg::TransformStamped t;
+            RCLCPP_INFO(rclcpp::get_logger("message"), "nodes size: %d", nodes.size());
             for (int i = 0; i < nodes.size(); i++){
                 t.header.stamp = this->get_clock()->now();
                 t.header.frame_id = "world";
@@ -267,12 +586,12 @@ private:
             edge_m.pose.position.x = 0.0;
             edge_m.pose.position.y = 0.0;
             edge_m.type = visualization_msgs::msg::Marker::LINE_STRIP;
-            edge_m.scale.x = 0.1;
-            edge_m.scale.y = 0.1;
-            edge_m.scale.z = 0.1;
+            edge_m.scale.x = 0.01;
+            edge_m.scale.y = 0.01;
+            edge_m.scale.z = 0.01;
             edge_m.color.a = 1.0;
-            edge_m.color.r = 0.9;
-            edge_m.color.g = 0.3;
+            edge_m.color.r = 0.3;
+            edge_m.color.g = 0.9;
             edge_m.color.b = 0.3;
 
 
@@ -293,10 +612,16 @@ private:
                 id++;
             }
 
-
-
-
-
+            double id_last = nodes.size() - 1;
+            edge_m.id = id;
+            geometry_msgs::msg::Point p;
+            p.x = nodes[id_last][0];
+            p.y = nodes[id_last][1];
+            edge_m.points.push_back(p);
+            p.x = nodes[0][0];
+            p.y = nodes[0][1];
+            edge_m.points.push_back(p);
+            edge_markers.markers.push_back(edge_m);
 
 
             RCLCPP_INFO(rclcpp::get_logger("message"), "Publishing markers!");
@@ -324,6 +649,45 @@ private:
         // path.poses.push_back(pos);
         // pub_slam_path_->publish(path);
     }
+    // else{
+    //     visualization_msgs::msg::MarkerArray node_markers;
+    //     visualization_msgs::msg::Marker node_m;
+    //     node_m.header.frame_id = "world";
+    //     node_m.header.stamp = header.stamp;
+    //     node_m.id = 0;
+    //     node_m.action = visualization_msgs::msg::Marker::ADD;
+    //     node_m.pose.orientation.w = 1.0;
+    //     node_m.pose.position.x = 0.0;
+    //     node_m.pose.position.y = 0.0;
+    //     node_m.type = visualization_msgs::msg::Marker::SPHERE;
+    //     node_m.scale.x = 0.03;
+    //     node_m.scale.y = 0.03;
+    //     node_m.scale.z = 0.03;
+    //     node_m.color.a = 1.0;
+    //     node_m.color.r = 0.9;
+    //     node_m.color.g = 0.3;
+    //     node_m.color.b = 0.3;
+
+    //     int id = 0;
+    //     // TODO: change later when having loop back to num_edges.size instead of x positions
+
+    //     for (int i = 0; i < edges.size(); i++){
+
+    //     }
+
+    //     // for (int i = 0; i < (edges.size() - 1); i++){
+    //     //     edge_m.id = id;
+    //     //     geometry_msgs::msg::Point p;
+    //     //     p.x = nodes[i][0];
+    //     //     p.y = nodes[i][1];
+    //     //     edge_m.points.push_back(p);
+    //     //     p.x = nodes[i+1][0];
+    //     //     p.y = nodes[i+1][1];
+    //     //     edge_m.points.push_back(p);
+    //     //     edge_markers.markers.push_back(edge_m);
+    //     //     id++;
+    //     // }
+    // }
   }
 
   void start(
@@ -347,9 +711,10 @@ private:
     trans = img_transform::trans_to_vec(image_transformation);
 
     // Identity matrix times penalty weight
-    Eigen::Matrix<double, 2, 3> information_matrix;
-    information_matrix.row(0) << a*1, 0, 0;
-    information_matrix.row(1) << a*1, 0, a*1;
+    Eigen::Matrix<double, 3, 3> information_matrix;
+    information_matrix.row(0) << I11, I12, I13;
+    information_matrix.row(1) << I21, I22, I23;
+    information_matrix.row(2) << I31, I32, I33;
 
     img_transform::Edge edge;
     edge.id_a = id_trans;
@@ -365,29 +730,52 @@ private:
     const img_transform::msg::Transform::ConstSharedPtr& msg
   ){
     RCLCPP_INFO(rclcpp::get_logger("message"), "Transform callback");
-    id_trans = msg->id;
-    Eigen::Matrix<double, 4, 4> wheel_transformation;
-    wheel_transformation.row(0) << msg->row_1.at(0), msg->row_1.at(1), msg->row_1.at(2), msg->row_1.at(3);
-    wheel_transformation.row(1) << msg->row_2.at(0), msg->row_2.at(1), msg->row_2.at(2), msg->row_2.at(3);
-    wheel_transformation.row(2) << msg->row_3.at(0), msg->row_3.at(1), msg->row_3.at(2), msg->row_3.at(3);
-    wheel_transformation.row(3) << msg->row_4.at(0), msg->row_4.at(1), msg->row_4.at(2), msg->row_4.at(3);
+    if (done == false){
+        RCLCPP_INFO(rclcpp::get_logger("message"), "Transform callback");
+        id_trans = msg->id;
+        Eigen::Matrix<double, 4, 4> wheel_transformation;
+        wheel_transformation.row(0) << msg->row_1.at(0), msg->row_1.at(1), msg->row_1.at(2), msg->row_1.at(3);
+        wheel_transformation.row(1) << msg->row_2.at(0), msg->row_2.at(1), msg->row_2.at(2), msg->row_2.at(3);
+        wheel_transformation.row(2) << msg->row_3.at(0), msg->row_3.at(1), msg->row_3.at(2), msg->row_3.at(3);
+        wheel_transformation.row(3) << msg->row_4.at(0), msg->row_4.at(1), msg->row_4.at(2), msg->row_4.at(3);
 
-    img_transform::Vector2D trans;
-    trans = img_transform::trans_to_vec(wheel_transformation);
+        img_transform::Vector2D trans;
+        trans = img_transform::trans_to_vec(wheel_transformation);
 
-    // Identity matrix times penalty weight
-    Eigen::Matrix<double, 2, 3> information_matrix;
-    information_matrix.row(0) << I11, I12, I13;
-    information_matrix.row(1) << I22, I23, I33;
+        RCLCPP_INFO(rclcpp::get_logger("message"), "t_x: %f", trans.x);
+        RCLCPP_INFO(rclcpp::get_logger("message"), "t_y: %f", trans.y);
+        RCLCPP_INFO(rclcpp::get_logger("message"), "t_theta: %f", trans.theta);
+        // RCLCPP_INFO(rclcpp::get_logger("message"), "id: %d", id_trans);
 
 
-    img_transform::Edge edge;
-    edge.id_a = id_trans - 1;
-    edge.id_b = id_trans;
-    edge.transform = trans;
-    edge.type = "EDGE_SE2";
-    edge.info_matrix = information_matrix;
-    edges.push_back(edge);
+        // Identity matrix times penalty weight
+        Eigen::Matrix<double, 3, 3> information_matrix;
+        information_matrix.row(0) << 0.01*I11, 0.01*I12, 0.01*I13;
+        information_matrix.row(1) << 0.01*I21, 0.01*I22, 0.01*I23;
+        information_matrix.row(2) << 0.01*I31, 0.01*I32, 0.01*I33;
+
+
+        img_transform::Edge edge;
+        edge.id_a = id_trans - 1;
+        edge.id_b = id_trans;
+        edge.transform = trans;
+        edge.type = "EDGE_SE2";
+        edge.info_matrix = information_matrix;
+        edges.push_back(edge);
+
+        count++;
+
+        RCLCPP_INFO(rclcpp::get_logger("message"), "Count: %d ", count);
+
+        if (count > 6){
+            RCLCPP_INFO(rclcpp::get_logger("message"), "Reconstruction");
+            reconstruction = true;
+            done = true;
+        }
+    }
+    else{
+        
+    }
     // RCLCPP_INFO(rclcpp::get_logger("message"), "Edges size: %ld", edges.size());
   }
 
@@ -418,11 +806,20 @@ private:
   Scalar I11 = 50;
   Scalar I12 = 0;
   Scalar I13 = 0;
+  Scalar I21 = 0;
   Scalar I22 = 50;
   Scalar I23 = 0;
+  Scalar I31 = 0;
+  Scalar I32 = 0;
   Scalar I33 = 100;
 
+  Eigen::Matrix<double, 4, 1> rob_pos_vec;
+
   bool reconstruction = false;
+
+  int count = 0;
+
+  bool done = false;
 
 };
 

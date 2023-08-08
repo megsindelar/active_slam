@@ -29,7 +29,7 @@ namespace img_transform
         std::size_t id_a;
         std::size_t id_b;
         struct Vector2D transform;
-        Eigen::Matrix<SESync::Scalar, 2, 3> info_matrix;
+        Eigen::Matrix<SESync::Scalar, 3, 3> info_matrix;
     };
 
     // convert rotation mat to yaw

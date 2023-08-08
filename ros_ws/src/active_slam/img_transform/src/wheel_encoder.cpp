@@ -38,6 +38,8 @@
 
 #include <geometry_msgs/msg/point.hpp>
 
+#include "sophus/se3.hpp"
+#include <iostream>
 
 /// \brief a node to control the turtlebot movements
 class WheelEncoder : public rclcpp::Node
@@ -100,10 +102,10 @@ public:
       "joint_states", 10);
 
     pub_nodes_ = this->create_publisher<visualization_msgs::msg::MarkerArray>(
-      "nodes", 10);
+      "nodes_w", 10);
 
     pub_edges_ = this->create_publisher<visualization_msgs::msg::MarkerArray>(
-      "edges", 10);
+      "edges_w", 10);
 
     pub_transform_ = this->create_publisher<img_transform::msg::Transform>("wheel_transform", 10);
 
@@ -111,8 +113,8 @@ public:
 
     /// \brief timer callback with a specified frequency rate
     /// \param rate - frequency of timer callback in Hz
-    this->declare_parameter("frequency", 1);
-    int rate_ms = 10000 / (this->get_parameter("frequency").get_parameter_value().get<int>());
+    this->declare_parameter("frequency", 10);
+    int rate_ms = 100 / (this->get_parameter("frequency").get_parameter_value().get<int>());
     timer_ = this->create_wall_timer(
       std::chrono::milliseconds(rate_ms),
       std::bind(&WheelEncoder::timer_callback, this));
@@ -129,90 +131,131 @@ private:
     // use body length to calculate how cam moves (assuming it's in middle of body)
     // // -> for both turning and straight line (straight line is simple, but turning
     // //     is slightly more complex)
+    if (first_flag){
 
+    double x = x_arr[m];
+    double y = y_arr[m];
+    double theta = theta_arr[m];
+
+    if (ff_1){
+        rot_0.row(0) << cos(0.0), -sin(0.0), 0.0;
+        rot_0.row(1) << sin(0.0), cos(0.0), 0.0;
+        rot_0.row(2) << 0.0, 0.0, 1.0;
+        trans_0(0) = 0.0;
+        trans_0(1) = 0.0;
+        trans_0(2) = 0.0;
+        ff_1 = false;
+
+        for (int i = 0; i<1000000; i++){
+            std::cout << "waiting" << std::endl;
+        }
+
+    }
+
+    RCLCPP_INFO(rclcpp::get_logger("message"), "Test 1");
+    Sophus::SE3d T0(rot_0, trans_0);
+
+
+    Eigen::Matrix<double, 3, 3> rot_1;
+    Eigen::Matrix<double, 3, 1> trans_1;
+    RCLCPP_INFO(rclcpp::get_logger("message"), "Test 2");
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "x %f: ", x);
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "y %f: ", y);
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "theta %f: ", theta);
+    rot_1.row(0) << cos(theta), -sin(theta), 0.0;
+    rot_1.row(1) << sin(theta), cos(theta), 0.0;
+    rot_1.row(2) << 0.0, 0.0, 1.0;
+    trans_1(0) = x;
+    trans_1(1) = y;
+    trans_1(2) = 0.0;
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 2.5");
+
+    Sophus::SE3d T1(rot_1, trans_1);
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 2.7");
+
+    RCLCPP_INFO(rclcpp::get_logger("message"), "T0 x, y: %f, %f", T0.translation()(0), T0.translation()(1));
+
+    RCLCPP_INFO(rclcpp::get_logger("message"), "T1 x, y: %f, %f", T1.translation()(0), T1.translation()(1));
+
+    Sophus::SE3d T_01 = T0.inverse()*T1;
+
+    RCLCPP_INFO(rclcpp::get_logger("message"), "T_01 x, y: %f, %f", T_01.translation()(0), T_01.translation()(1));
+
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 2");
+
+    double x_trans = T_01.matrix()(0,3);
+    double y_trans = T_01.matrix()(1,3);
+    Eigen::Vector3d euler = T_01.rotationMatrix().eulerAngles(2,1,0);
+    double theta_rot = euler(0);
+
+    RCLCPP_INFO(rclcpp::get_logger("message"), "x: %f", x_trans);
+    RCLCPP_INFO(rclcpp::get_logger("message"), "y: %f", y_trans);
+    RCLCPP_INFO(rclcpp::get_logger("message"), "theta: %f", theta_rot);
+
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 3");
+ 
     // need a subscriber of when recognize somewhere I've been before (aka bag of words that's from img_transform)
-    if (reconstruct_graph == false and first == false){
-        visualization_msgs::msg::Marker node;
-        node.header.frame_id = "world";
-        node.header.stamp = this->get_clock()->now();
-        node.action = visualization_msgs::msg::Marker::ADD;
-        node.pose.orientation.w = 1.0;
-        node.type = visualization_msgs::msg::Marker::SPHERE;
-        node.scale.x = 0.05;
-        node.scale.y = 0.05;
-        node.scale.z = 0.05;
-        node.color.a = 1.0;
-        node.color.r = 0.9;
-        node.color.g = 0.3;
-        node.color.b = 0.3;
+    if (reconstruct_graph == false && (x_trans > 0.2 || y_trans > 0.2 || theta_rot > 0.3)){
+        // Sophus::SE3 T0(rot_mat, trans_mat);
 
-        visualization_msgs::msg::Marker edge_m;
-        edge_m.header.frame_id = "world";
-        edge_m.header.stamp = this->get_clock()->now();
-        edge_m.action = visualization_msgs::msg::Marker::ADD;
-        edge_m.pose.orientation.w = 1.0;
-        edge_m.type = visualization_msgs::msg::Marker::LINE_STRIP;
-        edge_m.scale.x = 0.03;
-        edge_m.scale.y = 0.03;
-        edge_m.scale.z = 0.03;
-        edge_m.color.a = 1.0;
-        edge_m.color.r = 0.9;
-        edge_m.color.g = 0.3;
-        edge_m.color.b = 0.3;
-
-
-        node.header.stamp = this->get_clock()->now();
-        edge_m.header.stamp = this->get_clock()->now();
-
-        node.id = id;
-        node.pose.position.x = robot.x_get();
-        node.pose.position.y = robot.y_get();
-        node_markers.markers.push_back(node);
-        // pub_nodes_->publish(node_markers);
-
-        edge_m.id = id;
-        geometry_msgs::msg::Point p;
-        p.x = x_prev;
-        p.y = y_prev;
-        edge_m.points.push_back(p);
-        p.x = robot.x_get();
-        p.y = robot.y_get();
-        edge_m.points.push_back(p);
-        edge_markers.markers.push_back(edge_m);
-        // pub_edges_->publish(edge_markers);
+        RCLCPP_INFO(rclcpp::get_logger("message"), "Test 4");
 
         geometry_msgs::msg::Point point_pub;
         point_pub.x = robot.x_get();
         point_pub.y = robot.y_get();
 
-        id++;
-
-        x_prev = robot.x_get();
-        y_prev = robot.y_get();
-
         pub_rob_pose_->publish(point_pub);
 
         // publish transform for SESync
-        double theta_rot = robot.theta_get();
-        Eigen::Matrix2d Rot = Eigen::Rotation2D<double>(theta_rot).toRotationMatrix();
-        double x_trans = robot.x_get() - x_prev;
-        double y_trans = robot.y_get() - y_prev;
+        Eigen::Matrix2d rot = Eigen::Rotation2D<double>(theta_rot).toRotationMatrix();
+        // Eigen::Matrix<double, 3,3> rotate;
+        // rotate.row(0) << rot(0,0), rot(0,1), 0.0;
+        // rotate.row(1) << rot(1,0), rot(1,1), 0.0;
+        // rotate.row(2) << 0.0, 0.0, 1.0;
+        // Eigen::Matrix<double, 3, 1> trans;
+        // trans(0) = robot.x_get();
+        // trans(1) = robot.y_get();
+        // trans(2) = 0.0;
 
-        img_transform::msg::Transform T_01;
-        T_01.id = id;
-        for (int i = 0; i < 3; i++)
-        {
-            T_01.row_1.push_back(Rot(0,i));
-            T_01.row_2.push_back(Rot(1,i));
-            T_01.row_3.push_back(Rot(2,i));
-            T_01.row_4.push_back(0.0);
+        // Sophus::SE3 T1(rotate, trans);
+
+        // Sophus::SE3 T_01_s = T0.inverse()*T1;
+
+        x_prev = robot.x_get();
+        y_prev = robot.y_get();
+        theta_prev = robot.theta_get();
+
+        img_transform::msg::Transform T01;
+        for (int i = 0; i < 2; i++){
+            T01.row_1.push_back(T_01.matrix()(0,i));
+            T01.row_2.push_back(T_01.matrix()(1,i));
+            T01.row_3.push_back(0.0);
+            T01.row_4.push_back(0.0);
         }
-        T_01.row_1.push_back(x_trans);
-        T_01.row_2.push_back(y_trans);
-        T_01.row_3.push_back(0.0);
-        T_01.row_4.push_back(1.0);
 
-        pub_transform_->publish(T_01);
+        RCLCPP_INFO(rclcpp::get_logger("message"), "Test 5");
+        T01.row_1.push_back(0.0);
+        T01.row_2.push_back(0.0);
+        T01.row_3.push_back(1.0);
+        T01.row_4.push_back(0.0);
+
+        T01.row_1.push_back(T_01.translation()(0));
+        T01.row_2.push_back(T_01.translation()(1));
+        T01.row_3.push_back(0.0);
+        T01.row_4.push_back(1.0);
+        T01.id = id;
+
+        id++;
+
+        pub_transform_->publish(T01);
+
+        rot_0 = T1.rotationMatrix();
+        trans_0 = T1.translation();
+    }
+    m++;
+    if (m > 8){
+        first_flag = false;
+    }
     }
   }
 
@@ -226,15 +269,16 @@ private:
     // RCLCPP_INFO(rclcpp::get_logger("message"), "DPhi r: %f", delta_p.r);
     // RCLCPP_INFO(rclcpp::get_logger("message"), "DPhi l: %f", delta_p.l);
     if (first){
-        auto message = sensor_msgs::msg::JointState();
-        message.name = {"wheel_left_joint", "wheel_right_joint"};
-        message.position = {0.0, 0.0};
-        message.header.stamp = this->get_clock()->now();
-        message.velocity = {0.0, 0.0};
-        pub_joint_states_->publish(message);
-        if (delta_p.r == 0.0){
-            first = false;
-        }
+        // auto message = sensor_msgs::msg::JointState();
+        // message.name = {"wheel_left_joint", "wheel_right_joint"};
+        // message.position = {0.0, 0.0};
+        // message.header.stamp = this->get_clock()->now();
+        // message.velocity = {0.0, 0.0};
+        // pub_joint_states_->publish(message);
+        robot.Forward_Kin(delta_p);
+        x_prev = robot.x_get();
+        y_prev = robot.y_get();
+        theta_prev = robot.theta_get();
     }
     else{
         // RCLCPP_INFO(rclcpp::get_logger("message"), "Inside");
@@ -279,8 +323,7 @@ private:
         t.transform.rotation.z = tf2_quatern.z();
         t.transform.rotation.w = tf2_quatern.w();
     }
-    
-
+    first = false;
     // if (first){
     //     x_prev = robot.x_get();
     //     y_prev = robot.y_get();
@@ -444,12 +487,27 @@ private:
   visualization_msgs::msg::MarkerArray node_markers;
   visualization_msgs::msg::MarkerArray edge_markers;
 
-  int id = 0;
+  int id = 1;
   double x_prev = 0.0;
   double y_prev = 0.0;
+  double theta_prev = 0.0;
 
   bool first = true;
   bool reconstruct_graph = false;
+  int count = 0;
+
+  Eigen::Matrix<double, 3, 3> rot_0;
+  Eigen::Matrix<double, 3, 1> trans_0;
+
+  bool first_flag = true;
+  bool ff_1 = true;
+  std::vector<double> x_arr {0.0, 0.401742, 0.441624, 0.847666, 0.90923, 0.533757, 0.494193, 0.047714, 0.0};
+  std::vector<double> y_arr {0.0, -0.526768, -0.578827, -0.27026, -0.223236, 0.177863, 0.220178, -0.038281, 0.0};
+  std::vector<double> theta_arr {0.0, 0.001898, 1.506935, 1.573059, 3.114796, 3.241666, 4.751765, 2.029354, 0.0};
+//   std::vector<double> x_arr {0.0, 1.0, 1.0, 0.0};
+//   std::vector<double> y_arr {1.0, 1.0, 0.0, 0.0};
+//   std::vector<double> theta_arr {0.0, M_PI/2.0, M_PI, (3.0*M_PI)/4.0, (2.0*M_PI)};
+  int m = 0;
 };
 
 int main(int argc, char * argv[])

@@ -121,6 +121,7 @@ ament_target_dependencies(wheel_encoder
   turtlelib
   tf2
   tf2_ros
+  Sophus
 )
 
 ament_target_dependencies(reconstruction
@@ -231,6 +232,7 @@ target_link_libraries(wheel_encoder ${OpenCV_LIBS}
   transform
   ${PYTHON_LIBRARIES}
   Python3::NumPy
+  Sophus::Sophus
   "${cpp_typesupport_target}"
   Optimization
   turtlelib::turtlelib
@@ -252,6 +254,7 @@ target_link_libraries(sesync_test ${OpenCV_LIBS}
   Eigen3::Eigen 
   teaserpp::teaser_registration 
   teaserpp::teaser_io
+  Sophus::Sophus
   transform
   graph
   ${PYTHON_LIBRARIES}

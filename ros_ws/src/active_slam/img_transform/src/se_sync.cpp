@@ -318,7 +318,7 @@ private:
     edge.id_b = id_trans;
     edge.transform = trans;
     edge.type = "EDGE_SE2";
-    edge.info_matrix = information_matrix;
+    // edge.info_matrix = information_matrix;
     edges.push_back(edge);
     RCLCPP_INFO(rclcpp::get_logger("message"), "Edges size: %ld", edges.size());
   }
