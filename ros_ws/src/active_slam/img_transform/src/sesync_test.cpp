@@ -313,37 +313,93 @@ private:
             // make an id for each pose and each pose pair for edges (like connecting non-sequential nodes for looping back)
 
             Eigen::MatrixXd xhat = results.xhat;
-            RCLCPP_INFO(rclcpp::get_logger("message"), "T 1: %f, %f, %f, %f, %f, %f, %f, %f, %f, %f, %f, %f", results.xhat.col(0)(0), results.xhat.col(1)(0), results.xhat.col(2)(0), results.xhat.col(3)(0), results.xhat.col(4)(0),results.xhat.col(5)(0), results.xhat.col(6)(0), results.xhat.col(7)(0), results.xhat.col(8)(0), results.xhat.col(9)(0), results.xhat.col(10)(0), results.xhat.col(11)(0), results.xhat.col(12)(0));
-            RCLCPP_INFO(rclcpp::get_logger("message"), "T 2: %f, %f, %f, %f, %f, %f, %f, %f, %f, %f, %f, %f", results.xhat.col(0)(1), results.xhat.col(1)(1), results.xhat.col(2)(1), results.xhat.col(3)(1), results.xhat.col(4)(1),results.xhat.col(5)(1), results.xhat.col(6)(1), results.xhat.col(7)(1), results.xhat.col(8)(1), results.xhat.col(9)(1), results.xhat.col(10)(1), results.xhat.col(11)(1), results.xhat.col(12)(1));
+            int trans_size = edges.size();
+            RCLCPP_INFO(rclcpp::get_logger("message"), "size: %d", trans_size);
+            RCLCPP_INFO(rclcpp::get_logger("message"), "size xhat: %d", xhat.row(0).size());
+
+            double translation_num = edges.size();
+
+            for (int i = 0; i < translation_num-1; i++){
+                RCLCPP_INFO(rclcpp::get_logger("message"), "T 1: %f", results.xhat.col(i)(0));
+                RCLCPP_INFO(rclcpp::get_logger("message"), "T 2: %f", results.xhat.col(i)(1));
+                RCLCPP_INFO(rclcpp::get_logger("message"), "R 1: %f, %f", results.xhat.col(trans_size + i)(0), results.xhat.col(trans_size + 1 + i)(0));
+                RCLCPP_INFO(rclcpp::get_logger("message"), "R 2: %f, %f", results.xhat.col(trans_size + i)(1), results.xhat.col(trans_size + 1 + i)(1));
+                trans_size++;
+            }
+            // RCLCPP_INFO(rclcpp::get_logger("message"), "T 1: %f, %f, %f, %f, %f, %f, %f, %f, %f, %f, %f, %f", results.xhat.col(0)(0), results.xhat.col(1)(0), results.xhat.col(2)(0), results.xhat.col(3)(0), results.xhat.col(4)(0),results.xhat.col(5)(0), results.xhat.col(6)(0), results.xhat.col(7)(0), results.xhat.col(8)(0), results.xhat.col(9)(0), results.xhat.col(10)(0), results.xhat.col(11)(0), results.xhat.col(12)(0));
+            // RCLCPP_INFO(rclcpp::get_logger("message"), "T 2: %f, %f, %f, %f, %f, %f, %f, %f, %f, %f, %f, %f", results.xhat.col(0)(1), results.xhat.col(1)(1), results.xhat.col(2)(1), results.xhat.col(3)(1), results.xhat.col(4)(1),results.xhat.col(5)(1), results.xhat.col(6)(1), results.xhat.col(7)(1), results.xhat.col(8)(1), results.xhat.col(9)(1), results.xhat.col(10)(1), results.xhat.col(11)(1), results.xhat.col(12)(1));
 
             std::vector<std::vector<double>> nodes;
 
             Eigen::Matrix<double, 4,4> T_updated;
-            int trans_size = edges.size();
-            RCLCPP_INFO(rclcpp::get_logger("message"), "size: %d", trans_size);
+            Eigen::Matrix<double, 3,3> r_updated;
+            Eigen::Matrix<double, 3,1> t_updated;
 
             double x;
             double y;
             double theta;
 
-            for (int i = 0; i < trans_size; i++){
-                T_updated.row(0) << xhat.col(trans_size + i)(0), xhat.col(trans_size + 1 + i)(0), 0.0, xhat.col(i)(0);
-                // RCLCPP_INFO(rclcpp::get_logger("message"), "T 1: %f, %f, %f, %f", results.xhat.col((trans_size-1) + i)(0), results.xhat.col(trans_size + i)(0), 0.0, results.xhat.col(i)(0));
-                T_updated.row(1) << xhat.col(trans_size + i)(1), xhat.col(trans_size + 1 + i)(1), 0.0, xhat.col(i)(1);
-                // RCLCPP_INFO(rclcpp::get_logger("message"), "T 2: %f, %f, %f, %f", results.xhat.col((trans_size-1) + i)(1), results.xhat.col(trans_size + i)(1), 0.0, results.xhat.col(i)(1));
-                T_updated.row(2) << 0.0, 0.0, 1.0, 0.0;
-                T_updated.row(3) << 0.0, 0.0, 0.0, 1.0;
+            r_updated.row(0) << xhat.col(translation_num)(0), xhat.col(translation_num + 1)(0), 0.0;
+            r_updated.row(1) << xhat.col(translation_num)(1), xhat.col(translation_num + 1)(1), 0.0;
+            r_updated.row(2) << 0.0, 0.0, 1.0;
+            t_updated(0) = xhat.col(0)(0);
+            t_updated(1) = xhat.col(0)(1);
+            t_updated(1) = 0.0;
+            RCLCPP_INFO(rclcpp::get_logger("message"), "Test 1");
+
+            Sophus::SE3d T_SE_0(r_updated, t_updated);
+            RCLCPP_INFO(rclcpp::get_logger("message"), "Test 2");
+
+            Eigen::Vector<double,6> v_s(dx_cam, 0.0, 0.0, 0.0, 0.0, 0.0);
+            Sophus::SE3d T_anchor = Sophus::SE3d::exp(v_s)*T_SE_0.inverse();
+            // Sophus::SE3d T_S0 = T_SE_0*T_anchor;
+            RCLCPP_INFO(rclcpp::get_logger("message"), "Test 3");
+
+            trans_size = edges.size();
+
+
+            for (int i = 0; i < translation_num; i++){
+
+                r_updated.block(0, 0, 2, 2) = xhat.block(0, trans_size + i*2, 2, 2);
+
+                // r_updated.row(0) << xhat.segment()(trans_size + i*2)(0), xhat.col(trans_size + i*2 + 1)(0), 0.0;
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "r_up: %f, %f, %f", xhat.col(trans_size)(0), xhat.col(trans_size + 1)(0), 0.0);
+                // r_updated.row(1) << xhat.col(trans_size)(1), xhat.col(trans_size + 1)(1), 0.0;
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "r_up: %f, %f, %f", xhat.col(trans_size)(1), xhat.col(trans_size + 1)(1), 0.0);
+                // r_updated.row(2) << 0.0, 0.0, 1.0;
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "t_up: %f, %f, %f", xhat.col(i)(0), xhat.col(i)(1), 0.0);
+                t_updated(0) = xhat.col(i)(0);
+                t_updated(1) = xhat.col(i)(1);
+                t_updated(2) = 0.0;
 
                 std::cout << "T0: " << std::endl;
-                Eigen::Matrix<double, 4, 4> xhat_ = T_fix.matrix()*T_updated;
+                // Eigen::Matrix<double, 4, 4> xhat_ = T_fix.matrix()*T_updated;
+                RCLCPP_INFO(rclcpp::get_logger("message"), "Test 4.3");
+                Sophus::SE3d T_xhat_(r_updated, t_updated);
 
-                x = xhat_(0,3); //xhat.col(i)(0);
-                y = xhat_(1,3); //xhat.col(i)(1);
+                RCLCPP_INFO(rclcpp::get_logger("message"), "Test 4");
+
+                RCLCPP_INFO(rclcpp::get_logger("message"), "T_xhat_ before row 1: %f, %f, %f, %f", T_xhat_.matrix()(0,0), T_xhat_.matrix()(0,1), T_xhat_.matrix()(0,2), T_xhat_.matrix()(0,3));
+                RCLCPP_INFO(rclcpp::get_logger("message"), "T_xhat_ before row 2: %f, %f, %f, %f", T_xhat_.matrix()(1,0), T_xhat_.matrix()(1,1), T_xhat_.matrix()(1,2), T_xhat_.matrix()(1,3));
+                RCLCPP_INFO(rclcpp::get_logger("message"), "T_xhat_ before row 3: %f, %f, %f, %f", T_xhat_.matrix()(2,0), T_xhat_.matrix()(2,1), T_xhat_.matrix()(2,2), T_xhat_.matrix()(2,3));
+                RCLCPP_INFO(rclcpp::get_logger("message"), "T_xhat_ before row 4: %f, %f, %f, %f", T_xhat_.matrix()(3,0), T_xhat_.matrix()(3,1), T_xhat_.matrix()(3,2), T_xhat_.matrix()(3,3));
+
+                Sophus::SE3d T_node = T_anchor*T_xhat_;
+                x = T_node.translation()(0); //xhat.col(i)(0);
+                y = T_node.translation()(1); //xhat.col(i)(1);
+
+                RCLCPP_INFO(rclcpp::get_logger("message"), "T_xhat_ after row 1: %f, %f, %f, %f", T_node.matrix()(0,0), T_node.matrix()(0,1), T_node.matrix()(0,2), T_node.matrix()(0,3));
+                RCLCPP_INFO(rclcpp::get_logger("message"), "T_xhat_ after row 2: %f, %f, %f, %f", T_node.matrix()(1,0), T_node.matrix()(1,1), T_node.matrix()(1,2), T_node.matrix()(1,3));
+                RCLCPP_INFO(rclcpp::get_logger("message"), "T_xhat_ after row 3: %f, %f, %f, %f", T_node.matrix()(2,0), T_node.matrix()(2,1), T_node.matrix()(2,2), T_node.matrix()(2,3));
+                RCLCPP_INFO(rclcpp::get_logger("message"), "T_xhat_ after row 4: %f, %f, %f, %f", T_node.matrix()(3,0), T_node.matrix()(3,1), T_node.matrix()(3,2), T_node.matrix()(3,3));
 
                 //TODO maybe change if needed
                 // Eigen::MatrixXd R = xhat.block(0, ((trans_size-1) + i), 2, 2);
-                Eigen::Matrix<double, 2, 2> R = xhat_.block(0, 0, 2, 2);
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 5");
+                Eigen::Matrix<double, 2, 2> R = T_node.rotationMatrix().block(0, 0, 2, 2);
                 theta = img_transform::Rot2Theta(R);
+
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 6");
 
                 nodes.push_back({x, y, theta});
             }
