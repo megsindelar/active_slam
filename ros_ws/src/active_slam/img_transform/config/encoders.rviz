@@ -6,7 +6,6 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
-        - /TF1/Status1
         - /Image1
         - /Image1/Topic1
       Splitter Ratio: 0.5
@@ -75,10 +74,6 @@ Visualization Manager:
           Value: true
         caster_back_link:
           Value: true
-        frame0:
-          Value: true
-        frame1:
-          Value: true
         imu_link:
           Value: true
         odom:
@@ -98,10 +93,6 @@ Visualization Manager:
       Show Names: false
       Tree:
         world:
-          frame0:
-            {}
-          frame1:
-            {}
           previous:
             {}
       Update Interval: 0
@@ -119,6 +110,18 @@ Visualization Manager:
         History Policy: Keep Last
         Reliability Policy: Best Effort
         Value: /current_image/compressed
+      Value: true
+    - Class: rviz_default_plugins/MarkerArray
+      Enabled: true
+      Name: MarkerArray
+      Namespaces:
+        {}
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /nodes
       Value: true
   Enabled: true
   Global Options:
@@ -166,7 +169,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 3.2402379512786865
+      Distance: 3.369410753250122
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
