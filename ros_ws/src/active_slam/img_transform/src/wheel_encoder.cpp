@@ -30,6 +30,7 @@
 #include "tf2_ros/transform_broadcaster.h"
 #include "std_srvs/srv/empty.hpp"
 #include "img_transform/msg/transform.hpp"
+#include "img_transform/msg/odom.hpp"
 
 #include <Eigen/Core>
 #include <Eigen/CholmodSupport>
@@ -52,33 +53,40 @@ public:
     /// \param wheel_radius - wheel radius of turtlebot
     this->declare_parameter("wheel_radius", -1.0);
     wheel_radius = this->get_parameter("wheel_radius").get_parameter_value().get<double>();
-    if (wheel_radius == -1.0) {throw std::logic_error("All parameters are not set! WR");}
+    if (wheel_radius == -1.0) {throw std::logic_error("All parameters are not set!");}
 
     /// \brief the track width between the wheels of turtlebot
     /// \param track_width - track width of turtlebot
     this->declare_parameter("track_width", -1.0);
     track_width = this->get_parameter("track_width").get_parameter_value().get<double>();
-    if (track_width == -1.0) {throw std::logic_error("All parameters are not set! TW");}
+    if (track_width == -1.0) {throw std::logic_error("All parameters are not set!");}
 
     /// \brief parameter that is the max allowable ticks that the motor can go
     /// \param motor_cmd_max - maximum ticks of motor
     this->declare_parameter("motor_cmd_max", -1.0);
     motor_cmd_max = this->get_parameter("motor_cmd_max").get_parameter_value().get<double>();
-    if (motor_cmd_max == -1.0) {throw std::logic_error("All parameters are not set! MCM");}
+    if (motor_cmd_max == -1.0) {throw std::logic_error("All parameters are not set!");}
 
     /// \brief parameter that is used to convert motor ticks to radians
     /// \param motor_cmd_per_rad_sec - convert motor ticks to radians
     this->declare_parameter("motor_cmd_per_rad_sec", -1.0);
     motor_cmd_per_rad_sec =
       this->get_parameter("motor_cmd_per_rad_sec").get_parameter_value().get<double>();
-    if (motor_cmd_per_rad_sec == -1.0) {throw std::logic_error("All parameters are not set! MCRS");}
+    if (motor_cmd_per_rad_sec == -1.0) {throw std::logic_error("All parameters are not set!");}
 
     /// \brief parameter that is used to convert encoder ticks to radians
     /// \param encoder_ticks_per_rad - convert encoder ticks to radians
     this->declare_parameter("encoder_ticks_per_rad", -1.0);
     encoder_ticks_per_rad =
       this->get_parameter("encoder_ticks_per_rad").get_parameter_value().get<double>();
-    if (encoder_ticks_per_rad == -1.0) {throw std::logic_error("All parameters are not set! ETPR");}
+    if (encoder_ticks_per_rad == -1.0) {throw std::logic_error("All parameters are not set!");}
+
+    /// \brief parameter that is the difference between wheel base and cam in x-direction
+    /// \param dx_cam - convert encoder ticks to radians
+    this->declare_parameter("dx_cam", -1.0);
+    dx_cam =
+      this->get_parameter("dx_cam").get_parameter_value().get<double>();
+    if (dx_cam == -1.0) {throw std::logic_error("All parameters are not set!");}
 
     // /// \brief a subscriber to get the sensor data of the turtlebot
     // /// topic: /sensor_data (nuturtlebot_msgs/SensorData)
@@ -100,6 +108,9 @@ public:
 
     pub_joint_states_ = this->create_publisher<sensor_msgs::msg::JointState>(
       "joint_states", 10);
+
+    pub_odom_ = this->create_publisher<img_transform::msg::Odom>(
+      "odom_orientation", 10);
 
     pub_nodes_ = this->create_publisher<visualization_msgs::msg::MarkerArray>(
       "nodes_w", 10);
@@ -136,28 +147,52 @@ private:
 
     if (first_flag){
 
-    if (ff_1){
-        ff_1 = false;
-        rot_0.row(0) << cos(0.0), -sin(0.0), 0.0;
-        rot_0.row(1) << sin(0.0), cos(0.0), 0.0;
-        rot_0.row(2) << 0.0, 0.0, 1.0;
-        trans_0(0) = 0.0;
-        trans_0(1) = 0.0;
-        trans_0(2) = 0.0;
+    // if (ff_1){
+    //     ff_1 = false;
+    //     rot_0.row(0) << cos(0.0), -sin(0.0), 0.0;
+    //     rot_0.row(1) << sin(0.0), cos(0.0), 0.0;
+    //     rot_0.row(2) << 0.0, 0.0, 1.0;
+    //     trans_0(0) = 0.0;
+    //     trans_0(1) = 0.0;
+    //     trans_0(2) = 0.0;
 
-        for (int i = 0; i < 1000000; i++){
-            std::cout << "waiting" << std::endl;
-        }
-    }
+    //     for (int i = 0; i < 1000000; i++){
+    //         std::cout << "waiting" << std::endl;
+    //     }
+    // }
 
-    double x = x_arr[m]; // robot.x_get() - x_sub;
-    double y = y_arr[m]; // robot.y_get() - y_sub;
-    double theta = theta_arr[m]; // robot.theta_get() - theta_sub;
+    double x = robot.x_get() - x_sub; //x_arr[m];
+    double y = robot.y_get() - y_sub; //y_arr[m];
+    double theta = robot.theta_get() - theta_sub; //theta_arr[m];
 
-    RCLCPP_INFO(rclcpp::get_logger("message"), "Test 436");
+    img_transform::msg::Odom rotate;
+    rotate.theta = robot.theta_get();
+    pub_odom_->publish(rotate);
 
-    // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 1");
-    Sophus::SE3d T0(rot_0, trans_0);
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 436");
+
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 134");
+    Sophus::SE3d T0_w(rot_0, trans_0);
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "T_0 row 1: %f, %f, %f, %f", T0.matrix()(0,0), T0.matrix()(0,1), T0.matrix()(0,2), T0.matrix()(0,3));
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "T_0 row 2: %f, %f, %f, %f", T0.matrix()(1,0), T0.matrix()(1,1), T0.matrix()(1,2), T0.matrix()(1,3));
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "T_0 row 3: %f, %f, %f, %f", T0.matrix()(2,0), T0.matrix()(2,1), T0.matrix()(2,2), T0.matrix()(2,3));
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "T_0 row 4: %f, %f, %f, %f", T0.matrix()(3,0), T0.matrix()(3,1), T0.matrix()(3,2), T0.matrix()(3,3));
+
+    Eigen::Vector<double,6> v01(dx_cam, 0.0, 0.0, 0.0, 0.0, 0.0);
+    Sophus::SE3d T0_exp = Sophus::SE3d::exp(v01);
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "T0_exp row 1: %f, %f, %f, %f", T0_exp.matrix()(0,0), T0_exp.matrix()(0,1), T0_exp.matrix()(0,2), T0_exp.matrix()(0,3));
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "T0_exp row 2: %f, %f, %f, %f", T0_exp.matrix()(1,0), T0_exp.matrix()(1,1), T0_exp.matrix()(1,2), T0_exp.matrix()(1,3));
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "T0_exp row 3: %f, %f, %f, %f", T0_exp.matrix()(2,0), T0_exp.matrix()(2,1), T0_exp.matrix()(2,2), T0_exp.matrix()(2,3));
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "T0_exp row 4: %f, %f, %f, %f", T0_exp.matrix()(3,0), T0_exp.matrix()(3,1), T0_exp.matrix()(3,2), T0_exp.matrix()(3,3));
+
+    Sophus::SE3d T0 = T0_w*T0_exp;
+
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "T_0 row 1: %f, %f, %f, %f", T0.matrix()(0,0), T0.matrix()(0,1), T0.matrix()(0,2), T0.matrix()(0,3));
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "T_0 row 2: %f, %f, %f, %f", T0.matrix()(1,0), T0.matrix()(1,1), T0.matrix()(1,2), T0.matrix()(1,3));
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "T_0 row 3: %f, %f, %f, %f", T0.matrix()(2,0), T0.matrix()(2,1), T0.matrix()(2,2), T0.matrix()(2,3));
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "T_0 row 4: %f, %f, %f, %f", T0.matrix()(3,0), T0.matrix()(3,1), T0.matrix()(3,2), T0.matrix()(3,3));
+
+
 
 
     Eigen::Matrix<double, 3, 3> rot_1;
@@ -173,9 +208,19 @@ private:
     trans_1(1) = y;
     trans_1(2) = 0.0;
     // RCLCPP_INFO(rclcpp::get_logger("message"), "x, y, theta: %f, %f, %f", x, y, theta);
-    RCLCPP_INFO(rclcpp::get_logger("message"), "Test 2.5");
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 2.5");
 
-    Sophus::SE3d T1(rot_1, trans_1);
+    Sophus::SE3d T1_w(rot_1, trans_1);
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "T_1_w row 1: %f, %f, %f, %f", T1_w.matrix()(0,0), T1_w.matrix()(0,1), T1_w.matrix()(0,2), T1_w.matrix()(0,3));
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "T_1_w row 2: %f, %f, %f, %f", T1_w.matrix()(1,0), T1_w.matrix()(1,1), T1_w.matrix()(1,2), T1_w.matrix()(1,3));
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "T_1_w row 3: %f, %f, %f, %f", T1_w.matrix()(2,0), T1_w.matrix()(2,1), T1_w.matrix()(2,2), T1_w.matrix()(2,3));
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "T_1_w row 4: %f, %f, %f, %f", T1_w.matrix()(3,0), T1_w.matrix()(3,1), T1_w.matrix()(3,2), T1_w.matrix()(3,3));
+    Sophus::SE3d T1_exp = Sophus::SE3d::exp(v01);
+    Sophus::SE3d T1 = T1_w*T1_exp;
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "T_1 row 1: %f, %f, %f, %f", T1.matrix()(0,0), T1.matrix()(0,1), T1.matrix()(0,2), T1.matrix()(0,3));
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "T_1 row 2: %f, %f, %f, %f", T1.matrix()(1,0), T1.matrix()(1,1), T1.matrix()(1,2), T1.matrix()(1,3));
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "T_1 row 3: %f, %f, %f, %f", T1.matrix()(2,0), T1.matrix()(2,1), T1.matrix()(2,2), T1.matrix()(2,3));
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "T_1 row 4: %f, %f, %f, %f", T1.matrix()(3,0), T1.matrix()(3,1), T1.matrix()(3,2), T1.matrix()(3,3));
     // RCLCPP_INFO(rclcpp::get_logger("message"), "T1 rot mat 0: %f, %f", T1.rotationMatrix()(0,0), T1.rotationMatrix()(0,1));
     // RCLCPP_INFO(rclcpp::get_logger("message"), "T1 rot mat 1: %f, %f", T1.rotationMatrix()(1,0), T1.rotationMatrix()(1,1));
     // RCLCPP_INFO(rclcpp::get_logger("message"), "T1 x y: %f, %f", T1.translation()(0), T1.translation()(1));
@@ -194,6 +239,26 @@ private:
 
     Sophus::SE3d T_01 = T0.inverse()*T1;
 
+
+    ////////////////////////////////////////////////
+    // convert from wheel base to cam frame
+    ////////////////////////////////////////////////
+
+    // Eigen::Matrix<double, 3,3> r_w_0 = Eigen::Matrix<double,3,3>::Identity();
+    // Eigen::Matrix<double, 3,1> t_w_0;
+    // t_w_0(0) = dx_cam;
+    // t_w_0(1) = 0.0;
+    // t_w_0(2) = 0.0;
+
+    // Sophus::SE3 T_w_0(r_w_0, t_w_0);
+
+    // Eigen::Vector<double,6> v01(dx_cam, 0.0, 0.0, 0.0, 0.0, 0.0);
+    // T_w_1 = T_w_1*Sophus::SE3d::exp(v01);
+
+
+    // Sophus::SE3d T_01 = T_w_0.inverse()*T_w_1;
+
+
     // RCLCPP_INFO(rclcpp::get_logger("message"), "x TESSSSSTTTTTTTTTTTTTTTTT %f: ", T1.matrix()(0,3));
     // Sophus::SE3d T_01 = T_01_g*T01_n;
 
@@ -211,7 +276,7 @@ private:
     Eigen::Vector3d euler = T_01.rotationMatrix().eulerAngles(2,1,0);
     double theta_rot = euler(0);
 
-    double theta_r = robot.theta_get() - theta_prev;
+    double theta_r = theta - theta_prev;
 
     // RCLCPP_INFO(rclcpp::get_logger("message"), "diff x, y, theta: %f, %f, %f", x_trans, y_trans, theta_r);
 
@@ -222,7 +287,7 @@ private:
     // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 3");
  
     // need a subscriber of when recognize somewhere I've been before (aka bag of words that's from img_transform)
-    if (reconstruct_graph == false){ // && first == false && (abs(x_trans) > 0.1 || abs(y_trans) > 0.1 || abs(theta_r) > 3.8)){
+    if (reconstruct_graph == false && first == false && (abs(x_trans) > 0.1 || abs(y_trans) > 0.1 || abs(theta_r) > 0.785375)){
         // Sophus::SE3 T0(rot_mat, trans_mat);
         RCLCPP_INFO(rclcpp::get_logger("message"), "T_0 row 1: %f, %f, %f, %f", T0.matrix()(0,0), T0.matrix()(0,1), T0.matrix()(0,2), T0.matrix()(0,3));
         RCLCPP_INFO(rclcpp::get_logger("message"), "T_0 row 2: %f, %f, %f, %f", T0.matrix()(1,0), T0.matrix()(1,1), T0.matrix()(1,2), T0.matrix()(1,3));
@@ -235,6 +300,11 @@ private:
         RCLCPP_INFO(rclcpp::get_logger("message"), "T_1 row 3: %f, %f, %f, %f", T1.matrix()(2,0), T1.matrix()(2,1), T1.matrix()(2,2), T1.matrix()(2,3));
         RCLCPP_INFO(rclcpp::get_logger("message"), "T_1 row 4: %f, %f, %f, %f", T1.matrix()(3,0), T1.matrix()(3,1), T1.matrix()(3,2), T1.matrix()(3,3));
         
+
+        RCLCPP_INFO(rclcpp::get_logger("message"), "T_01 row 1: %f, %f, %f, %f", T_01.matrix()(0,0), T_01.matrix()(0,1), T_01.matrix()(0,2), T_01.matrix()(0,3));
+        RCLCPP_INFO(rclcpp::get_logger("message"), "T_01 row 2: %f, %f, %f, %f", T_01.matrix()(1,0), T_01.matrix()(1,1), T_01.matrix()(1,2), T_01.matrix()(1,3));
+        RCLCPP_INFO(rclcpp::get_logger("message"), "T_01 row 3: %f, %f, %f, %f", T_01.matrix()(2,0), T_01.matrix()(2,1), T_01.matrix()(2,2), T_01.matrix()(2,3));
+        RCLCPP_INFO(rclcpp::get_logger("message"), "T_01 row 4: %f, %f, %f, %f", T_01.matrix()(3,0), T_01.matrix()(3,1), T_01.matrix()(3,2), T_01.matrix()(3,3));
         
         RCLCPP_INFO(rclcpp::get_logger("message"), "diff x, y, theta: %f, %f, %f", x_trans, y_trans, theta_r);
 
@@ -263,7 +333,7 @@ private:
 
         x_prev = robot.x_get();
         y_prev = robot.y_get();
-        theta_prev = robot.theta_get();
+        theta_prev = theta;
 
         img_transform::msg::Transform T01;
         for (int i = 0; i < 2; i++){
@@ -290,22 +360,28 @@ private:
         
         T01.y.push_back(T0.matrix()(1,3));
         T01.y.push_back(T1.matrix()(1,3));
+
+        T01.theta = robot.theta_get();
         T01.id = id;
 
         id++;
 
         pub_transform_->publish(T01);
 
-        rot_0 = T1.rotationMatrix();
-        trans_0 = T1.translation();
+        Eigen::Vector<double,6> v10(-dx_cam, 0.0, 0.0, 0.0, 0.0, 0.0);
+        Sophus::SE3d T1_w_exp = Sophus::SE3d::exp(v10);
+        T1_w = T1*T1_w_exp;
+
+        rot_0 = T1_w.rotationMatrix();
+        trans_0 = T1_w.translation();
         // RCLCPP_INFO(rclcpp::get_logger("message"), "t rot mat 0: %f, %f", rot_0(0,0), rot_0(0,1));
         // RCLCPP_INFO(rclcpp::get_logger("message"), "t rot mat 1: %f, %f", rot_0(1,0), rot_0(1,1));
         // RCLCPP_INFO(rclcpp::get_logger("message"), "t x y: %f, %f", trans_0(0), trans_0(1));
     }
-    m++;
-    if (m > 3){
-        first_flag = false;
-    }
+    // m++;
+    // if (m > 3){
+    //     first_flag = false;
+    // }
     }
   }
 
@@ -523,7 +599,7 @@ private:
 //   }
 
   /// initialize all publishers, subscribers, and services
-  double wheel_radius, motor_cmd_max, track_width, motor_cmd_per_rad_sec, collision_radius, encoder_ticks_per_rad;
+  double wheel_radius, motor_cmd_max, track_width, motor_cmd_per_rad_sec, collision_radius, encoder_ticks_per_rad, dx_cam;
 //   rclcpp::Subscription<nuturtlebot_msgs::msg::SensorData>::SharedPtr sub_sensor_data_;
   rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr sub_joint_states_;
   rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr pub_joint_states_;
@@ -534,6 +610,7 @@ private:
   rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr pub_nodes_;
   rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr pub_edges_;
   rclcpp::Publisher<img_transform::msg::Transform>::SharedPtr pub_transform_;
+  rclcpp::Publisher<img_transform::msg::Odom>::SharedPtr pub_odom_;
 
   rclcpp::Service<std_srvs::srv::Empty>::SharedPtr reconstruction_srv;
 
@@ -563,7 +640,7 @@ private:
   Eigen::Matrix<double, 3, 3> rot_0;
   Eigen::Matrix<double, 3, 1> trans_0;
 
-  bool first_flag = true;
+  bool first_flag = false;
   bool ff_1 = true;
 //   std::vector<double> x_arr {0.0, 0.401742, 0.441624, 0.847666, 0.90923, 0.533757, 0.494193, 0.047714, 0.0};
 //   std::vector<double> y_arr {0.0, -0.526768, -0.578827, -0.27026, -0.223236, 0.177863, 0.220178, -0.038281, 0.0};
@@ -571,10 +648,10 @@ private:
 //   std::vector<double> x_arr {0.0, 1.0, 1.0, 0.0};
 //   std::vector<double> y_arr {1.0, 1.0, 0.0, 0.0};
 //   std::vector<double> theta_arr {M_PI/2.0, M_PI, (3.0*M_PI)/2.0, 2.0*M_PI};
-  std::vector<double> x_arr {-0.301859, -0.605766, -0.304241, -0.161178};
-  std::vector<double> y_arr {0.080700, -0.206141, -0.351543, -0.046565};
-  std::vector<double> theta_arr {-0.002847, 1.615771, 3.203731, 4.801784};
-  int m = 0;
+//   std::vector<double> x_arr {-0.301859, -0.605766, -0.304241, -0.161178};
+//   std::vector<double> y_arr {0.080700, -0.206141, -0.351543, -0.046565};
+//   std::vector<double> theta_arr {-0.002847, 1.615771, 3.203731, 4.801784};
+//   int m = 0;
 };
 
 int main(int argc, char * argv[])

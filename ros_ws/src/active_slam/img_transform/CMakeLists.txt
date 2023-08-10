@@ -36,7 +36,7 @@ find_package(turtlelib REQUIRED)
 
 include_directories(include)
 
-rosidl_generate_interfaces(${PROJECT_NAME}_msg "msg/Keypoints.msg" "msg/Transform.msg" LIBRARY_NAME ${PROJECT_NAME})
+rosidl_generate_interfaces(${PROJECT_NAME}_msg "msg/Odom.msg" "msg/Transform.msg" LIBRARY_NAME ${PROJECT_NAME})
 rosidl_get_typesupport_target(cpp_typesupport_target ${PROJECT_NAME}_msg "rosidl_typesupport_cpp")
 
 add_library(transform src/transform.cpp)

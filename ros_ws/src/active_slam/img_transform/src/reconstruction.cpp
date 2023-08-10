@@ -31,7 +31,7 @@
 
 #include <string>
 #include <math.h>
-#include "img_transform/msg/keypoints.hpp"
+// #include "img_transform/msg/keypoints.hpp"
 #include "img_transform/msg/transform.hpp"
 
 #include "sophus/se3.hpp"
