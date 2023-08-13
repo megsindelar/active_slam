@@ -1,4 +1,5 @@
 int32 id
+int32 id_2
 float64[] row_1
 float64[] row_2
 float64[] row_3
@@ -6,3 +7,5 @@ float64[] row_4
 float64[] x
 float64[] y
 float64 theta
+float64 x_w
+float64 y_w

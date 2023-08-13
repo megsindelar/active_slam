@@ -7,6 +7,18 @@ endif()
 
 set(CMAKE_PREFIX_PATH /path/to/spqr/installation)
 
+# find_library(LIB_DBOW2 libDBoW2.so PATHS /usr/local/lib)
+
+# if(NOT LIB_DBOW2)
+#     message(FATAL_ERROR "libDBoW2 library not found")
+# endif()
+
+# set(LIB_DBOW2_LIBRARIES ${LIB_DBOW2})
+
+SET(CMAKE_EXE_LINKER_FLAGS 
+          "${CMAKE_EXE_LINKER_FLAGS} -Wl,-rpath -Wl,/usr/local/lib")
+
+
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
@@ -33,10 +45,12 @@ find_package(std_srvs REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(visualization_msgs REQUIRED)
 find_package(turtlelib REQUIRED)
+find_package(DBoW2 REQUIRED)
 
 include_directories(include)
 
-rosidl_generate_interfaces(${PROJECT_NAME}_msg "msg/Odom.msg" "msg/Transform.msg" LIBRARY_NAME ${PROJECT_NAME})
+
+rosidl_generate_interfaces(${PROJECT_NAME}_msg "msg/Odom.msg" "msg/Transform.msg" "msg/Nodes.msg" "msg/FrameID.msg" LIBRARY_NAME ${PROJECT_NAME})
 rosidl_get_typesupport_target(cpp_typesupport_target ${PROJECT_NAME}_msg "rosidl_typesupport_cpp")
 
 add_library(transform src/transform.cpp)
@@ -142,6 +156,7 @@ ament_target_dependencies(reconstruction
   nav_msgs
   std_srvs
   visualization_msgs
+  DBoW2
 )
 
 ament_target_dependencies(sesync_test
@@ -171,6 +186,7 @@ ament_target_dependencies(test_node
   tf2_ros
   std_srvs
 )
+
 
 ament_target_dependencies(graph
   visualization_msgs
@@ -248,6 +264,7 @@ target_link_libraries(reconstruction ${OpenCV_LIBS}
   Python3::NumPy
   "${cpp_typesupport_target}"
   turtlelib::turtlelib
+  DBoW2
 )
 
 target_link_libraries(sesync_test ${OpenCV_LIBS} 
@@ -277,6 +294,7 @@ target_link_libraries(test_node ${OpenCV_LIBS}
   SESync
   turtlelib::turtlelib
 )
+
 
 target_link_libraries(transform
   Eigen3::Eigen

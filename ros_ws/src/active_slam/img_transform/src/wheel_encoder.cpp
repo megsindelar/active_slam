@@ -122,6 +122,13 @@ public:
 
     pub_rob_pose_ = this->create_publisher<geometry_msgs::msg::Point>("rob_pose", 10);
 
+
+    sub_odom_update_ = this->create_subscription<img_transform::msg::Odom>(
+      "/odom_update", 10, std::bind(
+        &WheelEncoder::odom_update_callback,
+        this, std::placeholders::_1));
+
+
     /// \brief timer callback with a specified frequency rate
     /// \param rate - frequency of timer callback in Hz
     this->declare_parameter("frequency", 10);
@@ -172,6 +179,33 @@ private:
     // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 436");
 
     // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 134");
+
+    if (update_pos){
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        trans_0(0) = x;
+        trans_0(1) = y;
+        x_prev = x;
+        y_prev = y;
+        update_pos = false;
+    }
     Sophus::SE3d T0_w(rot_0, trans_0);
     // RCLCPP_INFO(rclcpp::get_logger("message"), "T_0 row 1: %f, %f, %f, %f", T0.matrix()(0,0), T0.matrix()(0,1), T0.matrix()(0,2), T0.matrix()(0,3));
     // RCLCPP_INFO(rclcpp::get_logger("message"), "T_0 row 2: %f, %f, %f, %f", T0.matrix()(1,0), T0.matrix()(1,1), T0.matrix()(1,2), T0.matrix()(1,3));
@@ -289,26 +323,26 @@ private:
     // need a subscriber of when recognize somewhere I've been before (aka bag of words that's from img_transform)
     if (reconstruct_graph == false && first == false && (abs(x_trans) > 0.1 || abs(y_trans) > 0.1 || abs(theta_r) > 0.785375)){
         // Sophus::SE3 T0(rot_mat, trans_mat);
-        RCLCPP_INFO(rclcpp::get_logger("message"), "T_0 row 1: %f, %f, %f, %f", T0.matrix()(0,0), T0.matrix()(0,1), T0.matrix()(0,2), T0.matrix()(0,3));
-        RCLCPP_INFO(rclcpp::get_logger("message"), "T_0 row 2: %f, %f, %f, %f", T0.matrix()(1,0), T0.matrix()(1,1), T0.matrix()(1,2), T0.matrix()(1,3));
-        RCLCPP_INFO(rclcpp::get_logger("message"), "T_0 row 3: %f, %f, %f, %f", T0.matrix()(2,0), T0.matrix()(2,1), T0.matrix()(2,2), T0.matrix()(2,3));
-        RCLCPP_INFO(rclcpp::get_logger("message"), "T_0 row 4: %f, %f, %f, %f", T0.matrix()(3,0), T0.matrix()(3,1), T0.matrix()(3,2), T0.matrix()(3,3));
+        // RCLCPP_INFO(rclcpp::get_logger("message"), "T_0 row 1: %f, %f, %f, %f", T0.matrix()(0,0), T0.matrix()(0,1), T0.matrix()(0,2), T0.matrix()(0,3));
+        // RCLCPP_INFO(rclcpp::get_logger("message"), "T_0 row 2: %f, %f, %f, %f", T0.matrix()(1,0), T0.matrix()(1,1), T0.matrix()(1,2), T0.matrix()(1,3));
+        // RCLCPP_INFO(rclcpp::get_logger("message"), "T_0 row 3: %f, %f, %f, %f", T0.matrix()(2,0), T0.matrix()(2,1), T0.matrix()(2,2), T0.matrix()(2,3));
+        // RCLCPP_INFO(rclcpp::get_logger("message"), "T_0 row 4: %f, %f, %f, %f", T0.matrix()(3,0), T0.matrix()(3,1), T0.matrix()(3,2), T0.matrix()(3,3));
         
         
-        RCLCPP_INFO(rclcpp::get_logger("message"), "T_1 row 1: %f, %f, %f, %f", T1.matrix()(0,0), T1.matrix()(0,1), T1.matrix()(0,2), T1.matrix()(0,3));
-        RCLCPP_INFO(rclcpp::get_logger("message"), "T_1 row 2: %f, %f, %f, %f", T1.matrix()(1,0), T1.matrix()(1,1), T1.matrix()(1,2), T1.matrix()(1,3));
-        RCLCPP_INFO(rclcpp::get_logger("message"), "T_1 row 3: %f, %f, %f, %f", T1.matrix()(2,0), T1.matrix()(2,1), T1.matrix()(2,2), T1.matrix()(2,3));
-        RCLCPP_INFO(rclcpp::get_logger("message"), "T_1 row 4: %f, %f, %f, %f", T1.matrix()(3,0), T1.matrix()(3,1), T1.matrix()(3,2), T1.matrix()(3,3));
+        // RCLCPP_INFO(rclcpp::get_logger("message"), "T_1 row 1: %f, %f, %f, %f", T1.matrix()(0,0), T1.matrix()(0,1), T1.matrix()(0,2), T1.matrix()(0,3));
+        // RCLCPP_INFO(rclcpp::get_logger("message"), "T_1 row 2: %f, %f, %f, %f", T1.matrix()(1,0), T1.matrix()(1,1), T1.matrix()(1,2), T1.matrix()(1,3));
+        // RCLCPP_INFO(rclcpp::get_logger("message"), "T_1 row 3: %f, %f, %f, %f", T1.matrix()(2,0), T1.matrix()(2,1), T1.matrix()(2,2), T1.matrix()(2,3));
+        // RCLCPP_INFO(rclcpp::get_logger("message"), "T_1 row 4: %f, %f, %f, %f", T1.matrix()(3,0), T1.matrix()(3,1), T1.matrix()(3,2), T1.matrix()(3,3));
         
 
-        RCLCPP_INFO(rclcpp::get_logger("message"), "T_01 row 1: %f, %f, %f, %f", T_01.matrix()(0,0), T_01.matrix()(0,1), T_01.matrix()(0,2), T_01.matrix()(0,3));
-        RCLCPP_INFO(rclcpp::get_logger("message"), "T_01 row 2: %f, %f, %f, %f", T_01.matrix()(1,0), T_01.matrix()(1,1), T_01.matrix()(1,2), T_01.matrix()(1,3));
-        RCLCPP_INFO(rclcpp::get_logger("message"), "T_01 row 3: %f, %f, %f, %f", T_01.matrix()(2,0), T_01.matrix()(2,1), T_01.matrix()(2,2), T_01.matrix()(2,3));
-        RCLCPP_INFO(rclcpp::get_logger("message"), "T_01 row 4: %f, %f, %f, %f", T_01.matrix()(3,0), T_01.matrix()(3,1), T_01.matrix()(3,2), T_01.matrix()(3,3));
+        // RCLCPP_INFO(rclcpp::get_logger("message"), "T_01 row 1: %f, %f, %f, %f", T_01.matrix()(0,0), T_01.matrix()(0,1), T_01.matrix()(0,2), T_01.matrix()(0,3));
+        // RCLCPP_INFO(rclcpp::get_logger("message"), "T_01 row 2: %f, %f, %f, %f", T_01.matrix()(1,0), T_01.matrix()(1,1), T_01.matrix()(1,2), T_01.matrix()(1,3));
+        // RCLCPP_INFO(rclcpp::get_logger("message"), "T_01 row 3: %f, %f, %f, %f", T_01.matrix()(2,0), T_01.matrix()(2,1), T_01.matrix()(2,2), T_01.matrix()(2,3));
+        // RCLCPP_INFO(rclcpp::get_logger("message"), "T_01 row 4: %f, %f, %f, %f", T_01.matrix()(3,0), T_01.matrix()(3,1), T_01.matrix()(3,2), T_01.matrix()(3,3));
         
-        RCLCPP_INFO(rclcpp::get_logger("message"), "diff x, y, theta: %f, %f, %f", x_trans, y_trans, theta_r);
+        // RCLCPP_INFO(rclcpp::get_logger("message"), "diff x, y, theta: %f, %f, %f", x_trans, y_trans, theta_r);
 
-        RCLCPP_INFO(rclcpp::get_logger("message"), "Test 4");
+        // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 4");
 
         geometry_msgs::msg::Point point_pub;
         point_pub.x = robot.x_get();
@@ -356,10 +390,13 @@ private:
 
         T01.x.push_back(T0.matrix()(0,3));
         T01.x.push_back(T1.matrix()(0,3));
+        T01.x_w = (T1_w.matrix()(0,3));
+
         // RCLCPP_INFO(rclcpp::get_logger("message"), "x TESSSSSTTTTTTTTTTTTTTTTT %f: ", T1.matrix()(0,3));
         
         T01.y.push_back(T0.matrix()(1,3));
         T01.y.push_back(T1.matrix()(1,3));
+        T01.y_w = (T1_w.matrix()(1,3));
 
         T01.theta = robot.theta_get();
         T01.id = id;
@@ -469,6 +506,19 @@ private:
 
     // tf_broadcaster_->sendTransform(t);
 
+  }
+
+  void odom_update_callback(const img_transform::msg::Odom::SharedPtr msg)
+  {
+    update = msg->update;
+    if (update){
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!!11");
+        x_update = msg->x + x_sub;
+        y_update = msg->y + y_sub;
+        theta_update = msg->theta;
+        robot = {track_width, wheel_radius, {robot.phi_r_get(), robot.phi_l_get()}, {robot.theta_get(), x_update, y_update}};
+        update_pos = true;
+    }
   }
 
   void reconstruct(
@@ -611,6 +661,7 @@ private:
   rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr pub_edges_;
   rclcpp::Publisher<img_transform::msg::Transform>::SharedPtr pub_transform_;
   rclcpp::Publisher<img_transform::msg::Odom>::SharedPtr pub_odom_;
+  rclcpp::Subscription<img_transform::msg::Odom>::SharedPtr sub_odom_update_;
 
   rclcpp::Service<std_srvs::srv::Empty>::SharedPtr reconstruction_srv;
 
@@ -624,7 +675,7 @@ private:
   visualization_msgs::msg::MarkerArray node_markers;
   visualization_msgs::msg::MarkerArray edge_markers;
 
-  int id = 1;
+  int id = 0;
   double x_prev = 0.0;
   double y_prev = 0.0;
   double theta_prev = 0.0;
@@ -642,6 +693,12 @@ private:
 
   bool first_flag = false;
   bool ff_1 = true;
+
+  bool update = false;
+  bool update_pos = true;
+  double x_update = 0.0;
+  double y_update = 0.0;
+  double theta_update = 0.0;
 //   std::vector<double> x_arr {0.0, 0.401742, 0.441624, 0.847666, 0.90923, 0.533757, 0.494193, 0.047714, 0.0};
 //   std::vector<double> y_arr {0.0, -0.526768, -0.578827, -0.27026, -0.223236, 0.177863, 0.220178, -0.038281, 0.0};
 //   std::vector<double> theta_arr {0.0, 0.001898, 1.506935, 1.573059, 3.114796, 3.241666, 4.751765, 2.029354, 0.0};

@@ -54,8 +54,14 @@
 
 #include <geometry_msgs/msg/point.hpp>
 
+#include "DBoW2/DBoW2.h"
+
+#include "img_transform/msg/nodes.hpp"
+#include "img_transform/msg/frame_id.hpp"
+
 using namespace std;
 using namespace cv;
+using namespace DBoW2;
 
 // Macro constants for generating noise and outliers
 #define NOISE_BOUND 0.05
@@ -66,6 +72,14 @@ using namespace cv;
 #define RED_PIN 17
 #define BLUE_PIN 18
 #define GREEN_PIN 27
+
+
+OrbVocabulary BoW_voc(const std::vector<std::vector<cv::Mat >>&features, int num_images);
+
+int BOW_test(const std::vector<std::vector<cv::Mat >>&features, OrbVocabulary voc, int num_images, std::vector<int> id_vals);
+
+void changeStructure(const cv::Mat &plain, std::vector<cv::Mat> &out);
+
 
 class Reconstruction : public rclcpp::Node
 {
@@ -147,9 +161,19 @@ class Reconstruction : public rclcpp::Node
         pub_edges_ = this->create_publisher<visualization_msgs::msg::MarkerArray>(
             "edges_img", 10);
 
+        sub_frame_id_ = this->create_subscription<img_transform::msg::FrameID>(
+            "/frame_id", 10, std::bind(
+                &Reconstruction::frame_id_callback,
+                this, std::placeholders::_1));
+
         sub_rob_pose_ = this->create_subscription<geometry_msgs::msg::Point>(
             "/rob_pose", 10, std::bind(
                 &Reconstruction::robot_pose,
+                this, std::placeholders::_1));
+
+        sub_id_vals_ = this->create_subscription<img_transform::msg::Nodes>(
+            "/id_vals", 10, std::bind(
+                &Reconstruction::id_vals_callback,
                 this, std::placeholders::_1));
 
 
@@ -191,395 +215,472 @@ class Reconstruction : public rclcpp::Node
                 translation_current(1) = 0.0;
                 Sophus::SE3d Transformation_prev(rotation_current, translation_current);
             }
+            
+            if (reconstruct_img){
+            reconstruct_img = false;
+
+            // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 2");
 
 
             Eigen::Matrix<double, 4, 4> Transformation_current = Transformation_prev.matrix();
             Eigen::Matrix<double, 4, 4> Tran_pub = Eigen::Matrix4d::Identity();
-            if (reconstruction)
-            {
-                // reconstruction = false;
-                auto begin_total = std::chrono::high_resolution_clock::now();
-                Mat descriptors_1, descriptors_2;
-                Ptr<FeatureDetector> detector = ORB::create();
-                Ptr<DescriptorExtractor> descriptor = ORB::create();
-                std::vector<KeyPoint> keypoints_1, keypoints_2;
 
-                Ptr<DescriptorMatcher> matcher  = DescriptorMatcher::create ( "BruteForce-Hamming" );
+            // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 3");
+            
+            // reconstruction = false;
+            auto begin_total = std::chrono::high_resolution_clock::now();
+            Mat descriptors;
+            Ptr<FeatureDetector> detector = ORB::create();
+            Ptr<DescriptorExtractor> descriptor = ORB::create();
+            std::vector<KeyPoint> keypoints, keypoints_2;
 
-                detector->detect ( img1,keypoints_1 );
-                detector->detect ( reconstruction_img,keypoints_2 );
+            // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 4");
 
-                descriptor->compute ( img1, keypoints_1, descriptors_1 );
-                descriptor->compute ( reconstruction_img, keypoints_2, descriptors_2 );
+            Ptr<DescriptorMatcher> matcher  = DescriptorMatcher::create ( "BruteForce-Hamming" );
+            // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 5");
 
-                Mat outimg1;
-                drawKeypoints( img1, keypoints_1, outimg1, Scalar::all(-1), DrawMatchesFlags::DEFAULT );
-                Mat outimg2;
-                drawKeypoints( reconstruction_img, keypoints_2, outimg2, Scalar::all(-1), DrawMatchesFlags::DEFAULT );
-                Mat outimg3;
-                drawKeypoints( img1, keypoints_2, outimg3, Scalar::all(-1), DrawMatchesFlags::DEFAULT );
+            // detector->detect ( img1,keypoints_1 );
+            detector->detect ( reconstruction_img, keypoints);
+            // // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 6");
+
+            // // descriptor->compute ( img1, keypoints_1, descriptors_1 );
+            descriptor->compute ( reconstruction_img, keypoints, descriptors );
+
+            // cv::Mat mask;
+
+            // orb->detectAndCompute(reconstruction_img, mask, keypoints, descriptors);
+            descriptors_vec.push_back(descriptors);
+            keypoints_vec.push_back(keypoints);
+            RCLCPP_INFO(rclcpp::get_logger("message"), "Keypoints size: %d", keypoints.size());
+
+            if (keypoints.size() < 4){
+                less_keys = true;
+                old_num_images = num_images - 1;
+            }
+            // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 7");
+
+            features.push_back(std::vector<cv::Mat >());
+            // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 7.5");
+            changeStructure(descriptors, features.back());
+
+            RCLCPP_INFO(rclcpp::get_logger("message"), "num_images: %d", num_images);
 
 
-                std_msgs::msg::Header header;
-                header.stamp = get_clock()->now();
-                cam_info_.header = header;
-                pub_keypoint_img_->publish(*(cv_bridge::CvImage(header, "bgr8", outimg2).toImageMsg()), cam_info_);
+            if (num_images > 3 && keypoints.size() > 3){
 
-                vector<DMatch> matches;
-                try{
-                    matcher->match ( descriptors_1, descriptors_2, matches );
-                }
-                catch (const std::exception & e) {
-                    RCLCPP_ERROR_STREAM(
-                    std::make_shared<Reconstruction>()->get_logger(),
-                    "Matching ERROR: Shutting down node! " << e.what());
-                    rclcpp::shutdown();
-                }
-                double min_dist=10000, max_dist=0;
+                OrbVocabulary voc = BoW_voc(features, num_images);
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 9");
 
-                min_dist = 10.0;
+                // sleep(1);
 
-                // sort and then take a certain num of matches every time (use std sort)
+                int img_id = BOW_test(features, voc, num_images, id_vals);
+                RCLCPP_INFO(rclcpp::get_logger("message"), "img_id %d", img_id);
 
-                std::vector< DMatch > good_matches;
-                // RCLCPP_INFO(rclcpp::get_logger("message"), "Matches size: %ld", matches.size());
-                // std::sort(matches.begin(), matches.end(), img_transform::compare);
-
-                if (matches.size() < 12)
-                {
-                    matched = false;
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
-                    rotation_current = rotation_mat;
-                    translation_current = translation;
-                    Sophus::SE3d Transformation(rotation_mat, translation);
-                    Sophus::SE3d Trans = Transformation_prev*Transformation;
-                    Transformation_current = Trans.matrix();
+                if (img_id == -1){
+                    reconstruction = false;
+                    // img_id = num_images - 1;
                 }
                 else{
-                    matched = true;
-                    std::sort(matches.begin(), matches.end(), [](cv::DMatch& a, cv::DMatch& b) {
-                        return a.distance < b.distance;
-                    });
-
-                    for (int i = 0; i < 12; i++)
-                    {
-                        good_matches.push_back(matches[i]);
-                    }
-
-
-                    float f_1 = 295.009696;
-                    float f_2 = 296.22399483;
-                    float p_1 = 195.515395;
-                    float p_2 = 131.035055713;
-                    std::vector<float> key1_xw;
-                    std::vector<float> key1_yw;
-                    std::vector<float> key1_zw;
-                    std::vector<float> key2_xw;
-                    std::vector<float> key2_yw;
-                    std::vector<float> key2_zw;
-
-                    // first get transform point by multiplying by camera matrix
-                    int counter_matches = 0;
-                    for (size_t i=0; i<good_matches.size(); i++){
-                        float k1_xw = (z/f_1)*(keypoints_1.at(good_matches[i].queryIdx).pt.x - p_1*z);
-                        float k1_yw = (z/f_2)*(keypoints_1.at(good_matches[i].queryIdx).pt.y - p_2*z);
-                        float k2_xw = (z/f_1)*(keypoints_2.at(good_matches[i].trainIdx).pt.x - p_1*z);
-                        float k2_yw = (z/f_2)*(keypoints_2.at(good_matches[i].trainIdx).pt.y - p_2*z);
-
-                        key1_xw.push_back(k1_xw);
-                        key1_yw.push_back(k1_yw);
-                        key1_zw.push_back(z);
-                        key2_xw.push_back(k2_xw);
-                        key2_yw.push_back(k2_yw);
-                        key2_zw.push_back(z);
-
-                        counter_matches++;
-                    }
-
-                    // Convert the point cloud to Eigen
-                    size_t N = good_matches.size();
-
-
-                    Eigen::Matrix<double, 3, Eigen::Dynamic> src(3, N);
-                    for (size_t i = 0; i < N; ++i) {
-                        // src.col(i) << src_cloud[i].x, src_cloud[i].y, src_cloud[i].z;
-                        src.col(i) << key1_xw.at(i), key1_yw.at(i), key1_zw.at(i);
-                        std::cout << "z1: " << key1_zw.at(i) << std::endl;
-                    }
-
-                    // Homogeneous coordinates
-                    Eigen::Matrix<double, 4, Eigen::Dynamic> src_h;
-                    src_h.resize(4, src.cols());
-                    src_h.topRows(3) = src;
-                    src_h.bottomRows(1) = Eigen::Matrix<double, 1, Eigen::Dynamic>::Ones(N);
-
-                    // Apply an arbitrary SE(3) transformation
-                    Eigen::Matrix4d T;
-
-                    Eigen::Matrix<double, 3, Eigen::Dynamic> tgt(3, N);
-                    for (size_t i = 0; i < N; ++i) {
-                        // src.col(i) << src_cloud[i].x, src_cloud[i].y, src_cloud[i].z;
-                        tgt.col(i) << key2_xw.at(i), key2_yw.at(i), key2_zw.at(i);
-                        std::cout << "z2: " << key2_zw.at(i) << std::endl;
-                    }
-
-                    // Run TEASER++ registration
-                    // Prepare solver parameters
-                    teaser::RobustRegistrationSolver::Params params;
-                    params.noise_bound = NOISE_BOUND;
-                    params.cbar2 = 1;
-                    params.estimate_scaling = false;
-                    params.rotation_max_iterations = 100;
-                    params.rotation_gnc_factor = 1.4;
-                    params.rotation_estimation_algorithm =
-                        teaser::RobustRegistrationSolver::ROTATION_ESTIMATION_ALGORITHM::GNC_TLS;
-                    params.rotation_cost_threshold = 0.005;
-
-                    // Solve with TEASER++
-                    teaser::RobustRegistrationSolver solver(params);
-                    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
-                    solver.solve(src, tgt);
-                    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-
-                    auto solution = solver.getSolution();
-
-                    // Compare results
-                    std::cout << "=====================================" << std::endl;
-                    std::cout << "          TEASER++ Results           " << std::endl;
-                    std::cout << "=====================================" << std::endl;
-                    std::cout << "Expected rotation: " << std::endl;
-                    std::cout << T.topLeftCorner(3, 3) << std::endl;
-                    std::cout << "Estimated rotation: " << std::endl;
-                    std::cout << solution.rotation << std::endl;
-                    std::cout << "Error (deg): " << getAngularError(T.topLeftCorner(3, 3), solution.rotation)
-                                << std::endl;
-                    std::cout << std::endl;
-                    std::cout << "Expected translation: " << std::endl;
-                    std::cout << T.topRightCorner(3, 1) << std::endl;
-                    std::cout << "Estimated translation: " << std::endl;
-                    std::cout << solution.translation << std::endl;
-                    std::cout << "Error (m): " << (T.topRightCorner(3, 1) - solution.translation).norm() << std::endl;
-                    std::cout << std::endl;
-                    std::cout << "Number of correspondences: " << N << std::endl;
-                    std::cout << "Number of outliers: " << N_OUTLIERS << std::endl;
-                    std::cout << "Time taken (s): "
-                                << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() /
-                                    1000000.0
-                                << std::endl;
-
-
-                    for (int i = 0; i < 3; i++){
-                        rotation_mat.row(i) << solution.rotation(i,0), solution.rotation(i,1), solution.rotation(i,2);
-                        translation(i) = solution.translation(i);
-                    }
-
-                    Sophus::SE3d Transformation(rotation_mat, translation);
-                    Tran_pub = Transformation.matrix();
-                    // RCLCPP_INFO(rclcpp::get_logger("message"), "Transformation Mat: ");
-                    // RCLCPP_INFO(rclcpp::get_logger("message"), "%f %f %f %f", ((Transformation.matrix()).matrix())(0,0), ((Transformation.matrix()).matrix())(0,1), ((Transformation.matrix()).matrix())(0,2), ((Transformation.matrix()).matrix())(0,3));
-                    // RCLCPP_INFO(rclcpp::get_logger("message"), "%f %f %f %f", ((Transformation.matrix()).matrix())(1,0), ((Transformation.matrix()).matrix())(1,1), ((Transformation.matrix()).matrix())(1,2), ((Transformation.matrix()).matrix())(1,3));
-                    // RCLCPP_INFO(rclcpp::get_logger("message"), "%f %f %f %f", ((Transformation.matrix()).matrix())(2,0), ((Transformation.matrix()).matrix())(2,1), ((Transformation.matrix()).matrix())(2,2), ((Transformation.matrix()).matrix())(2,3));
-                    // RCLCPP_INFO(rclcpp::get_logger("message"), "%f %f %f %f", ((Transformation.matrix()).matrix())(3,0), ((Transformation.matrix()).matrix())(3,1), ((Transformation.matrix()).matrix())(3,2), ((Transformation.matrix()).matrix())(3,3));
-                    // TODO: get rid of
-                    done = 1;
-
-                    Sophus::SE3d Trans = Transformation_prev*Transformation;
-                    Transformation_current = Trans.matrix();//Transformation_prev.matrix()*Transformation.matrix();
-                    for (int i = 0; i < 3; i++){
-                        rotation_current.row(i) << Transformation_current(i,0), Transformation_current(i,1), Transformation_current(i,2);
-                        RCLCPP_INFO(rclcpp::get_logger("message"), "Rotation %f, %f, %f", Transformation_current(i,0), Transformation_current(i,1), Transformation_current(i,2));
-                        translation_current(i) = Transformation_current(i,3);
-                        RCLCPP_INFO(rclcpp::get_logger("message"), "Translation %f", Transformation_current(i,3));
-                    }
-                    Transformation_prev = Trans;
-                    Eigen::Matrix<double, 4, 1>  vec_mark;
-                    vec_mark[0] = rob_x;
-                    vec_mark[1] = rob_y;
-                    vec_mark[2] = 0.0;
-                    vec_mark[3] = 1.0;
-                    Eigen::Matrix<double, 4, 1> vec_new_mark;
-                    vec_new_mark = Trans.inverse()*vec_mark;
-
-                    visualization_msgs::msg::Marker node;
-                    node.header.frame_id = "world";
-                    node.header.stamp = this->get_clock()->now();
-                    node.action = visualization_msgs::msg::Marker::ADD;
-                    node.pose.orientation.w = 1.0;
-                    node.type = visualization_msgs::msg::Marker::SPHERE;
-                    node.scale.x = 0.05;
-                    node.scale.y = 0.05;
-                    node.scale.z = 0.05;
-                    node.color.a = 1.0;
-                    node.color.r = 0.3;
-                    node.color.g = 0.9;
-                    node.color.b = 0.3;
-
-                    visualization_msgs::msg::Marker edge_m;
-                    edge_m.header.frame_id = "world";
-                    edge_m.header.stamp = this->get_clock()->now();
-                    edge_m.action = visualization_msgs::msg::Marker::ADD;
-                    edge_m.pose.orientation.w = 1.0;
-                    edge_m.type = visualization_msgs::msg::Marker::LINE_STRIP;
-                    edge_m.scale.x = 0.03;
-                    edge_m.scale.y = 0.03;
-                    edge_m.scale.z = 0.03;
-                    edge_m.color.a = 1.0;
-                    edge_m.color.r = 0.3;
-                    edge_m.color.g = 0.9;
-                    edge_m.color.b = 0.3;
-
-
-                    node.header.stamp = this->get_clock()->now();
-                    edge_m.header.stamp = this->get_clock()->now();
-
-                    node.id = id;
-                    node.pose.position.x = vec_new_mark[0];
-                    node.pose.position.y = vec_new_mark[1];
-                    node_markers.markers.push_back(node);
-                    // pub_nodes_->publish(node_markers);
-
-                    edge_m.id = id;
-                    geometry_msgs::msg::Point p;
-                    p.x = rob_x;
-                    p.y = rob_y;
-                    edge_m.points.push_back(p);
-                    p.x = vec_new_mark[0];
-                    p.y = vec_new_mark[1];
-                    edge_m.points.push_back(p);
-                    edge_markers.markers.push_back(edge_m);
-                    // pub_edges_->publish(edge_markers);
-                    id++;
+                    RCLCPP_INFO(rclcpp::get_logger("message"), "RECONSTRUCTION");
+                    RCLCPP_INFO(rclcpp::get_logger("message"), "RECONSTRUCTION");
+                    RCLCPP_INFO(rclcpp::get_logger("message"), "RECONSTRUCTION");
+                    RCLCPP_INFO(rclcpp::get_logger("message"), "RECONSTRUCTION");
+                    RCLCPP_INFO(rclcpp::get_logger("message"), "RECONSTRUCTION");
+                    RCLCPP_INFO(rclcpp::get_logger("message"), "RECONSTRUCTION");
+                    RCLCPP_INFO(rclcpp::get_logger("message"), "RECONSTRUCTION");
+                    RCLCPP_INFO(rclcpp::get_logger("message"), "RECONSTRUCTION");
+                    RCLCPP_INFO(rclcpp::get_logger("message"), "RECONSTRUCTION");
+                    RCLCPP_INFO(rclcpp::get_logger("message"), "RECONSTRUCTION");
+                    RCLCPP_INFO(rclcpp::get_logger("message"), "RECONSTRUCTION");
+                    RCLCPP_INFO(rclcpp::get_logger("message"), "RECONSTRUCTION");
+                    RCLCPP_INFO(rclcpp::get_logger("message"), "RECONSTRUCTION");
+                    RCLCPP_INFO(rclcpp::get_logger("message"), "RECONSTRUCTION");
+                    reconstruction = true;
                 }
 
-
-                // // publish path to see how the robot has moved
-                // geometry_msgs::msg::PoseStamped pos;
-                // path.header.stamp = this->get_clock()->now();
-                // path.header.frame_id = "world";
-                // pos.header.stamp = this->get_clock()->now();
-                // pos.header.frame_id = "world";
-                // pos.pose.position.x = translation_current(0);
-                // pos.pose.position.y = translation_current(1);
-
-                // Eigen::Quaterniond q(rotation_current);
-                // geometry_msgs::msg::Quaternion msg_quaternion_path = tf2::toMsg(q);
-                // pos.pose.orientation.x = msg_quaternion_path.x;
-                // pos.pose.orientation.y = msg_quaternion_path.y;
-                // pos.pose.orientation.z = msg_quaternion_path.z;
-                // pos.pose.orientation.w = msg_quaternion_path.w;
-                // path.poses.push_back(pos);
-                // pub_path_->publish(path);
-
-
-                // // publish frame to visualize orientation
-                // geometry_msgs::msg::TransformStamped t;
-                // t.header.stamp = this->get_clock()->now();
-                // t.header.frame_id = "previous";
-                // t.child_frame_id = "current";
-
-                // t.transform.translation.x = translation_current(0);
-                // t.transform.translation.y = translation_current(1);
-                // t.transform.rotation.x = msg_quaternion_path.x;
-                // t.transform.rotation.y = msg_quaternion_path.y;
-                // t.transform.rotation.z = msg_quaternion_path.z;
-                // t.transform.rotation.w = msg_quaternion_path.w;
-
-                // tf_broadcaster_->sendTransform(t);
-
-
-                // publish transform for se_sync
-                img_transform::msg::Transform T_01;
-                // img_transform::msg::Transform rob_state;
-                T_01.id = id;
-                // rob_state.id = id;
-                for (int i = 0; i < 4; i++)
+                if (reconstruction)
                 {
-                    T_01.row_1.push_back((Tran_pub.matrix())(0,i));
-                    T_01.row_2.push_back((Tran_pub.matrix())(1,i));
-                    T_01.row_3.push_back((Tran_pub.matrix())(2,i));
-                    T_01.row_4.push_back((Tran_pub.matrix())(3,i));
-                    // rob_state.row_1.push_back((Transformation_current.matrix())(0,i));
-                    // rob_state.row_2.push_back((Transformation_current.matrix())(1,i));
-                    // rob_state.row_3.push_back((Transformation_current.matrix())(2,i));
-                    // rob_state.row_4.push_back((Transformation_current.matrix())(3,i));
+                    reconstruction = false;
+                    std_msgs::msg::Header header;
+                    header.stamp = get_clock()->now();
+                    cam_info_.header = header;
+
+                    // change img1 to be of other id image (just use the descriptors)
+
+                    cv::Mat descriptors_2 = descriptors_vec[img_id];
+                    keypoints_2 = keypoints_vec[img_id];
+
+                    if (keypoints.size() > 3 && keypoints_2.size() > 3){
+
+                    // Mat outimg1;
+                    // drawKeypoints( img1, keypoints_1, outimg1, Scalar::all(-1), DrawMatchesFlags::DEFAULT );
+                    
+                    // Mat outimg3;
+                    // drawKeypoints( img1, keypoints_2, outimg3, Scalar::all(-1), DrawMatchesFlags::DEFAULT );
+
+                    // Mat outimg2;
+                    // drawKeypoints( reconstruction_img, keypoints_2, outimg2, Scalar::all(-1), DrawMatchesFlags::DEFAULT );
+
+                    // pub_keypoint_img_->publish(*(cv_bridge::CvImage(header, "bgr8", outimg2).toImageMsg()), cam_info_);
+
+                    vector<DMatch> matches;
+                    try{
+                        matcher->match ( descriptors, descriptors_2, matches );
+                    }
+                    catch (const std::exception & e) {
+                        RCLCPP_ERROR_STREAM(
+                        std::make_shared<Reconstruction>()->get_logger(),
+                        "Matching ERROR: Shutting down node! " << e.what());
+                        rclcpp::shutdown();
+                    }
+                    double min_dist=10000, max_dist=0;
+
+                    min_dist = 10.0;
+
+                    // sort and then take a certain num of matches every time (use std sort)
+
+                    std::vector< DMatch > good_matches;
+                    // RCLCPP_INFO(rclcpp::get_logger("message"), "Matches size: %ld", matches.size());
+                    // std::sort(matches.begin(), matches.end(), img_transform::compare);
+
+                    if (matches.size() < 12)
+                    {
+                        matched = false;
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Less than 12 matches");
+                        rotation_current = rotation_mat;
+                        translation_current = translation;
+                        Sophus::SE3d Transformation(rotation_mat, translation);
+                        Sophus::SE3d Trans = Transformation_prev*Transformation;
+                        Transformation_current = Trans.matrix();
+                    }
+                    else{
+                        matched = true;
+                        std::sort(matches.begin(), matches.end(), [](cv::DMatch& a, cv::DMatch& b) {
+                            return a.distance < b.distance;
+                        });
+
+                        for (int i = 0; i < 12; i++)
+                        {
+                            good_matches.push_back(matches[i]);
+                        }
+
+
+                        float f_1 = 295.009696;
+                        float f_2 = 296.22399483;
+                        float p_1 = 195.515395;
+                        float p_2 = 131.035055713;
+                        std::vector<float> key1_xw;
+                        std::vector<float> key1_yw;
+                        std::vector<float> key1_zw;
+                        std::vector<float> key2_xw;
+                        std::vector<float> key2_yw;
+                        std::vector<float> key2_zw;
+
+                        // first get transform point by multiplying by camera matrix
+                        int counter_matches = 0;
+                        for (size_t i=0; i<good_matches.size(); i++){
+                            float k1_xw = (z/f_1)*(keypoints.at(good_matches[i].queryIdx).pt.x - p_1*z);
+                            float k1_yw = (z/f_2)*(keypoints.at(good_matches[i].queryIdx).pt.y - p_2*z);
+                            float k2_xw = (z/f_1)*(keypoints_2.at(good_matches[i].trainIdx).pt.x - p_1*z);
+                            float k2_yw = (z/f_2)*(keypoints_2.at(good_matches[i].trainIdx).pt.y - p_2*z);
+
+                            key1_xw.push_back(k1_xw);
+                            key1_yw.push_back(k1_yw);
+                            key1_zw.push_back(z);
+                            key2_xw.push_back(k2_xw);
+                            key2_yw.push_back(k2_yw);
+                            key2_zw.push_back(z);
+
+                            counter_matches++;
+                        }
+
+                        // Convert the point cloud to Eigen
+                        size_t N = good_matches.size();
+
+
+                        Eigen::Matrix<double, 3, Eigen::Dynamic> src(3, N);
+                        for (size_t i = 0; i < N; ++i) {
+                            // src.col(i) << src_cloud[i].x, src_cloud[i].y, src_cloud[i].z;
+                            src.col(i) << key1_xw.at(i), key1_yw.at(i), key1_zw.at(i);
+                            std::cout << "z1: " << key1_zw.at(i) << std::endl;
+                        }
+
+                        // Homogeneous coordinates
+                        Eigen::Matrix<double, 4, Eigen::Dynamic> src_h;
+                        src_h.resize(4, src.cols());
+                        src_h.topRows(3) = src;
+                        src_h.bottomRows(1) = Eigen::Matrix<double, 1, Eigen::Dynamic>::Ones(N);
+
+                        // Apply an arbitrary SE(3) transformation
+                        Eigen::Matrix4d T;
+
+                        Eigen::Matrix<double, 3, Eigen::Dynamic> tgt(3, N);
+                        for (size_t i = 0; i < N; ++i) {
+                            // src.col(i) << src_cloud[i].x, src_cloud[i].y, src_cloud[i].z;
+                            tgt.col(i) << key2_xw.at(i), key2_yw.at(i), key2_zw.at(i);
+                            std::cout << "z2: " << key2_zw.at(i) << std::endl;
+                        }
+
+                        // Run TEASER++ registration
+                        // Prepare solver parameters
+                        teaser::RobustRegistrationSolver::Params params;
+                        params.noise_bound = NOISE_BOUND;
+                        params.cbar2 = 1;
+                        params.estimate_scaling = false;
+                        params.rotation_max_iterations = 100;
+                        params.rotation_gnc_factor = 1.4;
+                        params.rotation_estimation_algorithm =
+                            teaser::RobustRegistrationSolver::ROTATION_ESTIMATION_ALGORITHM::GNC_TLS;
+                        params.rotation_cost_threshold = 0.005;
+
+                        // Solve with TEASER++
+                        teaser::RobustRegistrationSolver solver(params);
+                        std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+                        solver.solve(src, tgt);
+                        std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+
+                        auto solution = solver.getSolution();
+
+                        // Compare results
+                        std::cout << "=====================================" << std::endl;
+                        std::cout << "          TEASER++ Results           " << std::endl;
+                        std::cout << "=====================================" << std::endl;
+                        std::cout << "Expected rotation: " << std::endl;
+                        std::cout << T.topLeftCorner(3, 3) << std::endl;
+                        std::cout << "Estimated rotation: " << std::endl;
+                        std::cout << solution.rotation << std::endl;
+                        std::cout << "Error (deg): " << getAngularError(T.topLeftCorner(3, 3), solution.rotation)
+                                    << std::endl;
+                        std::cout << std::endl;
+                        std::cout << "Expected translation: " << std::endl;
+                        std::cout << T.topRightCorner(3, 1) << std::endl;
+                        std::cout << "Estimated translation: " << std::endl;
+                        std::cout << solution.translation << std::endl;
+                        std::cout << "Error (m): " << (T.topRightCorner(3, 1) - solution.translation).norm() << std::endl;
+                        std::cout << std::endl;
+                        std::cout << "Number of correspondences: " << N << std::endl;
+                        std::cout << "Number of outliers: " << N_OUTLIERS << std::endl;
+                        std::cout << "Time taken (s): "
+                                    << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() /
+                                        1000000.0
+                                    << std::endl;
+
+
+                        for (int i = 0; i < 3; i++){
+                            rotation_mat.row(i) << solution.rotation(i,0), solution.rotation(i,1), solution.rotation(i,2);
+                            translation(i) = solution.translation(i);
+                        }
+
+                        Sophus::SE3d Transformation(rotation_mat, translation);
+                        Tran_pub = Transformation.matrix();
+                        // RCLCPP_INFO(rclcpp::get_logger("message"), "Transformation Mat: ");
+                        // RCLCPP_INFO(rclcpp::get_logger("message"), "%f %f %f %f", ((Transformation.matrix()).matrix())(0,0), ((Transformation.matrix()).matrix())(0,1), ((Transformation.matrix()).matrix())(0,2), ((Transformation.matrix()).matrix())(0,3));
+                        // RCLCPP_INFO(rclcpp::get_logger("message"), "%f %f %f %f", ((Transformation.matrix()).matrix())(1,0), ((Transformation.matrix()).matrix())(1,1), ((Transformation.matrix()).matrix())(1,2), ((Transformation.matrix()).matrix())(1,3));
+                        // RCLCPP_INFO(rclcpp::get_logger("message"), "%f %f %f %f", ((Transformation.matrix()).matrix())(2,0), ((Transformation.matrix()).matrix())(2,1), ((Transformation.matrix()).matrix())(2,2), ((Transformation.matrix()).matrix())(2,3));
+                        // RCLCPP_INFO(rclcpp::get_logger("message"), "%f %f %f %f", ((Transformation.matrix()).matrix())(3,0), ((Transformation.matrix()).matrix())(3,1), ((Transformation.matrix()).matrix())(3,2), ((Transformation.matrix()).matrix())(3,3));
+                        // TODO: get rid of
+                        done = 1;
+
+                        Sophus::SE3d Trans = Transformation_prev*Transformation;
+                        Transformation_current = Trans.matrix();//Transformation_prev.matrix()*Transformation.matrix();
+                        for (int i = 0; i < 3; i++){
+                            rotation_current.row(i) << Transformation_current(i,0), Transformation_current(i,1), Transformation_current(i,2);
+                            RCLCPP_INFO(rclcpp::get_logger("message"), "Rotation %f, %f, %f", Transformation_current(i,0), Transformation_current(i,1), Transformation_current(i,2));
+                            translation_current(i) = Transformation_current(i,3);
+                            RCLCPP_INFO(rclcpp::get_logger("message"), "Translation %f", Transformation_current(i,3));
+                        }
+                        Transformation_prev = Trans;
+                        Eigen::Matrix<double, 4, 1>  vec_mark;
+                        vec_mark[0] = rob_x;
+                        vec_mark[1] = rob_y;
+                        vec_mark[2] = 0.0;
+                        vec_mark[3] = 1.0;
+                        Eigen::Matrix<double, 4, 1> vec_new_mark;
+                        vec_new_mark = Trans.inverse()*vec_mark;
+
+                        visualization_msgs::msg::Marker node;
+                        node.header.frame_id = "world";
+                        node.header.stamp = this->get_clock()->now();
+                        node.action = visualization_msgs::msg::Marker::ADD;
+                        node.pose.orientation.w = 1.0;
+                        node.type = visualization_msgs::msg::Marker::SPHERE;
+                        node.scale.x = 0.05;
+                        node.scale.y = 0.05;
+                        node.scale.z = 0.05;
+                        node.color.a = 1.0;
+                        node.color.r = 0.3;
+                        node.color.g = 0.9;
+                        node.color.b = 0.3;
+
+                        visualization_msgs::msg::Marker edge_m;
+                        edge_m.header.frame_id = "world";
+                        edge_m.header.stamp = this->get_clock()->now();
+                        edge_m.action = visualization_msgs::msg::Marker::ADD;
+                        edge_m.pose.orientation.w = 1.0;
+                        edge_m.type = visualization_msgs::msg::Marker::LINE_STRIP;
+                        edge_m.scale.x = 0.03;
+                        edge_m.scale.y = 0.03;
+                        edge_m.scale.z = 0.03;
+                        edge_m.color.a = 1.0;
+                        edge_m.color.r = 0.3;
+                        edge_m.color.g = 0.9;
+                        edge_m.color.b = 0.3;
+
+
+                        node.header.stamp = this->get_clock()->now();
+                        edge_m.header.stamp = this->get_clock()->now();
+
+                        node.id = id;
+                        node.pose.position.x = vec_new_mark[0];
+                        node.pose.position.y = vec_new_mark[1];
+                        node_markers.markers.push_back(node);
+                        // pub_nodes_->publish(node_markers);
+
+                        edge_m.id = id;
+                        geometry_msgs::msg::Point p;
+                        p.x = rob_x;
+                        p.y = rob_y;
+                        edge_m.points.push_back(p);
+                        p.x = vec_new_mark[0];
+                        p.y = vec_new_mark[1];
+                        edge_m.points.push_back(p);
+                        edge_markers.markers.push_back(edge_m);
+                        // pub_edges_->publish(edge_markers);
+                        id++;
+                    }
+
+
+                    // // publish path to see how the robot has moved
+                    // geometry_msgs::msg::PoseStamped pos;
+                    // path.header.stamp = this->get_clock()->now();
+                    // path.header.frame_id = "world";
+                    // pos.header.stamp = this->get_clock()->now();
+                    // pos.header.frame_id = "world";
+                    // pos.pose.position.x = translation_current(0);
+                    // pos.pose.position.y = translation_current(1);
+
+                    // Eigen::Quaterniond q(rotation_current);
+                    // geometry_msgs::msg::Quaternion msg_quaternion_path = tf2::toMsg(q);
+                    // pos.pose.orientation.x = msg_quaternion_path.x;
+                    // pos.pose.orientation.y = msg_quaternion_path.y;
+                    // pos.pose.orientation.z = msg_quaternion_path.z;
+                    // pos.pose.orientation.w = msg_quaternion_path.w;
+                    // path.poses.push_back(pos);
+                    // pub_path_->publish(path);
+
+
+                    // // publish frame to visualize orientation
+                    // geometry_msgs::msg::TransformStamped t;
+                    // t.header.stamp = this->get_clock()->now();
+                    // t.header.frame_id = "previous";
+                    // t.child_frame_id = "current";
+
+                    // t.transform.translation.x = translation_current(0);
+                    // t.transform.translation.y = translation_current(1);
+                    // t.transform.rotation.x = msg_quaternion_path.x;
+                    // t.transform.rotation.y = msg_quaternion_path.y;
+                    // t.transform.rotation.z = msg_quaternion_path.z;
+                    // t.transform.rotation.w = msg_quaternion_path.w;
+
+                    // tf_broadcaster_->sendTransform(t);
+
+
+                    // publish transform for se_sync
+                    img_transform::msg::Transform T_01;
+                    // img_transform::msg::Transform rob_state;
+                    T_01.id = num_images-1;
+                    T_01.id_2 = img_id + sub_img_num;
+                    // rob_state.id = id;
+                    for (int i = 0; i < 4; i++)
+                    {
+                        T_01.row_1.push_back((Tran_pub.matrix())(0,i));
+                        T_01.row_2.push_back((Tran_pub.matrix())(1,i));
+                        T_01.row_3.push_back((Tran_pub.matrix())(2,i));
+                        T_01.row_4.push_back((Tran_pub.matrix())(3,i));
+                        // rob_state.row_1.push_back((Transformation_current.matrix())(0,i));
+                        // rob_state.row_2.push_back((Transformation_current.matrix())(1,i));
+                        // rob_state.row_3.push_back((Transformation_current.matrix())(2,i));
+                        // rob_state.row_4.push_back((Transformation_current.matrix())(3,i));
+                    }
+
+                    // img_transform::Vertex vertex;
+                    // Eigen::Matrix<double, 4, 4> tr;
+                    // img_transform::Vector2D trans;
+                    // trans.x = 1.0;
+                    // trans.y = 1.0;
+                    // trans.theta = 1.0;
+                    // tr.row(0) << Transformation_current.row(0), Transformation_current.row(0), Transformation_current.row(0), Transformation_current.row(0);
+                    // tr.row(1) << Transformation_current.row(1), Transformation_current.row(1), Transformation_current.row(1), Transformation_current.row(1);
+                    // tr.row(2) << Transformation_current.row(2), Transformation_current.row(2), Transformation_current.row(2), Transformation_current.row(2);
+                    // tr.row(3) << Transformation_current.row(3), Transformation_current.row(3), Transformation_current.row(3), Transformation_current.row(3);
+                    // // trans = img_transform::trans_to_vec(tr);
+
+                    // cv::DMatch i;
+                    // cv::DMatch j;
+                    // bool y = img_transform::compare(i,j);
+
+                    pub_transform_->publish(T_01);
+
+                    // pub_robot_state_->publish(rob_state);
+
+                    // num_transforms ++;
+
+                    // first = false;
+                    // id ++;
+                    auto message = std_msgs::msg::String();
+                    message.data = "Start SESync";
+                    pub_sesync_trigger_->publish(message);
+
+                    }
                 }
-
-                // img_transform::Vertex vertex;
-                // Eigen::Matrix<double, 4, 4> tr;
-                // img_transform::Vector2D trans;
-                // trans.x = 1.0;
-                // trans.y = 1.0;
-                // trans.theta = 1.0;
-                // tr.row(0) << Transformation_current.row(0), Transformation_current.row(0), Transformation_current.row(0), Transformation_current.row(0);
-                // tr.row(1) << Transformation_current.row(1), Transformation_current.row(1), Transformation_current.row(1), Transformation_current.row(1);
-                // tr.row(2) << Transformation_current.row(2), Transformation_current.row(2), Transformation_current.row(2), Transformation_current.row(2);
-                // tr.row(3) << Transformation_current.row(3), Transformation_current.row(3), Transformation_current.row(3), Transformation_current.row(3);
-                // // trans = img_transform::trans_to_vec(tr);
-
-                // cv::DMatch i;
-                // cv::DMatch j;
-                // bool y = img_transform::compare(i,j);
-
-                pub_transform_->publish(T_01);
-
-                // pub_robot_state_->publish(rob_state);
-
-                // num_transforms ++;
-
-                // first = false;
-                // id ++;
-                auto message = std_msgs::msg::String();
-                message.data = "Start SESync";
-                pub_sesync_trigger_->publish(message);
-
-                reconstruction = false;
+            }
             }
         }
 
@@ -588,19 +689,39 @@ class Reconstruction : public rclcpp::Node
             rob_y = msg->y;
         }
 
+        void frame_id_callback(
+            const img_transform::msg::FrameID::ConstSharedPtr& msg
+        ){
+            num_images = msg->id;
+            if (less_keys){
+                num_images = old_num_images;
+                less_keys = false;
+            }
+            take_image = true;
+            sub_img_num = 0;
+        }
+
         void image_callback(
             const sensor_msgs::msg::CompressedImage::ConstSharedPtr& msg
         ){
-            if (first_img){
-                img1 = cv_bridge::toCvCopy(*msg, sensor_msgs::image_encodings::BGR8)->image;
-                first_img = false;
-            }
-            if (reconstruct_img){
-                reconstruction_img = cv_bridge::toCvCopy(*msg, sensor_msgs::image_encodings::BGR8)->image;
-                reconstruct_img = false;
-                reconstruction = true;
-            }
+            // auto end_frame = std::chrono::high_resolution_clock::now();
+            // auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(end_frame - begin_frame);
+            // RCLCPP_INFO(rclcpp::get_logger("message"), "Elapsed time: %ld\n", elapsed.count());
 
+            if (take_image && count_5 > 100){
+                RCLCPP_INFO(rclcpp::get_logger("message"), "Taking image");
+                reconstruction_img = cv_bridge::toCvCopy(*msg, sensor_msgs::image_encodings::BGR8)->image;
+                reconstruct_img = true;
+                take_image = false;
+
+                // begin_frame = std::chrono::high_resolution_clock::now();
+            }
+            count_5 ++;
+
+        }
+
+        void id_vals_callback(const img_transform::msg::Nodes::ConstSharedPtr& msg){
+            id_vals = msg->edge_ids;
         }
 
 
@@ -618,6 +739,10 @@ class Reconstruction : public rclcpp::Node
         rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr pub_nodes_;
         rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr pub_edges_;
         rclcpp::Subscription<geometry_msgs::msg::Point>::SharedPtr sub_rob_pose_;
+        rclcpp::Subscription<img_transform::msg::Nodes>::SharedPtr sub_id_vals_;
+        rclcpp::Subscription<img_transform::msg::FrameID>::SharedPtr sub_frame_id_;
+
+        cv::Ptr<cv::ORB> orb = cv::ORB::create();
 
         Mat img1;
         Mat reconstruction_img;
@@ -648,10 +773,120 @@ class Reconstruction : public rclcpp::Node
         bool first_img = true;
         bool reconstruct_img = false;
         bool reconstruction = false;
+        bool less_keys = false;
+
+        int old_num_images = 0;
         
         double rob_x = 0.0;
         double rob_y = 0.0;
+
+        int sub_img_num = 0;
+
+        // OrbVocabulary voc(int k = 9, int L = 3, WeightingType weight = TF_IDF, ScoringType scoring = L1_NORM);
+        std::vector<std::vector<cv::Mat>> features;
+        std::vector<std::vector<KeyPoint>> keypoints_vec;
+        std::vector<cv::Mat> descriptors_vec;
+
+        long int num_images = 0;
+
+        std::chrono::system_clock::time_point begin_frame = std::chrono::high_resolution_clock::now();
+
+        std::vector<int> id_vals;
+
+        bool take_image = true;
+
+        double count_5 = 0.0;
 };
+
+OrbVocabulary BoW_voc(const std::vector<std::vector<cv::Mat >>&features, int num_images){
+    int k = 9;
+    int L = 3;
+    WeightingType weight = TF_IDF;
+    ScoringType scoring = L1_NORM;
+
+    OrbVocabulary voc(k, L, weight, scoring);
+
+    voc.create(features);
+
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "Features size: %d", features.size());
+
+    BowVector v1, v2;
+    for (int i = 0; i < num_images; i++){
+        voc.transform(features[i], v1);
+        for(int j = 0; j < num_images; j++)
+        {
+            voc.transform(features[j], v2);
+            double score = voc.score(v1, v2);
+            // cout << "Image " << i << " vs Image " << j << ": " << score << endl;
+        }
+    }
+
+    return voc;
+}
+
+
+int BOW_test(const std::vector<std::vector<cv::Mat >>&features, OrbVocabulary voc, int num_images, std::vector<int> id_vals){
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 11");
+    OrbDatabase db(voc, false, 0);
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 12");
+    for(int i = 0; i < num_images; i++)
+    {
+        db.add(features[i]);
+    }
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 13");
+
+    QueryResults ret;
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 14");
+
+    // db.query(feature, ret, 4);
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 15");
+
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "Num images: %ld", num_images);
+
+    // ret[0] is always the same image in this case, because we added it to the 
+    // database. ret[1] is the second best match.
+    // for(int i = 0; i < num_images; i++)
+    // {
+        int curr_img = num_images - 1;
+        RCLCPP_INFO(rclcpp::get_logger("message"), "Searching Image: %d", curr_img);
+        db.query(features[curr_img], ret, 4);
+        for (int j = 0; j < num_images; j++){
+            RCLCPP_INFO(rclcpp::get_logger("message"), "Query Results: %f", ret[j].Score);
+            RCLCPP_INFO(rclcpp::get_logger("message"), "Image Match ID: %d", ret[j].Id);
+            // arbitrary threshold (really depends on how many different images there are to compare against)
+            if (ret[j] > 0.21){
+                if ((curr_img - ret[j].Id) > 4 && ret[j].Score > 0.0 && ret[j].Score < 1.0 ){
+                    RCLCPP_INFO(rclcpp::get_logger("message"), "Current Image: %d", curr_img);
+                    RCLCPP_INFO(rclcpp::get_logger("message"), "Image Match ID: %d", ret[j].Id);
+                    RCLCPP_INFO(rclcpp::get_logger("message"), "Image Match ID diff: %d", curr_img - ret[j].Id);
+                    // NOTE TO SELF!!!!!!!!!!!!!!!!!!!!!!! TODO!!!!!!!!!!
+                    // might not need this bc getting id's from wheels!
+                    // for (int k = 0; k < id_vals.size(); k++){
+                    //     if (ret[j].Id == id_vals[k] && ret[j].Id != i){
+                    return ret[j].Id;
+                    //     }
+                    // }
+                }
+            }
+        }
+    // }
+    return -1;
+
+    // std::cout << "Searching for Image " << i << ". " << ret << std::endl;
+    // std::cout << "Query results:" << std::endl;
+    // std::cout << ret << std::endl;
+
+}
+
+void changeStructure(const cv::Mat &plain, std::vector<cv::Mat> &out)
+{
+  out.resize(plain.rows);
+
+  for(int i = 0; i < plain.rows; ++i)
+  {
+    out[i] = plain.row(i);
+  }
+}
 
 int main(int argc, char** argv)
 {
