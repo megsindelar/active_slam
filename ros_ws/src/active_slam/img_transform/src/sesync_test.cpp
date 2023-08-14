@@ -165,6 +165,7 @@ private:
 
         // measurements_t measurements = read_g2o_file("/home/megsindelar/Final_Project/ros_ws/src/active_slam/img_transform/data/city10000.g2o", num_poses);
         // Preallocate output vector
+        measurements_t measurements;
         RCLCPP_INFO(rclcpp::get_logger("message"), "SESync starting");
         RelativePoseMeasurement measurement;
 
@@ -444,63 +445,8 @@ private:
                 nodes.push_back({x, y, theta});
             }
 
-            // update tf frame for after image recognition
-
-
-            // for (int i = 0; i < trans_size; i++){
-            //     x = xhat.col(i)(0);
-            //     y = xhat.col(i)(1);
-
-            //     //TODO maybe change if needed
-            //     Eigen::MatrixXd R = xhat.block(0, ((trans_size-1) + i), 2, 2);
-            //     theta = img_transform::Rot2Theta(R);
-
-            //     nodes.push_back({x, y, theta});
-            // }
-
             std_msgs::msg::Header header;
             header.stamp = this->get_clock()->now();
-
-            // MarkerArrayVec marker_vec = img_transform::visualize_graph(nodes, header);
-
-            // geometry_msgs::msg::TransformStamped t;
-            // RCLCPP_INFO(rclcpp::get_logger("message"), "nodes size: %d", nodes.size());
-            // for (int i = 0; i < nodes.size(); i++){
-            //     t.header.stamp = this->get_clock()->now();
-            //     t.header.frame_id = "world";
-            //     t.child_frame_id = "frame" + to_string(i);
-            //     t.transform.translation.x = nodes[i][0];
-            //     t.transform.translation.y = nodes[i][1];
-
-            //     tf2::Quaternion q;
-            //     q.setRPY(0, 0, nodes[i][2]);
-            //     t.transform.rotation.x = q.x();
-            //     t.transform.rotation.y = q.y();
-            //     t.transform.rotation.z = q.z();
-            //     t.transform.rotation.w = q.w();
-
-            //     tf_broadcaster_->sendTransform(t);
-            // }
-
-
-            // visualization_msgs::msg::Marker edge_m;
-            // edge_m.header.frame_id = "world";
-            // edge_m.header.stamp = header.stamp;
-            // edge_m.id = 0;
-            // edge_m.action = visualization_msgs::msg::Marker::ADD;
-            // edge_m.pose.orientation.w = 1.0;
-            // edge_m.pose.position.x = 0.0;
-            // edge_m.pose.position.y = 0.0;
-            // edge_m.type = visualization_msgs::msg::Marker::LINE_STRIP;
-            // edge_m.scale.x = 0.01;
-            // edge_m.scale.y = 0.01;
-            // edge_m.scale.z = 0.01;
-            // edge_m.color.a = 1.0;
-            // edge_m.color.r = 0.3;
-            // edge_m.color.g = 0.9;
-            // edge_m.color.b = 0.3;
-
-
 
 
             int id = 0;
@@ -524,20 +470,45 @@ private:
                 id++;
             }
 
-            double id_last = nodes.size() - 1;
-            // edge_m.id = id;
 
-            RCLCPP_INFO(rclcpp::get_logger("message"), "Node size %d", node_markers.markers.size());
-            // edge_m.points.push_back(p);
-            node_markers.markers[id_1+1].pose.position.x = nodes[id_1+1][0];
-            node_markers.markers[id_1+1].pose.position.y = nodes[id_1+1][1];
+            // loops
 
-            edge_markers.markers[id_1+1].points[0].x = nodes[id_1+1][0];
-            edge_markers.markers[id_1+1].points[0].y = nodes[id_1+1][1];
-            // // RCLCPP_INFO(rclcpp::get_logger("message"), "Edge 0: %f, %f", nodes[0][0], nodes[0][1]);
-            // // edge_m.points.push_back(p);
-            edge_markers.markers[id_1+1].points[1].x = nodes[id_2][0];
-            edge_markers.markers[id_1+1].points[1].y = nodes[id_2][1];
+            for (int j = 0; j < loop_pairs.size(); j++){
+                RCLCPP_INFO(rclcpp::get_logger("message"), "loop nums %d", loop_nums);
+                RCLCPP_INFO(rclcpp::get_logger("message"), "node markers size %d", node_markers.markers.size());
+                RCLCPP_INFO(rclcpp::get_logger("message"), "edge markers size %d", edge_markers.markers.size());
+
+                // edge_m.points.push_back(p);
+                int id1 = loop_pairs[j][0] + 1;
+                int id2 = loop_pairs[j][1];
+                int id1_m = loop_pairs[j][0] + 1 + j;
+                RCLCPP_INFO(rclcpp::get_logger("message"), "id_1 and id_2: %d, %d", id_1, id_2);
+                RCLCPP_INFO(rclcpp::get_logger("message"), "id1 and id2: %d, %d", id1, id2);
+                RCLCPP_INFO(rclcpp::get_logger("message"), "id1_m: %d", id1_m);
+                node_markers.markers[id1].pose.position.x = nodes[id1][0];
+                node_markers.markers[id1].pose.position.y = nodes[id1][1];
+
+                edge_markers.markers[id1_m].points[0].x = nodes[id1][0];
+                edge_markers.markers[id1_m].points[0].y = nodes[id1][1];
+                // // RCLCPP_INFO(rclcpp::get_logger("message"), "Edge 0: %f, %f", nodes[0][0], nodes[0][1]);
+                // // edge_m.points.push_back(p);
+                edge_markers.markers[id1_m].points[1].x = nodes[id2][0];
+                edge_markers.markers[id1_m].points[1].y = nodes[id2][1];
+            }
+
+            // int id1 = loop_pairs[0][0] + 1;
+            // int id2 = loop_pairs[0][1];
+            // RCLCPP_INFO(rclcpp::get_logger("message"), "id_1 and id_2: %d, %d", id_1, id_2);
+            // RCLCPP_INFO(rclcpp::get_logger("message"), "id1 and id2: %d, %d", id1, id2);
+            // node_markers.markers[id1].pose.position.x = nodes[id1][0];
+            // node_markers.markers[id1].pose.position.y = nodes[id1][1];
+
+            // edge_markers.markers[id1].points[0].x = nodes[id1][0];
+            // edge_markers.markers[id1].points[0].y = nodes[id1][1];
+            // // // RCLCPP_INFO(rclcpp::get_logger("message"), "Edge 0: %f, %f", nodes[0][0], nodes[0][1]);
+            // // // edge_m.points.push_back(p);
+            // edge_markers.markers[id1].points[1].x = nodes[id2][0];
+            // edge_markers.markers[id1].points[1].y = nodes[id2][1];
 
             pos_update.x = nodes[id_2][0];
             pos_update.y = nodes[id_2][1];
@@ -546,10 +517,14 @@ private:
             x_pos = nodes[id_2][0];
             y_pos = nodes[id_2][1];
 
+            loop_nums++;
+
             // edge_markers.markers.push_back(edge_m);
 
 
             RCLCPP_INFO(rclcpp::get_logger("message"), "Publishing markers!");
+            RCLCPP_INFO(rclcpp::get_logger("message"), "Pose update: %f", pos_update.x);
+            RCLCPP_INFO(rclcpp::get_logger("message"), "Pose update: %f", pos_update.y);
 
             // pub_nodes_->publish(marker_vec[0]);
             pub_nodes_->publish(node_markers);
@@ -609,6 +584,7 @@ private:
 
     id_1 = msg->id;
     id_2 = msg->id_2;
+    loop_pairs.push_back({id_1, id_2});
     RCLCPP_INFO(rclcpp::get_logger("message"), "Test 3");
 
     edge.id_a = id_1 + 1;
@@ -917,7 +893,6 @@ private:
   int id_rob_state = 0;
   int a = 50;
   size_t num_poses = 0;
-  measurements_t measurements;
   size_t i_ = 0;
   size_t j_ = 1;
   Scalar dx = 0.0;
@@ -943,6 +918,9 @@ private:
 
   int id_1 = 0;
   int id_2 = 0;
+
+  int loop_nums = 0;
+  std::vector<std::vector<int>> loop_pairs;
 
   std::vector<int> edge_id_vals;
 

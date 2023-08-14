@@ -210,9 +210,15 @@ class Reconstruction : public rclcpp::Node
                 rotation_current.row(0) << 1.0, 0.0, 0.0;
                 rotation_current.row(1) << 0.0, 1.0, 0.0;
                 rotation_current.row(2) << 0.0, 0.0, 1.0;
+                rotation_mat.row(0) << 1.0, 0.0, 0.0;
+                rotation_mat.row(1) << 0.0, 1.0, 0.0;
+                rotation_mat.row(2) << 0.0, 0.0, 1.0;
                 translation_current(0) = 0.0;
                 translation_current(1) = 0.0;
                 translation_current(1) = 0.0;
+                translation(0) = 0.0;
+                translation(1) = 0.0;
+                translation(2) = 0.0;
                 Sophus::SE3d Transformation_prev(rotation_current, translation_current);
             }
             
@@ -635,7 +641,7 @@ class Reconstruction : public rclcpp::Node
                     // publish transform for se_sync
                     img_transform::msg::Transform T_01;
                     // img_transform::msg::Transform rob_state;
-                    T_01.id = num_images-1;
+                    T_01.id = num_images-2;
                     T_01.id_2 = img_id + sub_img_num;
                     // rob_state.id = id;
                     for (int i = 0; i < 4; i++)
@@ -692,9 +698,10 @@ class Reconstruction : public rclcpp::Node
         void frame_id_callback(
             const img_transform::msg::FrameID::ConstSharedPtr& msg
         ){
-            num_images = msg->id;
+            num_images = msg->id + 1;
             if (less_keys){
                 num_images = old_num_images;
+                RCLCPP_INFO(rclcpp::get_logger("message"), "Old num images size: %d", old_num_images);
                 less_keys = false;
             }
             take_image = true;
@@ -787,7 +794,7 @@ class Reconstruction : public rclcpp::Node
         std::vector<std::vector<KeyPoint>> keypoints_vec;
         std::vector<cv::Mat> descriptors_vec;
 
-        long int num_images = 0;
+        long int num_images = 1;
 
         std::chrono::system_clock::time_point begin_frame = std::chrono::high_resolution_clock::now();
 

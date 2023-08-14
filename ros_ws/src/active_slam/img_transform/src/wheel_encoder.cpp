@@ -172,6 +172,12 @@ private:
     double y = robot.y_get() - y_sub; //y_arr[m];
     double theta = robot.theta_get() - theta_sub; //theta_arr[m];
 
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "Robot beg x: %f", x);
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "Robot beg y: %f", y);
+
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "Pos rob x: %f", x);
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "Pos rob y: %f", y);
+
     img_transform::msg::Odom rotate;
     rotate.theta = robot.theta_get();
     pub_odom_->publish(rotate);
@@ -180,33 +186,8 @@ private:
 
     // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 134");
 
-    if (update_pos){
-        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
-        trans_0(0) = x;
-        trans_0(1) = y;
-        x_prev = x;
-        y_prev = y;
-        update_pos = false;
-    }
     Sophus::SE3d T0_w(rot_0, trans_0);
+
     // RCLCPP_INFO(rclcpp::get_logger("message"), "T_0 row 1: %f, %f, %f, %f", T0.matrix()(0,0), T0.matrix()(0,1), T0.matrix()(0,2), T0.matrix()(0,3));
     // RCLCPP_INFO(rclcpp::get_logger("message"), "T_0 row 2: %f, %f, %f, %f", T0.matrix()(1,0), T0.matrix()(1,1), T0.matrix()(1,2), T0.matrix()(1,3));
     // RCLCPP_INFO(rclcpp::get_logger("message"), "T_0 row 3: %f, %f, %f, %f", T0.matrix()(2,0), T0.matrix()(2,1), T0.matrix()(2,2), T0.matrix()(2,3));
@@ -214,12 +195,50 @@ private:
 
     Eigen::Vector<double,6> v01(dx_cam, 0.0, 0.0, 0.0, 0.0, 0.0);
     Sophus::SE3d T0_exp = Sophus::SE3d::exp(v01);
+
     // RCLCPP_INFO(rclcpp::get_logger("message"), "T0_exp row 1: %f, %f, %f, %f", T0_exp.matrix()(0,0), T0_exp.matrix()(0,1), T0_exp.matrix()(0,2), T0_exp.matrix()(0,3));
     // RCLCPP_INFO(rclcpp::get_logger("message"), "T0_exp row 2: %f, %f, %f, %f", T0_exp.matrix()(1,0), T0_exp.matrix()(1,1), T0_exp.matrix()(1,2), T0_exp.matrix()(1,3));
     // RCLCPP_INFO(rclcpp::get_logger("message"), "T0_exp row 3: %f, %f, %f, %f", T0_exp.matrix()(2,0), T0_exp.matrix()(2,1), T0_exp.matrix()(2,2), T0_exp.matrix()(2,3));
     // RCLCPP_INFO(rclcpp::get_logger("message"), "T0_exp row 4: %f, %f, %f, %f", T0_exp.matrix()(3,0), T0_exp.matrix()(3,1), T0_exp.matrix()(3,2), T0_exp.matrix()(3,3));
 
     Sophus::SE3d T0 = T0_w*T0_exp;
+
+    if (update_pos){
+        RCLCPP_INFO(rclcpp::get_logger("message"), "Robot x: %f", robot.x_get());
+        RCLCPP_INFO(rclcpp::get_logger("message"), "Robot y: %f", robot.y_get());
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!22");
+        RCLCPP_INFO(rclcpp::get_logger("message"), "Pos update wheel_enc node: %f", x);
+        RCLCPP_INFO(rclcpp::get_logger("message"), "Pos update wheel_enc node: %f", y);
+        T0.translation()(0) = x_update;
+        T0.translation()(1) = y_update;
+        // RCLCPP_INFO(rclcpp::get_logger("message"), "Pos update trans_0 x: %f", T0.translation()(0));
+        // RCLCPP_INFO(rclcpp::get_logger("message"), "Pos update trans_0 y: %f", T0.translation()(1));
+        trans_0(0) = x;
+        trans_0(1) = y;
+        RCLCPP_INFO(rclcpp::get_logger("message"), "T0_w trans %f", T0_w.translation()(0));
+        RCLCPP_INFO(rclcpp::get_logger("message"), "T0_w trans %f", T0_w.translation()(1));
+        RCLCPP_INFO(rclcpp::get_logger("message"), "trans_0 %f", trans_0(0));
+        RCLCPP_INFO(rclcpp::get_logger("message"), "trans_0 %f", trans_0(1));
+    }
+
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "T0_w trans %f", T0_w.translation()(0));
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "T0_w trans %f", T0_w.translation()(1));
 
     // RCLCPP_INFO(rclcpp::get_logger("message"), "T_0 row 1: %f, %f, %f, %f", T0.matrix()(0,0), T0.matrix()(0,1), T0.matrix()(0,2), T0.matrix()(0,3));
     // RCLCPP_INFO(rclcpp::get_logger("message"), "T_0 row 2: %f, %f, %f, %f", T0.matrix()(1,0), T0.matrix()(1,1), T0.matrix()(1,2), T0.matrix()(1,3));
@@ -245,6 +264,7 @@ private:
     // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 2.5");
 
     Sophus::SE3d T1_w(rot_1, trans_1);
+
     // RCLCPP_INFO(rclcpp::get_logger("message"), "T_1_w row 1: %f, %f, %f, %f", T1_w.matrix()(0,0), T1_w.matrix()(0,1), T1_w.matrix()(0,2), T1_w.matrix()(0,3));
     // RCLCPP_INFO(rclcpp::get_logger("message"), "T_1_w row 2: %f, %f, %f, %f", T1_w.matrix()(1,0), T1_w.matrix()(1,1), T1_w.matrix()(1,2), T1_w.matrix()(1,3));
     // RCLCPP_INFO(rclcpp::get_logger("message"), "T_1_w row 3: %f, %f, %f, %f", T1_w.matrix()(2,0), T1_w.matrix()(2,1), T1_w.matrix()(2,2), T1_w.matrix()(2,3));
@@ -305,8 +325,8 @@ private:
 
     // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 2");
 
-    double x_trans = robot.x_get() - x_prev; //T_01.matrix()(0,3);
-    double y_trans = robot.y_get() - y_prev; //T_01.matrix()(1,3);
+    double x_trans = x - x_prev; //T_01.matrix()(0,3);
+    double y_trans = y - y_prev; //T_01.matrix()(1,3);
     Eigen::Vector3d euler = T_01.rotationMatrix().eulerAngles(2,1,0);
     double theta_rot = euler(0);
 
@@ -322,6 +342,10 @@ private:
  
     // need a subscriber of when recognize somewhere I've been before (aka bag of words that's from img_transform)
     if (reconstruct_graph == false && first == false && (abs(x_trans) > 0.1 || abs(y_trans) > 0.1 || abs(theta_r) > 0.785375)){
+
+
+        update_pos = false;
+        RCLCPP_INFO(rclcpp::get_logger("message"), "Test test 1");
         // Sophus::SE3 T0(rot_mat, trans_mat);
         // RCLCPP_INFO(rclcpp::get_logger("message"), "T_0 row 1: %f, %f, %f, %f", T0.matrix()(0,0), T0.matrix()(0,1), T0.matrix()(0,2), T0.matrix()(0,3));
         // RCLCPP_INFO(rclcpp::get_logger("message"), "T_0 row 2: %f, %f, %f, %f", T0.matrix()(1,0), T0.matrix()(1,1), T0.matrix()(1,2), T0.matrix()(1,3));
@@ -365,8 +389,8 @@ private:
 
         // Sophus::SE3 T_01_s = T0.inverse()*T1;
 
-        x_prev = robot.x_get();
-        y_prev = robot.y_get();
+        x_prev = x;
+        y_prev = y;
         theta_prev = theta;
 
         img_transform::msg::Transform T01;
@@ -388,14 +412,18 @@ private:
         T01.row_3.push_back(0.0);
         T01.row_4.push_back(1.0);
 
-        T01.x.push_back(T0.matrix()(0,3));
-        T01.x.push_back(T1.matrix()(0,3));
+        T01.x.push_back(T0.translation()(0));
+        T01.x.push_back(T1.translation()(0));
+        RCLCPP_INFO(rclcpp::get_logger("message"), "T1 trans %f", T0.translation()(0));
+        RCLCPP_INFO(rclcpp::get_logger("message"), "T1 trans %f", T1.translation()(0));
         T01.x_w = (T1_w.matrix()(0,3));
 
         // RCLCPP_INFO(rclcpp::get_logger("message"), "x TESSSSSTTTTTTTTTTTTTTTTT %f: ", T1.matrix()(0,3));
         
-        T01.y.push_back(T0.matrix()(1,3));
-        T01.y.push_back(T1.matrix()(1,3));
+        T01.y.push_back(T0.translation()(1));
+        T01.y.push_back(T1.translation()(1));
+        RCLCPP_INFO(rclcpp::get_logger("message"), "T1 trans %f", T0.translation()(1));
+        RCLCPP_INFO(rclcpp::get_logger("message"), "T1 trans %f", T1.translation()(1));
         T01.y_w = (T1_w.matrix()(1,3));
 
         T01.theta = robot.theta_get();
@@ -513,11 +541,32 @@ private:
     update = msg->update;
     if (update){
         RCLCPP_INFO(rclcpp::get_logger("message"), "UPDATE!!!!!!!!!!!!!11");
-        x_update = msg->x + x_sub;
-        y_update = msg->y + y_sub;
+        x_update = msg->x;
+        y_update = msg->y;
         theta_update = msg->theta;
-        robot = {track_width, wheel_radius, {robot.phi_r_get(), robot.phi_l_get()}, {robot.theta_get(), x_update, y_update}};
-        update_pos = true;
+
+        Eigen::Matrix<double, 3, 3> r_update;
+        Eigen::Matrix<double, 3, 1> t_update;
+        r_update.row(0) << cos(theta_update), -sin(theta_update), 0.0;
+        r_update.row(1) << sin(theta_update), cos(theta_update), 0.0;
+        r_update.row(2) << 0.0, 0.0, 1.0;
+        t_update(0) = x_update;
+        t_update(1) = y_update;
+        t_update(2) = 0.0;
+
+        Sophus::SE3d T0_update(r_update, t_update);
+
+        Eigen::Vector<double,6> v01_update(dx_cam, 0.0, 0.0, 0.0, 0.0, 0.0);
+
+        Sophus::SE3d T0_exp = Sophus::SE3d::exp(v01_update);
+        // Sophus::SE3d T1 = T1_w*T1_exp;
+        Sophus::SE3d T0_w_update = T0_update*T0_exp.inverse();
+
+        x_prev = T0_w_update.translation()(0);
+        y_prev = T0_w_update.translation()(1);
+
+
+        robot = {track_width, wheel_radius, {robot.phi_r_get(), robot.phi_l_get()}, {robot.theta_get(), T0_w_update.translation()(0) + x_sub, T0_w_update.translation()(1) + y_sub}};
     }
   }
 
@@ -670,6 +719,8 @@ private:
   double temp_l = 0.0;
   double temp_r = 0.0;
 
+  int count_updates = 0;
+
   std_msgs::msg::Header header;
 
   visualization_msgs::msg::MarkerArray node_markers;
@@ -695,7 +746,7 @@ private:
   bool ff_1 = true;
 
   bool update = false;
-  bool update_pos = true;
+  bool update_pos = false;
   double x_update = 0.0;
   double y_update = 0.0;
   double theta_update = 0.0;
