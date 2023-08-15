@@ -698,9 +698,10 @@ class Reconstruction : public rclcpp::Node
         void frame_id_callback(
             const img_transform::msg::FrameID::ConstSharedPtr& msg
         ){
-            num_images = msg->id + 1;
+            num_images = msg->id + 1 - sub_images;
             if (less_keys){
                 num_images = old_num_images;
+                sub_images++;
                 RCLCPP_INFO(rclcpp::get_logger("message"), "Old num images size: %d", old_num_images);
                 less_keys = false;
             }
@@ -788,6 +789,7 @@ class Reconstruction : public rclcpp::Node
         double rob_y = 0.0;
 
         int sub_img_num = 0;
+        int sub_images = 0;
 
         // OrbVocabulary voc(int k = 9, int L = 3, WeightingType weight = TF_IDF, ScoringType scoring = L1_NORM);
         std::vector<std::vector<cv::Mat>> features;
