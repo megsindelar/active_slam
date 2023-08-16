@@ -473,11 +473,11 @@ private:
                 id++;
             }
 
-            for (int i = 0; i < edge_markers.markers.size(); i++){
-                RCLCPP_INFO(rclcpp::get_logger("message"), "Marker id: %d", edge_markers.markers[i].id);
-                RCLCPP_INFO(rclcpp::get_logger("message"), "Edge Marker vals : %f, %f", edge_markers.markers[i].points[0].x, edge_markers.markers[i].points[0].y);
-                RCLCPP_INFO(rclcpp::get_logger("message"), "Edge Marker vals : %f, %f", edge_markers.markers[i].points[1].x, edge_markers.markers[i].points[1].y);
-            }
+            // for (int i = 0; i < edge_markers.markers.size(); i++){
+            //     RCLCPP_INFO(rclcpp::get_logger("message"), "Marker id: %d", edge_markers.markers[i].id);
+            //     RCLCPP_INFO(rclcpp::get_logger("message"), "Edge Marker vals : %f, %f", edge_markers.markers[i].points[0].x, edge_markers.markers[i].points[0].y);
+            //     RCLCPP_INFO(rclcpp::get_logger("message"), "Edge Marker vals : %f, %f", edge_markers.markers[i].points[1].x, edge_markers.markers[i].points[1].y);
+            // }
 
 
             // loops
@@ -554,48 +554,94 @@ private:
 
 
                 // need to go backwards for loop fill in
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "loop count and loop pairs size: %d, %d", loop_count, loop_pairs.size());
+                // if (loop_pairs.size() > 1 && loop_count < loop_pairs.size()){
+                //     id1 = loop_pairs[j][0] + 1 + loop_count - 1;
+                //     int temp_loop_count = loop_count - 1;
+                //     int shift = nodes.size();
+                //     RCLCPP_INFO(rclcpp::get_logger("message"), "loop id1 and shift: %d, %d", id1, shift);
+
+                //     int m = nodes.size() - 1;
+                //     int loop_test_count = 0;
+                //     int shift_num = shift - id1;
+                //     RCLCPP_INFO(rclcpp::get_logger("message"), "loop id1 and shift: %d", shift_num);
+                    
+                //     // RCLCPP_INFO(rclcpp::get_logger("message"), "temp_loop_count: %d", temp_loop_count);
+
+                //     int diff = edge_markers.markers.size() - nodes.size();
+                //     id1_m = id1 - 1 + shift_num + temp_loop_count;
+
+                //     if (shift_num == 0){
+                //         shift_num = 1;
+                //         id1_m = edge_markers.markers.size() - 2;
+                //     }
+
+                //     for (int k = 0; k < shift_num ; k++){
+                //         id1 = m - 1;
+                //         // id1_m = m;
+                //         id2_m = m;
+
+                //         RCLCPP_INFO(rclcpp::get_logger("message"), "loop id_1 and id_2: %d, %d", id_1, id_2);
+                //         RCLCPP_INFO(rclcpp::get_logger("message"), "loop id1 and id2: %d, %d", id1, id2);
+                //         RCLCPP_INFO(rclcpp::get_logger("message"), "loop id1_m: %d", id1_m);
+                //         RCLCPP_INFO(rclcpp::get_logger("message"), "loop id2_m: %d", id2_m);
+
+                //         node_markers.markers[id1_m].pose.position.x = nodes[id1][0];
+                //         node_markers.markers[id1_m].pose.position.y = nodes[id1][1];
+
+                //         edge_markers.markers[id1_m].points[0].x = nodes[id1][0];
+                //         edge_markers.markers[id1_m].points[0].y = nodes[id1][1];
+                //         // // RCLCPP_INFO(rclcpp::get_logger("message"), "Edge 0: %f, %f", nodes[0][0], nodes[0][1]);
+                //         // // edge_m.points.push_back(p);
+                //         edge_markers.markers[id1_m].points[1].x = nodes[id2_m][0];
+                //         edge_markers.markers[id1_m].points[1].y = nodes[id2_m][1];
+
+                //         RCLCPP_INFO(rclcpp::get_logger("message"), "loop Edge 0_: %f, %f", nodes[id1][0], nodes[id1][1]);
+                //         RCLCPP_INFO(rclcpp::get_logger("message"), "loop Edge 1_: %f, %f", nodes[id2_m][0], nodes[id2_m][1]);
+                //         m--;
+                //         loop_test_count++;
+                //         id1_m--;
+                //     }
+
+                //     RCLCPP_INFO(rclcpp::get_logger("message"), "loop test count: %d", loop_test_count);
+
+                // }
+
+
                 RCLCPP_INFO(rclcpp::get_logger("message"), "loop count and loop pairs size: %d, %d", loop_count, loop_pairs.size());
                 if (loop_pairs.size() > 1 && loop_count < loop_pairs.size()){
                     id1 = loop_pairs[j][0] + 1;
-                    int shift = nodes.size() - 1;
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "loop id1 and shift: %d, %d", id1, shift);
+                    id1_m = id1 + loop_count - 1;
+                    id2 = loop_pairs[j][1];
 
-                    int m = nodes.size() - 1;
-                    int loop_test_count = 0;
-                    int shift_num = shift - id1;
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "loop id1 and shift: %d", shift_num);
+                    // for (int n = 0; n < nodes.size(); n++){
+                    //     if (nodes[id1][0] == nodes[n][0] && nodes[id1][1] == nodes[id1][1]){
+                    //         id1_m = n;
+                    //         break;
+                    //     }
+                    // }
+                    RCLCPP_INFO(rclcpp::get_logger("message"), "id1 %d", id1);
+                    RCLCPP_INFO(rclcpp::get_logger("message"), "id1_m and nodes.size() : %d, %d", id1_m, nodes.size());
 
-                    id1_m = edge_markers.markers.size() - 2;
+                    for (int p = id1; p < nodes.size()-1; p++){
+                        node_markers.markers[id1_m+1].pose.position.x = nodes[p][0];
+                        node_markers.markers[id1_m+1].pose.position.y = nodes[p][1];
 
-                    for (int k = 0; k < shift_num ; k++){
-                        id1 = m - 1;
-                        id2_m = m;
+                        edge_markers.markers[id1_m+1].points[0].x = nodes[p][0];
+                        edge_markers.markers[id1_m+1].points[0].y = nodes[p][1];
 
-                        RCLCPP_INFO(rclcpp::get_logger("message"), "loop id_1 and id_2: %d, %d", id_1, id_2);
-                        RCLCPP_INFO(rclcpp::get_logger("message"), "loop id1 and id2: %d, %d", id1, id2);
-                        RCLCPP_INFO(rclcpp::get_logger("message"), "loop id1_m: %d", id1_m);
-                        RCLCPP_INFO(rclcpp::get_logger("message"), "loop id2_m: %d", id2_m);
+                        edge_markers.markers[id1_m+1].points[1].x = nodes[p+1][0];
+                        edge_markers.markers[id1_m+1].points[1].y = nodes[p+1][1];
 
-                        node_markers.markers[id1_m].pose.position.x = nodes[id1][0];
-                        node_markers.markers[id1_m].pose.position.y = nodes[id1][1];
+                        id1_m++;
 
-                        edge_markers.markers[id1_m].points[0].x = nodes[id1][0];
-                        edge_markers.markers[id1_m].points[0].y = nodes[id1][1];
-                        // // RCLCPP_INFO(rclcpp::get_logger("message"), "Edge 0: %f, %f", nodes[0][0], nodes[0][1]);
-                        // // edge_m.points.push_back(p);
-                        edge_markers.markers[id1_m].points[1].x = nodes[id2_m][0];
-                        edge_markers.markers[id1_m].points[1].y = nodes[id2_m][1];
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Edge 0_: %f, %f", edge_markers.markers[id1_m+1].points[0].x, edge_markers.markers[id1_m+1].points[0].y);
 
-                        RCLCPP_INFO(rclcpp::get_logger("message"), "loop Edge 0_: %f, %f", nodes[id1][0], nodes[id1][1]);
-                        RCLCPP_INFO(rclcpp::get_logger("message"), "loop Edge 1_: %f, %f", nodes[id2_m][0], nodes[id2_m][1]);
-                        m--;
-                        loop_test_count++;
-                        id1_m--;
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Edge 1_: %f, %f", edge_markers.markers[id1_m+1].points[1].x, edge_markers.markers[id1_m+1].points[1].y);
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "id1_m: %d", id1_m);
                     }
-
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "loop test count: %d", loop_test_count);
-
                 }
+
 
                 id1 = loop_pairs[j][0] + 1;
                 id1_m = id1 + loop_count - 1;
@@ -616,8 +662,10 @@ private:
                 edge_markers.markers[id1_m].points[1].y = nodes[id2][1];
                 // }
 
-                node_markers.markers[0].pose.position.x = nodes[0][0];
-                node_markers.markers[0].pose.position.y = nodes[0][1];
+                // print out all nodes, (print the ind too) and fix the trailing node here!
+                int node_ind = node_markers.markers.size() - 1;
+                node_markers.markers[node_ind].pose.position.x = nodes[0][0];
+                node_markers.markers[node_ind].pose.position.y = nodes[0][1];
 
 
                 RCLCPP_INFO(rclcpp::get_logger("message"), "Edge 0_: %f, %f", nodes[id1][0], nodes[id1][1]);
@@ -631,6 +679,11 @@ private:
                 RCLCPP_INFO(rclcpp::get_logger("message"), "Marker id: %d", edge_markers.markers[i].id);
                 RCLCPP_INFO(rclcpp::get_logger("message"), "Edge Marker vals : %f, %f", edge_markers.markers[i].points[0].x, edge_markers.markers[i].points[0].y);
                 RCLCPP_INFO(rclcpp::get_logger("message"), "Edge Marker vals : %f, %f", edge_markers.markers[i].points[1].x, edge_markers.markers[i].points[1].y);
+            }
+
+            for (int i = 0; i < node_markers.markers.size(); i++){
+                RCLCPP_INFO(rclcpp::get_logger("message"), "Node Marker vals : %f, %f", node_markers.markers[i].pose.position.x, node_markers.markers[i].pose.position.y);
+                RCLCPP_INFO(rclcpp::get_logger("message"), "i val: %d", i);
             }
 
             // int id1 = loop_pairs[0][0] + 1;
