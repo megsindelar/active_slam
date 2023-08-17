@@ -259,15 +259,15 @@ class Reconstruction : public rclcpp::Node
             keypoints_vec.push_back(keypoints);
             RCLCPP_INFO(rclcpp::get_logger("message"), "Keypoints size: %d", keypoints.size());
 
-            if (keypoints.size() < 4){
-                less_keys = true;
-                old_num_images = num_images - 1;
-            }
-            // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 7");
+            if (keypoints.size() > 3){
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 7");
 
-            features.push_back(std::vector<cv::Mat >());
-            // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 7.5");
-            changeStructure(descriptors, features.back());
+                features.push_back(std::vector<cv::Mat >());
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 7.5");
+                changeStructure(descriptors, features.back());
+            }
+
+            num_images = features.size();
 
             RCLCPP_INFO(rclcpp::get_logger("message"), "num_images: %d", num_images);
 
@@ -698,15 +698,15 @@ class Reconstruction : public rclcpp::Node
         void frame_id_callback(
             const img_transform::msg::FrameID::ConstSharedPtr& msg
         ){
-            num_images = msg->id + 1 - sub_images;
-            if (less_keys){
-                num_images = old_num_images;
-                sub_images++;
-                RCLCPP_INFO(rclcpp::get_logger("message"), "Old num images size: %d", old_num_images);
-                less_keys = false;
-            }
+            num_images = msg->id;
+            // if (less_keys){
+            //     num_images = old_num_images;
+            //     sub_images++;
+            //     RCLCPP_INFO(rclcpp::get_logger("message"), "Old num images size: %d", old_num_images);
+            //     less_keys = false;
+            // }
             take_image = true;
-            sub_img_num = 0;
+            // sub_img_num = 0;
         }
 
         void image_callback(
@@ -856,7 +856,7 @@ int BOW_test(const std::vector<std::vector<cv::Mat >>&features, OrbVocabulary vo
     // database. ret[1] is the second best match.
     // for(int i = 0; i < num_images; i++)
     // {
-        int curr_img = num_images - 1;
+        int curr_img = features.size() - 1;
         RCLCPP_INFO(rclcpp::get_logger("message"), "Searching Image: %d", curr_img);
         db.query(features[curr_img], ret, 4);
         for (int j = 0; j < num_images; j++){
