@@ -20,6 +20,7 @@
 #include "nuturtlebot_msgs/msg/sensor_data.hpp"
 #include "sensor_msgs/msg/joint_state.hpp"
 #include "turtlelib/diff_drive.hpp"
+#include "turtlelib/rigid2d.hpp"
 #include <visualization_msgs/msg/marker_array.hpp>
 #include <visualization_msgs/msg/marker.hpp>
 #include "nav_msgs/msg/odometry.hpp"
@@ -123,6 +124,8 @@ public:
 
     pub_rob_pose_ = this->create_publisher<geometry_msgs::msg::Point>("rob_pose", 10);
 
+    pub_cmd_vel_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
+
 
     sub_odom_update_ = this->create_subscription<img_transform::msg::Odom>(
       "/odom_update", 10, std::bind(
@@ -133,6 +136,18 @@ public:
       "/feature_transform", 10, std::bind(
         &WheelEncoder::feature_transform_callback,
         this, std::placeholders::_1));
+
+    wheel_cmd_srv = this->create_service<std_srvs::srv::Empty>(
+        "/next_waypoint",
+        std::bind(
+            &WheelEncoder::next_waypoint_srv, this, std::placeholders::_1,
+            std::placeholders::_2));
+
+    stop_moving_srv = this->create_service<std_srvs::srv::Empty>(
+        "/stop_moving",
+        std::bind(
+            &WheelEncoder::stop_turtlebot, this, std::placeholders::_1,
+            std::placeholders::_2));
 
     /// \brief timer callback with a specified frequency rate
     /// \param rate - frequency of timer callback in Hz
@@ -146,6 +161,27 @@ public:
   }
 
 private:
+
+  void next_waypoint_srv(
+        std_srvs::srv::Empty::Request::SharedPtr,
+        std_srvs::srv::Empty::Response::SharedPtr)
+    {
+        next_waypoint = true;
+        move = true;
+    }
+
+  void stop_turtlebot(
+        std_srvs::srv::Empty::Request::SharedPtr,
+        std_srvs::srv::Empty::Response::SharedPtr)
+    {
+        auto msg = geometry_msgs::msg::Twist();
+        msg.angular.z = 0.0;
+        msg.linear.x = 0.0;
+        msg.linear.y = 0.0;
+        pub_cmd_vel_->publish(msg);
+        move = false;
+    }
+
   /// \brief timer callback running at a set frequency
   void timer_callback()
   {
@@ -159,13 +195,17 @@ private:
 
     if (first_flag){
 
-    double x = robot.x_get() - x_sub; //x_arr[m];
-    double y = robot.y_get() - y_sub; //y_arr[m];
-    double theta = robot.theta_get() - theta_sub; //theta_arr[m];
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "x, y, and theta sub: %f, %f, %f", x_sub, y_sub, theta_sub);
+    double x = robot.x_get(); // - x_sub; //x_arr[m];
+    double y = robot.y_get(); // - y_sub; //y_arr[m];
+    double theta = robot.theta_get(); // - theta_sub; //theta_arr[m];
+
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "x: %f", x);
+    // RCLCPP_INFO(rclcpp::get_logger("message"), "y: %f", y);
 
 
     img_transform::msg::Odom rotate;
-    rotate.theta = robot.theta_get();
+    rotate.theta = theta;
     pub_odom_->publish(rotate);
 
     // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 436");
@@ -261,70 +301,144 @@ private:
     // to get the wheel desired target, then use stuff below to get wheels there, 
     // then just turn the robot until reach desired cam theta and pose!
 
-    double v_max = 0.55;
-    double k_dist = 0.2;
-    double k_ang = 0.2;
+    double v_lin_max = 0.055;
+    double v_lin_min = 0.01;
+    double v_ang_min = 0.05;
+    double v_ang_max = 0.12;
+    double k_dist = 1.0;
+    double k_ang = 0.4;
     double v_lin = 0.0;
     double v_ang = 0.0;
-    double theta_des = waypoints[w_ind][2];
 
     if (next_waypoint){
+        RCLCPP_INFO(rclcpp::get_logger("message"), "theta: %f", theta);
+        theta_des = waypoints[w_ind][2];
         next_waypoint = false;
-        double theta_temp = theta_des;
+        double theta_temp = turtlelib::normalize_angle(theta_des);
+        RCLCPP_INFO(rclcpp::get_logger("message"), "theta temp: %f", theta_temp);
 
-        if (theta_temp == 2.0*M_PI){
-            // for if statement purposes below
-            theta_temp = 0.0;
+        if (theta_temp >= 0.0 && theta_temp <= (M_PI/2.0)){
+            temp_waypoint_x = waypoints[w_ind][0] - dx_cam*cos(theta_temp);
+            temp_waypoint_y = waypoints[w_ind][1] - dx_cam*sin(theta_temp);
+            RCLCPP_INFO(rclcpp::get_logger("message"), "temp waypoints 1: %f, %f", temp_waypoint_x, temp_waypoint_y);
         }
 
-        if (theta_temp >= 0.0 && theta_temp < (M_PI/2.0)){
-            temp_waypoint_x = waypoints[w_ind][0] - dx_cam*sin(theta_temp);
-            temp_waypoint_y = waypoints[w_ind][1] - dx_cam*cos(theta_temp);
-        }
-
-        if (theta_temp >= (M_PI/2.0) && theta_temp < M_PI){
+        if (theta_temp > (M_PI/2.0) && theta_temp <= M_PI){
             theta_temp = M_PI - theta_temp;
-            temp_waypoint_x = waypoints[w_ind][0] - dx_cam*sin(theta_temp);
-            temp_waypoint_y = waypoints[w_ind][1] + dx_cam*cos(theta_temp);
+            temp_waypoint_x = waypoints[w_ind][0] + dx_cam*cos(theta_temp);
+            temp_waypoint_y = waypoints[w_ind][1] - dx_cam*sin(theta_temp);
+            RCLCPP_INFO(rclcpp::get_logger("message"), "temp waypoints 2: %f, %f", temp_waypoint_x, temp_waypoint_y);
         }
 
-        if (theta_temp >= M_PI && theta_temp < (2.0*M_PI/3.0)){
-            theta_temp = (2.0*M_PI/3.0) - theta_temp;
-            temp_waypoint_x = waypoints[w_ind][0] + dx_cam*sin(theta_temp);
-            temp_waypoint_y = waypoints[w_ind][1] + dx_cam*cos(theta_temp);
+        if (theta_temp >= -M_PI && theta_temp < -(M_PI/2.0)){
+            theta_temp = M_PI + theta_temp;
+            temp_waypoint_x = waypoints[w_ind][0] + dx_cam*cos(theta_temp);
+            temp_waypoint_y = waypoints[w_ind][1] + dx_cam*sin(theta_temp);
+            RCLCPP_INFO(rclcpp::get_logger("message"), "temp waypoints 3: %f, %f", temp_waypoint_x, temp_waypoint_y);
         }
 
-        if (theta_temp >= (2.0*M_PI/3.0) && theta_temp < (2.0*M_PI)){
-            theta_temp = (2.0*M_PI) - theta_temp;
-            temp_waypoint_x = waypoints[w_ind][0] + dx_cam*sin(theta_temp);
-            temp_waypoint_y = waypoints[w_ind][1] - dx_cam*cos(theta_temp);
+        if (theta_temp >= -(M_PI/2.0) && theta_temp < 0.0){
+            theta_temp = -theta_temp;
+            temp_waypoint_x = waypoints[w_ind][0] - dx_cam*cos(theta_temp);
+            temp_waypoint_y = waypoints[w_ind][1] + dx_cam*sin(theta_temp);
+            RCLCPP_INFO(rclcpp::get_logger("message"), "temp waypoints 4: %f, %f", temp_waypoint_x, temp_waypoint_y);
         }
+
+        angle1_error = 1.0;
+        angle2_error = 1.0;
+        prev_dist_err = 100;
+
+        des_ang = turtlelib::normalize_angle(atan2(temp_waypoint_y - T1_w.translation()(1), temp_waypoint_x - T1_w.translation()(0)));
+        RCLCPP_INFO(rclcpp::get_logger("message"), "des_ang: %f", des_ang);
+
+        w_ind++;
     }
 
+    if (move){
+        double err_threshold = 0.01;
+        double distance_error = sqrt(pow(temp_waypoint_x - T1_w.translation()(0), 2) + pow(temp_waypoint_y - T1_w.translation()(1), 2));
 
-    if (abs(distance_error) < 0.01){
-        angle_error = theta_des - theta;
-        v_ang = k_ang*angle_error;
-        v_lin = 0.0;
-        if (abs(angle_error) < 0.01){
+        // RCLCPP_INFO(rclcpp::get_logger("message"), "T1 x, y: %f, %f", T1_w.translation()(0), T1_w.translation()(1));
+        // RCLCPP_INFO(rclcpp::get_logger("message"), "temp_waypoint: %f, %f", temp_waypoint_x, temp_waypoint_y);
+        // RCLCPP_INFO(rclcpp::get_logger("message"), "distance error: %f", distance_error);
+
+        if (abs(angle1_error) > err_threshold && abs(distance_error) > err_threshold){
+            angle1_error = (turtlelib::normalize_angle(theta) - turtlelib::normalize_angle(des_ang));
+            // RCLCPP_INFO(rclcpp::get_logger("message"), "des_ang: %f", des_ang);
+            // RCLCPP_INFO(rclcpp::get_logger("message"), "theta: %f", theta);
+            // RCLCPP_INFO(rclcpp::get_logger("message"), "normalized des_ang: %f", turtlelib::normalize_angle(des_ang));
+            // RCLCPP_INFO(rclcpp::get_logger("message"), "normalized robot.theta_get(): %f", turtlelib::normalize_angle(robot.theta_get()));
+            // RCLCPP_INFO(rclcpp::get_logger("message"), "normalized theta: %f", turtlelib::normalize_angle(theta));
+            RCLCPP_INFO(rclcpp::get_logger("message"), "angle 1 error: %f", angle1_error);
+            v_lin = 0.0;
+            v_ang = k_ang*angle1_error;
+            if (abs(angle1_error) > M_PI){
+                v_ang = -v_ang;
+            }
+            if (v_ang > 0){
+                v_ang = std::min(v_ang, v_ang_max);
+                v_ang = std::max(v_ang, v_ang_min);
+            }
+            else{
+                v_ang = std::max(v_ang, -v_ang_max);
+                v_ang = std::min(v_ang, -v_ang_min);
+            }
+            prev_dist_err = 100.0;
+            // RCLCPP_INFO(rclcpp::get_logger("message"), "v_ang: %f", v_ang);
+        }
+        if (abs(distance_error) > err_threshold && abs(angle1_error) < err_threshold){
+            v_lin = k_dist*distance_error;
+            RCLCPP_INFO(rclcpp::get_logger("message"), "distance error: %f", distance_error);
+            RCLCPP_INFO(rclcpp::get_logger("message"), "prev distance error: %f", prev_dist_err);
             v_ang = 0.0;
-            next_waypoint = true;
-        }
-    }
-    else{
-        distance_error = sqrt((temp_waypoint_x - T1.translation()(0))^2 + (temp_waypoint_y - T1.translation()(1))^2);
-        angle_error = atan2(temp_waypoint_y - T1.translation()(1), temp_waypoint_x - T1.translation()(0)) - theta;
-        v_lin = k_dist*distance_error;
-        v_ang = k_ang*angle_error;
-        v_lin = min(v_lin, v_max);
-    }
+            v_lin = std::min(v_lin, v_lin_max);
+            v_lin = std::max(v_lin, v_lin_min);
+            if (prev_dist_err < distance_error && abs(prev_dist_err) < 0.04){
 
-    // publish to cmd_vel topic (same as teleop topic)
-    auto msg = geometry_msgs::msg::Twist();
-    msg.angular.z = v_ang;
-    msg.linear.x = v_lin;
-    msg.linear.y = 0.0;
-    pub_cmd_vel_->publish(msg);
+                des_ang = turtlelib::normalize_angle(atan2(temp_waypoint_y - T1_w.translation()(1), temp_waypoint_x - T1_w.translation()(0)));
+                angle1_error = (turtlelib::normalize_angle(theta) - turtlelib::normalize_angle(des_ang));
+                v_ang = k_ang*angle1_error;
+                v_lin = 0.0;
+                // prev_dist_err = distance_error;
+            }
+            prev_dist_err = std::min(prev_dist_err, distance_error);
+            RCLCPP_INFO(rclcpp::get_logger("message"), "v_lin: %f", v_lin);
+        }
+        if (abs(distance_error) < err_threshold && abs(angle2_error) > err_threshold){
+            angle2_error = turtlelib::normalize_angle(turtlelib::normalize_angle(theta) - turtlelib::normalize_angle(theta_des));
+            // RCLCPP_INFO(rclcpp::get_logger("message"), "normalized theta: %f", turtlelib::normalize_angle(theta));
+            RCLCPP_INFO(rclcpp::get_logger("message"), "angle 2 error: %f", angle2_error);
+            v_ang = k_ang*angle2_error;
+            if (abs(angle2_error) > M_PI){
+                v_ang = -v_ang;
+            }
+            if (v_ang > 0){
+                v_ang = std::min(v_ang, v_ang_max);
+                v_ang = std::max(v_ang, v_ang_min);
+            }
+            else{
+                v_ang = std::max(v_ang, -v_ang_max);
+                v_ang = std::min(v_ang, -v_ang_min);
+            }
+            v_lin = 0.0;
+        }
+        if (abs(distance_error) < err_threshold && abs(angle2_error) < err_threshold){
+            RCLCPP_INFO(rclcpp::get_logger("message"), "Reached Waypoint!");
+            RCLCPP_INFO(rclcpp::get_logger("message"), "T1_w x, y: %f, %f", T1_w.translation()(0), T1_w.translation()(1));
+            RCLCPP_INFO(rclcpp::get_logger("message"), "T1 x, y: %f, %f", T1.translation()(0), T1.translation()(1));
+            v_ang = 0.0;
+            v_lin = 0.0;
+            move = false;
+            // next_waypoint = true;
+        }
+
+        // publish to cmd_vel topic (same as teleop topic)
+        auto msg = geometry_msgs::msg::Twist();
+        msg.angular.z = v_ang;
+        msg.linear.x = v_lin;
+        msg.linear.y = 0.0;
+        pub_cmd_vel_->publish(msg);
+    }
 
     //////////////////////////////////////////////////////////////////////
 
@@ -412,10 +526,11 @@ private:
     // RCLCPP_INFO(rclcpp::get_logger("message"), "DPhi r: %f", delta_p.r);
     // RCLCPP_INFO(rclcpp::get_logger("message"), "DPhi l: %f", delta_p.l);
     if (first){
-        robot.Forward_Kin(delta_p);
-        x_sub = robot.x_get();
-        y_sub = robot.y_get();
-        theta_sub = robot.theta_get();
+        phi_sub = delta_p;
+        // robot.Forward_Kin(delta_p);
+        // x_sub = robot.x_get();
+        // y_sub = robot.y_get();
+        // theta_sub = robot.theta_get();
 
         rot_0.row(0) << cos(0.0), -sin(0.0), 0.0;
         rot_0.row(1) << sin(0.0), cos(0.0), 0.0;
@@ -424,6 +539,19 @@ private:
         trans_0(1) = 0.0;
         trans_0(2) = 0.0;
         first_flag = true;
+
+
+        // auto message = sensor_msgs::msg::JointState();
+        // message.name = {"wheel_right_joint", "wheel_left_joint"};
+        // // double dt = (msg->stamp.sec + (1e-9) * msg->stamp.nanosec) - time_prev;
+        // message.position = {0.0, 0.0};
+        // message.header.stamp = msg->header.stamp;
+        // // temp_r = right_ang / dt;
+        // // temp_l = left_ang / dt;
+        // // header.stamp = msg->stamp;
+        // // message.velocity = {temp_r, temp_l};
+        // pub_joint_states_->publish(message);
+
         // RCLCPP_INFO(rclcpp::get_logger("message"), "robot x, y, theta: %f, %f, %f", robot.x_get(), robot.y_get(), robot.theta_get());
     }
     else{
@@ -437,6 +565,9 @@ private:
         // mesg.twist.twist.angular.z = twist.getW();
         // mesg.twist.twist.linear.x = twist.getX();
         // mesg.twist.twist.linear.y = twist.getY();
+
+        delta_p.r -= phi_sub.r;
+        delta_p.l -= phi_sub.l;
 
         robot.Forward_Kin(delta_p);
         // mesg.pose.pose.position.x = robot.x_get();
@@ -659,13 +790,22 @@ private:
   rclcpp::Publisher<img_transform::msg::Odom>::SharedPtr pub_odom_;
   rclcpp::Subscription<img_transform::msg::Odom>::SharedPtr sub_odom_update_;
   rclcpp::Subscription<std_msgs::msg::Empty>::SharedPtr sub_feature_transform_;
+  rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr pub_cmd_vel_;
 
   rclcpp::Service<std_srvs::srv::Empty>::SharedPtr reconstruction_srv;
+  rclcpp::Service<std_srvs::srv::Empty>::SharedPtr wheel_cmd_srv;
+  rclcpp::Service<std_srvs::srv::Empty>::SharedPtr stop_moving_srv;
 
   double right_ang = 0.0;
   double left_ang = 0.0;
   double temp_l = 0.0;
   double temp_r = 0.0;
+
+  double angle1_error = 1.0;
+  double angle2_error = 1.0;
+
+  bool next_waypoint = false;
+  bool move = false;
 
   int count_updates = 0;
 
@@ -676,7 +816,7 @@ private:
   visualization_msgs::msg::MarkerArray node_markers;
   visualization_msgs::msg::MarkerArray edge_markers;
 
-  std::vector<std::vector<double>> waypoints {{0.5, 0.5, M_PI/2.0}, {0.1, 0.5, M_PI}, {0.1, 0.1, 2.0*M_PI/3.0}, {0.5, 0.1, 2.0*M_PI}, {0.5, 0.5, M_PI/2.0}}
+  std::vector<std::vector<double>> waypoints {{0.4, 0.0, M_PI/2.0}, {0.4, 0.4, M_PI}, {0.0, 0.4, 3.0*M_PI/2.0}, {0.0, 0.0, 2.0*M_PI}};
   int w_ind = 0;
 
   int id = 0;
@@ -684,6 +824,12 @@ private:
   double y_prev = 0.0;
   double theta_prev = 0.0;
 
+  double prev_dist_err = 100.0;
+
+  double theta_des = 0.0;
+  double des_ang = 0.0;
+
+  turtlelib::Phi phi_sub = {0.0, 0.0};
   double x_sub = 0.0;
   double y_sub = 0.0;
   double theta_sub = 0.0;
@@ -703,6 +849,9 @@ private:
   double x_update = 0.0;
   double y_update = 0.0;
   double theta_update = 0.0;
+
+  double temp_waypoint_x = 0.0;
+  double temp_waypoint_y = 0.0;
 //   std::vector<double> x_arr {0.0, 0.401742, 0.441624, 0.847666, 0.90923, 0.533757, 0.494193, 0.047714, 0.0};
 //   std::vector<double> y_arr {0.0, -0.526768, -0.578827, -0.27026, -0.223236, 0.177863, 0.220178, -0.038281, 0.0};
 //   std::vector<double> theta_arr {0.0, 0.001898, 1.506935, 1.573059, 3.114796, 3.241666, 4.751765, 2.029354, 0.0};
