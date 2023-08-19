@@ -24,6 +24,7 @@
 #include <visualization_msgs/msg/marker.hpp>
 #include "nav_msgs/msg/odometry.hpp"
 #include "std_msgs/msg/header.hpp"
+#include "std_msgs/msg/empty.hpp"
 #include "tf2/LinearMath/Quaternion.h"
 #include "sensor_msgs/msg/joint_state.hpp"
 // #include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
@@ -128,6 +129,10 @@ public:
         &WheelEncoder::odom_update_callback,
         this, std::placeholders::_1));
 
+    sub_feature_transform_ = this->create_subscription<std_msgs::msg::Empty>(
+      "/feature_transform", 10, std::bind(
+        &WheelEncoder::feature_transform_callback,
+        this, std::placeholders::_1));
 
     /// \brief timer callback with a specified frequency rate
     /// \param rate - frequency of timer callback in Hz
@@ -243,45 +248,91 @@ private:
 
 
 
-    // //////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////
 
-    // // using PID control to follow waypoints
+    // using PID control to follow waypoints
 
-    // // TODO: make a list or pattern sequence for target poses and angles 
-    // // Make it so waypoint always has a x, y, and theta
-    // // IDEA!!!!!!!!!!!!!!!!!!!!!!!
+    // TODO: make a list or pattern sequence for target poses and angles 
+    // Make it so waypoint always has a x, y, and theta
+    // IDEA!!!!!!!!!!!!!!!!!!!!!!!
     // wherever the waypoint is, make a temp waypoint for the wheel base
     // which is start at the x,y of target, then look at direction of desired theta
     // and go backwards in a straight line of direction of desired theta by 0.1 (aka dx_cam)
     // to get the wheel desired target, then use stuff below to get wheels there, 
     // then just turn the robot until reach desired cam theta and pose!
 
-    // double v_max = 
-    // double k_dist = 1.0;
-    // double k_ang = 1.0;
+    double v_max = 0.55;
+    double k_dist = 0.2;
+    double k_ang = 0.2;
+    double v_lin = 0.0;
+    double v_ang = 0.0;
+    double theta_des = waypoints[w_ind][2];
 
-    // distance_error = sqrt((target_x - T1.translation()(0))^2 + (target_y - T1.translation()(1))^2);
-    // angle_error = atan2(target_y - T1.translation()(1), target_x - T1.translation()(0)) - theta;
+    if (next_waypoint){
+        next_waypoint = false;
+        double theta_temp = theta_des;
 
-    // double v_lin = k_dist*distance_error;
-    // double v_ang = k_ang*distance_error;
+        if (theta_temp == 2.0*M_PI){
+            // for if statement purposes below
+            theta_temp = 0.0;
+        }
 
-    // v_lin = min(v_lin, v_max);
+        if (theta_temp >= 0.0 && theta_temp < (M_PI/2.0)){
+            temp_waypoint_x = waypoints[w_ind][0] - dx_cam*sin(theta_temp);
+            temp_waypoint_y = waypoints[w_ind][1] - dx_cam*cos(theta_temp);
+        }
 
-    // // publish to cmd_vel topic (same as teleop topic)
-    // auto msg = geometry_msgs::msg::Twist();
-    // msg.angular.z = v_ang;
-    // msg.linear.x = v_lin;
-    // msg.linear.y = 0.0;
-    // pub_cmd_vel_->publish(msg);
+        if (theta_temp >= (M_PI/2.0) && theta_temp < M_PI){
+            theta_temp = M_PI - theta_temp;
+            temp_waypoint_x = waypoints[w_ind][0] - dx_cam*sin(theta_temp);
+            temp_waypoint_y = waypoints[w_ind][1] + dx_cam*cos(theta_temp);
+        }
 
-    
+        if (theta_temp >= M_PI && theta_temp < (2.0*M_PI/3.0)){
+            theta_temp = (2.0*M_PI/3.0) - theta_temp;
+            temp_waypoint_x = waypoints[w_ind][0] + dx_cam*sin(theta_temp);
+            temp_waypoint_y = waypoints[w_ind][1] + dx_cam*cos(theta_temp);
+        }
+
+        if (theta_temp >= (2.0*M_PI/3.0) && theta_temp < (2.0*M_PI)){
+            theta_temp = (2.0*M_PI) - theta_temp;
+            temp_waypoint_x = waypoints[w_ind][0] + dx_cam*sin(theta_temp);
+            temp_waypoint_y = waypoints[w_ind][1] - dx_cam*cos(theta_temp);
+        }
+    }
+
+
+    if (abs(distance_error) < 0.01){
+        angle_error = theta_des - theta;
+        v_ang = k_ang*angle_error;
+        v_lin = 0.0;
+        if (abs(angle_error) < 0.01){
+            v_ang = 0.0;
+            next_waypoint = true;
+        }
+    }
+    else{
+        distance_error = sqrt((temp_waypoint_x - T1.translation()(0))^2 + (temp_waypoint_y - T1.translation()(1))^2);
+        angle_error = atan2(temp_waypoint_y - T1.translation()(1), temp_waypoint_x - T1.translation()(0)) - theta;
+        v_lin = k_dist*distance_error;
+        v_ang = k_ang*angle_error;
+        v_lin = min(v_lin, v_max);
+    }
+
+    // publish to cmd_vel topic (same as teleop topic)
+    auto msg = geometry_msgs::msg::Twist();
+    msg.angular.z = v_ang;
+    msg.linear.x = v_lin;
+    msg.linear.y = 0.0;
+    pub_cmd_vel_->publish(msg);
+
+    //////////////////////////////////////////////////////////////////////
 
     
     // need a subscriber of when recognize somewhere I've been before (aka bag of words that's from img_transform)
-    if (reconstruct_graph == false && first == false && (abs(x_trans) > 0.1 || abs(y_trans) > 0.1 || abs(theta_r) > 0.785375)){
+    if (reconstruct_graph == false && first == false && (abs(x_trans) > 0.1 || abs(y_trans) > 0.1 || abs(theta_r) > 0.785375 || ((abs(x_trans) > 0.05 || abs(y_trans) > 0.05) && feature_transform))){
 
-
+        feature_transform = false;
         update_pos = false;
         RCLCPP_INFO(rclcpp::get_logger("message"), "Test test 1");
 
@@ -345,6 +396,11 @@ private:
     }
   }
 
+
+  void feature_transform_callback(const std_msgs::msg::Empty msg)
+  {
+    feature_transform = true;
+  }
 
 
   void joint_states_callback(const sensor_msgs::msg::JointState::SharedPtr msg)
@@ -602,6 +658,7 @@ private:
   rclcpp::Publisher<img_transform::msg::Transform>::SharedPtr pub_transform_;
   rclcpp::Publisher<img_transform::msg::Odom>::SharedPtr pub_odom_;
   rclcpp::Subscription<img_transform::msg::Odom>::SharedPtr sub_odom_update_;
+  rclcpp::Subscription<std_msgs::msg::Empty>::SharedPtr sub_feature_transform_;
 
   rclcpp::Service<std_srvs::srv::Empty>::SharedPtr reconstruction_srv;
 
@@ -614,8 +671,13 @@ private:
 
   std_msgs::msg::Header header;
 
+  bool feature_transform = false;
+
   visualization_msgs::msg::MarkerArray node_markers;
   visualization_msgs::msg::MarkerArray edge_markers;
+
+  std::vector<std::vector<double>> waypoints {{0.5, 0.5, M_PI/2.0}, {0.1, 0.5, M_PI}, {0.1, 0.1, 2.0*M_PI/3.0}, {0.5, 0.1, 2.0*M_PI}, {0.5, 0.5, M_PI/2.0}}
+  int w_ind = 0;
 
   int id = 0;
   double x_prev = 0.0;

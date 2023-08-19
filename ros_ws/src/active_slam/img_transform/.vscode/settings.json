@@ -84,6 +84,8 @@
         "regex": "cpp",
         "*.evaluator": "cpp",
         "*.traits": "cpp",
-        "bvh": "cpp"
+        "bvh": "cpp",
+        "*.ipp": "cpp",
+        "any": "cpp"
     }
 }
