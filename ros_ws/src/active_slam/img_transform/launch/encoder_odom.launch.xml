@@ -16,6 +16,9 @@
   <node pkg="img_transform" exec="reconstruction">
   </node>
 
+  <node pkg="img_transform" exec="active_learning">
+  </node>
+
   <node pkg="img_transform" exec="sesync_test">
   <param from="$(find-pkg-share img_transform)/config/diff_params.yaml"/>
   </node>

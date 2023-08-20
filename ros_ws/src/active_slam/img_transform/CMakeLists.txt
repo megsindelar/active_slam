@@ -73,6 +73,8 @@ add_executable(sesync_test src/sesync_test.cpp)
 
 add_executable(test_node src/test_node.cpp)
 
+add_executable(active_learning src/active_learning.cpp)
+
 add_subdirectory(external)
 
 ament_target_dependencies(img_transform
@@ -174,6 +176,20 @@ ament_target_dependencies(sesync_test
 )
 
 ament_target_dependencies(test_node
+  rclcpp
+  std_msgs
+  geometry_msgs
+  nuturtlebot_msgs
+  std_srvs
+  nav_msgs
+  visualization_msgs
+  turtlelib
+  tf2
+  tf2_ros
+  std_srvs
+)
+
+ament_target_dependencies(active_learning
   rclcpp
   std_msgs
   geometry_msgs
@@ -295,6 +311,17 @@ target_link_libraries(test_node ${OpenCV_LIBS}
   turtlelib::turtlelib
 )
 
+target_link_libraries(active_learning ${OpenCV_LIBS} 
+  Eigen3::Eigen 
+  Sophus::Sophus
+  ${PYTHON_LIBRARIES}
+  Python3::NumPy
+  "${cpp_typesupport_target}"
+  Optimization
+  SESync
+  turtlelib::turtlelib
+)
+
 
 target_link_libraries(transform
   Eigen3::Eigen
@@ -329,6 +356,7 @@ install(TARGETS
   reconstruction
   sesync_test
   test_node
+  active_learning
   DESTINATION lib/${PROJECT_NAME}
 )
 

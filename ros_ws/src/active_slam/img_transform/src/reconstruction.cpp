@@ -165,6 +165,9 @@ class Reconstruction : public rclcpp::Node
         pub_feature_transform_ = this->create_publisher<std_msgs::msg::Empty>(
             "feature_transform", 10);
 
+        pub_start_moving_ = this->create_publisher<std_msgs::msg::Empty>(
+            "start_moving", 10);
+
         sub_frame_id_ = this->create_subscription<img_transform::msg::FrameID>(
             "/frame_id", 10, std::bind(
                 &Reconstruction::frame_id_callback,
@@ -768,14 +771,18 @@ class Reconstruction : public rclcpp::Node
 
             reconstruction_img = cv_bridge::toCvCopy(*msg, sensor_msgs::image_encodings::BGR8)->image;
 
-            if (take_image && count_5 > 100){
+            if (take_image){
+                
                 RCLCPP_INFO(rclcpp::get_logger("message"), "Taking image");
                 reconstruct_img = true;
                 take_image = false;
-
+                if (!moving){
+                    std_msgs::msg::Empty empty;
+                    pub_start_moving_->publish(empty);
+                    moving = true;
+                }
                 // begin_frame = std::chrono::high_resolution_clock::now();
             }
-            count_5 ++;
 
         }
 
@@ -855,6 +862,7 @@ class Reconstruction : public rclcpp::Node
         rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr pub_nodes_;
         rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr pub_edges_;
         rclcpp::Publisher<std_msgs::msg::Empty>::SharedPtr pub_feature_transform_;
+        rclcpp::Publisher<std_msgs::msg::Empty>::SharedPtr pub_start_moving_;
         rclcpp::Subscription<geometry_msgs::msg::Point>::SharedPtr sub_rob_pose_;
         // rclcpp::Subscription<img_transform::msg::Nodes>::SharedPtr sub_id_vals_;
         rclcpp::Subscription<img_transform::msg::FrameID>::SharedPtr sub_frame_id_;
@@ -899,6 +907,8 @@ class Reconstruction : public rclcpp::Node
 
         double distance_threshold = 0.15;
 
+        bool moving = false;
+
         int old_num_images = 0;
         
         double rob_x = 0.0;
@@ -924,7 +934,6 @@ class Reconstruction : public rclcpp::Node
 
         bool take_image = true;
 
-        double count_5 = 0.0;
 };
 
 OrbVocabulary BoW_voc(const std::vector<std::vector<cv::Mat >>&features, int num_images){

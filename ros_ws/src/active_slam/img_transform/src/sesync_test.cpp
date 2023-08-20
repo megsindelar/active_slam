@@ -77,6 +77,8 @@ public:
     pub_id_vals_ = this->create_publisher<img_transform::msg::Nodes>(
       "id_vals", 10);
 
+    pub_loop_back_ = this->create_publisher<geometry_msgs::msg::Pose>("loop_back", 10);
+
     sub_odom_ = this->create_subscription<img_transform::msg::Odom>(
       "/odom_orientation", 10, std::bind(
         &SE_SYNC::odom_callback,
@@ -879,7 +881,7 @@ private:
     const img_transform::msg::Transform::ConstSharedPtr& msg
   ){
 
-    id_trans = msg->id + 1 + num_feat;
+    id_trans = msg->id + 1;
 
     img_transform::msg::FrameID frame_id;
     frame_id.id = id_trans;
@@ -1007,6 +1009,14 @@ private:
 
     pub_nodes_->publish(node_markers);
     pub_edges_->publish(edge_markers);
+
+    if (id_trans%20 == 0){
+        geometry_msgs::msg::Pose loop_position;
+        loop_position.position.x = node_markers.markers[id_trans - 20].pose.position.x;
+        loop_position.position.y = node_markers.markers[id_trans - 20].pose.position.y;
+        loop_position.orientation.z = 0.0;
+        pub_loop_back_->publish(loop_position);
+    }
   }
 
 
@@ -1019,6 +1029,7 @@ private:
   rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr pub_nodes_;
   rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr pub_edges_;
   rclcpp::Publisher<img_transform::msg::Nodes>::SharedPtr pub_id_vals_;
+  rclcpp::Publisher<geometry_msgs::msg::Pose>::SharedPtr pub_loop_back_;
 //   rclcpp::Service<std_srvs::srv::Empty>::SharedPtr reconstruction_srv;
   std::unique_ptr<tf2_ros::TransformBroadcaster> tf_broadcaster_;
   rclcpp::Publisher<img_transform::msg::FrameID>::SharedPtr pub_frame_id_;
@@ -1072,8 +1083,6 @@ private:
   bool reconstruction = false;
 
   int count = 0;
-
-  int num_feat = 0;
 
   bool done = false;
   bool first = true;

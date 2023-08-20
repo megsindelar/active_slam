@@ -16,6 +16,7 @@
 
 #include "rclcpp/rclcpp.hpp"
 #include "geometry_msgs/msg/twist.hpp"
+#include "geometry_msgs/msg/pose.hpp"
 #include "nuturtlebot_msgs/msg/wheel_commands.hpp"
 #include "nuturtlebot_msgs/msg/sensor_data.hpp"
 #include "sensor_msgs/msg/joint_state.hpp"
@@ -126,7 +127,6 @@ public:
 
     pub_cmd_vel_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
 
-
     sub_odom_update_ = this->create_subscription<img_transform::msg::Odom>(
       "/odom_update", 10, std::bind(
         &WheelEncoder::odom_update_callback,
@@ -137,8 +137,16 @@ public:
         &WheelEncoder::feature_transform_callback,
         this, std::placeholders::_1));
 
+    sub_next_waypoint_ = this->create_subscription<geometry_msgs::msg::Pose>(
+      "/next_waypoint", 10, std::bind(
+        &WheelEncoder::next_waypoint_callback,
+        this, std::placeholders::_1));
+
+
+    pub_waypoint_complete_ = this->create_publisher<std_msgs::msg::Empty>("waypoint_complete", 10);
+
     wheel_cmd_srv = this->create_service<std_srvs::srv::Empty>(
-        "/next_waypoint",
+        "/next_waypoint_srv",
         std::bind(
             &WheelEncoder::next_waypoint_srv, this, std::placeholders::_1,
             std::placeholders::_2));
@@ -161,6 +169,18 @@ public:
   }
 
 private:
+
+  void next_waypoint_callback(geometry_msgs::msg::Pose::SharedPtr msg)
+  {
+    waypoint.position.x = msg->position.x;
+    waypoint.position.y = msg->position.y;
+    waypoint.orientation.z = msg->orientation.z;
+
+    RCLCPP_INFO(rclcpp::get_logger("message"), "Next waypoint wheel_enc!");
+
+    next_waypoint = true;
+    move = true;
+  }
 
   void next_waypoint_srv(
         std_srvs::srv::Empty::Request::SharedPtr,
@@ -312,35 +332,36 @@ private:
 
     if (next_waypoint){
         RCLCPP_INFO(rclcpp::get_logger("message"), "theta: %f", theta);
-        theta_des = waypoints[w_ind][2];
+        // theta_des = waypoints[w_ind][2];
+        theta_des = waypoint.orientation.z;
         next_waypoint = false;
         double theta_temp = turtlelib::normalize_angle(theta_des);
         RCLCPP_INFO(rclcpp::get_logger("message"), "theta temp: %f", theta_temp);
 
         if (theta_temp >= 0.0 && theta_temp <= (M_PI/2.0)){
-            temp_waypoint_x = waypoints[w_ind][0] - dx_cam*cos(theta_temp);
-            temp_waypoint_y = waypoints[w_ind][1] - dx_cam*sin(theta_temp);
+            temp_waypoint_x = waypoint.position.x - dx_cam*cos(theta_temp);
+            temp_waypoint_y = waypoint.position.y - dx_cam*sin(theta_temp);
             RCLCPP_INFO(rclcpp::get_logger("message"), "temp waypoints 1: %f, %f", temp_waypoint_x, temp_waypoint_y);
         }
 
         if (theta_temp > (M_PI/2.0) && theta_temp <= M_PI){
             theta_temp = M_PI - theta_temp;
-            temp_waypoint_x = waypoints[w_ind][0] + dx_cam*cos(theta_temp);
-            temp_waypoint_y = waypoints[w_ind][1] - dx_cam*sin(theta_temp);
+            temp_waypoint_x = waypoint.position.x + dx_cam*cos(theta_temp);
+            temp_waypoint_y = waypoint.position.y - dx_cam*sin(theta_temp);
             RCLCPP_INFO(rclcpp::get_logger("message"), "temp waypoints 2: %f, %f", temp_waypoint_x, temp_waypoint_y);
         }
 
         if (theta_temp >= -M_PI && theta_temp < -(M_PI/2.0)){
             theta_temp = M_PI + theta_temp;
-            temp_waypoint_x = waypoints[w_ind][0] + dx_cam*cos(theta_temp);
-            temp_waypoint_y = waypoints[w_ind][1] + dx_cam*sin(theta_temp);
+            temp_waypoint_x = waypoint.position.x + dx_cam*cos(theta_temp);
+            temp_waypoint_y = waypoint.position.y + dx_cam*sin(theta_temp);
             RCLCPP_INFO(rclcpp::get_logger("message"), "temp waypoints 3: %f, %f", temp_waypoint_x, temp_waypoint_y);
         }
 
         if (theta_temp >= -(M_PI/2.0) && theta_temp < 0.0){
             theta_temp = -theta_temp;
-            temp_waypoint_x = waypoints[w_ind][0] - dx_cam*cos(theta_temp);
-            temp_waypoint_y = waypoints[w_ind][1] + dx_cam*sin(theta_temp);
+            temp_waypoint_x = waypoint.position.x - dx_cam*cos(theta_temp);
+            temp_waypoint_y = waypoint.position.y + dx_cam*sin(theta_temp);
             RCLCPP_INFO(rclcpp::get_logger("message"), "temp waypoints 4: %f, %f", temp_waypoint_x, temp_waypoint_y);
         }
 
@@ -429,6 +450,8 @@ private:
             v_ang = 0.0;
             v_lin = 0.0;
             move = false;
+            std_msgs::msg::Empty empty;
+            pub_waypoint_complete_->publish(empty);
             // next_waypoint = true;
         }
 
@@ -506,12 +529,13 @@ private:
 
         rot_0 = T1_w.rotationMatrix();
         trans_0 = T1_w.translation();
+
     }
     }
   }
 
 
-  void feature_transform_callback(const std_msgs::msg::Empty msg)
+  void feature_transform_callback(const std_msgs::msg::Empty::SharedPtr msg)
   {
     feature_transform = true;
   }
@@ -790,7 +814,9 @@ private:
   rclcpp::Publisher<img_transform::msg::Odom>::SharedPtr pub_odom_;
   rclcpp::Subscription<img_transform::msg::Odom>::SharedPtr sub_odom_update_;
   rclcpp::Subscription<std_msgs::msg::Empty>::SharedPtr sub_feature_transform_;
+  rclcpp::Subscription<geometry_msgs::msg::Pose>::SharedPtr sub_next_waypoint_;
   rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr pub_cmd_vel_;
+  rclcpp::Publisher<std_msgs::msg::Empty>::SharedPtr pub_waypoint_complete_;
 
   rclcpp::Service<std_srvs::srv::Empty>::SharedPtr reconstruction_srv;
   rclcpp::Service<std_srvs::srv::Empty>::SharedPtr wheel_cmd_srv;
@@ -806,6 +832,8 @@ private:
 
   bool next_waypoint = false;
   bool move = false;
+
+  geometry_msgs::msg::Pose waypoint;
 
   int count_updates = 0;
 
