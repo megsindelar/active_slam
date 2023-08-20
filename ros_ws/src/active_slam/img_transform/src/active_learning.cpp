@@ -17,25 +17,28 @@ public:
       std::chrono::milliseconds(rate_ms),
       std::bind(&ActiveLearning::timer_callback, this));
 
-
+    // publish waypoints for turtlebot cam to move to
     pub_waypoint_ = this->create_publisher<geometry_msgs::msg::Pose>("next_waypoint", 10);
 
-
+    // subscribe to a waypoint complete status that says when turtlebot reaches the waypoint
     sub_waypoint_status_ = this->create_subscription<std_msgs::msg::Empty>(
       "/waypoint_complete", 10, std::bind(
         &ActiveLearning::waypoint_status,
         this, std::placeholders::_1));
 
+    // subscribe to a node to loop back to
     sub_loop_back_ = this->create_subscription<geometry_msgs::msg::Pose>(
       "/loop_back", 10, std::bind(
         &ActiveLearning::loop_back_callback,
         this, std::placeholders::_1));
 
+    // subscribe to a start status to start turtlebot motion once images are published from cam
     sub_start_ = this->create_subscription<std_msgs::msg::Empty>(
       "/start_moving", 10, std::bind(
         &ActiveLearning::start_callback,
         this, std::placeholders::_1));
 
+    // service to stop turtlebot motion, helpful for testing
     stop_moving_srv = this->create_service<std_srvs::srv::Empty>(
         "/stop_moving",
         std::bind(
@@ -46,9 +49,12 @@ public:
 
 private:
   /// \brief timer callback running at a set frequency
+  // publish waypoints for turtlebot cam to move to
+  // topic: /next_waypoint   type: geometry_msgs::msg::Pose
   void timer_callback()
   {
     if (first){
+        // initialize waypoints at 0
         waypoint.position.x = 0.0;
         waypoint.position.y = 0.0;
         waypoint.orientation.z = 0.0;
@@ -56,6 +62,7 @@ private:
         first = false;
     }
     if (loop_back){
+        // loop back to previous node
         loop_back = false;
         pub_waypoint_->publish(waypoint);
 
@@ -64,6 +71,7 @@ private:
         RCLCPP_INFO(rclcpp::get_logger("message"), "Next waypoint!");
         next_waypoint = false;
 
+        // lawnmowing pattern trajectory
         if (waypoint_count == 1){
             RCLCPP_INFO(rclcpp::get_logger("message"), "Move up!");
             waypoint.position.x += 0.6;
@@ -97,11 +105,15 @@ private:
     }
   }
 
+  // subscribe to a waypoint complete status that says when turtlebot reaches the waypoint
+  // topic: /waypoint_complete   type: std_msgs::msg::Empty
   void waypoint_status(std_msgs::msg::Empty::SharedPtr msg){
     next_waypoint = true;
     loop_back = false;
   }
 
+  // subscribe to a node to loop back to
+  // topic: /loop_back   type: geometry_msgs::msg::Pose
   void loop_back_callback(geometry_msgs::msg::Pose::SharedPtr msg){
     loop_back = true;
     next_waypoint = false;
@@ -110,6 +122,8 @@ private:
     waypoint.orientation.z = msg->orientation.z;
   }
 
+  // service to stop turtlebot motion, helpful for testing
+  // topic: /stop_moving   type: std_srvs::srv::Empty
   void stop_turtlebot(
         std_srvs::srv::Empty::Request::SharedPtr,
         std_srvs::srv::Empty::Response::SharedPtr)
@@ -119,6 +133,8 @@ private:
         loop_back = false;
     }
 
+  // subscribe to a start status to start turtlebot motion once images are published from cam
+  // topic: /start_moving   type: std_srvs::srv::Empty
   void start_callback(std_msgs::msg::Empty::SharedPtr msg){
     RCLCPP_INFO(rclcpp::get_logger("message"), "Start!");
     next_waypoint = true;
