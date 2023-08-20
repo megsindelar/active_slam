@@ -55,23 +55,13 @@ rosidl_get_typesupport_target(cpp_typesupport_target ${PROJECT_NAME}_msg "rosidl
 
 add_library(transform src/transform.cpp)
 
-add_library(graph src/graph.cpp)
-
 add_executable(img_transform src/img_transform.cpp)
-
-add_executable(video_frequency src/video_frequency.cpp)
-
-add_executable(wheel_control src/wheel_control.cpp)
-
-add_executable(se_sync src/se_sync.cpp)
 
 add_executable(wheel_encoder src/wheel_encoder.cpp)
 
-add_executable(reconstruction src/reconstruction.cpp)
+add_executable(registration src/registration.cpp)
 
-add_executable(sesync_test src/sesync_test.cpp)
-
-add_executable(test_node src/test_node.cpp)
+add_executable(se_sync src/se_sync.cpp)
 
 add_executable(active_learning src/active_learning.cpp)
 
@@ -95,37 +85,6 @@ ament_target_dependencies(img_transform
   nav_msgs
 )
 
-ament_target_dependencies(video_frequency
-  rclcpp
-  std_msgs
-  sensor_msgs
-  cv_bridge
-  image_transport
-  Eigen3
-  teaserpp
-  geometry_msgs
-  tf2
-  tf2_ros
-)
-
-ament_target_dependencies(wheel_control
-  rclcpp
-  std_msgs
-  geometry_msgs
-  nuturtlebot_msgs
-  std_srvs
-)
-
-ament_target_dependencies(se_sync
-  rclcpp
-  std_msgs
-  geometry_msgs
-  nuturtlebot_msgs
-  std_srvs
-  nav_msgs
-  visualization_msgs
-)
-
 ament_target_dependencies(wheel_encoder
   rclcpp
   std_msgs
@@ -140,7 +99,7 @@ ament_target_dependencies(wheel_encoder
   Sophus
 )
 
-ament_target_dependencies(reconstruction
+ament_target_dependencies(registration
   rclcpp
   std_msgs
   sensor_msgs
@@ -161,21 +120,7 @@ ament_target_dependencies(reconstruction
   DBoW2
 )
 
-ament_target_dependencies(sesync_test
-  rclcpp
-  std_msgs
-  geometry_msgs
-  nuturtlebot_msgs
-  std_srvs
-  nav_msgs
-  visualization_msgs
-  turtlelib
-  tf2
-  tf2_ros
-  std_srvs
-)
-
-ament_target_dependencies(test_node
+ament_target_dependencies(se_sync
   rclcpp
   std_msgs
   geometry_msgs
@@ -203,11 +148,6 @@ ament_target_dependencies(active_learning
   std_srvs
 )
 
-
-ament_target_dependencies(graph
-  visualization_msgs
-)
-
 include_directories(SYSTEM 
   ${OpenCV_INCLUDE_DIRS}
   ${SESync_INCLUDE_DIR}
@@ -226,36 +166,6 @@ target_link_libraries(img_transform ${OpenCV_LIBS}
   "${cpp_typesupport_target}"
 )
 
-target_link_libraries(video_frequency ${OpenCV_LIBS} 
-  Eigen3::Eigen 
-  teaserpp::teaser_registration 
-  teaserpp::teaser_io
-  transform
-  ${PYTHON_LIBRARIES}
-  Python3::NumPy
-)
-
-target_link_libraries(wheel_control ${OpenCV_LIBS} 
-  Eigen3::Eigen 
-  teaserpp::teaser_registration 
-  teaserpp::teaser_io
-  transform
-  ${PYTHON_LIBRARIES}
-  Python3::NumPy
-)
-
-target_link_libraries(se_sync ${OpenCV_LIBS} 
-  Eigen3::Eigen 
-  teaserpp::teaser_registration 
-  teaserpp::teaser_io
-  transform
-  graph
-  ${PYTHON_LIBRARIES}
-  Python3::NumPy
-  "${cpp_typesupport_target}"
-  Optimization
-  SESync
-)
 
 target_link_libraries(wheel_encoder ${OpenCV_LIBS} 
   Eigen3::Eigen 
@@ -270,7 +180,7 @@ target_link_libraries(wheel_encoder ${OpenCV_LIBS}
   turtlelib::turtlelib
 )
 
-target_link_libraries(reconstruction ${OpenCV_LIBS} 
+target_link_libraries(registration ${OpenCV_LIBS} 
   Eigen3::Eigen
   teaserpp::teaser_registration 
   teaserpp::teaser_io
@@ -283,25 +193,11 @@ target_link_libraries(reconstruction ${OpenCV_LIBS}
   DBoW2
 )
 
-target_link_libraries(sesync_test ${OpenCV_LIBS} 
+target_link_libraries(se_sync ${OpenCV_LIBS} 
   Eigen3::Eigen 
   teaserpp::teaser_registration 
   teaserpp::teaser_io
   Sophus::Sophus
-  transform
-  graph
-  ${PYTHON_LIBRARIES}
-  Python3::NumPy
-  "${cpp_typesupport_target}"
-  Optimization
-  SESync
-  turtlelib::turtlelib
-)
-
-target_link_libraries(test_node ${OpenCV_LIBS} 
-  Eigen3::Eigen 
-  teaserpp::teaser_registration 
-  teaserpp::teaser_io
   transform
   ${PYTHON_LIBRARIES}
   Python3::NumPy
@@ -328,9 +224,6 @@ target_link_libraries(transform
   SESync
 )
 
-# target_link_libraries(graph
-#   visualization_msgs
-# )
 
 target_compile_features(transform PUBLIC cxx_std_17)
 
@@ -349,13 +242,9 @@ include_directories(SYSTEM ${matplotlib_SOURCE_DIR})
 
 install(TARGETS
   img_transform
-  video_frequency
-  wheel_control
   se_sync
   wheel_encoder
-  reconstruction
-  sesync_test
-  test_node
+  registration
   active_learning
   DESTINATION lib/${PROJECT_NAME}
 )

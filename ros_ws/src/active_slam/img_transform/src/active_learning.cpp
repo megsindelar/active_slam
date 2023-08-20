@@ -7,7 +7,7 @@ class ActiveLearning : public rclcpp::Node
 {
 public:
   ActiveLearning()
-  : Node("activelearning")
+  : Node("active_learning")
   {
     /// \brief timer callback with a specified frequency rate
     /// \param rate - frequency of timer callback in Hz

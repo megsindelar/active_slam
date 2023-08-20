@@ -84,11 +84,11 @@ void changeStructure(const cv::Mat &plain, std::vector<cv::Mat> &out);
 double calc_dist(double x1, double y1, double x2, double y2);
 
 
-class Reconstruction : public rclcpp::Node
+class Registration : public rclcpp::Node
 {
     public:
-    Reconstruction()
-    : Node("reconstruction")
+    Registration()
+    : Node("registration")
     {
         size_t depth = 1;
         rmw_qos_reliability_policy_t reliability_policy = RMW_QOS_POLICY_RELIABILITY_BEST_EFFORT;
@@ -126,7 +126,7 @@ class Reconstruction : public rclcpp::Node
 
         sub_current_img_ = this->create_subscription<sensor_msgs::msg::CompressedImage>(
             "/current_image/compressed", 10,
-            std::bind(&Reconstruction::image_callback, this, std::placeholders::_1)
+            std::bind(&Registration::image_callback, this, std::placeholders::_1)
         );
 
         // publish robot path to see where it has been
@@ -170,23 +170,23 @@ class Reconstruction : public rclcpp::Node
 
         sub_frame_id_ = this->create_subscription<img_transform::msg::FrameID>(
             "/frame_id", 10, std::bind(
-                &Reconstruction::frame_id_callback,
+                &Registration::frame_id_callback,
                 this, std::placeholders::_1));
 
         sub_rob_pose_ = this->create_subscription<geometry_msgs::msg::Point>(
             "/rob_pose", 10, std::bind(
-                &Reconstruction::robot_pose,
+                &Registration::robot_pose,
                 this, std::placeholders::_1));
 
         // sub_id_vals_ = this->create_subscription<img_transform::msg::Nodes>(
         //     "/id_vals", 10, std::bind(
-        //         &Reconstruction::id_vals_callback,
+        //         &Registration::id_vals_callback,
         //         this, std::placeholders::_1));
 
 
         sub_wheel_transform_ = this->create_subscription<img_transform::msg::Transform>(
             "/wheel_transform", 10, std::bind(
-                &Reconstruction::wheel_transform_callback,
+                &Registration::wheel_transform_callback,
                 this, std::placeholders::_1));
 
 
@@ -195,12 +195,12 @@ class Reconstruction : public rclcpp::Node
         int rate_ms = 1000 / (get_parameter("rate").get_parameter_value().get<int>());
         timer_ = create_wall_timer(
           std::chrono::milliseconds(rate_ms),
-          std::bind(&Reconstruction::timer_callback, this));
+          std::bind(&Registration::timer_callback, this));
 
-        reconstruction_srv = this->create_service<std_srvs::srv::Empty>(
-        "/reconstruction",
+        registration_srv = this->create_service<std_srvs::srv::Empty>(
+        "/registration",
         std::bind(
-            &Reconstruction::reconstruct, this, std::placeholders::_1,
+            &Registration::reconstruct, this, std::placeholders::_1,
             std::placeholders::_2));
 
     }
@@ -243,7 +243,7 @@ class Reconstruction : public rclcpp::Node
 
             // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 3");
             
-            // reconstruction = false;
+            // registration = false;
             auto begin_total = std::chrono::high_resolution_clock::now();
             Mat descriptors;
             Ptr<FeatureDetector> detector = ORB::create();
@@ -256,15 +256,15 @@ class Reconstruction : public rclcpp::Node
             // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 5");
 
             // detector->detect ( img1,keypoints_1 );
-            detector->detect ( reconstruction_img, keypoints);
+            detector->detect ( registration_img, keypoints);
             // // RCLCPP_INFO(rclcpp::get_logger("message"), "Test 6");
 
             // // descriptor->compute ( img1, keypoints_1, descriptors_1 );
-            descriptor->compute ( reconstruction_img, keypoints, descriptors );
+            descriptor->compute ( registration_img, keypoints, descriptors );
 
             // cv::Mat mask;
 
-            // orb->detectAndCompute(reconstruction_img, mask, keypoints, descriptors);
+            // orb->detectAndCompute(registration_img, mask, keypoints, descriptors);
 
             if (keypoints.size() > 150){
                 std_msgs::msg::Empty empty;
@@ -351,7 +351,7 @@ class Reconstruction : public rclcpp::Node
 
                     if (img_id == -1){
                         RCLCPP_INFO(rclcpp::get_logger("message"), "No BOW Matches!");
-                        reconstruction = false;
+                        registration = false;
                         break;
                     }
                     else{
@@ -375,7 +375,7 @@ class Reconstruction : public rclcpp::Node
                             }
                             catch (const std::exception & e) {
                                 RCLCPP_ERROR_STREAM(
-                                std::make_shared<Reconstruction>()->get_logger(),
+                                std::make_shared<Registration>()->get_logger(),
                                 "Matching ERROR: Shutting down node! " << e.what());
                                 rclcpp::shutdown();
                             }
@@ -426,7 +426,7 @@ class Reconstruction : public rclcpp::Node
                             if (check_matches && check_dist && (prev_loop_pair[0] != (id_1-1) && prev_loop_pair[1] != id_2)){
                                 RCLCPP_INFO(rclcpp::get_logger("message"), "Potential loop!");
                                 loop_verified = true;
-                                reconstruction = true;
+                                registration = true;
                                 loop_options.push_back(img_id);
                                 dist_lst.push_back(dist);
                             }
@@ -447,32 +447,32 @@ class Reconstruction : public rclcpp::Node
                 // RCLCPP_INFO(rclcpp::get_logger("message"), "img_id %d", img_id);
 
                 // if (img_id == -1){
-                //     reconstruction = false;
+                //     registration = false;
                 //     // img_id = num_images - 1;
                 // }
                 // else{
-                //     RCLCPP_INFO(rclcpp::get_logger("message"), "RECONSTRUCTION");
-                //     RCLCPP_INFO(rclcpp::get_logger("message"), "RECONSTRUCTION");
-                //     RCLCPP_INFO(rclcpp::get_logger("message"), "RECONSTRUCTION");
-                //     RCLCPP_INFO(rclcpp::get_logger("message"), "RECONSTRUCTION");
-                //     RCLCPP_INFO(rclcpp::get_logger("message"), "RECONSTRUCTION");
-                //     RCLCPP_INFO(rclcpp::get_logger("message"), "RECONSTRUCTION");
-                //     RCLCPP_INFO(rclcpp::get_logger("message"), "RECONSTRUCTION");
-                //     RCLCPP_INFO(rclcpp::get_logger("message"), "RECONSTRUCTION");
-                //     RCLCPP_INFO(rclcpp::get_logger("message"), "RECONSTRUCTION");
-                //     RCLCPP_INFO(rclcpp::get_logger("message"), "RECONSTRUCTION");
-                //     RCLCPP_INFO(rclcpp::get_logger("message"), "RECONSTRUCTION");
-                //     RCLCPP_INFO(rclcpp::get_logger("message"), "RECONSTRUCTION");
-                //     RCLCPP_INFO(rclcpp::get_logger("message"), "RECONSTRUCTION");
-                //     RCLCPP_INFO(rclcpp::get_logger("message"), "RECONSTRUCTION");
-                //     reconstruction = true;
+                //     RCLCPP_INFO(rclcpp::get_logger("message"), "REGISTRATION");
+                //     RCLCPP_INFO(rclcpp::get_logger("message"), "REGISTRATION");
+                //     RCLCPP_INFO(rclcpp::get_logger("message"), "REGISTRATION");
+                //     RCLCPP_INFO(rclcpp::get_logger("message"), "REGISTRATION");
+                //     RCLCPP_INFO(rclcpp::get_logger("message"), "REGISTRATION");
+                //     RCLCPP_INFO(rclcpp::get_logger("message"), "REGISTRATION");
+                //     RCLCPP_INFO(rclcpp::get_logger("message"), "REGISTRATION");
+                //     RCLCPP_INFO(rclcpp::get_logger("message"), "REGISTRATION");
+                //     RCLCPP_INFO(rclcpp::get_logger("message"), "REGISTRATION");
+                //     RCLCPP_INFO(rclcpp::get_logger("message"), "REGISTRATION");
+                //     RCLCPP_INFO(rclcpp::get_logger("message"), "REGISTRATION");
+                //     RCLCPP_INFO(rclcpp::get_logger("message"), "REGISTRATION");
+                //     RCLCPP_INFO(rclcpp::get_logger("message"), "REGISTRATION");
+                //     RCLCPP_INFO(rclcpp::get_logger("message"), "REGISTRATION");
+                //     registration = true;
                 // }
 
-                if (reconstruction)
+                if (registration)
                 {
                     prev_loop_pair[0] = id_1;
                     prev_loop_pair[1] = img_id;
-                    reconstruction = false;
+                    registration = false;
                     // std_msgs::msg::Header header;
                     // header.stamp = get_clock()->now();
                     // cam_info_.header = header;
@@ -494,7 +494,7 @@ class Reconstruction : public rclcpp::Node
                     //     }
                     //     catch (const std::exception & e) {
                     //         RCLCPP_ERROR_STREAM(
-                    //         std::make_shared<Reconstruction>()->get_logger(),
+                    //         std::make_shared<Registration>()->get_logger(),
                     //         "Matching ERROR: Shutting down node! " << e.what());
                     //         rclcpp::shutdown();
                     //     }
@@ -769,7 +769,7 @@ class Reconstruction : public rclcpp::Node
             // auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(end_frame - begin_frame);
             // RCLCPP_INFO(rclcpp::get_logger("message"), "Elapsed time: %ld\n", elapsed.count());
 
-            reconstruction_img = cv_bridge::toCvCopy(*msg, sensor_msgs::image_encodings::BGR8)->image;
+            registration_img = cv_bridge::toCvCopy(*msg, sensor_msgs::image_encodings::BGR8)->image;
 
             if (take_image){
                 
@@ -858,7 +858,7 @@ class Reconstruction : public rclcpp::Node
         rclcpp::Publisher<nav_msgs::msg::Path>::SharedPtr pub_path_;
         rclcpp::Publisher<img_transform::msg::Transform>::SharedPtr pub_transform_;
         // rclcpp::Publisher<img_transform::msg::Transform>::SharedPtr pub_robot_state_;
-        rclcpp::Service<std_srvs::srv::Empty>::SharedPtr reconstruction_srv;
+        rclcpp::Service<std_srvs::srv::Empty>::SharedPtr registration_srv;
         rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr pub_nodes_;
         rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr pub_edges_;
         rclcpp::Publisher<std_msgs::msg::Empty>::SharedPtr pub_feature_transform_;
@@ -871,7 +871,7 @@ class Reconstruction : public rclcpp::Node
         cv::Ptr<cv::ORB> orb = cv::ORB::create();
 
         Mat img1;
-        Mat reconstruction_img;
+        Mat registration_img;
         int done = 0;
         std::string child_frame = "current";
         std::string parent_frame = "previous";
@@ -902,7 +902,7 @@ class Reconstruction : public rclcpp::Node
 
         bool first_img = true;
         bool reconstruct_img = false;
-        bool reconstruction = false;
+        bool registration = false;
         bool less_keys = false;
 
         double distance_threshold = 0.15;
@@ -1033,7 +1033,7 @@ void changeStructure(const cv::Mat &plain, std::vector<cv::Mat> &out)
 int main(int argc, char** argv)
 {
     rclcpp::init(argc, argv);
-    rclcpp::spin(std::make_shared<Reconstruction>());
+    rclcpp::spin(std::make_shared<Registration>());
     rclcpp::shutdown();
     return 0;
 }
