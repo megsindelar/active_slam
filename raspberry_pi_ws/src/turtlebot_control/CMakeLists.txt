@@ -18,9 +18,6 @@ find_package(Eigen3 REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(geometry_msgs REQUIRED)
 
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}_msg
   "msg/WheelCommands.msg"
@@ -32,11 +29,8 @@ rosidl_get_typesupport_target(cpp_typesupport_target
  )
 
 include_directories(include)
-# include_directories(pigpio)
 add_executable(turtlebot_control src/turtlebot_control.cpp)
 
-# add_executable(cam2image src/cam2image.cpp)
-# add_executable(cam2img src/cam2img.cpp)
 
 ament_target_dependencies(turtlebot_control
   rclcpp
@@ -48,30 +42,6 @@ ament_target_dependencies(turtlebot_control
   geometry_msgs
 )
 
-
-# ament_target_dependencies(cam2image
-#   rclcpp
-#   std_msgs
-#   sensor_msgs
-#   cv_bridge
-#   image_transport
-#   Eigen3
-# )
-
-# ament_target_dependencies(cam2img
-#   rclcpp
-#   std_msgs
-#   sensor_msgs
-#   cv_bridge
-#   image_transport
-#   Eigen3
-# )
-
-# include_directories(${OpenCV_INCLUDE_DIRS}
-#                     ${PYTHON3_INCLUDE_DIRS}
-#                     ${NumPy_INCLUDE_DIRS}
-#                     ${CMAKE_SOURCE_DIR}/headers)
-
 include_directories(SYSTEM 
   ${OpenCV_INCLUDE_DIRS}
 )
@@ -81,16 +51,6 @@ target_link_libraries(turtlebot_control
   ${OpenCV_LIBS}
   "${cpp_typesupport_target}"
 )
-
-# target_link_libraries(cam2image
-#   ${OpenCV_LIBS}
-#   "${cpp_typesupport_target}"
-# )
-
-# target_link_libraries(cam2img
-#   ${OpenCV_LIBS}
-#   "${cpp_typesupport_target}"
-# )
 
 install(TARGETS
   turtlebot_control
