@@ -1,4 +1,4 @@
-# Active learning using a graph-based SLAM using only visual sensor measurements
+# Active learning using a graph-based SLAM using visual sensor measurements
 * Megan Sindelar
 * Spring/Summer 2023
 # Package List
