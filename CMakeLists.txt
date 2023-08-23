@@ -29,18 +29,20 @@ if(NOT matplotlib_POPULATED)
 endif()
 include_directories(SYSTEM ${matplotlib_SOURCE_DIR})
 
-add_executable(featureMatch src/feature_matching.cpp)
+# add_executable(featureMatch src/feature_matching.cpp)
+add_executable(image_stitch src/image_stitching.cpp)
 
-target_include_directories(featureMatch PRIVATE ${PYTHON_INCLUDE_DIRS})
+# target_include_directories(featureMatch PRIVATE ${PYTHON_INCLUDE_DIRS})
 
 # add_executable(camera_calibration src/camera_calibration.cpp)
 # add_executable(capture_image src/capture_image.cpp)
 # target_link_libraries(featureMatch ${OpenCV_LIBS} Eigen3::Eigen
 # ${PYTHON_LIBRARIES}
 # Python3::NumPy)
-target_link_libraries(featureMatch ${OpenCV_LIBS} Eigen3::Eigen teaserpp::teaser_registration teaserpp::teaser_io 
-${PYTHON_LIBRARIES}
-Python3::NumPy)
+# target_link_libraries(featureMatch ${OpenCV_LIBS} Eigen3::Eigen teaserpp::teaser_registration teaserpp::teaser_io 
+# ${PYTHON_LIBRARIES}
+# Python3::NumPy)
 # target_link_libraries(camera_calibration ${OpenCV_LIBS} -lopencv_core)
 # target_link_libraries(capture_image ${OpenCV_LIBS} -lopencv_core)
+target_link_libraries(image_stitch ${OpenCV_LIBS})
 # target_link_libraries(teaser_cpp_ply Eigen3::Eigen teaserpp::teaser_registration teaserpp::teaser_io)
