@@ -2,14 +2,13 @@
 A package to find the SE(2) transformation between two frames from a subsribed video stream from the turtlebot.
 
 Launch file:
-`ros2 launch img_transform transform.launch.xml`
+`ros2 launch img_transform active_slam.launch.xml`
 
-Individual code files:
+Service calls:
 
-- image transform
-`ros2 run img_transform img_transform`
- used to find feature matches and compute the SE(2) transform between two frames
+    `stop_moving`:
+        used to stop any motion of the turtlebot 
+        topic: /stop_moving (std_srvs/srv/Empty)
+        example:
 
-- video frequency
-`ros2 run img_transform video_frequency`
- used to find the frequency that the incoming subscribed video feed is being read in
+        `ros2 service call /stop_moving std_srvs/srv/Empty`
