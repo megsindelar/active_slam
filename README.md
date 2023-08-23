@@ -11,6 +11,16 @@ This repository consists of several ROS packages
 The goal of this project is to implement an Active SLAM method using odometry and visual sensor measurements to map and localize a turtlebot to recreate a map of a poster that it's driving over. A special focus is placed on the visual search method.
 
 
+Click the link below to the README file for turtlebot_control:
+
+[README](raspberry_pi/src/turtlebot_control/README.md)
+
+
+Click the link below to the README file for img_transform:
+
+[README](ros_ws/src/active_slam/img_transform/README.md)
+
+
 Separate scripts
 - in the src folder at the base of this respository, there are several scripts that can run
 specific testing files, including...
