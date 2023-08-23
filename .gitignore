@@ -1,0 +1,13 @@
+# DLL files
+__pycache__/
+*.pyc
+
+# C extensions
+*.so
+build/
+
+# VS Codes
+.vscode
+
+# extras
+log
