@@ -9,8 +9,14 @@
 #include <opencv2/features2d/features2d.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/calib3d.hpp>
+#include <opencv2/opencv.hpp>
+#include <opencv2/stitching.hpp>
+#include "opencv2/imgcodecs/imgcodecs.hpp"
 
 #include <Eigen/Core>
+#include <Eigen/Dense>
+
+#include <opencv2/core/eigen.hpp>
 
 #include <chrono>
 
@@ -31,8 +37,7 @@
 
 #include <string>
 #include <math.h>
-// #include "img_transform/msg/keypoints.hpp"
-#include "img_transform/msg/transform.hpp"
+#include <cmath>
 
 #include "sophus/se3.hpp"
 #include "img_transform/transform.hpp"
@@ -43,7 +48,12 @@
 #include "tf2_ros/transform_broadcaster.h"
 
 #include "sensor_msgs/msg/compressed_image.hpp"
+
 #include "img_transform/msg/transform.hpp"
+#include "img_transform/msg/nodes.hpp"
+#include "img_transform/msg/frame_id.hpp"
+#include "img_transform/msg/waypoint.hpp"
+#include "img_transform/msg/odom.hpp"
 
 #include "std_srvs/srv/empty.hpp"
 #include "std_msgs/msg/string.hpp"
@@ -55,9 +65,6 @@
 #include <geometry_msgs/msg/point.hpp>
 
 #include "DBoW2/DBoW2.h"
-
-#include "img_transform/msg/nodes.hpp"
-#include "img_transform/msg/frame_id.hpp"
 
 using namespace std;
 using namespace cv;
@@ -144,6 +151,9 @@ class Registration : public rclcpp::Node
         pub_start_moving_ = this->create_publisher<std_msgs::msg::Empty>(
             "start_moving", 10);
 
+        pub_loop_closure_ = this->create_publisher<std_msgs::msg::Empty>(
+            "loop_closure", 10);
+
         // subscribe to a status to add a frame with a node
         sub_frame_id_ = this->create_subscription<img_transform::msg::FrameID>(
             "/frame_id", 10, std::bind(
@@ -156,6 +166,15 @@ class Registration : public rclcpp::Node
                 &Registration::robot_pose,
                 this, std::placeholders::_1));
 
+        sub_search_done_ = this->create_subscription<std_msgs::msg::Empty>(
+            "/search_done", 10, std::bind(
+                &Registration::search_done_callback,
+                this, std::placeholders::_1));
+
+
+        // pub_finish_loop_ = this->create_publisher<std_msgs::msg::Empty>(
+        //     "finish_loop", 10);
+
         // sub_id_vals_ = this->create_subscription<img_transform::msg::Nodes>(
         //     "/id_vals", 10, std::bind(
         //         &Registration::id_vals_callback,
@@ -167,6 +186,28 @@ class Registration : public rclcpp::Node
                 &Registration::wheel_transform_callback,
                 this, std::placeholders::_1));
 
+        sub_search_waypoint_ = this->create_subscription<img_transform::msg::Waypoint>(
+            "/search_waypoint", 10, std::bind(
+                &Registration::search_waypoint_callback,
+                this, std::placeholders::_1));
+
+
+        sub_waypoint_status_ = this->create_subscription<std_msgs::msg::Empty>(
+            "/waypoint_complete", 10, std::bind(
+                &Registration::waypoint_status,
+                this, std::placeholders::_1));
+
+        sub_loop_back_ = this->create_subscription<img_transform::msg::Waypoint>(
+            "/loop_back", 10, std::bind(
+                &Registration::loop_back_callback,
+                this, std::placeholders::_1));
+
+
+        /// \brief subscriber to odom orientation
+        sub_odom_ = this->create_subscription<img_transform::msg::Odom>(
+            "/odom_orientation", 10, std::bind(
+                &Registration::odom_callback,
+                this, std::placeholders::_1));
 
         // Timer
         declare_parameter("rate", 200);
@@ -181,6 +222,15 @@ class Registration : public rclcpp::Node
         std::bind(
             &Registration::reconstruct, this, std::placeholders::_1,
             std::placeholders::_2));
+
+
+        pub_poster_ = std::make_shared<image_transport::CameraPublisher>(
+            image_transport::create_camera_publisher(
+                this,
+                "poster_reconstruction",
+                rclcpp::QoS {10}.get_rmw_qos_profile()
+            )
+        );
 
     }
     private:
@@ -232,6 +282,12 @@ class Registration : public rclcpp::Node
 
             descriptor->compute ( registration_img, keypoints, descriptors );
 
+            if (search && take_search_image){
+                search_descriptions.push_back(descriptors);
+                search_keypoints.push_back(keypoints);
+                take_search_image = false;
+            }
+
             if (keypoints.size() > 150){
                 std_msgs::msg::Empty empty;
                 pub_feature_transform_->publish(empty);
@@ -240,7 +296,65 @@ class Registration : public rclcpp::Node
             if (reconstruct_img){
             reconstruct_img = false;
 
-            if (keypoints.size() > 3){
+            RCLCPP_INFO(rclcpp::get_logger("message"), "edge markers size %d", all_edge_markers.markers.size());
+            // if (all_edge_markers.markers.size() > 1){
+            //     for (int i = 0; i < (all_edge_markers.markers.size()-1); i++){
+            //         std_msgs::msg::Header header_2;
+            //         header_2.stamp = get_clock()->now();
+            //         cam_info_2_.header = header_2;
+
+            //         // convert rad to degree
+            //         double rotation_angle = all_edge_markers.markers[i].pose.orientation.z*180.0/M_PI;
+            //         double translation_x = all_edge_markers.markers[i].points[1].x;
+            //         double translation_y = all_edge_markers.markers[i].points[1].y;
+
+            //         // Compute the rotation matrix
+            //         cv::Mat rotation_matrix = cv::getRotationMatrix2D(cv::Point2f(0.0, 0.0), rotation_angle, 1);
+
+            //         // Eigen::Matrix<double, 2, 3> eigenRotationMatrix;
+            //         // eigenRotationMatrix << std::cos(rotation_angle), -std::sin(rotation_angle), translation_x,
+            //         //     std::sin(rotation_angle), std::cos(rotation_angle), translation_y;
+            //         RCLCPP_INFO(rclcpp::get_logger("message"), "translation_x %f", translation_x);
+            //         RCLCPP_INFO(rclcpp::get_logger("message"), "translation_y %f", translation_y);
+
+            //         // cv::Mat cvRotationMatrix(2, 2, CV_64F);
+            //         // cv::eigen2cv(eigenRotationMatrix, cvRotationMatrix);
+
+            //         // Apply translation to the rotation matrix
+            //         rotation_matrix.at<double>(0, 2) += 1000*translation_x;
+            //         rotation_matrix.at<double>(1, 2) += 1000*translation_y;
+
+            //         cv::Mat warped_image2;
+            //         if (first_img){
+            //             image1 = edge_images[i];
+            //             stitched_width += 2*image1.cols;
+            //             stitched_height += 2*image1.rows;
+            //             first_img = false;
+            //         }
+
+            //         RCLCPP_INFO(rclcpp::get_logger("message"), "image cols %d", image1.cols);
+            //         RCLCPP_INFO(rclcpp::get_logger("message"), "image rows %d", image1.rows);
+
+            //         cv::Mat image2 = edge_images[i+1];
+            //         cv::warpAffine(image2, warped_image2, rotation_matrix, image2.size());
+
+
+            //         // Calculate dimensions of the stitched image
+            //         // stitching vertically
+            //         // stitched_width += image2.cols;
+            //         // stitched_height += image2.rows;
+
+            //         cv::Mat stitched_image(stitched_height, stitched_width, image1.type());
+            //         image1.copyTo(stitched_image(cv::Rect(0, 0, image1.cols, image1.rows)));
+            //         warped_image2.copyTo(stitched_image(cv::Rect(0, 0, warped_image2.cols, warped_image2.rows)));
+
+            //         pub_poster_->publish(*(cv_bridge::CvImage(header_2, "bgr8", stitched_image).toImageMsg()), cam_info_2_);
+
+            //         image1 = stitched_image;
+            //     }
+            // }
+
+            if (keypoints.size() > 3 && !search){
 
                 descriptors_vec.push_back(descriptors);
                 keypoints_vec.push_back(keypoints);
@@ -254,155 +368,270 @@ class Registration : public rclcpp::Node
 
             num_images = features.size();
 
-            if (num_images > 3 && keypoints.size() > 3){
-
-                OrbVocabulary voc = BoW_voc(features, num_images);
-
-                std::vector<int> id_vals;
-                int id_f = features.size() - 1;
-
-                RCLCPP_INFO(rclcpp::get_logger("message"), "id_f %d", id_f);
-                RCLCPP_INFO(rclcpp::get_logger("message"), "edge markers size %d", all_edge_markers.markers.size());
-                RCLCPP_INFO(rclcpp::get_logger("message"), "features size %d", features.size());
-                id_vals.push_back(id_f);
-                double rad_circ = 0.25;
-
-                for (int i = 0; i < features.size() - 1; i++){
-                    double d_center = sqrt(pow(all_edge_markers.markers[i].points[1].x - all_edge_markers.markers[id_f].points[1].x, 2) + pow(all_edge_markers.markers[i].points[1].y - all_edge_markers.markers[id_f].points[1].y, 2));
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "i %d", i);
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "mark diff x, y %f, %f", (all_edge_markers.markers[i].points[1].x - all_edge_markers.markers[id_f].points[1].x), (all_edge_markers.markers[i].points[1].y - all_edge_markers.markers[id_f].points[1].y));
-                    if (d_center < rad_circ && (id_f - i) > 9){
-                        id_vals.push_back(i);
-                    }
-                }
-
-                RCLCPP_INFO(rclcpp::get_logger("message"), "id_vals size %d", id_vals.size());
-
-                std::vector<int> loop_candidates = BOW_test(features, voc, num_images, id_vals, bow_threshold);
-
-                bool loop_verified = false;
-                bool check_dist = false;
-                bool check_matches = false;
-
-                vector<DMatch> matches;
-
-                int img_id = -1;
-
-                RCLCPP_INFO(rclcpp::get_logger("message"), "loop candidates size %d", loop_candidates.size());
-
-                std::vector<int> loop_options;
-                std::vector<double> dist_lst;
-                double dist = 0.0;
-
-                int id_1 = 0;
-                int id_2 = 0;
-
-                for (int i = 0; i < loop_candidates.size(); i++){
-
-                    img_id = loop_candidates[i];
-                    RCLCPP_INFO(rclcpp::get_logger("message"), "img_id %d", img_id);
-
-                    if (img_id == -1){
-                        RCLCPP_INFO(rclcpp::get_logger("message"), "No BOW Matches!");
-                        registration = false;
-                        break;
-                    }
-                    else{
-                        std_msgs::msg::Header header;
-                        header.stamp = get_clock()->now();
-                        cam_info_.header = header;
-
-                        cv::Mat descriptors_2 = descriptors_vec[img_id];
-                        keypoints_2 = keypoints_vec[img_id];
-
-                        RCLCPP_INFO(rclcpp::get_logger("message"), "Keypoints size %d, %d", keypoints.size(), keypoints_2.size());
-
-                        if (keypoints.size() > 3 && keypoints_2.size() > 3){
-
-                            RCLCPP_INFO(rclcpp::get_logger("message"), "Matching");
-
-                            try{
-                                matcher->match ( descriptors, descriptors_2, matches );
-                            }
-                            catch (const std::exception & e) {
-                                RCLCPP_ERROR_STREAM(
-                                std::make_shared<Registration>()->get_logger(),
-                                "Matching ERROR: Shutting down node! " << e.what());
-                                rclcpp::shutdown();
-                            }
-                            double min_dist=10000, max_dist=0;
-
-                            min_dist = 10.0;
-
-                            // sort and then take a certain num of matches every time (use std sort)
-
-                            RCLCPP_INFO(rclcpp::get_logger("message"), "Matches size %d", matches.size());
-                            if (matches.size() > 11){
-                                matched = true;
-                                std::sort(matches.begin(), matches.end(), [](cv::DMatch& a, cv::DMatch& b) {
-                                    return a.distance < b.distance;
-                                });
+            vector<DMatch> matches;
 
 
-                                RCLCPP_INFO(rclcpp::get_logger("message"), "Testing matches");
+            if (search_done){
+                // MSE
+                RCLCPP_INFO(rclcpp::get_logger("message"), "MSE TIME!!");
+                RCLCPP_INFO(rclcpp::get_logger("message"), "MSE TIME!!");
+                RCLCPP_INFO(rclcpp::get_logger("message"), "MSE TIME!!");
+                RCLCPP_INFO(rclcpp::get_logger("message"), "MSE TIME!!");
+                RCLCPP_INFO(rclcpp::get_logger("message"), "MSE TIME!!");
+                RCLCPP_INFO(rclcpp::get_logger("message"), "MSE TIME!!");
+                RCLCPP_INFO(rclcpp::get_logger("message"), "MSE TIME!!");
+                RCLCPP_INFO(rclcpp::get_logger("message"), "MSE TIME!!");
 
-                                check_matches = true;
-                                for (int i = 0; i < 5; i++){
-                                    RCLCPP_INFO(rclcpp::get_logger("message"), "Matches distance: %f", matches[i].distance);
-                                    if (matches[i].distance > 12){
-                                        check_matches = false;
-                                    }
-                                }
+                mse_vals.clear();
 
-                                // int id_1 = all_edge_markers.markers.size() - 1;
-                                id_1 = features.size() + lost_f_ids - 1;
-                                id_2 = img_id;
-                                RCLCPP_INFO(rclcpp::get_logger("message"), "id_1 and id_2: %d, %d", id_1, id_2);
+                RCLCPP_INFO(rclcpp::get_logger("message"), "search image size %d", search_images.size());
 
-                                // if (features.size() > 30){
-                                //     distance_threshold = 0.2;
-                                // }
+                for (int i = 0; i < search_images.size(); i++){
+                    Mat MSE_img = search_images[i];
 
-                                dist = calc_dist(all_edge_markers.markers[id_1].points[1].x, all_edge_markers.markers[id_1].points[1].y, all_edge_markers.markers[id_2].points[0].x, all_edge_markers.markers[id_2].points[0].y);
-                                if (dist < distance_threshold){
-                                    check_dist = true;
-                                }
-                                else{
-                                    check_dist = false;
-                                }
-                            }
+                    // rotate image to be same orientation as node
+                    Mat rotated_img;
+                    double angle = loop_img_orientation - image_angles[i];
+                    RCLCPP_INFO(rclcpp::get_logger("message"), "Test 1!!");
 
+                    int X = MSE_img.cols/2.;
+                    int Y = MSE_img.rows/2.;
+                    Point2f pt(X,Y);
+                    Mat rotatedMat = getRotationMatrix2D(pt, angle, 1.0); 
+                    warpAffine(MSE_img, rotated_img, rotatedMat, Size(MSE_img.cols, MSE_img.rows));
+                    RCLCPP_INFO(rclcpp::get_logger("message"), "Test 2!!");
 
-                            RCLCPP_INFO(rclcpp::get_logger("message"), "prev id_1 and id_2: %d, %d", prev_loop_pair[0], prev_loop_pair[1]);
-                            if (check_matches && check_dist && (prev_loop_pair[0] != (id_1-1) && prev_loop_pair[1] != id_2)){
-                                RCLCPP_INFO(rclcpp::get_logger("message"), "Potential loop!");
-                                loop_verified = true;
-                                registration = true;
-                                loop_options.push_back(img_id);
-                                dist_lst.push_back(dist);
-                            }
-                            matches.clear(); 
+                    Mat resized_img;
+                    cv::resize(rotated_img, resized_img, loop_image.size(), 0, 0, INTER_LINEAR);
+
+                    RCLCPP_INFO(rclcpp::get_logger("message"), "Test 3!!");
+                    // MSE
+                    double sum = 0.0;
+                    RCLCPP_INFO(rclcpp::get_logger("message"), "loop image rows, cols: %d, %d", loop_image.rows, loop_image.cols);
+                    for (int r = 0; r < loop_image.rows; r++){
+                        for (int c = 0; c < loop_image.cols; c++){
+                            // RCLCPP_INFO(rclcpp::get_logger("message"), "r, c: %d, %d", r, c);
+                            Vec3b intensity_loop = loop_image.at<Vec3b>(r, c);
+                            double blue_loop = (double)intensity_loop.val[0];
+                            double green_loop = (double)intensity_loop.val[1];
+                            double red_loop = (double)intensity_loop.val[2];
+                            Vec3b intensity_mse = resized_img.at<Vec3b>(r, c);
+                            double blue_mse = (double)intensity_mse.val[0];
+                            double green_mse = (double)intensity_mse.val[1];
+                            double red_mse = (double)intensity_mse.val[2];
+                            double diff = (double)((blue_loop - blue_mse) + (green_loop - green_mse) + (red_loop - red_mse));
+                            // double diff = loop_image.at<double>(r,c) - resized_img.at<double>(r,c);
+                            sum += pow(diff, 2);
                         }
                     }
+                    // RCLCPP_INFO(rclcpp::get_logger("message"), "Time to square root!");
+                    // double sqrt_sum = sqrt(sum);
+                    // RCLCPP_INFO(rclcpp::get_logger("message"), "mse_vals sqrt_sum %f", sqrt_sum);
+                    RCLCPP_INFO(rclcpp::get_logger("message"), "mse_vals %f", sum /(loop_image.rows*loop_image.cols));
+                    RCLCPP_INFO(rclcpp::get_logger("message"), "Test 4!!");
+                    mse_vals.push_back(sum /(loop_image.rows*loop_image.cols));
+                    RCLCPP_INFO(rclcpp::get_logger("message"), "Test 5!!");
                 }
 
-                double min_dist = 100.0;
-                for (int i = 0; i < loop_options.size(); i++){
-                    min_dist = min(min_dist, dist_lst[i]);
-                    if (min_dist == dist_lst[i]){
-                        RCLCPP_INFO(rclcpp::get_logger("message"), "Min dist: %f", min_dist);
-                        img_id = loop_options[i];
+                double min_mse_val = 100000000000000000000000.0;
+                int min_mse_ind = 0;
+                RCLCPP_INFO(rclcpp::get_logger("message"), "mse_vals size %d", mse_vals.size());
+                for (int i = 0; i < mse_vals.size(); i++){
+                    min_mse_val = std::min(min_mse_val, mse_vals[i]);
+                    if (min_mse_val == mse_vals[i]){
+                        min_mse_ind = i;
                     }
                 }
+                RCLCPP_INFO(rclcpp::get_logger("message"), "Test 6!!");
+                RCLCPP_INFO(rclcpp::get_logger("message"), "min_mse_ind %d", min_mse_ind);
+
+                if (min_mse_ind != -1){
+                    Mat descriptors_search = search_descriptions[min_mse_ind];
+                    keypoints_search = search_keypoints[min_mse_ind];
+
+                    RCLCPP_INFO(rclcpp::get_logger("message"), "Test 7!!");
+
+                    try{
+                        matcher->match ( descriptors_loop, descriptors_search, matches );
+                    }
+                    catch (const std::exception & e) {
+                        RCLCPP_ERROR_STREAM(
+                        std::make_shared<Registration>()->get_logger(),
+                        "Matching ERROR: Shutting down node! " << e.what());
+                        rclcpp::shutdown();
+                    }
+
+                    RCLCPP_INFO(rclcpp::get_logger("message"), "Test 8!!");
+
+                    if (matches.size() > 11){
+                        // replace loop image with new mse image
+                        changeStructure(descriptors_search, features[loop_id]);
+                        // sort matches for best matches at the top
+                        std::sort(matches.begin(), matches.end(), [](cv::DMatch& a, cv::DMatch& b) {
+                            return a.distance < b.distance;
+                        });
+
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Test 9!!");
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Matches size %d", matches.size());
+
+                        registration = true;
+                        search_done = false;
+                        loop_verified = true;
+                        take_curr_loc_img = true;
+                    }
+                }
+            }
+            // if (num_images > 3 && keypoints.size() > 3){
+
+                // OrbVocabulary voc = BoW_voc(features, num_images);
+
+                // std::vector<int> id_vals;
+                // int id_f = features.size() - 1;
+
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "id_f %d", id_f);
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "edge markers size %d", all_edge_markers.markers.size());
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "features size %d", features.size());
+                // id_vals.push_back(id_f);
+                // double rad_circ = 0.25;
+
+                // for (int i = 0; i < features.size() - 1; i++){
+                //     double d_center = sqrt(pow(all_edge_markers.markers[i].points[1].x - all_edge_markers.markers[id_f].points[1].x, 2) + pow(all_edge_markers.markers[i].points[1].y - all_edge_markers.markers[id_f].points[1].y, 2));
+                //     // RCLCPP_INFO(rclcpp::get_logger("message"), "i %d", i);
+                //     // RCLCPP_INFO(rclcpp::get_logger("message"), "mark diff x, y %f, %f", (all_edge_markers.markers[i].points[1].x - all_edge_markers.markers[id_f].points[1].x), (all_edge_markers.markers[i].points[1].y - all_edge_markers.markers[id_f].points[1].y));
+                //     if (d_center < rad_circ && (id_f - i) > 9){
+                //         id_vals.push_back(i);
+                //     }
+                // }
+
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "id_vals size %d", id_vals.size());
+
+                // std::vector<int> loop_candidates = BOW_test(features, voc, num_images, id_vals, bow_threshold);
+
+                // bool loop_verified = false;
+                // bool check_dist = false;
+                // bool check_matches = false;
+
+                // vector<DMatch> matches;
+
+                // int img_id = -1;
+
+                // RCLCPP_INFO(rclcpp::get_logger("message"), "loop candidates size %d", loop_candidates.size());
+
+                // std::vector<int> loop_options;
+                // std::vector<double> dist_lst;
+                // double dist = 0.0;
+
+                // int id_1 = 0;
+                // int id_2 = 0;
+
+                // for (int i = 0; i < loop_candidates.size(); i++){
+
+                //     img_id = loop_candidates[i];
+                //     RCLCPP_INFO(rclcpp::get_logger("message"), "img_id %d", img_id);
+
+                //     if (img_id == -1){
+                //         RCLCPP_INFO(rclcpp::get_logger("message"), "No BOW Matches!");
+                //         registration = false;
+                //         break;
+                //     }
+                //     else{
+                //         std_msgs::msg::Header header;
+                //         header.stamp = get_clock()->now();
+                //         cam_info_.header = header;
+
+                //         cv::Mat descriptors_2 = descriptors_vec[img_id];
+                //         keypoints_2 = keypoints_vec[img_id];
+
+                //         RCLCPP_INFO(rclcpp::get_logger("message"), "Keypoints size %d, %d", keypoints.size(), keypoints_2.size());
+
+                //         if (keypoints.size() > 3 && keypoints_2.size() > 3){
+
+                //             RCLCPP_INFO(rclcpp::get_logger("message"), "Matching");
+
+                //             try{
+                //                 matcher->match ( descriptors, descriptors_2, matches );
+                //             }
+                //             catch (const std::exception & e) {
+                //                 RCLCPP_ERROR_STREAM(
+                //                 std::make_shared<Registration>()->get_logger(),
+                //                 "Matching ERROR: Shutting down node! " << e.what());
+                //                 rclcpp::shutdown();
+                //             }
+                //             double min_dist=10000, max_dist=0;
+
+                //             min_dist = 10.0;
+
+                //             // sort and then take a certain num of matches every time (use std sort)
+
+                //             RCLCPP_INFO(rclcpp::get_logger("message"), "Matches size %d", matches.size());
+                //             if (matches.size() > 11){
+                //                 matched = true;
+                //                 std::sort(matches.begin(), matches.end(), [](cv::DMatch& a, cv::DMatch& b) {
+                //                     return a.distance < b.distance;
+                //                 });
+
+
+                //                 RCLCPP_INFO(rclcpp::get_logger("message"), "Testing matches");
+
+                //                 // check_matches = true;
+                //                 // for (int i = 0; i < 5; i++){
+                //                 //     RCLCPP_INFO(rclcpp::get_logger("message"), "Matches distance: %f", matches[i].distance);
+                //                 //     if (matches[i].distance > match_threshold){
+                //                 //         check_matches = false;
+                //                 //     }
+                //                 // }
+
+                //                 // int id_1 = all_edge_markers.markers.size() - 1;
+                //                 id_1 = features.size() + lost_f_ids - 1;
+                //                 id_2 = img_id;
+                //                 RCLCPP_INFO(rclcpp::get_logger("message"), "id_1 and id_2: %d, %d", id_1, id_2);
+
+                //                 // if (features.size() > 30){
+                //                 //     distance_threshold = 0.2;
+                //                 // }
+
+                //                 dist = calc_dist(all_edge_markers.markers[id_1].points[1].x, all_edge_markers.markers[id_1].points[1].y, all_edge_markers.markers[id_2].points[0].x, all_edge_markers.markers[id_2].points[0].y);
+                //                 if (dist < distance_threshold){
+                //                     check_dist = true;
+                //                 }
+                //                 else{
+                //                     check_dist = false;
+                //                 }
+                //             }
+
+
+                //             RCLCPP_INFO(rclcpp::get_logger("message"), "prev id_1 and id_2: %d, %d", prev_loop_pair[0], prev_loop_pair[1]);
+                //             if (check_matches && check_dist && (prev_loop_pair[0] != (id_1-1) && prev_loop_pair[1] != id_2)){
+                //                 RCLCPP_INFO(rclcpp::get_logger("message"), "Potential loop!");
+                //                 loop_verified = true;
+                //                 registration = true;
+                //                 loop_options.push_back(img_id);
+                //                 dist_lst.push_back(dist);
+                //             }
+                //             matches.clear(); 
+                //         }
+                //     }
+                // }
+
+                // double min_dist = 100.0;
+                // for (int i = 0; i < loop_options.size(); i++){
+                //     min_dist = min(min_dist, dist_lst[i]);
+                //     if (min_dist == dist_lst[i]){
+                //         RCLCPP_INFO(rclcpp::get_logger("message"), "Min dist: %f", min_dist);
+                //         img_id = loop_options[i];
+                //     }
+                // }
 
                 if (registration)
                 {
-                    prev_loop_pair[0] = id_1;
-                    prev_loop_pair[1] = img_id;
+                    // prev_loop_pair[0] = id_1;
+                    // prev_loop_pair[1] = img_id;
                     registration = false;
+                    RCLCPP_INFO(rclcpp::get_logger("message"), "Test 10!!");
 
 
                     if (loop_verified){
+                        loop_verified = false;
 
                         std::vector< DMatch > good_matches;
 
@@ -410,6 +639,8 @@ class Registration : public rclcpp::Node
                         {
                             good_matches.push_back(matches[i]);
                         }
+
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Test 11!!");
 
 
                         float f_1 = 295.009696;
@@ -422,14 +653,17 @@ class Registration : public rclcpp::Node
                         std::vector<float> key2_xw;
                         std::vector<float> key2_yw;
                         std::vector<float> key2_zw;
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Test 11.5!!");
 
                         // first get transform point by multiplying by camera matrix
                         int counter_matches = 0;
                         for (size_t i=0; i<good_matches.size(); i++){
-                            float k1_xw = (z/f_1)*(keypoints.at(good_matches[i].queryIdx).pt.x - p_1*z);
-                            float k1_yw = (z/f_2)*(keypoints.at(good_matches[i].queryIdx).pt.y - p_2*z);
-                            float k2_xw = (z/f_1)*(keypoints_2.at(good_matches[i].trainIdx).pt.x - p_1*z);
-                            float k2_yw = (z/f_2)*(keypoints_2.at(good_matches[i].trainIdx).pt.y - p_2*z);
+                            RCLCPP_INFO(rclcpp::get_logger("message"), "Test 1.78!!");
+                            float k1_xw = (z/f_1)*(keypoints_loop.at(good_matches[i].queryIdx).pt.x - p_1*z);
+                            float k1_yw = (z/f_2)*(keypoints_loop.at(good_matches[i].queryIdx).pt.y - p_2*z);
+                            float k2_xw = (z/f_1)*(keypoints_search.at(good_matches[i].trainIdx).pt.x - p_1*z);
+                            float k2_yw = (z/f_2)*(keypoints_search.at(good_matches[i].trainIdx).pt.y - p_2*z);
+                            RCLCPP_INFO(rclcpp::get_logger("message"), "Test 11.8!!");
 
                             key1_xw.push_back(k1_xw);
                             key1_yw.push_back(k1_yw);
@@ -443,6 +677,8 @@ class Registration : public rclcpp::Node
 
                         // Convert the point cloud to Eigen
                         size_t N = good_matches.size();
+
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Test 12!!");
 
 
                         Eigen::Matrix<double, 3, Eigen::Dynamic> src(3, N);
@@ -458,6 +694,8 @@ class Registration : public rclcpp::Node
                         src_h.topRows(3) = src;
                         src_h.bottomRows(1) = Eigen::Matrix<double, 1, Eigen::Dynamic>::Ones(N);
 
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Test 13!!");
+
                         // Apply an arbitrary SE(3) transformation
                         Eigen::Matrix4d T;
 
@@ -467,6 +705,8 @@ class Registration : public rclcpp::Node
                             tgt.col(i) << key2_xw.at(i), key2_yw.at(i), key2_zw.at(i);
                             std::cout << "z2: " << key2_zw.at(i) << std::endl;
                         }
+
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Test 14!!");
 
                         // Run TEASER++ registration
                         // Prepare solver parameters
@@ -487,6 +727,8 @@ class Registration : public rclcpp::Node
                         std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
                         auto solution = solver.getSolution();
+
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Test 15!!");
 
                         // Compare results
                         std::cout << "=====================================" << std::endl;
@@ -513,6 +755,9 @@ class Registration : public rclcpp::Node
                                     << std::endl;
 
 
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Test 16!!");
+
+
                         for (int i = 0; i < 3; i++){
                             rotation_mat.row(i) << solution.rotation(i,0), solution.rotation(i,1), solution.rotation(i,2);
                             translation(i) = solution.translation(i);
@@ -520,6 +765,8 @@ class Registration : public rclcpp::Node
 
                         Sophus::SE3d Transformation(rotation_mat, translation);
                         Tran_pub = Transformation.matrix();
+
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Test 17!!");
 
                         Sophus::SE3d Trans = Transformation_prev*Transformation;
                         Transformation_current = Trans.matrix();//Transformation_prev.matrix()*Transformation.matrix();
@@ -529,6 +776,8 @@ class Registration : public rclcpp::Node
                             translation_current(i) = Transformation_current(i,3);
                             RCLCPP_INFO(rclcpp::get_logger("message"), "Translation %f", Transformation_current(i,3));
                         }
+
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Test 18!!");
                         Transformation_prev = Trans;
                         Eigen::Matrix<double, 4, 1>  vec_mark;
                         vec_mark[0] = rob_x;
@@ -537,6 +786,8 @@ class Registration : public rclcpp::Node
                         vec_mark[3] = 1.0;
                         Eigen::Matrix<double, 4, 1> vec_new_mark;
                         vec_new_mark = Trans.inverse()*vec_mark;
+
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Test 19!!");
 
                         visualization_msgs::msg::Marker node;
                         node.header.frame_id = "world";
@@ -570,11 +821,15 @@ class Registration : public rclcpp::Node
                         node.header.stamp = this->get_clock()->now();
                         edge_m.header.stamp = this->get_clock()->now();
 
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Test 20!!");
+
                         node.id = id;
                         node.pose.position.x = vec_new_mark[0];
                         node.pose.position.y = vec_new_mark[1];
                         node_markers.markers.push_back(node);
                         // pub_nodes_->publish(node_markers);
+
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Test 21!!");
 
                         edge_m.id = id;
                         geometry_msgs::msg::Point p;
@@ -588,12 +843,18 @@ class Registration : public rclcpp::Node
                         // pub_edges_->publish(edge_markers);
                         id++;
 
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Test 22!!");
+
 
                         // publish transform for se_sync
                         img_transform::msg::Transform T_01;
                         // img_transform::msg::Transform rob_state;
                         T_01.id = features.size() + lost_f_ids - 2;
-                        T_01.id_2 = img_id;
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "lost_f_ids %d", lost_f_ids);
+                        // T_01.id_2 = img_id;
+                        T_01.id_2 = loop_id;
+
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Test 23!!");
                         // rob_state.id = id;
                         for (int i = 0; i < 4; i++)
                         {
@@ -604,11 +865,15 @@ class Registration : public rclcpp::Node
 
                         }
 
+                        RCLCPP_INFO(rclcpp::get_logger("message"), "Test 24!!");
+
                         pub_transform_->publish(T_01);
+                        std_msgs::msg::Empty empty;
+                        pub_loop_closure_->publish(empty);
+                        // pub_finish_loop_->publish(empty);
                     }
                 }
             }
-        }
         }
 
         // subscribe to robot pose
@@ -616,6 +881,47 @@ class Registration : public rclcpp::Node
         void robot_pose(const geometry_msgs::msg::Point::ConstSharedPtr& msg){
             rob_x = msg->x;
             rob_y = msg->y;
+        }
+
+        void odom_callback(
+            const img_transform::msg::Odom::ConstSharedPtr& msg
+        ){
+            theta_pos = msg->theta;
+        }
+
+        void search_waypoint_callback(img_transform::msg::Waypoint::SharedPtr msg){
+            search = msg->search;
+        }
+
+        void loop_back_callback(img_transform::msg::Waypoint::SharedPtr msg){
+            RCLCPP_INFO(rclcpp::get_logger("message"), "LOOP CALLBACK!!");
+            RCLCPP_INFO(rclcpp::get_logger("message"), "LOOP CALLBACK!!");
+            RCLCPP_INFO(rclcpp::get_logger("message"), "LOOP CALLBACK!!");
+            RCLCPP_INFO(rclcpp::get_logger("message"), "LOOP CALLBACK!!");
+            RCLCPP_INFO(rclcpp::get_logger("message"), "LOOP CALLBACK!!");
+            RCLCPP_INFO(rclcpp::get_logger("message"), "LOOP CALLBACK!!");
+            RCLCPP_INFO(rclcpp::get_logger("message"), "LOOP CALLBACK!!");
+            loop_id = msg->id;
+            RCLCPP_INFO(rclcpp::get_logger("message"), "loop id! %d", loop_id);
+            RCLCPP_INFO(rclcpp::get_logger("message"), "edge_images size %d", edge_images.size());
+            loop_image = edge_images[loop_id];
+            loop_img_orientation = all_edge_markers.markers[loop_id].pose.orientation.z;
+            descriptors_loop = descriptors_vec[loop_id];
+            keypoints_loop = keypoints_vec[loop_id];
+            search_descriptions.clear();
+            search_keypoints.clear();
+        }
+
+        void waypoint_status(std_msgs::msg::Empty::SharedPtr msg){
+            next_waypoint = true;
+        }
+
+        void search_done_callback(std_msgs::msg::Empty::SharedPtr msg){
+            RCLCPP_INFO(rclcpp::get_logger("message"), "SEARCH DONE!!");
+            search_done = true;
+            search = false;
+            search_images.clear();
+            reconstruct_img = true;
         }
 
         // subscribe to a status to add a frame with a node
@@ -634,8 +940,23 @@ class Registration : public rclcpp::Node
         ){
             registration_img = cv_bridge::toCvCopy(*msg, sensor_msgs::image_encodings::BGR8)->image;
 
-            if (take_image){
-                
+            if (take_image && search){
+                search_images.push_back(registration_img);
+                image_angles.push_back(theta_pos);
+                reconstruct_img = false;
+                take_image = false;
+                take_search_image = true;
+            }
+
+            if (take_curr_loc_img){
+                edge_images.push_back(registration_img);
+                reconstruct_img = true;
+                take_curr_loc_img = false;
+                search = false;
+            }
+
+            if (take_image && !search){
+                edge_images.push_back(registration_img);
                 RCLCPP_INFO(rclcpp::get_logger("message"), "Taking image");
                 reconstruct_img = true;
                 take_image = false;
@@ -664,6 +985,7 @@ class Registration : public rclcpp::Node
             double prev_y = msg->y.at(0);
             double x_pos = msg->x.at(1);
             double y_pos = msg->y.at(1);
+            double theta = msg->theta;
 
             if (first){
                 all_edge_markers = visualization_msgs::msg::MarkerArray();
@@ -678,27 +1000,33 @@ class Registration : public rclcpp::Node
 
                 edge.id = id_trans;
                 edge.points.push_back(p);
+                edge.pose.orientation.z = 0.0;
                 all_edge_markers.markers.push_back(edge);
                 first = false;
+                // first_img = true;
             }
 
-            visualization_msgs::msg::Marker edge;
-            geometry_msgs::msg::Point p;
-            p.x = prev_x;
-            p.y = prev_y;
-            edge.points.push_back(p);
-            p.x = x_pos;
-            p.y = y_pos;
 
-            edge.id = id_trans;
-            edge.points.push_back(p);
-            all_edge_markers.markers.push_back(edge);
+            if (!search){
+                visualization_msgs::msg::Marker edge;
+                geometry_msgs::msg::Point p;
+                p.x = prev_x;
+                p.y = prev_y;
+                edge.points.push_back(p);
+                p.x = x_pos;
+                p.y = y_pos;
 
-            int ind_ed = all_edge_markers.markers.size() - 1;
+                edge.id = id_trans;
+                edge.points.push_back(p);
+                edge.pose.orientation.z = theta;
+                all_edge_markers.markers.push_back(edge);
 
-            RCLCPP_INFO(rclcpp::get_logger("message"), "Edge_0: %f, %f", all_edge_markers.markers[ind_ed].points[0].x, all_edge_markers.markers[ind_ed].points[0].y);
-            RCLCPP_INFO(rclcpp::get_logger("message"), "Edge_1: %f, %f", all_edge_markers.markers[ind_ed].points[1].x, all_edge_markers.markers[ind_ed].points[1].y);
-            RCLCPP_INFO(rclcpp::get_logger("message"), "all_edge_markers size: %d", all_edge_markers.markers.size());
+                int ind_ed = all_edge_markers.markers.size() - 1;
+
+                RCLCPP_INFO(rclcpp::get_logger("message"), "Edge_0: %f, %f", all_edge_markers.markers[ind_ed].points[0].x, all_edge_markers.markers[ind_ed].points[0].y);
+                RCLCPP_INFO(rclcpp::get_logger("message"), "Edge_1: %f, %f", all_edge_markers.markers[ind_ed].points[1].x, all_edge_markers.markers[ind_ed].points[1].y);
+                RCLCPP_INFO(rclcpp::get_logger("message"), "all_edge_markers size: %d", all_edge_markers.markers.size());
+            }
 
         }
 
@@ -708,6 +1036,7 @@ class Registration : public rclcpp::Node
         rclcpp::Subscription<sensor_msgs::msg::CompressedImage>::SharedPtr sub_current_img_;
         std::unique_ptr<tf2_ros::TransformBroadcaster> tf_broadcaster_;
         sensor_msgs::msg::CameraInfo cam_info_;
+        sensor_msgs::msg::CameraInfo cam_info_2_;
         std::shared_ptr<image_transport::CameraPublisher> pub_keypoint_img_;
         rclcpp::Publisher<img_transform::msg::Transform>::SharedPtr pub_transform_;
         rclcpp::Service<std_srvs::srv::Empty>::SharedPtr registration_srv;
@@ -715,15 +1044,38 @@ class Registration : public rclcpp::Node
         rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr pub_edges_;
         rclcpp::Publisher<std_msgs::msg::Empty>::SharedPtr pub_feature_transform_;
         rclcpp::Publisher<std_msgs::msg::Empty>::SharedPtr pub_start_moving_;
+        rclcpp::Publisher<std_msgs::msg::Empty>::SharedPtr pub_loop_closure_;
+        // rclcpp::Publisher<std_msgs::msg::Empty>::SharedPtr pub_finish_loop_;
         rclcpp::Subscription<geometry_msgs::msg::Point>::SharedPtr sub_rob_pose_;
+        rclcpp::Subscription<std_msgs::msg::Empty>::SharedPtr sub_search_done_;
         // rclcpp::Subscription<img_transform::msg::Nodes>::SharedPtr sub_id_vals_;
         rclcpp::Subscription<img_transform::msg::FrameID>::SharedPtr sub_frame_id_;
         rclcpp::Subscription<img_transform::msg::Transform>::SharedPtr sub_wheel_transform_;
+        rclcpp::Subscription<img_transform::msg::Waypoint>::SharedPtr sub_search_waypoint_;
+        rclcpp::Subscription<img_transform::msg::Waypoint>::SharedPtr sub_loop_back_;
+        rclcpp::Subscription<img_transform::msg::Odom>::SharedPtr sub_odom_;
+        rclcpp::Subscription<std_msgs::msg::Empty>::SharedPtr sub_waypoint_status_;
+        std::shared_ptr<image_transport::CameraPublisher> pub_poster_;
 
         cv::Ptr<cv::ORB> orb = cv::ORB::create();
 
+        Mat descriptors_loop;
+        std::vector<KeyPoint> keypoints_loop;
         Mat img1;
         Mat registration_img;
+        Mat loop_image;
+        bool loop_verified = false;
+        double loop_img_orientation = 0.0;
+        bool take_search_image = false;
+        std::vector<double> image_angles;
+        std::vector<double> mse_vals;
+        std::vector<Mat> edge_images;
+        std::vector<Mat> search_images;
+        std::vector<Mat> search_descriptions;
+        std::vector<std::vector<KeyPoint>> search_keypoints;
+        std::vector<KeyPoint> keypoints_search;
+
+
         std::string child_frame = "current";
         std::string parent_frame = "previous";
         bool first = true;
@@ -731,6 +1083,7 @@ class Registration : public rclcpp::Node
         int count = 0;
         bool matched = true;
         float z = 0.095;
+
 
         Sophus::SE3d Transformation_prev;
         Sophus::SE3d Trans;
@@ -745,22 +1098,34 @@ class Registration : public rclcpp::Node
         visualization_msgs::msg::MarkerArray edge_markers;
         visualization_msgs::msg::MarkerArray all_edge_markers;
 
+        int stitched_width = 0;
+        int stitched_height = 0;
+        cv::Mat image1;
+
         std::vector<int> prev_loop_pair {-1, -1};
 
-        bool first_img = true;
+        bool first_img = false;
         bool reconstruct_img = false;
         bool registration = false;
 
-        double distance_threshold = 0.15;
+        double match_threshold = 11;
+        double distance_threshold = 0.1;
+        double bow_threshold = 0.14;
+
+        double theta_pos = 0.0;
 
         bool moving = false;
+        bool take_curr_loc_img = false;
+
+        bool search = false;
+        bool search_done = false;
+        bool next_waypoint = false;
+        int loop_id = 0;
 
         double rob_x = 0.0;
         double rob_y = 0.0;
 
         int lost_f_ids = 0;
-
-        double bow_threshold = 0.14;
 
         std::vector<std::vector<cv::Mat>> features;
         std::vector<std::vector<KeyPoint>> keypoints_vec;

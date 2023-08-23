@@ -86,6 +86,7 @@
         "*.traits": "cpp",
         "bvh": "cpp",
         "*.ipp": "cpp",
-        "any": "cpp"
+        "any": "cpp",
+        "valarray": "cpp"
     }
 }
