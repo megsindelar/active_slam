@@ -40,6 +40,10 @@ specific testing files, including...
       there is a second method to stitch the images together)
 
 
+![turtlebot](https://github.com/megsindelar/active_slam/assets/87098227/77b49029-1ac1-4719-a477-6644a414a140)
+
+
+
     -> using the CMakeLists.txt that is added, one can make a build directory
     and use cmake and make to build and run these four files
 
