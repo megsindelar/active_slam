@@ -1,6 +1,7 @@
 # Active learning using a graph-based SLAM using visual sensor measurements
 * Megan Sindelar
 * Spring/Summer 2023
+* Portfolio link: [Portfolio](https://megsindelar.github.io/Active-SLAM.html)
 # Package List
 This repository consists of several ROS packages
 - `turtlebot_control` - publishes video stream from the Raspberry Pi camera and receives controls for the turtlebot actions
@@ -31,3 +32,4 @@ specific testing files, including...
 
     -> using the CMakeLists.txt that is added, one can make a build directory
     and use cmake and make to build and run these four files
+
