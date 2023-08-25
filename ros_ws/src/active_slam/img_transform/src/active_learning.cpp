@@ -51,12 +51,6 @@ public:
         &ActiveLearning::finish_loop_callback,
         this, std::placeholders::_1));
 
-    sub_test_vals_ = this->create_service<std_srvs::srv::Empty>(
-        "/test_vals",
-        std::bind(
-            &ActiveLearning::test_vals_srv, this, std::placeholders::_1,
-            std::placeholders::_2));
-
     // service to stop turtlebot motion, helpful for testing
     stop_moving_srv = this->create_service<std_srvs::srv::Empty>(
         "/stop_moving",
@@ -83,32 +77,7 @@ private:
     }
     if (start_sequence && next_waypoint){
         next_waypoint = false;
-        // lawnmowing pattern trajectory
-        if (waypoint_count == 1){
-            x_pos += 0.4;
-            waypoint.x = x_pos;
-            waypoint.y = y_pos;
-            waypoint.theta = M_PI/2.0;
-            dx_next = 0.0;
-        }
-        else if (waypoint_count == 2){
-            y_pos += 0.4;
-            waypoint.x = x_pos;
-            waypoint.y = y_pos;
-            waypoint.theta = M_PI;
-        }
-        else if (waypoint_count == 3){
-            x_pos -= 0.4;
-            waypoint.x = x_pos;
-            waypoint.y = y_pos;
-            waypoint.theta = 3.0*M_PI/2.0;
-        }
-        else if (waypoint_count == 4){
-            y_pos -= 0.4;
-            waypoint.x = x_pos;
-            waypoint.y = y_pos;
-            waypoint.theta = 0.0;
-            waypoint_count = -1;
+        if (square_loop_){
             start_sequence = false;
             img_transform::msg::Waypoint square_loop;
             square_loop.x = orig_x;
@@ -117,6 +86,35 @@ private:
             square_loop.loop = true;
             square_loop.search = false;
             pub_loop_back_->publish(square_loop);
+            square_loop_ = false;
+        }
+        // lawnmowing pattern trajectory
+        if (waypoint_count == 1){
+            x_pos += 0.3;
+            waypoint.x = x_pos;
+            waypoint.y = y_pos;
+            waypoint.theta = M_PI/2.0;
+            dx_next = 0.0;
+        }
+        else if (waypoint_count == 2){
+            y_pos += 0.3;
+            waypoint.x = x_pos;
+            waypoint.y = y_pos;
+            waypoint.theta = M_PI;
+        }
+        else if (waypoint_count == 3){
+            x_pos -= 0.3;
+            waypoint.x = x_pos;
+            waypoint.y = y_pos;
+            waypoint.theta = 3.0*M_PI/2.0;
+        }
+        else if (waypoint_count == 4){
+            y_pos -= 0.3;
+            waypoint.x = x_pos;
+            waypoint.y = y_pos;
+            waypoint.theta = 0.0;
+            waypoint_count = -1;
+            square_loop_ = true;
         }
         // else if (waypoint_count == 5){
         //     waypoint.x += 0.0;
@@ -129,43 +127,16 @@ private:
         waypoint_count++;
     }
     if (waypoint.loop && next_waypoint){
-        RCLCPP_INFO(rclcpp::get_logger("message"), "loop back");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "loop back");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "loop back");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "loop back");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "loop back");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "loop back");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "loop back");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "loop back");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "loop back");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "loop back");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "loop back");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "loop back");
         loop_back = true;
         // loop back to previous node
         pub_waypoint_->publish(waypoint);
         waypoint.loop = false;
         x_pos = waypoint.x;
         y_pos = waypoint.y;
-        RCLCPP_INFO(rclcpp::get_logger("message"), "x_pos, y_pos %f, %f, %f: ", x_pos, y_pos);
         waypoint_count = 0;
         next_waypoint = false;
     }
     if (waypoint.search && next_waypoint && !search_done){
-        RCLCPP_INFO(rclcpp::get_logger("message"), "search");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "search");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "search");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "search");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "search");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "search");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "search");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "search");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "search");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "search");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "search");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "search");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint count %d", waypoint_count);
-
         next_waypoint = false;
 
         // lawnmowing pattern trajectory
@@ -173,9 +144,6 @@ private:
             waypoint.theta = waypoint.theta;
             waypoint.x = x_pos;
             waypoint.y = y_pos;
-            RCLCPP_INFO(rclcpp::get_logger("message"), "orig_x: %f,", waypoint.x);
-            RCLCPP_INFO(rclcpp::get_logger("message"), "orig_y: %f,", waypoint.y);
-            RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint theta: %f,", waypoint.theta);
             waypoint.search = true;
         }
 
@@ -183,9 +151,6 @@ private:
             waypoint.theta = waypoint.theta;
             waypoint.x += dx*cos(waypoint.theta);
             waypoint.y += dy*sin(waypoint.theta);
-            RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint x: %f,", waypoint.x);
-            RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint y: %f,", waypoint.y);
-            RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint theta: %f,", waypoint.theta);
             waypoint.search = true;
         }
 
@@ -193,9 +158,6 @@ private:
             waypoint.theta = orig_theta;
             waypoint.x = orig_x;
             waypoint.y = orig_y;
-            RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint x go back: %f,", waypoint.x);
-            RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint y go back: %f,", waypoint.y);
-            RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint theta: %f,", waypoint.theta);
             waypoint.search = true;
         }
 
@@ -203,9 +165,6 @@ private:
             waypoint.theta = orig_theta - M_PI/6.0;
             waypoint.x += dx*cos(waypoint.theta);
             waypoint.y += dy*sin(waypoint.theta);
-            RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint x: %f,", waypoint.x);
-            RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint y: %f,", waypoint.y);
-            RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint theta: %f,", waypoint.theta);
             waypoint.search = true;
         }
 
@@ -213,9 +172,6 @@ private:
             waypoint.theta = orig_theta;
             waypoint.x = orig_x;
             waypoint.y = orig_y;
-            RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint x go back: %f,", waypoint.x);
-            RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint y go back: %f,", waypoint.y);
-            RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint theta: %f,", waypoint.theta);
             waypoint.search = true;
         }
 
@@ -223,9 +179,6 @@ private:
             waypoint.theta = orig_theta + M_PI/6.0;
             waypoint.x += dx*cos(waypoint.theta);
             waypoint.y += dy*sin(waypoint.theta);
-            RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint x: %f,", waypoint.x);
-            RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint y: %f,", waypoint.y);
-            RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint theta: %f,", waypoint.theta);
             waypoint.search = true;
         }
 
@@ -233,54 +186,10 @@ private:
             waypoint.theta = orig_theta;
             waypoint.x = orig_x;
             waypoint.y = orig_y;
-            RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint x go back: %f,", waypoint.x);
-            RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint y go back: %f,", waypoint.y);
-            RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint theta: %f,", waypoint.theta);
             waypoint.search = true;
         }
 
-        // else if (waypoint_count < 12){
-        //     waypoint.theta = orig_theta + M_PI/6.0;
-        //     waypoint.x += dx*cos(waypoint.theta);
-        //     waypoint.y += dy*sin(waypoint.theta);
-        //     RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint x: %f,", waypoint.x);
-        //     RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint y: %f,", waypoint.y);
-        //     RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint theta: %f,", waypoint.theta);
-        //     waypoint.search = true;
-        // }
-
-        // else if (waypoint_count == 12){
-        //     waypoint.theta = orig_theta;
-        //     waypoint.x = orig_x;
-        //     waypoint.y = orig_y;
-        //     RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint x go back: %f,", waypoint.x);
-        //     RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint y go back: %f,", waypoint.y);
-        //     RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint theta: %f,", waypoint.theta);
-        //     waypoint.search = true;
-        // }
-
-        // else if (waypoint_count < 15){
-        //     waypoint.theta = orig_theta + M_PI/3.0;
-        //     waypoint.x += dx*cos(waypoint.theta);
-        //     waypoint.y += dy*sin(waypoint.theta);
-        //     RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint x: %f,", waypoint.x);
-        //     RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint y: %f,", waypoint.y);
-        //     RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint theta: %f,", waypoint.theta);
-        //     waypoint.search = true;
-        // }
-
-        // else if (waypoint_count == 15){
-        //     waypoint.theta = orig_theta;
-        //     waypoint.x = orig_x;
-        //     waypoint.y = orig_y;
-        //     RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint x go back: %f,", waypoint.x);
-        //     RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint y go back: %f,", waypoint.y);
-        //     RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint theta: %f,", waypoint.theta);
-        //     waypoint.search = true;
-        // }
-
         else{
-            RCLCPP_INFO(rclcpp::get_logger("message"), "waypoint search is false:");
             waypoint.search == false;
             search_done = true;
             std_msgs::msg::Empty search_completed;
@@ -295,36 +204,17 @@ private:
     if (finish_loop && next_waypoint){
         waypoint_count = prev_waypoint_count;
         next_waypoint = false;
-        RCLCPP_INFO(rclcpp::get_logger("message"), "finishing loop");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "finishing loop");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "finishing loop");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "finishing loop");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "finishing loop");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "finishing loop");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "finishing loop");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "finishing loop");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "finishing loop");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "finishing loop");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "finishing loop");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "finishing loop");
         finish_loop = false;
         prev_waypoint.search = false;
         next_waypoint = true;
-        // loop back to previous node
-        // pub_waypoint_->publish(prev_waypoint);
-        // waypoint.x = prev_waypoint.x;
-        // waypoint.y = prev_waypoint.y;
-        // waypoint.theta = prev_waypoint.theta;
-
     }
     if (next_waypoint && waypoint.loop == false && waypoint.search == false && !finish_loop && !start_sequence){
-        RCLCPP_INFO(rclcpp::get_logger("message"), "Next waypoint!");
         next_waypoint = false;
         search_done = false;
 
         // lawnmowing pattern trajectory
         if (waypoint_count == 1){
-            x_pos += 0.3 + dx_next;
+            x_pos += 0.2 + dx_next;
             waypoint.x = x_pos;
             waypoint.y = y_pos;
             waypoint.theta = M_PI/2.0;
@@ -332,44 +222,32 @@ private:
         }
         else if (waypoint_count == 2){
             y_pos += 0.2;
-            waypoint.x = x_pos;
-            waypoint.y = y_pos;
+            waypoint.x = x_pos + 0.1;
+            waypoint.y = y_pos + 0.1;
             waypoint.theta = M_PI;
         }
         else if (waypoint_count == 3){
-            x_pos -= 0.3;
+            x_pos -= 0.2;
             waypoint.x = x_pos;
             waypoint.y = y_pos;
             waypoint.theta = M_PI/2.0;
         }
         else if (waypoint_count == 4){
-            y_pos += 0.3;
-            waypoint.x = x_pos;
-            waypoint.y = y_pos;
+            y_pos += 0.2;
+            waypoint.x = x_pos + 0.1;
+            waypoint.y = y_pos + 0.1;
             waypoint.theta = 0.0;
             waypoint_count = 0;
             lawnmower_count++;
         }
         if (waypoint_count > 4){
             waypoint_count = 0;
+            dx_next += 0.2;
         }
         if (lawnmower_count == 6){
-            RCLCPP_INFO(rclcpp::get_logger("message"), "NEXT LAWNMOWER SECTION!!!");
-            RCLCPP_INFO(rclcpp::get_logger("message"), "NEXT LAWNMOWER SECTION!!!");
-            RCLCPP_INFO(rclcpp::get_logger("message"), "NEXT LAWNMOWER SECTION!!!");
-            RCLCPP_INFO(rclcpp::get_logger("message"), "NEXT LAWNMOWER SECTION!!!");
-            RCLCPP_INFO(rclcpp::get_logger("message"), "NEXT LAWNMOWER SECTION!!!");
-            RCLCPP_INFO(rclcpp::get_logger("message"), "NEXT LAWNMOWER SECTION!!!");
-            RCLCPP_INFO(rclcpp::get_logger("message"), "NEXT LAWNMOWER SECTION!!!");
-            RCLCPP_INFO(rclcpp::get_logger("message"), "NEXT LAWNMOWER SECTION!!!");
             dx_next = 0.5;
         }
-        // else if (waypoint_count == 5){
-        //     waypoint.x += 0.0;
-        //     waypoint.y += 0.0;
-        //     waypoint.theta -= M_PI/2.0;
-        //     waypoint_count = 0;
-        // }
+
         waypoint.search = false;
         pub_waypoint_->publish(waypoint);
         waypoint_count++;
@@ -380,7 +258,6 @@ private:
   // topic: /waypoint_complete   type: std_msgs::msg::Empty
   void waypoint_status(std_msgs::msg::Empty::SharedPtr msg){
     if (loop_back){
-        RCLCPP_INFO(rclcpp::get_logger("message"), "Waypoint search is true!");
         waypoint.search = true;
         loop_back = false;
         search_done = false;
@@ -391,21 +268,18 @@ private:
   // subscribe to a node to loop back to
   // topic: /loop_back   type: geometry_msgs::msg::Pose
   void loop_back_callback(img_transform::msg::Waypoint::SharedPtr msg){
-    RCLCPP_INFO(rclcpp::get_logger("message"), "Prev waypoint %f, %f, %f: ", prev_waypoint.x, prev_waypoint.y, prev_waypoint.theta);
     loop_back = true;
     next_waypoint = true;
     prev_waypoint.x = waypoint.x;
     prev_waypoint.y = waypoint.y;
     prev_waypoint.theta = waypoint.theta;
     prev_waypoint_count = waypoint_count;
-    // RCLCPP_INFO(rclcpp::get_logger("message"), "Loop waypoint %f, %f, %f: ", waypoint.x, waypoint.y, waypoint.theta);
     waypoint.x = msg->x;
     waypoint.y = msg->y;
     waypoint.theta = msg->theta;
     orig_x = msg->x;
     orig_y = msg->y;
     orig_theta = msg->theta;
-    RCLCPP_INFO(rclcpp::get_logger("message"), "Loop waypoint %f, %f, %f: ", waypoint.x, waypoint.y, waypoint.theta);
     waypoint.loop = msg->loop;
   }
 
@@ -420,15 +294,6 @@ private:
         loop_back = false;
     }
 
-  void test_vals_srv(
-        std_srvs::srv::Empty::Request::SharedPtr,
-        std_srvs::srv::Empty::Response::SharedPtr)
-    {
-        // RCLCPP_INFO(rclcpp::get_logger("message"), "Stop moving!");
-        next_waypoint = true;
-        // loop_back = false;
-    }
-
   // subscribe to a start status to start turtlebot motion once images are published from cam
   // topic: /start_moving   type: std_srvs::srv::Empty
   void start_callback(std_msgs::msg::Empty::SharedPtr msg){
@@ -438,7 +303,6 @@ private:
   }
 
   void finish_loop_callback(std_msgs::msg::Empty::SharedPtr msg){
-    RCLCPP_INFO(rclcpp::get_logger("message"), "Finish loop!");
     finish_loop = true;
     waypoint.loop = false;
     waypoint.search = false;
@@ -453,8 +317,6 @@ private:
   rclcpp::Subscription<std_msgs::msg::Empty>::SharedPtr sub_start_;
   rclcpp::Subscription<std_msgs::msg::Empty>::SharedPtr sub_finish_loop_;
   rclcpp::Publisher<std_msgs::msg::Empty>::SharedPtr pub_search_done_;
-
-  rclcpp::Service<std_srvs::srv::Empty>::SharedPtr sub_test_vals_;
 
   rclcpp::Service<std_srvs::srv::Empty>::SharedPtr stop_moving_srv;
 
@@ -472,6 +334,7 @@ private:
   double dx_next = 0.0;
 
   bool start_sequence = false;
+  bool square_loop_ = false;
 
   double orig_x = 0.0;
   double orig_y = 0.0;

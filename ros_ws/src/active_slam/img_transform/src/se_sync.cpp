@@ -88,9 +88,6 @@ public:
                 &SE_SYNC::robot_pose,
                 this, std::placeholders::_1));
 
-    // pub_id_vals_ = this->create_publisher<img_transform::msg::Nodes>(
-    //   "id_vals", 10);
-
     /// \brief publish position of node to loop back to for active learning
     pub_loop_back_ = this->create_publisher<img_transform::msg::Waypoint>("loop_back", 10);
 
@@ -114,6 +111,9 @@ public:
 
     pub_finish_loop_ = this->create_publisher<std_msgs::msg::Empty>(
       "finish_loop", 10);
+
+    pub_before_update_ = this->create_publisher<std_msgs::msg::Empty>(
+      "poster_before_update", 10);
   }
 
 private:
@@ -141,25 +141,6 @@ private:
 
     tf_broadcaster_->sendTransform(t);
 
-    // double theta_w = (M_PI/2.0) - theta_pos;
-
-    // geometry_msgs::msg::TransformStamped t_cam;
-    // t_cam.header.stamp = this->get_clock()->now();
-    // t_cam.header.frame_id = "world";
-    // t_cam.child_frame_id = "wheel_base_frame";
-    // t_cam.transform.translation.x = x_pos - dx_cam*sin(theta_pos);
-    // t_cam.transform.translation.y = y_pos - dx_cam*cos(theta_pos);
-
-    // tf2::Quaternion q_cam;
-    // q_cam.setRPY(0, 0, theta_pos);
-    // t_cam.transform.rotation.x = q_cam.x();
-    // t_cam.transform.rotation.y = q_cam.y();
-    // t_cam.transform.rotation.z = q_cam.z();
-    // t_cam.transform.rotation.w = q_cam.w();
-
-    // tf_broadcaster_->sendTransform(t_cam);
-
-
     // initialize no odometry update from registration
     img_transform::msg::Odom pos_update;
     pos_update.update = false;
@@ -179,19 +160,15 @@ private:
 
         Sophus::SE3d T_fix(rot_, trans_);
 
-
         registration = false;
+
         ////////////////////////////////////////////////////////////////////////////////////////////
         // SE_SYNC
         ////////////////////////////////////////////////////////////////////////////////////////////
 
         // Preallocate output vector
         measurements_t measurements;
-        RCLCPP_INFO(rclcpp::get_logger("message"), "SESync starting");
         RelativePoseMeasurement measurement;
-
-
-        RCLCPP_INFO(rclcpp::get_logger("message"), "Edges size: %ld", edges.size());
 
         // Fill in elements of measurement for SE-Sync
         for (int i = 0; i < edges.size(); i++){
@@ -240,7 +217,8 @@ private:
             RCLCPP_INFO(rclcpp::get_logger("message"), "No measurements!");
         }
         else{
-            RCLCPP_INFO(rclcpp::get_logger("message"), "Measurement: %d", measurements.size());
+            std_msgs::msg::Empty empty_before;
+            pub_before_update_->publish(empty_before);
             SESyncOpts opts;
             opts.verbose = true; // Print output to stdout
 
@@ -254,7 +232,6 @@ private:
 
             //   Initial
             opts.num_threads = 4;
-            RCLCPP_INFO(rclcpp::get_logger("message"), "Test 1/2");
 
             // #ifdef GPERFTOOLS
             // ProfilerStart("SE-Sync.prof");
@@ -262,7 +239,6 @@ private:
 
             //   / RUN SE-SYNC!
             SESyncResult results = SESync::SESync(measurements, opts);
-            RCLCPP_INFO(rclcpp::get_logger("message"), "Test 2/3");
 
             ///////////////////////////////////////////////////////////////////////////////////////////
             // SE_SYNC - done
@@ -309,7 +285,6 @@ private:
 
 
             // put xhat results in the form of (x, y, theta) nodess
-            RCLCPP_INFO(rclcpp::get_logger("message"), "translation_num: %d", translation_num);
             for (int i = 0; i < translation_num; i++){
 
                 r_updated.block(0, 0, 2, 2) = xhat.block(0, translation_num + i*2, 2, 2);
@@ -330,7 +305,6 @@ private:
                 nodes.push_back({x, y, theta});
             }
 
-            RCLCPP_INFO(rclcpp::get_logger("message"), "nodes size: %d", nodes.size());
             std_msgs::msg::Header header;
             header.stamp = this->get_clock()->now();
 
@@ -340,6 +314,7 @@ private:
             for (int i = 0; i < (nodes.size() - 1); i++){
                 node_markers.markers[i].pose.position.x = nodes[i][0];
                 node_markers.markers[i].pose.position.y = nodes[i][1];
+                node_markers.markers[i].pose.orientation.z = nodes[i][2];
 
                 edge_markers.markers[i].points[0].x = nodes[i][0];
                 edge_markers.markers[i].points[0].y = nodes[i][1];
@@ -357,6 +332,7 @@ private:
             for (int i = nodes.size(); i < edge_markers.markers.size(); i++){
                 node_markers.markers[i].pose.position.x = nodes[node_ind_fill][0];
                 node_markers.markers[i].pose.position.y = nodes[node_ind_fill][1];
+                node_markers.markers[i].pose.orientation.z = nodes[i][2];
 
                 edge_markers.markers[i].points[0].x = nodes[node_ind_fill][0];
                 edge_markers.markers[i].points[0].y = nodes[node_ind_fill][1];
@@ -371,17 +347,12 @@ private:
 
             // before adding loop, shift down nodes in marker list and add loop in corresponding spot
             for (int j = 0; j < loop_pairs.size(); j++){
-                RCLCPP_INFO(rclcpp::get_logger("message"), "loop nums %d", loop_nums);
-                RCLCPP_INFO(rclcpp::get_logger("message"), "loop_pairs %d", loop_pairs.size());
-                RCLCPP_INFO(rclcpp::get_logger("message"), "node markers size %d", node_markers.markers.size());
-                RCLCPP_INFO(rclcpp::get_logger("message"), "edge markers size %d", edge_markers.markers.size());
 
                 // edge_m.points.push_back(p);
                 int id1 = loop_pairs[j][0] + 1;
                 int id2 = loop_pairs[j][1];
                 id1_m = id1;
                 int id2_m = id2;
-
 
                 int loop_counter = 0;
                 if (loop_counter < loop_pairs.size()){
@@ -392,11 +363,11 @@ private:
                     }
                     id2 = loop_pairs[j][1];
 
-
                     if (id1 < nodes.size() - 1){
                         for (int p = id1; p < nodes.size()-1; p++){
                             node_markers.markers[id1_m+1].pose.position.x = nodes[p][0];
                             node_markers.markers[id1_m+1].pose.position.y = nodes[p][1];
+                            node_markers.markers[id1_m+1].pose.orientation.z = nodes[p][2];
 
                             edge_markers.markers[id1_m+1].points[0].x = nodes[p][0];
                             edge_markers.markers[id1_m+1].points[0].y = nodes[p][1];
@@ -413,7 +384,6 @@ private:
                     }
                 }
 
-
                 // add loop to marker list
                 id1 = loop_pairs[j][0] + 1;
                 if (id1 >= nodes.size()){
@@ -425,12 +395,9 @@ private:
                 }
                 id2 = loop_pairs[j][1];
 
-                RCLCPP_INFO(rclcpp::get_logger("message"), "id_1 and id_2: %d, %d", id_1, id_2);
-                RCLCPP_INFO(rclcpp::get_logger("message"), "id1 and id2: %d, %d", id1, id2);
-                RCLCPP_INFO(rclcpp::get_logger("message"), "id1_m: %d", id1_m);
-
                 node_markers.markers[id1_m].pose.position.x = nodes[id1][0];
                 node_markers.markers[id1_m].pose.position.y = nodes[id1][1];
+                node_markers.markers[id1_m].pose.orientation.z = nodes[id1][2];
 
                 edge_markers.markers[id1_m].points[0].x = nodes[id1][0];
                 edge_markers.markers[id1_m].points[0].y = nodes[id1][1];
@@ -442,12 +409,14 @@ private:
                 int last_node = nodes.size() - 1;
                 node_markers.markers[node_ind].pose.position.x = nodes[last_node][0];
                 node_markers.markers[node_ind].pose.position.y = nodes[last_node][1];
+                node_markers.markers[last_node].pose.orientation.z = nodes[last_node][2];
 
                 if (edge_markers.markers[id1_m].points[0].x != edge_markers.markers[id1_m-1].points[1].x && edge_markers.markers[id1_m].points[0].y != edge_markers.markers[id1_m-1].points[1].y){
                     int node_id = node_markers.markers.size()-1;
 
                     node_markers.markers[node_id].pose.position.x = edge_markers.markers[id1_m-1].points[1].x;
                     node_markers.markers[node_id].pose.position.y = edge_markers.markers[id1_m-1].points[1].y;
+                    node_markers.markers[node_id].pose.orientation.z = nodes[id1_m-1][2];
 
                     node_markers.markers[node_id-1].pose.position.x = edge_markers.markers[id1_m-1].points[1].x;
                     node_markers.markers[node_id-1].pose.position.y = edge_markers.markers[id1_m-1].points[1].y;
@@ -460,23 +429,9 @@ private:
                 edge_markers.markers[id1_m].color.g = 0.3;
                 edge_markers.markers[id1_m].color.b = 0.9;
 
-
-                RCLCPP_INFO(rclcpp::get_logger("message"), "Edge 0_: %f, %f", nodes[id1][0], nodes[id1][1]);
-
-                RCLCPP_INFO(rclcpp::get_logger("message"), "Edge 1_: %f, %f", nodes[id2][0], nodes[id2][1]);
                 loop_count++;
                 loop_counter++;
             }
-
-
-            for (int i = 0; i < edge_markers.markers.size(); i++){
-                RCLCPP_INFO(rclcpp::get_logger("message"), "Marker id: %d", edge_markers.markers[i].id);
-                RCLCPP_INFO(rclcpp::get_logger("message"), "Edge Marker vals : %f, %f", edge_markers.markers[i].points[0].x, edge_markers.markers[i].points[0].y);
-                RCLCPP_INFO(rclcpp::get_logger("message"), "Edge Marker vals : %f, %f", edge_markers.markers[i].points[1].x, edge_markers.markers[i].points[1].y);
-            }
-
-
-
 
             // publish node and edge updates for graph
             pub_nodes_->publish(node_markers);
@@ -486,15 +441,13 @@ private:
             int edge_ind = edge_markers.markers.size() - 1;
             pos_update.x = edge_markers.markers[edge_ind].points[1].x;
             pos_update.y = edge_markers.markers[edge_ind].points[1].y;
+            pos_update.theta = node_markers.markers[edge_ind].pose.orientation.z;
             pos_update.update = true;
 
             x_pos = edge_markers.markers[edge_ind].points[1].x;
             y_pos = edge_markers.markers[edge_ind].points[1].y;
 
             loop_nums++;
-
-            RCLCPP_INFO(rclcpp::get_logger("message"), "Publishing markers!");
-
 
             std_msgs::msg::Empty empty;
             pub_finish_loop_->publish(empty);
@@ -536,7 +489,6 @@ private:
   void image_transform_callback(
     const img_transform::msg::Transform::ConstSharedPtr& msg
   ){
-    RCLCPP_INFO(rclcpp::get_logger("message"), "Transform callback");
     r_i_updated.row(0) << msg->row_1.at(0), msg->row_1.at(1), msg->row_1.at(2);
     r_i_updated.row(1) << msg->row_2.at(0), msg->row_2.at(1), msg->row_2.at(2);
     r_i_updated.row(2) << msg->row_3.at(0), msg->row_3.at(1), msg->row_3.at(2);
@@ -585,9 +537,6 @@ private:
 
     edge.id_a = id_1 + 1;
     edge.id_b = id_2;
-    RCLCPP_INFO(rclcpp::get_logger("message"), "ID 1: %d", id_1);
-    RCLCPP_INFO(rclcpp::get_logger("message"), "ID 2: %d", id_2);
-    RCLCPP_INFO(rclcpp::get_logger("message"), "edge_marker size: %d", edge_markers.markers.size());
 
     edge.rot = r_i_updated;
     edge.trans = t_i_updated;
@@ -599,8 +548,6 @@ private:
     std_msgs::msg::Header header;
     header.stamp = this->get_clock()->now();
 
-    RCLCPP_INFO(rclcpp::get_logger("message"), "Test 1");
-
 
     // fill in markers
     visualization_msgs::msg::Marker node_i;
@@ -610,7 +557,7 @@ private:
     node_i.ns = "nodes_im";
     node_i.action = visualization_msgs::msg::Marker::ADD;
     node_i.pose.orientation.w = 1.0;
-    // node_i.pose.orientation.z = theta_pos;
+    node_i.pose.orientation.z = theta_pos;
     node_i.pose.position.x = edge_markers.markers[id_2].points[1].x;
     node_i.pose.position.y = edge_markers.markers[id_2].points[1].y;
     node_i.type = visualization_msgs::msg::Marker::SPHERE;
@@ -622,8 +569,6 @@ private:
     node_i.color.g = 0.3;
     node_i.color.b = 0.3;
     node_markers.markers.push_back(node_i);
-
-    RCLCPP_INFO(rclcpp::get_logger("message"), "Test 2");
 
     visualization_msgs::msg::Marker edge_i;
     edge_i.header.frame_id = "world";
@@ -651,12 +596,8 @@ private:
     edge_i.points.push_back(p);
     edge_markers.markers.push_back(edge_i);
 
-    RCLCPP_INFO(rclcpp::get_logger("message"), "Test 3");
-
     // pub_nodes_->publish(node_markers);
     pub_edges_->publish(edge_markers);
-
-    RCLCPP_INFO(rclcpp::get_logger("message"), "Test 4");
 
     registration = true;
 
@@ -746,7 +687,7 @@ private:
             node_w.ns = "nodes";
             node_w.action = visualization_msgs::msg::Marker::ADD;
             node_w.pose.orientation.w = 1.0;
-            // node_w.pose.orientation.z = theta_pos;
+            node_w.pose.orientation.z = 0.0;
             node_w.pose.position.x = prev_x;
             node_w.pose.position.y = prev_y;
             node_w.type = visualization_msgs::msg::Marker::SPHERE;
@@ -769,7 +710,7 @@ private:
         node_w.ns = "nodes";
         node_w.action = visualization_msgs::msg::Marker::ADD;
         node_w.pose.orientation.w = 1.0;
-        // node_w.pose.orientation.z = theta_pos;
+        node_w.pose.orientation.z = theta_pos;
         node_w.pose.position.x = x_pos;
         node_w.pose.position.y = y_pos;
         node_w.type = visualization_msgs::msg::Marker::SPHERE;
@@ -811,32 +752,19 @@ private:
         pub_nodes_->publish(node_markers);
         pub_edges_->publish(edge_markers);
 
-        RCLCPP_INFO(rclcpp::get_logger("message"), "Id_trans");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "Id_trans");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "Id_trans");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "Id_trans");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "Id_trans");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "Id_trans");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "Id_trans");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "Id_trans");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "Id_trans");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "Id_trans");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "Id_trans");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "Id_trans");
-        RCLCPP_INFO(rclcpp::get_logger("message"), "Id_trans %d", id_trans);
-        RCLCPP_INFO(rclcpp::get_logger("message"), "id_loop_again %d", id_loop_again);
         // don't count nodes for going back to prev_waypoint before loop
-        if (id_loop_again % 15 == 0 && !first_loop){
+        if (id_loop_again % 30 == 0 && !first_loop){
             img_transform::msg::Waypoint loop_position;
-            loop_position.x = node_markers.markers[id_loop_again - 20].pose.position.x;
-            loop_position.y = node_markers.markers[id_loop_again - 20].pose.position.y;
+            loop_position.x = node_markers.markers[id_loop_again + 20 - 30].pose.position.x;
+            loop_position.y = node_markers.markers[id_loop_again + 20 - 30].pose.position.y;
             loop_position.theta = 0.0;
-            loop_position.id = id_loop_again - 20;
+            loop_position.id = id_loop_again + 20 - 30;
             loop_position.loop = true;
             loop_position.search = false;
             pub_loop_back_->publish(loop_position);
         }
-        if (id_loop_again % 30 == 0 && first_loop){
+        if (id_loop_again % 20 == 0 && first_loop){
+            id_loop_again -= 20;
             first_loop = false;
         }
     }
@@ -852,12 +780,12 @@ private:
   rclcpp::Subscription<geometry_msgs::msg::Point>::SharedPtr sub_rob_pose_;
   rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr pub_nodes_;
   rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr pub_edges_;
-//   rclcpp::Publisher<img_transform::msg::Nodes>::SharedPtr pub_id_vals_;
   rclcpp::Publisher<img_transform::msg::Waypoint>::SharedPtr pub_loop_back_;
   std::unique_ptr<tf2_ros::TransformBroadcaster> tf_broadcaster_;
   rclcpp::Publisher<img_transform::msg::FrameID>::SharedPtr pub_frame_id_;
   rclcpp::Publisher<img_transform::msg::Odom>::SharedPtr pub_odom_update_;
   rclcpp::Publisher<std_msgs::msg::Empty>::SharedPtr pub_finish_loop_;
+  rclcpp::Publisher<std_msgs::msg::Empty>::SharedPtr pub_before_update_;
 
   img_transform::Vector2D transform;
   img_transform::Vector2D rob_state;

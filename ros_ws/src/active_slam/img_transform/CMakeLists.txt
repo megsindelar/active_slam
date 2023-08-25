@@ -55,8 +55,6 @@ rosidl_get_typesupport_target(cpp_typesupport_target ${PROJECT_NAME}_msg "rosidl
 
 add_library(transform src/transform.cpp)
 
-add_executable(img_transform src/img_transform.cpp)
-
 add_executable(wheel_encoder src/wheel_encoder.cpp)
 
 add_executable(registration src/registration.cpp)
@@ -66,24 +64,6 @@ add_executable(se_sync src/se_sync.cpp)
 add_executable(active_learning src/active_learning.cpp)
 
 add_subdirectory(external)
-
-ament_target_dependencies(img_transform
-  rclcpp
-  std_msgs
-  sensor_msgs
-  cv_bridge
-  image_transport
-  Eigen3
-  teaserpp
-  geometry_msgs
-  tf2
-  tf2_ros
-  tf2_geometry_msgs
-  tf2_eigen
-  OpenCV
-  Sophus
-  nav_msgs
-)
 
 ament_target_dependencies(wheel_encoder
   rclcpp
@@ -154,18 +134,6 @@ include_directories(SYSTEM
 )
 
 link_directories("usr/local/lib")
-
-target_link_libraries(img_transform ${OpenCV_LIBS} 
-  Eigen3::Eigen
-  teaserpp::teaser_registration 
-  teaserpp::teaser_io
-  Sophus::Sophus
-  transform
-  ${PYTHON_LIBRARIES}
-  Python3::NumPy
-  "${cpp_typesupport_target}"
-)
-
 
 target_link_libraries(wheel_encoder ${OpenCV_LIBS} 
   Eigen3::Eigen 
@@ -241,7 +209,6 @@ endif()
 include_directories(SYSTEM ${matplotlib_SOURCE_DIR})
 
 install(TARGETS
-  img_transform
   se_sync
   wheel_encoder
   registration
