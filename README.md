@@ -13,7 +13,7 @@ The goal of this project is to implement an Active SLAM method using odometry an
 
 Click the link below to the README file for turtlebot_control:
 
-[README](raspberry_pi/src/turtlebot_control/README.md)
+[README](raspberry_pi_ws/src/turtlebot_control/README.md)
 
 
 Click the link below to the README file for img_transform:
