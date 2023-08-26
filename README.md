@@ -21,7 +21,7 @@ Click the link below to the README file for img_transform:
 [README](ros_ws/src/active_slam/img_transform/README.md)
 
 
-{% include youtube.html id="yB6os3cmF2M" %}
+[![YOUTUBE](https://img.youtube.com/vi/yB6os3cmF2M/0.jpg)](https://www.youtube.com/watch?v=yB6os3cmF2M)
 
 
 Separate scripts
