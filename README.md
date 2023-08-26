@@ -21,6 +21,9 @@ Click the link below to the README file for img_transform:
 [README](ros_ws/src/active_slam/img_transform/README.md)
 
 
+{% include youtube.html id="yB6os3cmF2M" %}
+
+
 Separate scripts
 - in the src folder at the base of this respository, there are several scripts that can run
 specific testing files, including...
