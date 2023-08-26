@@ -35,9 +35,7 @@ specific testing files, including...
       images when calling this file to work)
 
     - `image_stitching.cpp`
-      used to stitch a panorama of images together (note, must pass in multiple paths or a file of
-      paths of images when calling this file to work) (also note in the comments at the bottom
-      there is a second method to stitch the images together)
+      used to stitch a panorama of images together (note, must pass in a before and after ext file of the images with transforms)
 
 
     -> using the CMakeLists.txt that is added, one can make a build directory
