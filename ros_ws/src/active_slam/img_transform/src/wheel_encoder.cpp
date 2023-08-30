@@ -1,24 +1,6 @@
-/// \file turtle_control
-/// \brief Used to control the turtlebot movements through joint states
-///
-/// PARAMETERS:
-///     wheel_radius (double):  wheel radius of turtlebot
-///     track_width (double): track width of turtlebot
-///     motor_cmd_max (double): maximum ticks of motor
-///     motor_cmd_per_rad_sec (double): convert motor ticks to radians
-///     encoder_ticks_per_rad (double): convert encoder ticks to radians
-/// PUBLISHES:
-///     /wheel_cmd (nuturtlebot_msgs/WheelCommands): command velocity to control the turtlebot
-///     /joint_states (sensor_msgs/JointState): the joint states of the turtlebot
-/// SUBSCRIBES:
-///     /cmd_vel (geometry_msgs/Twist): description of the topic
-///     /sensor_data (nuturtlebot_msgs/SensorData): description of the topic
-
 #include "rclcpp/rclcpp.hpp"
 #include "geometry_msgs/msg/twist.hpp"
 #include "geometry_msgs/msg/pose.hpp"
-#include "nuturtlebot_msgs/msg/wheel_commands.hpp"
-#include "nuturtlebot_msgs/msg/sensor_data.hpp"
 #include "sensor_msgs/msg/joint_state.hpp"
 #include "turtlelib/diff_drive.hpp"
 #include "turtlelib/rigid2d.hpp"

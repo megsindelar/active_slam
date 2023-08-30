@@ -39,7 +39,6 @@ find_package(tf2_ros REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
 find_package(tf2_eigen REQUIRED)
-find_package(nuturtlebot_msgs REQUIRED)
 find_package(Sophus REQUIRED)
 find_package(std_srvs REQUIRED)
 find_package(nav_msgs REQUIRED)
@@ -69,7 +68,6 @@ ament_target_dependencies(wheel_encoder
   rclcpp
   std_msgs
   geometry_msgs
-  nuturtlebot_msgs
   std_srvs
   nav_msgs
   visualization_msgs
@@ -104,7 +102,6 @@ ament_target_dependencies(se_sync
   rclcpp
   std_msgs
   geometry_msgs
-  nuturtlebot_msgs
   std_srvs
   nav_msgs
   visualization_msgs
@@ -118,7 +115,6 @@ ament_target_dependencies(active_learning
   rclcpp
   std_msgs
   geometry_msgs
-  nuturtlebot_msgs
   std_srvs
   nav_msgs
   visualization_msgs
