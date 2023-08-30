@@ -20,12 +20,15 @@
   <depend>tf2</depend>
   <depend>tf2_ros</depend>
   <depend>nuturtlebot_msgs</depend>
+  <depend>teaserpp</depend>
   <depend>Eigen3</depend>
   <depend>teaserpp</depend>
   <depend>Sophus</depend>
   <depend>cpl_slam</depend>
   <depend>se_sync</depend>
   <depend>turtlelib</depend>
+  <depend>Catch2</depend>
+  <depend>Doxygen</depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
