@@ -158,12 +158,13 @@ class Registration : public rclcpp::Node
                 &Registration::robot_pose,
                 this, std::placeholders::_1));
 
+        // subscribe to visual search complete status
         sub_search_done_ = this->create_subscription<std_msgs::msg::Empty>(
             "/search_done", 10, std::bind(
                 &Registration::search_done_callback,
                 this, std::placeholders::_1));
 
-
+        // subscribe to nodes marker list for poster visual reconstruction
         sub_poster_data_ = this->create_subscription<visualization_msgs::msg::MarkerArray>(
             "/nodes", 10, std::bind(
                 &Registration::poster_data_callback,
@@ -175,17 +176,19 @@ class Registration : public rclcpp::Node
                 &Registration::wheel_transform_callback,
                 this, std::placeholders::_1));
 
+        // subscribe to waypoints for visual search
         sub_search_waypoint_ = this->create_subscription<img_transform::msg::Waypoint>(
             "/search_waypoint", 10, std::bind(
                 &Registration::search_waypoint_callback,
                 this, std::placeholders::_1));
 
-
+        // subscribe to waypoints for non-visual search movements
         sub_waypoint_status_ = this->create_subscription<std_msgs::msg::Empty>(
             "/waypoint_complete", 10, std::bind(
                 &Registration::waypoint_status,
                 this, std::placeholders::_1));
 
+        // subscribe to status to trigger looping sequence
         sub_loop_back_ = this->create_subscription<img_transform::msg::Waypoint>(
             "/loop_back", 10, std::bind(
                 &Registration::loop_back_callback,
@@ -198,11 +201,13 @@ class Registration : public rclcpp::Node
                 &Registration::odom_callback,
                 this, std::placeholders::_1));
 
+        // subscribe to loop completed status
         sub_finish_loop_ = this->create_subscription<std_msgs::msg::Empty>(
             "/finish_loop", 10, std::bind(
                 &Registration::finish_loop_callback,
                 this, std::placeholders::_1));
 
+        // subscribe a status to trigger poster reconstruction before updating from SESync
         sub_before_update_ = this->create_subscription<std_msgs::msg::Empty>(
             "/poster_before_update", 10, std::bind(
                 &Registration::poster_before_callback,
@@ -222,6 +227,7 @@ class Registration : public rclcpp::Node
             &Registration::registration_srv, this, std::placeholders::_1,
             std::placeholders::_2));
 
+        // service to trigger poster reconstruction
         reconstruction_srv_ = this->create_service<std_srvs::srv::Empty>(
         "/reconstruct_poster",
         std::bind(
@@ -689,16 +695,22 @@ class Registration : public rclcpp::Node
             rob_y = msg->y;
         }
 
+        // subscriber to odom orientation
+        // topic: /odom_orientation   type: img_transform::msg::Odom
         void odom_callback(
             const img_transform::msg::Odom::ConstSharedPtr& msg
         ){
             theta_pos = msg->theta;
         }
 
+        // subscribe to waypoints for visual search
+        // topic: /search_waypoint   type: img_transform::msg::Waypoint
         void search_waypoint_callback(img_transform::msg::Waypoint::SharedPtr msg){
             search = msg->search;
         }
 
+        // subscribe to status to trigger looping sequence
+        // topic: /loop_back   type: img_transform::msg::Waypoint
         void loop_back_callback(img_transform::msg::Waypoint::SharedPtr msg){
             loop_id = msg->id;
             loop_image = edge_images[loop_id];
@@ -709,10 +721,14 @@ class Registration : public rclcpp::Node
             search_keypoints.clear();
         }
 
+        // subscribe to waypoints for non-visual search movements
+        // topic: /waypoint_complete   type: std_msgs::msg::Empty
         void waypoint_status(std_msgs::msg::Empty::SharedPtr msg){
             next_waypoint = true;
         }
 
+        // subscribe to visual search complete status
+        // topic: /search_done   type: std_msgs::msg::Empty
         void search_done_callback(std_msgs::msg::Empty::SharedPtr msg){
             search_done = true;
             search = false;
@@ -764,6 +780,8 @@ class Registration : public rclcpp::Node
 
         }
 
+        // service to trigger poster reconstruction
+        // topic: /reconstruct_poster   type: std_srvs::srv::Empty
         void reconstruct_srv(
             std_srvs::srv::Empty::Request::SharedPtr,
             std_srvs::srv::Empty::Response::SharedPtr)
@@ -795,16 +813,20 @@ class Registration : public rclcpp::Node
             RCLCPP_INFO(rclcpp::get_logger("message"), "Done!");
         }
 
+        // subscribe to loop completed status
+        // topic: /finish_loop   type: std_msgs::msg::Empty
         void finish_loop_callback(std_msgs::msg::Empty::SharedPtr msg){
             update_nodes = true;
         }
 
+        // subscribe a status to trigger poster reconstruction before updating from SESync
+        // topic: /poster_before_update   type: std_msgs::msg::Empty
         void poster_before_callback(std_msgs::msg::Empty::SharedPtr msg){
             std::string file = "cv_images_before_" + to_string(loop_count) + ".ext";
             reconstruct_poster_(file);
         }
 
-
+        // function to reconstruct the poster
         void reconstruct_poster_(std::string filename){
             // Declare what you need
             cv::FileStorage file(filename, cv::FileStorage::WRITE);
@@ -833,6 +855,8 @@ class Registration : public rclcpp::Node
             RCLCPP_INFO(rclcpp::get_logger("message"), "Done!");
         }
 
+        // subscribe to nodes marker list for poster visual reconstruction
+        // topic: /nodes   type: visualization_msgs::msg::MarkerArray
         void poster_data_callback(
             const visualization_msgs::msg::MarkerArray::ConstSharedPtr& msg
         )

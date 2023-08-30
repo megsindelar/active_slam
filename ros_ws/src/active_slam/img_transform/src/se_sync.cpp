@@ -70,6 +70,7 @@ public:
         &SE_SYNC::wheel_transform_callback,
         this, std::placeholders::_1));
 
+    // subscriber to the visual search waypoints
     sub_search_waypoint_ = this->create_subscription<img_transform::msg::Waypoint>(
       "/search_waypoint", 10, std::bind(
         &SE_SYNC::search_waypoint_callback,
@@ -83,6 +84,7 @@ public:
     pub_edges_ = this->create_publisher<visualization_msgs::msg::MarkerArray>(
       "edges", 10);
 
+    // subscriber to robot poses
     sub_rob_pose_ = this->create_subscription<geometry_msgs::msg::Point>(
             "/rob_pose", 10, std::bind(
                 &SE_SYNC::robot_pose,
@@ -109,9 +111,11 @@ public:
     pub_odom_update_ = this->create_publisher<img_transform::msg::Odom>(
       "odom_update", 10);
 
+    // publish loop complete status
     pub_finish_loop_ = this->create_publisher<std_msgs::msg::Empty>(
       "finish_loop", 10);
 
+    // publish status to trigger poster reconstruction before SESync update
     pub_before_update_ = this->create_publisher<std_msgs::msg::Empty>(
       "poster_before_update", 10);
   }
@@ -122,6 +126,10 @@ private:
   // topic: /edges   type: visualization_msgs::msg::MarkerArray
   // publish red spheres as markers for nodes
   // topic: /nodes   type: visualization_msgs::msg::MarkerArray
+  // publish loop complete status
+  // topic: /finish_loop   type: std_msgs::msg::Empty
+  // publish status to trigger poster reconstruction before SESync update
+  // topic: /poster_before_update   type: std_msgs::msg::Empty
   void timer_callback()
   {
     // publish current wheel base and cam frame
@@ -463,20 +471,20 @@ private:
 
   // subscription to odom orientation
   // topic: /odom_orientation   type: img_transform::msg::Odom
-  // publish line as markers for edges
-  // topic: /edges   type: visualization_msgs::msg::MarkerArray
-  // publish red spheres as markers for nodes
-  // topic: /nodes   type: visualization_msgs::msg::MarkerArray
   void odom_callback(
     const img_transform::msg::Odom::ConstSharedPtr& msg
   ){
     theta_pos = msg->theta;
   }
 
+  // subscriber to the visual search waypoints
+  // topic: /search_waypoint   type: img_transform::msg::Waypoint
   void search_waypoint_callback(img_transform::msg::Waypoint::SharedPtr msg){
     search = msg->search;
   }
 
+  // subscriber to robot poses
+  // topic: /rob_pose   type: geometry_msgs::msg::Point
   void robot_pose(
     const geometry_msgs::msg::Point::ConstSharedPtr& msg
   ){

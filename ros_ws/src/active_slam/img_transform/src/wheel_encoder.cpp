@@ -93,70 +93,60 @@ public:
       this->get_parameter("dx_cam").get_parameter_value().get<double>();
     if (dx_cam == -1.0) {throw std::logic_error("All parameters are not set!");}
 
-    reconstruction_srv = this->create_service<std_srvs::srv::Empty>(
-      "/reconstruction",
-      std::bind(
-        &WheelEncoder::reconstruct, this, std::placeholders::_1,
-        std::placeholders::_2));
 
-    /// \brief a subscriber to get the joint states of the turtlebot
-    /// topic: /joint_states (sensor_msgs/JointState)
+    // subscriber to get the joint states of the turtlebot
     sub_joint_states_ = this->create_subscription<sensor_msgs::msg::JointState>(
       "/joint_states", 10, std::bind(
         &WheelEncoder::joint_states_callback,
         this, std::placeholders::_1));
 
-    pub_joint_states_ = this->create_publisher<sensor_msgs::msg::JointState>(
-      "joint_states", 10);
-
+    // publish turtlebot orientation for visual purposes
     pub_odom_ = this->create_publisher<img_transform::msg::Odom>(
       "odom_orientation", 10);
 
-    pub_nodes_ = this->create_publisher<visualization_msgs::msg::MarkerArray>(
-      "nodes_w", 10);
-
-    pub_edges_ = this->create_publisher<visualization_msgs::msg::MarkerArray>(
-      "edges_w", 10);
-
+    // publish transform between two nodes
     pub_transform_ = this->create_publisher<img_transform::msg::Transform>("wheel_transform", 10);
 
+    // publish current robot pose
     pub_rob_pose_ = this->create_publisher<geometry_msgs::msg::Point>("rob_pose", 10);
 
+    // publish command velocity for the turtlebot
     pub_cmd_vel_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
 
+    // subscriber to updated robot poses from SESync
     sub_odom_update_ = this->create_subscription<img_transform::msg::Odom>(
       "/odom_update", 10, std::bind(
         &WheelEncoder::odom_update_callback,
         this, std::placeholders::_1));
 
+    // subscriber to a status to trigger a node if lots of features are detected
     sub_feature_transform_ = this->create_subscription<std_msgs::msg::Empty>(
       "/feature_transform", 10, std::bind(
         &WheelEncoder::feature_transform_callback,
         this, std::placeholders::_1));
 
+    // subscriber to a status if a loop closure is detected
     sub_loop_closure_ = this->create_subscription<std_msgs::msg::Empty>(
       "/loop_closure", 10, std::bind(
         &WheelEncoder::loop_closure_callback,
         this, std::placeholders::_1));
 
+    // subscriber to next non-visual search waypoint
     sub_next_waypoint_ = this->create_subscription<img_transform::msg::Waypoint>(
       "/next_waypoint", 10, std::bind(
         &WheelEncoder::next_waypoint_callback,
         this, std::placeholders::_1));
 
+    // subscriber to next waypoint in the visual search sequence
     sub_search_waypoint_ = this->create_subscription<img_transform::msg::Waypoint>(
       "/search_waypoint", 10, std::bind(
         &WheelEncoder::search_waypoint_callback,
         this, std::placeholders::_1));
 
+    // publish status that turtlebot has reached desired waypoint
     pub_waypoint_complete_ = this->create_publisher<std_msgs::msg::Empty>("waypoint_complete", 10);
 
-    wheel_cmd_srv = this->create_service<std_srvs::srv::Empty>(
-        "/next_waypoint_srv",
-        std::bind(
-            &WheelEncoder::next_waypoint_srv, this, std::placeholders::_1,
-            std::placeholders::_2));
-
+    // service to stop all motion of the turtlebot
     stop_moving_srv = this->create_service<std_srvs::srv::Empty>(
         "/stop_moving",
         std::bind(
@@ -176,6 +166,8 @@ public:
 
 private:
 
+  // subscriber to next non-visual search waypoint
+  // topic: /next_waypoint   type: img_transform::msg::Waypoint
   void next_waypoint_callback(img_transform::msg::Waypoint::SharedPtr msg)
   {
     waypoint.position.x = msg->x;
@@ -190,6 +182,8 @@ private:
     first_search = true;
   }
 
+  // subscriber to next waypoint in the visual search sequence
+  // topic: /search_waypoint   type: img_transform::msg::Waypoint
   void search_waypoint_callback(img_transform::msg::Waypoint::SharedPtr msg)
   {
     search_waypoint.position.x = msg->x;
@@ -208,14 +202,10 @@ private:
     }
   }
 
-  void next_waypoint_srv(
-        std_srvs::srv::Empty::Request::SharedPtr,
-        std_srvs::srv::Empty::Response::SharedPtr)
-    {
-        next_waypoint = true;
-        move_waypoint = true;
-    }
-
+  // service to stop all motion of the turtlebot
+  // topic: /stop_moving   type: std_msgs::msg::Empty
+  // publish command velocity for the turtlebot
+  // topic: /cmd_vel   type: geometry_msgs::msg::Twist
   void stop_turtlebot(
         std_srvs::srv::Empty::Request::SharedPtr,
         std_srvs::srv::Empty::Response::SharedPtr)
@@ -230,6 +220,16 @@ private:
     }
 
   /// \brief timer callback running at a set frequency
+  // publish turtlebot orientation for visual purposes
+  // topic: /odom_orientation   type: img_transform::msg::Odom
+  // publish transform between two nodes
+  // topic: /wheel_transform   type: img_transform::msg::Transform
+  // publish current robot pose
+  // topic: /rob_pose   type: geometry_msgs::msg::Point
+  // publish command velocity for the turtlebot
+  // topic: /cmd_vel   type: geometry_msgs::msg::Twist
+  // publish status that turtlebot has reached desired waypoint
+  // topic: /waypoint_complete   type: std_msgs::msg::Empty
   void timer_callback()
   {
 
@@ -590,11 +590,17 @@ private:
   }
 
 
+  // subscriber to a status to trigger a node if lots of features are detected
+  // topic: /feature_transform   type: std_msgs::msg::Empty
   void feature_transform_callback(const std_msgs::msg::Empty::SharedPtr msg)
   {
     feature_transform = true;
   }
 
+  // subscriber to a status if a loop closure is detected
+  // topic: /loop_closure   type: std_msgs::msg::Empty
+  // publish current robot pose
+  // topic: /rob_pose   type: geometry_msgs::msg::Point
   void loop_closure_callback(const std_msgs::msg::Empty::SharedPtr msg)
   {
     geometry_msgs::msg::Point point_pub;
@@ -605,6 +611,8 @@ private:
   }
 
 
+  // subscriber to get the joint states of the turtlebot
+  // topic: /joint_states   type: sensor_msgs::msg::JointState
   void joint_states_callback(const sensor_msgs::msg::JointState::SharedPtr msg)
   {
     turtlelib::Phi delta_p = {
@@ -632,6 +640,8 @@ private:
     first = false;
   }
 
+  // subscriber to updated robot poses from SESync
+  // topic: /odom_update   type: img_transform::msg::Odom
   void odom_update_callback(const img_transform::msg::Odom::SharedPtr msg)
   {
     update = msg->update;
@@ -667,24 +677,14 @@ private:
     }
   }
 
-  void reconstruct(
-    std_srvs::srv::Empty::Request::SharedPtr,
-    std_srvs::srv::Empty::Response::SharedPtr)
-    {
-        reconstruct_graph = true;
-    }
-
 
   /// initialize all publishers, subscribers, and services
   double wheel_radius, motor_cmd_max, track_width, motor_cmd_per_rad_sec, collision_radius, encoder_ticks_per_rad, dx_cam;
   rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr sub_joint_states_;
-  rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr pub_joint_states_;
   rclcpp::Publisher<geometry_msgs::msg::Point>::SharedPtr pub_rob_pose_;
   double time_prev = 0.0;
   turtlelib::DiffDrive robot{track_width, wheel_radius};
   rclcpp::TimerBase::SharedPtr timer_;
-  rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr pub_nodes_;
-  rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr pub_edges_;
   rclcpp::Publisher<img_transform::msg::Transform>::SharedPtr pub_transform_;
   rclcpp::Publisher<img_transform::msg::Odom>::SharedPtr pub_odom_;
   rclcpp::Subscription<img_transform::msg::Odom>::SharedPtr sub_odom_update_;
@@ -695,8 +695,6 @@ private:
   rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr pub_cmd_vel_;
   rclcpp::Publisher<std_msgs::msg::Empty>::SharedPtr pub_waypoint_complete_;
 
-  rclcpp::Service<std_srvs::srv::Empty>::SharedPtr reconstruction_srv;
-  rclcpp::Service<std_srvs::srv::Empty>::SharedPtr wheel_cmd_srv;
   rclcpp::Service<std_srvs::srv::Empty>::SharedPtr stop_moving_srv;
 
   double right_ang = 0.0;

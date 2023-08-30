@@ -22,8 +22,10 @@ public:
     // publish waypoints for turtlebot cam to move to
     pub_waypoint_ = this->create_publisher<img_transform::msg::Waypoint>("next_waypoint", 10);
 
+    // publish waypoints for turtlebot to do a visual search
     pub_search_waypoint_ = this->create_publisher<img_transform::msg::Waypoint>("search_waypoint", 10);
 
+    // publish status to say visual search is done
     pub_search_done_ = this->create_publisher<std_msgs::msg::Empty>("search_done", 10);
 
     // subscribe to a waypoint complete status that says when turtlebot reaches the waypoint
@@ -38,6 +40,7 @@ public:
         &ActiveLearning::loop_back_callback,
         this, std::placeholders::_1));
 
+    // publish status to trigger loop sequence
     pub_loop_back_ = this->create_publisher<img_transform::msg::Waypoint>("loop_back", 10);
 
     // subscribe to a start status to start turtlebot motion once images are published from cam
@@ -46,6 +49,7 @@ public:
         &ActiveLearning::start_callback,
         this, std::placeholders::_1));
 
+    // subscribe to a finish loop status to reset state back to lawnmower
     sub_finish_loop_ = this->create_subscription<std_msgs::msg::Empty>(
       "/finish_loop", 10, std::bind(
         &ActiveLearning::finish_loop_callback,
@@ -76,6 +80,7 @@ private:
         first = false;
     }
     if (start_sequence && next_waypoint){
+        // square trajectory
         next_waypoint = false;
         if (square_loop_){
             start_sequence = false;
@@ -88,7 +93,6 @@ private:
             pub_loop_back_->publish(square_loop);
             square_loop_ = false;
         }
-        // lawnmowing pattern trajectory
         if (waypoint_count == 1){
             x_pos += 0.3;
             waypoint.x = x_pos;
@@ -116,12 +120,6 @@ private:
             waypoint_count = -1;
             square_loop_ = true;
         }
-        // else if (waypoint_count == 5){
-        //     waypoint.x += 0.0;
-        //     waypoint.y += 0.0;
-        //     waypoint.theta -= M_PI/2.0;
-        //     waypoint_count = 0;
-        // }
         waypoint.search = false;
         pub_waypoint_->publish(waypoint);
         waypoint_count++;
@@ -139,7 +137,7 @@ private:
     if (waypoint.search && next_waypoint && !search_done){
         next_waypoint = false;
 
-        // lawnmowing pattern trajectory
+        // visual search trajectory
         if (waypoint_count == 0){
             waypoint.theta = waypoint.theta;
             waypoint.x = x_pos;
@@ -202,6 +200,7 @@ private:
 
     }
     if (finish_loop && next_waypoint){
+        // reset everything
         waypoint_count = prev_waypoint_count;
         next_waypoint = false;
         finish_loop = false;
@@ -302,6 +301,8 @@ private:
     start_sequence = true;
   }
 
+  // subscribe to a finish loop status to reset state back to lawnmower
+  // topic: /finish_loop   type: std_srvs::srv::Empty
   void finish_loop_callback(std_msgs::msg::Empty::SharedPtr msg){
     finish_loop = true;
     waypoint.loop = false;
