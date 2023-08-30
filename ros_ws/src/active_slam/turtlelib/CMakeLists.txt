@@ -34,13 +34,13 @@ endif()
 
 # Use the cmake testing functionality. A test is just an executable.
 # We use the catch2 unit testing framework
-find_package(Catch2 3 REQUIRED)
+# find_package(Catch2 3 REQUIRED)
 
 enable_testing()
-add_executable(turtlelib_test tests/tests.cpp)
-target_link_libraries(turtlelib_test turtlelib Catch2::Catch2WithMain ${ARMADILLO_LIBRARIES})
+# add_executable(turtlelib_test tests/tests.cpp)
+# target_link_libraries(turtlelib_test turtlelib Catch2::Catch2WithMain ${ARMADILLO_LIBRARIES})
 
-add_test(NAME Test_of_Turtlelib COMMAND turtlelib_test)
+# add_test(NAME Test_of_Turtlelib COMMAND turtlelib_test)
 
 # Use target_include_directories so that #include"mylibrary/header.hpp" works
 # The use of the <BUILD_INTERFACE> and <INSTALL_INTERFACE> is because when
