@@ -26,6 +26,23 @@ Here is a video below of the project:
 [![YOUTUBE](https://img.youtube.com/vi/yB6os3cmF2M/0.jpg)](https://www.youtube.com/watch?v=yB6os3cmF2M)
 
 
+When building this project, build the ros_ws package on a laptop, build the raspberry_pi_ws on the
+turtlebot, and build the src separate scripts separately with the external CMakeLists.txt
+
+
+## Required package links:
+Teaser: https://github.com/MIT-SPARK/TEASER-plusplus
+
+Bag of words: https://github.com/dorian3d/DBoW2
+
+SESync: https://github.com/david-m-rosen/SE-Sync/tree/master
+
+Optimization: https://github.com/david-m-rosen/Optimization/tree/6d87cc2e46a0ece2720c4b94de943641d9750e50
+
+Image transport: 
+sudo apt install ros-humble-compressed-image-transport
+sudo apt install ros-humble-theora-image-transport
+
 Separate scripts
 - in the src folder at the base of this respository, there are several scripts that can run
 specific testing files, including...
@@ -45,7 +62,6 @@ specific testing files, including...
 
     -> using the CMakeLists.txt that is added, one can make a build directory
     and use cmake and make to build and run these four files
-
 
 
 ![turtlebot](https://github.com/megsindelar/active_slam/assets/87098227/77b49029-1ac1-4719-a477-6644a414a140)
